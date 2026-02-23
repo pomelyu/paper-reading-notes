@@ -12,11 +12,11 @@ description: 從指定的research paper pdf提取重點產生摘要筆記。
 2023/
   Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/
     resources/
-    note.md
+    README.md
 ```
 - 文件夾名稱以underscore取代space，colon以dash取代
 - resources存放需要pdf截圖
-- note.md為主要的筆記內容
+- README.md為主要的筆記內容
 - 引用到其他論文的作法或是比較時，加上註腳
 
 ## Note structure
@@ -74,7 +74,7 @@ description: 從指定的research paper pdf提取重點產生摘要筆記。
 # Figure and Resource Conventions
 
 - Keep filenames descriptive and stable, e.g. `fig_01_teaser.jpg`, `fig_02_method_overview.jpg`, `eq_loss_total.jpg`.
-- Reference images with relative paths from `note.md`.
+- Reference images with relative paths from `README.md`.
 - Do not embed large raw extracts; summarize and cite with concise context.
 
 # PDF Cropping Guideline
@@ -113,4 +113,4 @@ Do not accept outputs that are:
 - Use `N/A` for unavailable project/code links instead of removing fields.
 
 # Examples
-參考 references/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis.note.md 當作範例
+參考 references/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/README.md 當作範例
