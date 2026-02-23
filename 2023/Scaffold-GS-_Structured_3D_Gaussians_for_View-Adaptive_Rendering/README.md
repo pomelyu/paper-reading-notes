@@ -1,3 +1,5 @@
+# Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering
+
 ## Introduction
 - **Project**: https://city-super.github.io/scaffold-gs/
 - **Code**: https://github.com/city-super/Scaffold-GS

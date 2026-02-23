@@ -21,6 +21,9 @@ description: 從指定的research paper pdf提取重點產生摘要筆記。
 
 ## Note structure
 ```markdown
+<!-- Paper title -->
+# Paper Title
+
 ## Introduction
 <!-- 如果作者提供程式碼和project page，分別列出連結 -->
 - **Project**: <url or N/A>

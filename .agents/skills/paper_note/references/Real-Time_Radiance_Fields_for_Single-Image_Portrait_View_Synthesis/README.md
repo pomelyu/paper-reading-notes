@@ -1,3 +1,5 @@
+# Real-Time Radiance Fields for Single-Image Portrait View Synthesis
+
 ## Introduction
 - **Project**: https://research.nvidia.com/labs/nxp/lp3d/
 - **Code**: https://github.com/Dong142857/Live3DPortrait(unofficial)
@@ -11,7 +13,7 @@ This paper proposed a EG3D[^1] version of StyleGAN encoder, which can generated 
 
 **Keywords**: Image-based rendering, View Synthesis, Inverse Rendering, Neural Radiance Field
 
-**Publication**: SIGGRAPH 2013
+**Publication**: SIGGRAPH 2023
 
 ## Method
 ![image](./resources/fig_04_method_overview.jpg)
