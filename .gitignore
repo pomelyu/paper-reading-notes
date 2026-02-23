@@ -445,4 +445,4 @@ vite.config.ts.timestamp-*
 ##### Project Specific #####
 ############################
 # Add your project-specific rules below this line
-archived
+tmp
