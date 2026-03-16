@@ -32,7 +32,7 @@ The key innovation is a perspective-accurate 2D splatting process utilizing ray-
 
 The method represents 3D scenes using 2D Gaussian primitives embedded in 3D space, combined with a differentiable renderer that performs perspective-correct splatting:
 
-1. **2D Gaussian Modeling**: Each primitive is a planar elliptical disk defined by a center point **p**, two orthogonal tangential vectors **t_u** and **t_v**, and scaling factors (s_u, s_v). The surface normal is inherently defined as **t_w = t_u × t_v**.
+1. **2D Gaussian Modeling**: Each primitive is a planar elliptical disk defined by a center point $p$, two orthogonal tangential vectors $t_u$ and $t_v$, and scaling factors $(s_u, s_v)$. The surface normal is inherently defined as $t_w = t_u × t_v$.
 
 2. **Ray-Splat Intersection**: Instead of affine approximation used in 3DGS, the method computes explicit ray-splat intersection by finding the intersection of three non-parallel planes. This eliminates perspective distortion and numerical instability.
 
@@ -50,10 +50,10 @@ The method uses standard Structure-from-Motion (SfM) derived from COLMAP[^1]:
 ### Architecture Details
 
 **2D Gaussian Parameterization**:
-- Center position **p_k** in world space
-- Two tangential vectors **t_u**, **t_v** (represented as rotation matrix R)
-- Two scaling factors (s_u, s_v) controlling variance along tangent directions
-- Learnable opacity α and view-dependent appearance (spherical harmonics)
+- Center position $p_k$ in world space
+- Two tangential vectors $t_u$, $t_v$ (represented as rotation matrix R)
+- Two scaling factors $(s_u, s_v)$ controlling variance along tangent directions
+- Learnable opacity $\alpha$ and view-dependent appearance (spherical harmonics)
 - Normal vector implicitly defined by disk orientation
 
 **Perspective-Accurate Splatting**:
@@ -73,32 +73,27 @@ Following 3DGS[^2] adaptive control strategy:
 
 The training objective combines multiple terms:
 
-1. **RGB Reconstruction Loss (L_c)**:
+1. **RGB Reconstruction Loss ($L_c$)**:
    - L1 loss for pixel-wise accuracy
    - D-SSIM term for structural similarity
    - Primary supervision signal
 
-2. **Depth Distortion Loss (L_d)**:
-   ```
-   L_d = Σ_i,j ω_i ω_j |z_i - z_j|
-   ```
-   - Concentrates 2D primitives along rays by minimizing distances between intersections
+2. **Depth Distortion Loss ($L_d$)**:
+   $$L_d = \Sigma_{i,j} ω_i ω_j |z_i - z_j|$$
+   - Concentrates 2D primitives along rays to the similar depth by minimizing distances between intersections
    - Encourages tight weight distribution similar to surface rendering
    - α = 1000 for bounded scenes, α = 100 for unbounded scenes
 
 3. **Normal Consistency Loss (L_n)**:
-   ```
-   L_n = Σ_i ω_i (1 - n_i^T N)
-   ```
+   $$L_n = \Sigma_i ω_i (1 - n_i^T N)$$
    - Aligns splat normals with depth map gradients
    - Ensures local surface alignment
    - N computed from finite differences of rendered depth
-   - β = 0.05 for all scenes
+   - $\beta$ = 0.05 for all scenes
 
 4. **Combined Objective**:
-   ```
-   L = L_c + α L_d + β L_n
-   ```
+   $$L = L_c + \alpha L_d + \beta L_n$$
+
 
 ### Mesh Extraction
 
