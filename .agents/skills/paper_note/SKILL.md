@@ -52,7 +52,7 @@ description: 從指定的research paper pdf提取重點產生摘要筆記。
 2. 方法的overview
 3. 各個模型的具體，如果使用到另一篇論文的模型，要特別標注。並在最後建立參照。
 4. 損失函數，以條列表示
-遇到方程式的部分可以以截圖來說明
+遇到方程式或數學記號時，使用 LaTeX 語法（inline 用 $...$ ，block 用 $$...$$）表示，不要用截圖或 code block 代替。
 -->
 
 ## Highlight
@@ -73,6 +73,16 @@ description: 從指定的research paper pdf提取重點產生摘要筆記。
 <!-- 前面提及的相關論文 -->
 [^1]: reference paper name
 ```
+
+# Math Formatting
+
+- All mathematical symbols, variables, and notation must use LaTeX syntax.
+- Inline math (variables, short expressions): wrap with `$...$`.
+  - e.g. `$p_k$`, `$t_u$`, `$\alpha$`, `$L_c$`, `$(s_u, s_v)$`
+- Block math (equations, loss functions): wrap with `$$...$$` on its own line.
+  - e.g. `$$L_d = \sum_{i,j} \omega_i \omega_j |z_i - z_j|$$`
+- Do **not** use plain code blocks (``` ``` ```) for equations.
+- Do **not** use ASCII approximations such as `Σ`, `α`, `β` outside of LaTeX — use `$\sum$`, `$\alpha$`, `$\beta$` instead.
 
 # Figure and Resource Conventions
 
