@@ -78,20 +78,20 @@ The training objective combines multiple terms:
    - D-SSIM term for structural similarity
    - Primary supervision signal
 
-2. **Depth Distortion Loss ($L_d$)**:
+2. **Depth Distortion Loss ($L_d$)**:\
    $$L_d = \Sigma_{i,j} ω_i ω_j |z_i - z_j|$$
    - Concentrates 2D primitives along rays to the similar depth by minimizing distances between intersections
    - Encourages tight weight distribution similar to surface rendering
    - α = 1000 for bounded scenes, α = 100 for unbounded scenes
 
-3. **Normal Consistency Loss (L_n)**:
+3. **Normal Consistency Loss ($L_n$)**:\
    $$L_n = \Sigma_i ω_i (1 - n_i^T N)$$
    - Aligns splat normals with depth map gradients
    - Ensures local surface alignment
    - N computed from finite differences of rendered depth
    - $\beta$ = 0.05 for all scenes
 
-4. **Combined Objective**:
+5. **Combined Objective**:\
    $$L = L_c + \alpha L_d + \beta L_n$$
 
 
