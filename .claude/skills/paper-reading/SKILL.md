@@ -16,9 +16,27 @@ You are helping the user deeply understand a research paper using a structured
 reading methodology. Work through the four steps below in order. For each pass,
 explicitly label the section with the pass name so the user can follow along.
 
-Before starting, identify the paper. If the user gave a file path, read it. If
-they gave a URL, fetch it. If they gave a title, search for it or ask the user
-to provide the content.
+## Before starting — obtain the paper content
+
+Identify what the user gave you, then get the content:
+
+**If a local file path or a URL pointing to a PDF/document:**
+Use the `mineru_doc2md` skill to convert it to Markdown first. This gives
+much cleaner output for papers — preserving formulas, tables, and layout —
+compared to reading the PDF directly.
+
+Before running the conversion, determine the paper's title and year (from
+the filename, a quick skim of the abstract, or the URL). Use those to derive
+the output folder path (`{year}/{Paper_Title}/`), create it along with the
+`resources/` subdirectory, then pass `-o {year}/{Paper_Title}/resources/paper.md`
+to `mineru_doc2md` so the converted Markdown lands inside the note's own folder.
+Read that `.md` file for all four passes below.
+
+**If an arXiv link:** Fetch the abstract page to get metadata, then use
+`mineru_doc2md` to convert the PDF URL (e.g. `https://arxiv.org/pdf/<id>`),
+saving to `{year}/{Paper_Title}/resources/paper.md` as above.
+
+**If pasted text or a title only:** Read/search directly without conversion.
 
 ---
 
@@ -91,9 +109,10 @@ Produce these named sub-sections:
 
 **### Detailed Technical Summary** — narrative prose with **bold section
 headers** for each major component (e.g., the representation, the training
-procedure, the loss function). Use inline code for variable names and
-equations. This should be dense enough that a reader could implement the
-method from this section alone.
+procedure, the loss function). Use LaTeX math notation for all equations and
+mathematical symbols: `$...$` for inline expressions and `$$...$$` on their
+own line for standalone equations. This should be dense enough that a reader
+could implement the method from this section alone.
 
 **### Hidden Assumptions** — numbered list of assumptions that the work
 depends on but that are never stated explicitly.
@@ -168,9 +187,9 @@ use the arXiv submission year.
 Example: `Real-Time Radiance Fields for Single-Image Portrait View Synthesis`
 → `Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis`
 
-The `resources/` subdirectory is for any screenshots or figures extracted
-from the PDF. Create it but leave it empty unless you have images to save
-there.
+The `resources/` subdirectory holds the MinerU-converted `paper.md` (if
+conversion was run) plus any screenshots or figures extracted from the PDF.
+Create it before running `mineru_doc2md` so the output lands there directly.
 
 ### README.md content
 
@@ -194,6 +213,14 @@ Then the four passes follow with `## Pass N — Name` headings and
 Aim for depth over brevity — the user is building a durable reference they
 will return to, not a quick abstract. Use markdown tables and bold-labeled
 lists to keep the output scannable.
+
+**Math formatting:** Whenever you write equations or mathematical symbols,
+use LaTeX notation throughout all four passes — `$...$` for inline math
+(e.g., $\mathcal{L}^{\text{rigid}}$, $\mu_{i,t}$) and `$$...$$` on a
+dedicated line for displayed equations. Do not use backtick code blocks for
+math; reserve backticks for actual code identifiers like function names or
+file paths. The MinerU-converted `paper.md` in `resources/` already uses
+this convention — mirror it in the README.
 
 If the paper is long and you are missing key sections (e.g., the appendix or
 supplementary), say so explicitly and ask the user to provide those pages
