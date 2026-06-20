@@ -1,9 +1,9 @@
 # Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting
 
-**Authors:** Yunzhi Yan, Haotong Lin, Chenxu Zhou, Weijie Wang, Haiyang Sun, Kun Zhan, Xianpeng Lang, Xiaowei Zhou, Sida Peng  
-**Affiliations:** Zhejiang University, Li Auto  
-**Published:** arXiv:2401.01339v3, 18 Aug 2024  
-**Keywords:** 3D Gaussian Splatting, View Synthesis, Dynamic Urban Scenes, Autonomous Driving
+- **Authors:** Yunzhi Yan, Haotong Lin, Chenxu Zhou, Weijie Wang, Haiyang Sun, Kun Zhan, Xianpeng Lang, Xiaowei Zhou, Sida Peng  
+- **Affiliations:** Zhejiang University, Li Auto  
+- **Published:** arXiv:2401.01339v3, 18 Aug 2024  
+- **Keywords:** 3D Gaussian Splatting, View Synthesis, Dynamic Urban Scenes, Autonomous Driving
 
 ---
 

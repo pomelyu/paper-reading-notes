@@ -1,9 +1,9 @@
 # Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis
 
-**Authors:** Jonathon Luiten, Georgios Kopanas, Bastian Leibe, Deva Ramanan
-**Affiliations:** Carnegie Mellon University, RWTH Aachen University, Inria & Université Côte d'Azur
-**Published:** arXiv:2308.09295, 2023 (presented at 3DV 2024)
-**Keywords:** 3D Gaussian splatting, dynamic scene reconstruction, dense tracking, novel-view synthesis, non-rigid reconstruction, 6-DOF tracking
+- **Authors:** Jonathon Luiten, Georgios Kopanas, Bastian Leibe, Deva Ramanan
+- **Affiliations:** Carnegie Mellon University, RWTH Aachen University, Inria & Université Côte d'Azur
+- **Published:** arXiv:2308.09295, 2023 (presented at 3DV 2024)
+- **Keywords:** 3D Gaussian splatting, dynamic scene reconstruction, dense tracking, novel-view synthesis, non-rigid reconstruction, 6-DOF tracking
 
 ---
 

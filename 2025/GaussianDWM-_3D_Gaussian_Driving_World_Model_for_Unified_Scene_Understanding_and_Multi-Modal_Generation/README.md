@@ -1,9 +1,9 @@
 # GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation
 
-**Authors:** Tianchen Deng*, Xuefeng Chen*, Yi Chen*, Qu Chen, Yuyao Xu, Lijin Yang, Le Xu, Yu Zhang, Junhao Jiang, Bo Zhang, Wuxiong Huang, Hesheng Wang (* equal contribution; project lead: Qu Chen; corresponding: Hesheng Wang)  
-**Affiliations:** Shanghai Jiao Tong University, Tsinghua University, MEGVII Technology, Mach Drive  
-**Published:** arXiv:2512.23180v3 | May 2026 (submitted Dec 2025)  
-**Keywords:** 3D Gaussian Splatting, Driving World Model, Scene Understanding, Multi-Modal Generation, Autonomous Driving
+- **Authors:** Tianchen Deng*, Xuefeng Chen*, Yi Chen*, Qu Chen, Yuyao Xu, Lijin Yang, Le Xu, Yu Zhang, Junhao Jiang, Bo Zhang, Wuxiong Huang, Hesheng Wang (* equal contribution; project lead: Qu Chen; corresponding: Hesheng Wang)  
+- **Affiliations:** Shanghai Jiao Tong University, Tsinghua University, MEGVII Technology, Mach Drive  
+- **Published:** arXiv:2512.23180v3 | May 2026 (submitted Dec 2025)  
+- **Keywords:** 3D Gaussian Splatting, Driving World Model, Scene Understanding, Multi-Modal Generation, Autonomous Driving
 
 ---
 

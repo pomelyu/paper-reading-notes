@@ -1,9 +1,9 @@
 # 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering
 
-**Authors:** Guanjun Wu, Wenming Yang, Luping Liu, Yuan Liu, Wenping Wang  
-**Affiliations:** University of Science and Technology of China, Texas A&M University  
-**Published:** arXiv:2310.08528 | CVPR 2024  
-**Keywords:** 3D Gaussian Splatting, Dynamic Scenes, Novel View Synthesis, Real-Time Rendering
+- **Authors:** Guanjun Wu, Wenming Yang, Luping Liu, Yuan Liu, Wenping Wang  
+- **Affiliations:** University of Science and Technology of China, Texas A&M University  
+- **Published:** arXiv:2310.08528 | CVPR 2024  
+- **Keywords:** 3D Gaussian Splatting, Dynamic Scenes, Novel View Synthesis, Real-Time Rendering
 
 ---
 
