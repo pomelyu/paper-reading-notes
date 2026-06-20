@@ -83,22 +83,22 @@ Key ablation findings:
 
 ### Detailed Technical Summary
 
-**Scene Reconstruction and Gaussian Initialization.** The pipeline begins with a standard street-scene Gaussian Splatting reconstruction phase (analogous to Street Gaussians / EmerNeRF) that fits a set of 3D Gaussians `{G_i}` to the driving log frames. Each `G_i` has: position `μ_i ∈ ℝ³`, covariance (scale `s_i`, rotation `r_i`), opacity `α_i`, color `c_i` (SH coefficients). This phase is per-scene.
+**Scene Reconstruction and Gaussian Initialization.** The pipeline begins with a standard street-scene Gaussian Splatting reconstruction phase (analogous to Street Gaussians / EmerNeRF) that fits a set of 3D Gaussians $\{G_i\}$ to the driving log frames. Each $G_i$ has: position $\mu_i \in \mathbb{R}^3$, covariance (scale $s_i$, rotation $r_i$), opacity $\alpha_i$, color $c_i$ (SH coefficients). This phase is per-scene.
 
-**LangSplat Language Embedding.** For each Gaussian `G_i`, a CLIP encoder processes the 2D image patches that `G_i` projects onto across training views and aggregates them into a language feature `l_i ∈ ℝ^d_clip`. This is the LangSplat procedure: train a small scene-specific autoencoder to compress CLIP features, then during Gaussian fitting also optimize the language latent per Gaussian. The result is a Gaussian with attributes `(μ_i, s_i, r_i, α_i, c_i, l_i)` — geometry, appearance, and language meaning in a unified representation.
+**LangSplat Language Embedding.** For each Gaussian $G_i$, a CLIP encoder processes the 2D image patches that $G_i$ projects onto across training views and aggregates them into a language feature $l_i \in \mathbb{R}^{d_{\text{clip}}}$. This is the LangSplat procedure: train a small scene-specific autoencoder to compress CLIP features, then during Gaussian fitting also optimize the language latent per Gaussian. The result is a Gaussian with attributes $(\mu_i, s_i, r_i, \alpha_i, c_i, l_i)$ — geometry, appearance, and language meaning in a unified representation.
 
-**Task-Aware Hybrid Gaussian Sampling.** With potentially 10⁵–10⁶ Gaussians per scene but an LLM context budget of `T` tokens (e.g., 2048), a sampling step is necessary. The sampler works in two stages:
-1. *Task-relevance scoring*: Given the task query `q` (e.g., "describe the pedestrian near the intersection"), compute cosine similarity `sim(l_i, CLIP(q))` for each Gaussian. Rank by relevance.
-2. *Coverage sampling*: To avoid concentrating tokens on one object, apply spatial coverage: divide the scene into voxels, sample top-`k` per voxel. This ensures scene-wide coverage.
-The final token set `{T_i}` combines the selected Gaussians' language features `l_i` with their spatial positions `μ_i`, projected to the LLM token dimension via a learned linear projection.
+**Task-Aware Hybrid Gaussian Sampling.** With potentially $10^5$–$10^6$ Gaussians per scene but an LLM context budget of $T$ tokens (e.g., 2048), a sampling step is necessary. The sampler works in two stages:
+1. *Task-relevance scoring*: Given the task query $q$ (e.g., "describe the pedestrian near the intersection"), compute cosine similarity $\mathrm{sim}(l_i, \mathrm{CLIP}(q))$ for each Gaussian. Rank by relevance.
+2. *Coverage sampling*: To avoid concentrating tokens on one object, apply spatial coverage: divide the scene into voxels, sample top-$k$ per voxel. This ensures scene-wide coverage.
+The final token set $\{T_i\}$ combines the selected Gaussians' language features $l_i$ with their spatial positions $\mu_i$, projected to the LLM token dimension via a learned linear projection.
 
-**LLM World Reasoning.** Projected Gaussian tokens `{T_i}` are concatenated with the task query token sequence and fed to Qwen3-8B (instruction-tuned). The LLM is fine-tuned end-to-end (or via LoRA — the paper does not specify adapter details) on nuScenes instruction-following data. The LLM outputs:
+**LLM World Reasoning.** Projected Gaussian tokens $\{T_i\}$ are concatenated with the task query token sequence and fed to Qwen3-8B (instruction-tuned). The LLM is fine-tuned end-to-end (or via LoRA — the paper does not specify adapter details) on nuScenes instruction-following data. The LLM outputs:
 - *Text response*: answers to QA / captioning / planning queries.
-- *World knowledge embedding* `W ∈ ℝ^{n×d}`: a set of embeddings extracted from the LLM's hidden states before the text decoder, which encode high-level world state — used as conditioning for generation.
+- *World knowledge embedding* $W \in \mathbb{R}^{n \times d}$: a set of embeddings extracted from the LLM's hidden states before the text decoder, which encode high-level world state — used as conditioning for generation.
 
 **Dual-Condition Multi-Modal Decoder.** A diffusion-based (likely latent diffusion) decoder generates multi-modal outputs conditioned on:
-1. `W` (world knowledge from LLM) — encodes semantics, layout, dynamics at a high level.
-2. `F` (low-level image features from reference frames) — encodes appearance, texture, lighting.
+1. $W$ (world knowledge from LLM) — encodes semantics, layout, dynamics at a high level.
+2. $F$ (low-level image features from reference frames) — encodes appearance, texture, lighting.
 These two conditions are combined via cross-attention in the decoder's U-Net-style backbone. The decoder outputs: (a) video frames, (b) LiDAR point clouds, (c) HD-map rasters, (d) ego-motion actions. The shared backbone with task-specific heads allows synchronized multi-modal outputs — a key differentiator from single-modal baselines.
 
 **Training.** Multi-task training on nuScenes driving logs with a mixture of reconstruction loss (for Gaussian fitting), language alignment loss (CLIP contrastive for LangSplat), LLM instruction-following loss (cross-entropy on text outputs), and generation loss (diffusion ELBO / DDPM loss). Specific loss weights and training schedule are not fully detailed in the paper.
@@ -118,8 +118,8 @@ These two conditions are combined via cross-attention in the decoder's U-Net-sty
 - **Model**: Qwen3-8B as the LLM backbone; LangSplat for language embedding (public code available separately).
 - **Data**: nuScenes (public) + NuInteract (new benchmark introduced by authors — release status unclear).
 - **Compute**: Not explicitly stated; Qwen3-8B + diffusion decoder suggests multi-GPU training (likely 8+ A100s).
-- **Missing hyperparameters**: LoRA vs full fine-tune for LLM, diffusion model architecture (backbone, number of steps, noise schedule), token budget `T`, voxel grid resolution for sampling, loss weights.
-- **Non-obvious detail**: World knowledge embedding `W` is extracted from LLM hidden states — the exact layer(s) used for this extraction are not specified.
+- **Missing hyperparameters**: LoRA vs full fine-tune for LLM, diffusion model architecture (backbone, number of steps, noise schedule), token budget $T$, voxel grid resolution for sampling, loss weights.
+- **Non-obvious detail**: World knowledge embedding $W$ is extracted from LLM hidden states — the exact layer(s) used for this extraction are not specified.
 
 ### Ideas for Future Work
 
