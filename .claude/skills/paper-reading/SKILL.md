@@ -199,10 +199,10 @@ document header block:
 ```
 # Full Paper Title
 
-**Authors:** First Last, First Last, ...
-**Affiliations:** Institution A, Institution B
-**Published:** Venue/arXiv ID, Date
-**Keywords:** keyword1, keyword2, keyword3
+- **Authors:** First Last, First Last, ...
+- **Affiliations:** Institution A, Institution B
+- **Published:** Venue/arXiv ID, Date
+- **Keywords:** keyword1, keyword2, keyword3
 
 ---
 ```
