@@ -21,15 +21,13 @@ explicitly label the section with the pass name so the user can follow along.
 Identify what the user gave you, then get the content:
 
 **If a local file path or a URL pointing to a PDF/document:**
-Use the `mineru_doc2md` skill to convert it to Markdown first. This gives
-much cleaner output for papers — preserving formulas, tables, and layout —
-compared to reading the PDF directly.
 
 Before running the conversion, determine the paper's title and year (from
 the filename, a quick skim of the abstract, or the URL). Use those to derive
 the output folder path (`{year}/{Paper_Title}/`), create it along with the
-`resources/` subdirectory, then pass `-o {year}/{Paper_Title}/resources/paper.md`
-to `mineru_doc2md` so the converted Markdown lands inside the note's own folder.
+`resources/` subdirectory.
+
+Then convert the PDF to Markdown. First check whether `{year}/{Paper_Title}/resources/paper.md` already exists — if it does, skip conversion and read it directly. If not, use the `mineru_doc2md` skill with `-o {year}/{Paper_Title}/resources/paper.md` so the converted Markdown lands inside the note's folder.
 Read that `.md` file for all four passes below.
 
 **If an arXiv link:** Fetch the abstract page to get metadata, then use
@@ -37,6 +35,22 @@ Read that `.md` file for all four passes below.
 saving to `{year}/{Paper_Title}/resources/paper.md` as above.
 
 **If pasted text or a title only:** Read/search directly without conversion.
+
+---
+
+## Find associated links
+
+Before starting Pass 1, do a quick web search for links associated with this
+paper. Search for the paper title plus terms like "project page", "GitHub",
+"HuggingFace". Collect whichever of the following exist:
+
+- **Webpage** — official project page (e.g. `https://somelab.github.io/project/`)
+- **GitHub** — authors' official code repository
+- **HuggingFace** — model weights, datasets, or demo spaces
+
+Only include links you are confident belong to this paper. Skip any that don't
+exist rather than guessing. Record the results — they go into the README header
+(see Output Format below).
 
 ---
 
@@ -203,6 +217,9 @@ document header block:
 - **Affiliations:** Institution A, Institution B
 - **Published:** Venue/arXiv ID, Date
 - **Keywords:** keyword1, keyword2, keyword3
+- **Webpage:** https://...        ← omit if not found
+- **GitHub:** https://...         ← omit if not found
+- **HuggingFace:** https://...    ← omit if not found
 
 ---
 ```
