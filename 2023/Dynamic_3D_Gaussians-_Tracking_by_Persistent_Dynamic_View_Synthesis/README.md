@@ -4,6 +4,8 @@
 - **Affiliations:** Carnegie Mellon University, RWTH Aachen University, Inria & Université Côte d'Azur
 - **Published:** arXiv:2308.09295, 2023 (presented at 3DV 2024)
 - **Keywords:** 3D Gaussian splatting, dynamic scene reconstruction, dense tracking, novel-view synthesis, non-rigid reconstruction, 6-DOF tracking
+- **Website:** https://dynamic3dgaussians.github.io/
+- **Github:** https://github.com/JonathonLuiten/Dynamic3DGaussians
 
 ---
 
@@ -19,6 +21,7 @@
 
 Dynamic 3D Gaussians (D3DGS) represents a dynamic scene as 200–300k 3D Gaussians whose color, opacity, and size are fixed across time while their position and orientation are free to vary. Three physically-motivated regularization losses — local rigidity, local rotation similarity, and long-term isometry — constrain the Gaussians to move as locally rigid bodies. Trained online one timestep at a time via differentiable rendering on 27 synchronized cameras, the method achieves 28.7 PSNR on novel-view synthesis and 2.21 cm 3D median tracking error, a 10× improvement over the prior 2D tracking state-of-the-art, all without ever consuming optical flow as input.
 
+![teaser](resources/fig_01_teaser.png)
 ---
 
 ## Pass 2 — Careful Read
@@ -94,7 +97,7 @@ Ablation highlights (Juggle scene):
 
 The 3D covariance is $\Sigma_{i,t} = R_{i,t} S_i S_i^T R_{i,t}^T$ where $S_i = \mathrm{diag}([sx_i,\, sy_i,\, sz_i])$ and $R_{i,t} = \mathrm{q2R}(q_{i,t})$. The influence of Gaussian $i$ on world point $\boldsymbol{p}$ at time $t$ is:
 
-$$f_{i,t}(\boldsymbol{p}) = \mathrm{sigm}(o_i)\exp\!\left(-\frac{1}{2}(\boldsymbol{p} - \boldsymbol{\mu}_{i,t})^T \Sigma_{i,t}^{-1}(\boldsymbol{p} - \boldsymbol{\mu}_{i,t})\right)$$
+$$f_{i,t}(\boldsymbol{p}) = \mathrm{\sigm}(o_i)\exp\left(-\frac{1}{2}(\boldsymbol{p} - \boldsymbol{\mu}_{i,t})^T \Sigma_{i,t}^{-1}(\boldsymbol{p} - \boldsymbol{\mu}_{i,t})\right)$$
 
 Soft infinite extent is crucial: Gaussians far from their target location still receive nonzero gradients, which is necessary for gradient-based tracking when a Gaussian starts in the wrong position.
 
@@ -144,7 +147,7 @@ Weaker than rigidity (only preserves distances, not directions), but acts over l
 
 **Per-camera color calibration.** A scale $a_c$ and offset $b_c$ per color channel per camera is optimized in timestep 0 and frozen: $\tilde{c} = a_c \cdot c + b_c$. This corrects for white balance, exposure, and sensor differences across 27 cameras without affecting the learned Gaussian colors.
 
-**Tracking inference.** To track a 3D point $p$ from time $t_1$ to $t_2$, find the most-influential Gaussian $i^* = \arg\max_i f_{i,t_1}(p)$. Express $p$ in $i^*$'s local frame at $t_1$, then transform by $i^*$'s motion to get its location at $t_2$. If no Gaussian has $f > 0.5$, the point is classified as static background. For 2D tracking: unproject pixel→3D using rendered depth, track in 3D, re-project into target camera.
+**Tracking inference.** To track a 3D point $p$ from time $t_1$ to $t_2$, find the most-influential Gaussian $i^* = \arg\max_i f_{i,t_1}(p)$. Express $p$ in $i^*$ 's local frame at $t_1$, then transform by $i^*$ 's motion to get its location at $t_2.$ If no Gaussian has $f > 0.5,$ the point is classified as static background. For 2D tracking: unproject pixel→3D using rendered depth, track in 3D, re-project into target camera.
 
 ### Hidden Assumptions
 
