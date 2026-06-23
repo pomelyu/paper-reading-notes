@@ -15,9 +15,11 @@
 |---|-----------|
 | **Category** | System design / unified framework paper. Proposes the first 3D Gaussian-based driving world model that jointly handles scene understanding (QA, captioning, planning) and multi-modal generation (video, LiDAR, map, action). |
 | **Context** | Builds on 3D Gaussian Splatting (Kerbl 2023), LangSplat (Qin 2023) for language-embedded Gaussians, and large language models (Qwen3-8B) for world-level knowledge. Situates itself against vision-language driving models (GPT-Driver, DriveVLM, VAD) and generation-focused world models (WoVogen, DriveDreamer, MagicDrive). |
-| **Correctness** | Claims are generally well-supported by ablations and multi-benchmark results. The "first" unified 3D Gaussian DWM claim is plausible given the 2025 submission date. Evaluation uses established nuScenes and the newly introduced NuInteract benchmark. One concern: the model is per-scene optimized for Gaussian reconstruction; scalability to large-scale deployment is not addressed. |
+| **Correctness** | Claims are generally well-supported by ablations and multi-benchmark results. The "first" unified 3D Gaussian DWM claim is plausible given the 2025 submission date. Two structural concerns: (1) **Per-scene optimization** — the Gaussian tokenizer requires reconstructing from all frames of a scene before inference, so there is no generalizable feed-forward path to unseen scenes. (2) **Non-causal evaluation** — the 3D Gaussians are built from the entire scene clip (including future frames), meaning planning and generation tasks have implicit access to future observations. This violates the causal constraint required for real-world deployment and inflates performance relative to an online, frame-by-frame system. |
 | **Contributions** | (1) First 3D Gaussian DWM unifying understanding and generation. (2) A 3D Gaussian world tokenizer that produces language-aligned tokens via LangSplat + CLIP. (3) Task-aware hybrid Gaussian sampling for efficient LLM token budgeting. (4) Dual-condition generation with high-level LLM world knowledge and low-level image appearance. (5) NuInteract benchmark for interactive scene understanding on nuScenes. |
 | **Clarity** | Well-structured with a clear pipeline figure (Fig. 2). Some notational complexity around the token compression and dual-condition generation — the paper would benefit from a worked example. The NuInteract benchmark description is somewhat terse. |
+
+![teaser](resources/fig_01_teaser.png)
 
 ### 30-Second Summary
 
@@ -32,6 +34,8 @@ GaussianDWM is a unified driving world model that lifts the scene into 3D Gaussi
 Embed a driving scene into language-aligned 3D Gaussians, feed them to a large language model for world-level reasoning, then decode the LLM's output into synchronized multi-modal scene generations.
 
 ### Method / Approach
+
+![overview](resources/fig_02_overview.png)
 
 - **3D Gaussian World Tokenizer**: The scene is first reconstructed with street-scene-aware 3D Gaussian Splatting. Each Gaussian is enriched with a CLIP-aligned language feature via LangSplat — producing Gaussians with not just geometry/appearance but semantic meaning that can interact with LLM text tokens.
 - **Task-Aware Hybrid Sampling**: Raw Gaussian counts are too large for LLM context windows. A task-aware sampler selects the most task-relevant Gaussians using a hybrid strategy: importance sampling based on task queries + spatial coverage sampling to preserve scene structure. This compresses the token count to a manageable budget.
@@ -87,7 +91,7 @@ Key ablation findings:
 
 **LangSplat Language Embedding.** For each Gaussian $G_i$, a CLIP encoder processes the 2D image patches that $G_i$ projects onto across training views and aggregates them into a language feature $l_i \in \mathbb{R}^{d_{\text{clip}}}$. This is the LangSplat procedure: train a small scene-specific autoencoder to compress CLIP features, then during Gaussian fitting also optimize the language latent per Gaussian. The result is a Gaussian with attributes $(\mu_i, s_i, r_i, \alpha_i, c_i, l_i)$ — geometry, appearance, and language meaning in a unified representation.
 
-**Task-Aware Hybrid Gaussian Sampling.** With potentially $10^5$–$10^6$ Gaussians per scene but an LLM context budget of $T$ tokens (e.g., 2048), a sampling step is necessary. The sampler works in two stages:
+**Task-Aware Hybrid Gaussian Sampling.** With potentially $10^5~10^6$ Gaussians per scene but an LLM context budget of $T$ tokens (e.g., 2048), a sampling step is necessary. The sampler works in two stages:
 1. *Task-relevance scoring*: Given the task query $q$ (e.g., "describe the pedestrian near the intersection"), compute cosine similarity $\mathrm{sim}(l_i, \mathrm{CLIP}(q))$ for each Gaussian. Rank by relevance.
 2. *Coverage sampling*: To avoid concentrating tokens on one object, apply spatial coverage: divide the scene into voxels, sample top-$k$ per voxel. This ensures scene-wide coverage.
 The final token set $\{T_i\}$ combines the selected Gaussians' language features $l_i$ with their spatial positions $\mu_i$, projected to the LLM token dimension via a learned linear projection.
