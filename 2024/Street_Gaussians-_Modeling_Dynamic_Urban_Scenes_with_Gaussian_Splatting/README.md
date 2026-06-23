@@ -4,6 +4,8 @@
 - **Affiliations:** Zhejiang University, Li Auto  
 - **Published:** arXiv:2401.01339v3, 18 Aug 2024  
 - **Keywords:** 3D Gaussian Splatting, View Synthesis, Dynamic Urban Scenes, Autonomous Driving
+- **WebSite:** https://zju3dv.github.io/street_gaussians/
+- **Github:** https://github.com/zju3dv/street_gaussians
 
 ---
 
