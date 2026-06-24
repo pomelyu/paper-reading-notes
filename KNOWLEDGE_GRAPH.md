@@ -47,6 +47,15 @@ graph TD
     GaussianDWM["GaussianDWM<br/>2025"]:::y2025
     MARS["MARS<br/>2023"]:::y2023
     EmerNeRF["EmerNeRF<br/>2024"]:::y2024
+    HUGSIM["HUGSIM<br/>2024"]:::y2024
+
+    %% Driving simulators / benchmarks
+    UniAD["UniAD<br/>2023"]:::y2023
+    NeuRAD["NeuRAD<br/>2024"]:::y2024
+    DriveArena["DriveArena<br/>2024"]:::y2024
+    NAVSIM["NAVSIM<br/>2024"]:::y2024
+    RoGS["RoGS<br/>2024"]:::y2024
+    GAIA1["GAIA-1<br/>2024"]:::y2024
 
     %% Dynamic competitors
     Deform3DGS["Deformable 3DGS<br/>2023"]:::y2023
@@ -82,6 +91,12 @@ graph TD
     GaussianDWM -->|builds_on| LangSplat
     GaussianDWM -->|builds_on| StreetGS
 
+    HUGSIM -->|builds_on| 3DGS
+    HUGSIM -->|builds_on| NSG
+    HUGSIM -->|builds_on| MARS
+    HUGSIM -->|builds_on| StreetGS
+    HUGSIM -->|builds_on| UniAD
+
     %% === succeeded_by edges ===
     SAM -.->|succeeded_by| SAM2
     SAM -.->|succeeded_by| HQSAM
@@ -95,11 +110,18 @@ graph TD
     4DGS -.->|succeeded_by| SCGS
     4DGS -.->|succeeded_by| StreetGS
     D3DGS -.->|succeeded_by| GaussianGrouping
+    HUGSIM -.->|succeeded_by| GAIA1
+    HUGSIM -.->|succeeded_by| GaussianDWM
+    HUGSIM -.->|succeeded_by| 4DLangSplat
 
     %% === competes_with edges ===
     4DGS -.-|competes_with| Deform3DGS
     4DGS -.-|competes_with| D3DGS
     StreetGS -.-|competes_with| EmerNeRF
+    HUGSIM -.-|competes_with| DriveArena
+    HUGSIM -.-|competes_with| NeuRAD
+    HUGSIM -.-|competes_with| NAVSIM
+    HUGSIM -.-|competes_with| RoGS
 
     %% Subgraphs
     subgraph Segmentation / Foundation Models
@@ -124,6 +146,16 @@ graph TD
         MARS
         EmerNeRF
         NSG
+        HUGSIM
+        NeuRAD
+        UniAD
+    end
+
+    subgraph Driving Simulation / Benchmarks
+        HUGSIM
+        DriveArena
+        NAVSIM
+        GAIA1
     end
 
     subgraph Dynamic Scenes
