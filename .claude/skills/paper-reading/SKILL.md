@@ -280,6 +280,11 @@ symbols throughout all four passes:
   `$L_{ground}$` not `$\mathcal{L}_{ground}$`).
 - For bold/calligraphic distinction, rely on subscripts, context, or naming
   conventions rather than font commands.
+- **Punctuation after inline math:** GitHub fails to render inline math when
+  the closing `$` is immediately followed by any punctuation character
+  (`, . ) ] ; : ! ?` etc.). Always add a space between the closing `$` and
+  the following punctuation: write `$x$ ,` not `$x$,`, `$x$ .` not `$x$.`,
+  `$x$ )` not `$x$)`, and so on.
 
 The MinerU-converted `paper.md` in `resources/` may use these font
 commands — simplify them when writing the README.
