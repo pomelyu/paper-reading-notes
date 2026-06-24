@@ -4,6 +4,8 @@
 
 ```mermaid
 graph TD
+    classDef y2015 fill:#d0b0ff,stroke:#333
+    classDef y2017 fill:#d0b0ff,stroke:#333
     classDef y2021 fill:#ffb3b3,stroke:#333
     classDef y2022 fill:#ffd9b3,stroke:#333
     classDef y2023 fill:#f9d71c,stroke:#333
@@ -62,6 +64,21 @@ graph TD
     SCGS["SC-GS<br/>2024"]:::y2024
     GaussianGrouping["Gaussian Grouping<br/>2024"]:::y2024
 
+    %% SLAM family
+    ElasticFusion["ElasticFusion<br/>2015"]:::y2015
+    DSO["DSO<br/>2017"]:::y2017
+    iMAP["iMAP<br/>2021"]:::y2021
+    NICESLAM["NICE-SLAM<br/>2022"]:::y2022
+    DROIDSLAMVO["DROID-SLAM<br/>2021"]:::y2021
+    PointSLAM["Point-SLAM<br/>2023"]:::y2023
+    CoSLAM["Co-SLAM<br/>2023"]:::y2023
+    ESLAM["ESLAM<br/>2023"]:::y2023
+    MonoGS["Gaussian Splatting SLAM<br/>(MonoGS) 2024"]:::y2024
+    SplaTAM["SplaTAM<br/>2024"]:::y2024
+    PhotoSLAM["Photo-SLAM<br/>2024"]:::y2024
+    LoopSplat["LoopSplat<br/>2024"]:::y2024
+    MASt3RSLAM["MASt3R-SLAM<br/>2024"]:::y2024
+
     %% === builds_on edges ===
     SAM -->|builds_on| MAE
     SAM -->|builds_on| ViT
@@ -97,6 +114,16 @@ graph TD
     HUGSIM -->|builds_on| StreetGS
     HUGSIM -->|builds_on| UniAD
 
+    MonoGS -->|builds_on| 3DGS
+    MonoGS -->|builds_on| iMAP
+    MonoGS -->|builds_on| NICESLAM
+    MonoGS -->|builds_on| PointSLAM
+    MonoGS -->|builds_on| DSO
+    MonoGS -->|builds_on| ElasticFusion
+
+    iMAP -->|builds_on| NICESLAM
+    NICESLAM -->|builds_on| PointSLAM
+
     %% === succeeded_by edges ===
     SAM -.->|succeeded_by| SAM2
     SAM -.->|succeeded_by| HQSAM
@@ -113,6 +140,9 @@ graph TD
     HUGSIM -.->|succeeded_by| GAIA1
     HUGSIM -.->|succeeded_by| GaussianDWM
     HUGSIM -.->|succeeded_by| 4DLangSplat
+    MonoGS -.->|succeeded_by| PhotoSLAM
+    MonoGS -.->|succeeded_by| LoopSplat
+    MonoGS -.->|succeeded_by| MASt3RSLAM
 
     %% === competes_with edges ===
     4DGS -.-|competes_with| Deform3DGS
@@ -122,6 +152,10 @@ graph TD
     HUGSIM -.-|competes_with| NeuRAD
     HUGSIM -.-|competes_with| NAVSIM
     HUGSIM -.-|competes_with| RoGS
+    MonoGS -.-|competes_with| SplaTAM
+    MonoGS -.-|competes_with| CoSLAM
+    MonoGS -.-|competes_with| ESLAM
+    MonoGS -.-|competes_with| DROIDSLAMVO
 
     %% Subgraphs
     subgraph Segmentation / Foundation Models
@@ -164,6 +198,19 @@ graph TD
         Deform3DGS
         SCGS
     end
+
+    subgraph SLAM / Reconstruction
+        iMAP
+        NICESLAM
+        PointSLAM
+        CoSLAM
+        ESLAM
+        MonoGS
+        SplaTAM
+        PhotoSLAM
+        LoopSplat
+        MASt3RSLAM
+    end
 ```
 
 ## Paper Index
@@ -178,6 +225,8 @@ graph TD
 | [SAM 2](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | 2024 | Video segmentation, streaming memory, SA-V | SAM, Hiera, XMem, Cutie, 4D LangSplat |
 | [LangSplat](2023/LangSplat-_3D_Language_Gaussian_Splatting/) | 2023 | 3DGS, language fields, CLIP, SAM | 3DGS, LERF, SAM, LangSplatV2, 4D LangSplat, GaussianDWM |
 | [Street Gaussians](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | 2024 | 3DGS, Dynamic Urban Scenes, Autonomous Driving | 3DGS, NSG, MARS, EmerNeRF, GaussianDWM |
+| [HUGSIM](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/) | 2024 | 3DGS, autonomous driving, closed-loop simulation | 3DGS, NSG, MARS, Street Gaussians, UniAD, DriveArena, NeuRAD |
+| [Gaussian Splatting SLAM](2024/Gaussian_Splatting_SLAM/) | 2024 | 3DGS, SLAM, monocular, Lie group, SE(3) Jacobians | 3DGS, iMAP, NICE-SLAM, Point-SLAM, SplaTAM, Photo-SLAM |
 | [GaussianDWM](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | 2025 | Driving World Model, Scene Understanding, 3DGS | 3DGS, LangSplat, Street Gaussians |
 | [Dynamic 3D Gaussians](2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/) | 2023 | 3DGS, dynamic reconstruction, dense tracking | 3DGS, OmniMotion, Deformable 3DGS, Gaussian Grouping |
 | [LangSplatV2](2025/LangSplatV2-_High-dimensional_3D_language_Gaussian_Splatting_with_450+_FPS/) | 2025 | 3DGS, language field, sparse coding, codebook | LangSplat, LERF, LEGaussians, 4D LangSplat |
@@ -195,6 +244,7 @@ Core representation and rendering papers extending the foundational 3DGS work.
 - **Street Gaussians** (2024) - Compositional Gaussians for dynamic urban scenes
 - **GaussianDWM** (2025) - 3D Gaussian driving world model with LLM reasoning
 - **Dynamic 3D Gaussians** (2023) - Persistent Gaussians for dense 6-DOF tracking
+- **Gaussian Splatting SLAM** (2024) - First monocular SLAM system using 3DGS as the only representation
 
 ### Segmentation / Foundation Models
 Promptable segmentation models and their ecosystem.
@@ -223,6 +273,25 @@ Methods for reconstructing and rendering dynamic/temporal scenes.
 Gaussian-based methods for driving scene simulation and understanding.
 - **Street Gaussians** (2024) - Compositional Gaussians with 4D SH for vehicles
 - **GaussianDWM** (2025) - Unified understanding + generation driving world model
+- **HUGSIM** (2024) - Real-time, photo-realistic closed-loop AD simulator using 3DGS
 - **NSG** (2021) - Neural Scene Graphs (compositional NeRF predecessor)
 - **MARS** (2023) - Instance-aware modular NeRF simulator
 - **EmerNeRF** (2024) - Emergent spatiotemporal decomposition for driving
+
+### Driving Simulation / Benchmarks
+Simulators, planners, and benchmarks for closed-loop autonomous driving evaluation.
+- **HUGSIM** (2024) - GS-based closed-loop simulator + benchmark protocol
+- **DriveArena** (2024) - Diffusion-based driving simulator
+- **NAVSIM** (2024) - Non-reactive simulator for AD policy evaluation
+- **GAIA-1** (2024) - World-model-based generative AD simulator
+
+### SLAM / Reconstruction
+Dense visual SLAM systems targeting real-time reconstruction and novel-view synthesis.
+- **iMAP** (2021) - First NeRF-based SLAM (implicit MLP map)
+- **NICE-SLAM** (2022) - Hierarchical neural implicit map-centric SLAM
+- **Point-SLAM** (2023) - Neural point cloud SLAM with depth-guided sampling
+- **Co-SLAM / ESLAM** (2023) - Joint coordinate encoding and efficient hybrid SLAM
+- **Gaussian Splatting SLAM (MonoGS)** (2024) - First 3DGS-based monocular SLAM; analytic SE(3) Jacobians + isotropic regularization
+- **SplaTAM** (2024) - Concurrent GS-SLAM requiring depth input
+- **Photo-SLAM / LoopSplat** (2024) - GS-SLAM successors adding loop closure
+- **MASt3R-SLAM** (2024) - Feed-forward GS-SLAM from same lab as MonoGS
