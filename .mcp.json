@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "knowledge-graph": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-knowledge-graph"
+      ],
+      "env": {}
+    }
+  }
+}

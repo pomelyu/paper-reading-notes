@@ -54,6 +54,36 @@ exist rather than guessing. Record the results — they go into the README heade
 
 ---
 
+## Check knowledge graph for existing references
+
+Before starting Pass 4 (Comparison Papers), query the knowledge graph to find
+papers that already reference or is mentioned in this paper. This ensures bidirectional consistency.
+
+**If `aim_` MCP tools are available:**
+
+1. Call `aim_search_nodes` with the paper's title (or key terms from it).
+2. If the paper already exists as an entity, call `aim_open_nodes` to see all
+   its relations — specifically look for papers where this paper appears as a
+   predecessor, competitor, or successor.
+3. Collect these "reverse references" — papers that cite or build on this paper
+   but that this paper's own comparison tables might not mention.
+
+**If `aim_` tools are not available:** skip this step (the `update-graph` skill
+will handle reverse linking later).
+
+**How to use the results in Pass 4:**
+
+- In the `#### Predecessors` table: if the knowledge graph shows that this paper
+  is listed as a predecessor by Paper X (i.e., X `builds_on` this paper), then
+  Paper X should appear in `#### Successors / Extensions` of this note.
+- In the `#### Successors / Extensions` table: include any paper from the graph
+  that has a `builds_on` relation pointing to this paper, even if your web
+  search didn't find it.
+- Add a column note `(from knowledge graph)` in the Relation column for entries
+  discovered this way, so the user can distinguish them from web-search results.
+
+---
+
 ## Pass 1 — Bird's-Eye View (5–10 minutes equivalent)
 
 Goal: Decide whether the paper deserves deeper reading and understand its

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "If the file just written/edited matches the pattern `20*/*/README.md` (a paper reading note), remind the user they can run `/update-graph` to sync the knowledge graph. Keep the reminder to one short sentence. Do NOT auto-run the skill — just remind."
+          }
+        ]
+      }
+    ]
+  }
+}
