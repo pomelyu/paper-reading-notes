@@ -231,13 +231,28 @@ Aim for depth over brevity — the user is building a durable reference they
 will return to, not a quick abstract. Use markdown tables and bold-labeled
 lists to keep the output scannable.
 
-**Math formatting:** Whenever you write equations or mathematical symbols,
-use LaTeX notation throughout all four passes — `$...$` for inline math
-(e.g., $\mathcal{L}^{\text{rigid}}$, $\mu_{i,t}$) and `$$...$$` on a
-dedicated line for displayed equations. Do not use backtick code blocks for
-math; reserve backticks for actual code identifiers like function names or
-file paths. The MinerU-converted `paper.md` in `resources/` already uses
-this convention — mirror it in the README.
+**Math formatting:** Use LaTeX notation for equations and mathematical
+symbols throughout all four passes:
+
+- **Inline math:** Use `$...$` for inline expressions (e.g., `$L_{ground}$`,
+  `$\mu_{i,t}$`).
+- **Block math:** Use fenced code blocks with the `math` language tag
+  instead of `$$...$$`:
+  ````
+  ```math
+  C = \sum_{i \in N} c_i \alpha'_i \prod_{j=1}^{i-1}(1 - \alpha'_j)
+  ```
+  ````
+
+**GitHub rendering rules:**
+- Do NOT use `\mathcal`, `\mathbf`, `\mathbb`, or `\text` — these render
+  incorrectly in GitHub markdown. Use plain letters instead (e.g.,
+  `$L_{ground}$` not `$\mathcal{L}_{ground}$`).
+- For bold/calligraphic distinction, rely on subscripts, context, or naming
+  conventions rather than font commands.
+
+The MinerU-converted `paper.md` in `resources/` may use these font
+commands — simplify them when writing the README.
 
 If the paper is long and you are missing key sections (e.g., the appendix or
 supplementary), say so explicitly and ask the user to provide those pages
