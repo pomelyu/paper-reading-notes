@@ -37,12 +37,16 @@ graph TD
     GSAM["Grounded-SAM<br/>2024"]:::y2024
     MobileSAM["MobileSAM<br/>2023"]:::y2023
     GSAM2["Grounded-SAM 2<br/>2024"]:::y2024
+    DEVA["DEVA<br/>2023"]:::y2023
 
-    %% Language fields
+    %% Language / Segmentation fields
     LERF["LERF<br/>2023"]:::y2023
     LangSplat["LangSplat<br/>2023"]:::y2023
     LangSplatV2["LangSplatV2<br/>2025"]:::y2025
     4DLangSplat["4D LangSplat<br/>2025"]:::y2025
+    GaussianGrouping["Gaussian Grouping<br/>2024"]:::y2024
+    SAGA["SAGA<br/>2025"]:::y2025
+    ObjectGS["ObjectGS<br/>2025"]:::y2025
 
     %% Driving
     StreetGS["Street Gaussians<br/>2024"]:::y2024
@@ -62,7 +66,7 @@ graph TD
     %% Dynamic competitors
     Deform3DGS["Deformable 3DGS<br/>2023"]:::y2023
     SCGS["SC-GS<br/>2024"]:::y2024
-    GaussianGrouping["Gaussian Grouping<br/>2024"]:::y2024
+    MotionGS["MotionGS<br/>2024"]:::y2024
 
     %% SLAM family
     ElasticFusion["ElasticFusion<br/>2015"]:::y2015
@@ -121,8 +125,13 @@ graph TD
     MonoGS -->|builds_on| DSO
     MonoGS -->|builds_on| ElasticFusion
 
-    iMAP -->|builds_on| NICESLAM
-    NICESLAM -->|builds_on| PointSLAM
+    ObjectGS -->|builds_on| 3DGS
+    ObjectGS -->|builds_on| ScaffoldGS
+    ObjectGS -->|builds_on| 2DGS
+    ObjectGS -->|builds_on| SAM
+    ObjectGS -->|builds_on| GaussianGrouping
+    ObjectGS -->|builds_on| LERF
+    ObjectGS -->|builds_on| DEVA
 
     %% === succeeded_by edges ===
     SAM -.->|succeeded_by| SAM2
@@ -143,6 +152,8 @@ graph TD
     MonoGS -.->|succeeded_by| PhotoSLAM
     MonoGS -.->|succeeded_by| LoopSplat
     MonoGS -.->|succeeded_by| MASt3RSLAM
+    ScaffoldGS -.->|succeeded_by| ObjectGS
+    ObjectGS -.->|succeeded_by| MotionGS
 
     %% === competes_with edges ===
     4DGS -.-|competes_with| Deform3DGS
@@ -156,6 +167,9 @@ graph TD
     MonoGS -.-|competes_with| CoSLAM
     MonoGS -.-|competes_with| ESLAM
     MonoGS -.-|competes_with| DROIDSLAMVO
+    ObjectGS -.-|competes_with| SAGA
+    ObjectGS -.-|competes_with| GaussianGrouping
+    ObjectGS -.-|competes_with| LangSplat
 
     %% Subgraphs
     subgraph Segmentation / Foundation Models
@@ -165,13 +179,17 @@ graph TD
         GSAM
         MobileSAM
         GSAM2
+        DEVA
     end
 
-    subgraph Language Fields
+    subgraph Language Fields / Object Understanding
         LERF
         LangSplat
         LangSplatV2
         4DLangSplat
+        GaussianGrouping
+        SAGA
+        ObjectGS
     end
 
     subgraph Autonomous Driving
@@ -197,6 +215,7 @@ graph TD
         D3DGS
         Deform3DGS
         SCGS
+        MotionGS
     end
 
     subgraph SLAM / Reconstruction
@@ -217,16 +236,17 @@ graph TD
 
 | Paper | Year | Keywords | Related Papers |
 |---|---|---|---|
-| [Scaffold-GS](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | 2023 | 3DGS, view-adaptive rendering, anchor-based | 3DGS |
+| [Scaffold-GS](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | 2023 | 3DGS, view-adaptive rendering, anchor-based | 3DGS, ObjectGS |
 | [Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/) | 2023 | Image-based rendering, View Synthesis, NeRF | EG3D |
-| [2D Gaussian Splatting](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | 2024 | Surface Splatting, Surface Reconstruction, 3DGS | 3DGS, SuGaR, NeuS |
+| [2D Gaussian Splatting](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | 2024 | Surface Splatting, Surface Reconstruction, 3DGS | 3DGS, SuGaR, NeuS, ObjectGS |
 | [4D Gaussian Splatting](2024/4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering/) | 2024 | 3DGS, Dynamic Scenes, Real-Time Rendering | 3DGS, HexPlane, D-NeRF, SC-GS, Street Gaussians |
-| [Segment Anything (SAM)](2023/Segment_Anything/) | 2023 | Foundation model, promptable segmentation, SA-1B | MAE, ViT, CLIP, SAM 2, HQ-SAM, LangSplat |
+| [Segment Anything (SAM)](2023/Segment_Anything/) | 2023 | Foundation model, promptable segmentation, SA-1B | MAE, ViT, CLIP, SAM 2, HQ-SAM, LangSplat, ObjectGS |
 | [SAM 2](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | 2024 | Video segmentation, streaming memory, SA-V | SAM, Hiera, XMem, Cutie, 4D LangSplat |
 | [LangSplat](2023/LangSplat-_3D_Language_Gaussian_Splatting/) | 2023 | 3DGS, language fields, CLIP, SAM | 3DGS, LERF, SAM, LangSplatV2, 4D LangSplat, GaussianDWM |
 | [Street Gaussians](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | 2024 | 3DGS, Dynamic Urban Scenes, Autonomous Driving | 3DGS, NSG, MARS, EmerNeRF, GaussianDWM |
 | [HUGSIM](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/) | 2024 | 3DGS, autonomous driving, closed-loop simulation | 3DGS, NSG, MARS, Street Gaussians, UniAD, DriveArena, NeuRAD |
 | [Gaussian Splatting SLAM](2024/Gaussian_Splatting_SLAM/) | 2024 | 3DGS, SLAM, monocular, Lie group, SE(3) Jacobians | 3DGS, iMAP, NICE-SLAM, Point-SLAM, SplaTAM, Photo-SLAM |
+| [ObjectGS](2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/) | 2025 | 3DGS, object-aware, panoptic segmentation, open-vocabulary, discrete semantics | Scaffold-GS, 2DGS, SAM, DEVA, Gaussian Grouping, SAGA |
 | [GaussianDWM](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | 2025 | Driving World Model, Scene Understanding, 3DGS | 3DGS, LangSplat, Street Gaussians |
 | [Dynamic 3D Gaussians](2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/) | 2023 | 3DGS, dynamic reconstruction, dense tracking | 3DGS, OmniMotion, Deformable 3DGS, Gaussian Grouping |
 | [LangSplatV2](2025/LangSplatV2-_High-dimensional_3D_language_Gaussian_Splatting_with_450+_FPS/) | 2025 | 3DGS, language field, sparse coding, codebook | LangSplat, LERF, LEGaussians, 4D LangSplat |
@@ -245,6 +265,7 @@ Core representation and rendering papers extending the foundational 3DGS work.
 - **GaussianDWM** (2025) - 3D Gaussian driving world model with LLM reasoning
 - **Dynamic 3D Gaussians** (2023) - Persistent Gaussians for dense 6-DOF tracking
 - **Gaussian Splatting SLAM** (2024) - First monocular SLAM system using 3DGS as the only representation
+- **ObjectGS** (2025) - Object-aware anchor-based Gaussians with discrete one-hot semantic encoding
 
 ### Segmentation / Foundation Models
 Promptable segmentation models and their ecosystem.
@@ -253,14 +274,19 @@ Promptable segmentation models and their ecosystem.
 - **HQ-SAM** (2023) - High-quality mask refinement for fine structures
 - **Grounded-SAM / Grounded-SAM 2** (2024) - Text-driven segmentation via Grounding DINO
 - **MobileSAM** (2023) - Distilled lightweight encoder for real-time SAM
+- **DEVA** (2023) - Decoupled video segmentation for cross-frame consistent object IDs
+- **ObjectGS** (2025) - Uses SAM/DEVA for initialization; unifies 3D reconstruction with object-level segmentation
 
 ### Language Fields / Open-Vocabulary
-Methods embedding language features into 3D scene representations.
+Methods embedding language or semantic features into 3D scene representations.
 - **LERF** (2023) - Language Embedded Radiance Fields (NeRF-based)
 - **LangSplat** (2023) - CLIP features in 3DGS via SAM hierarchy + autoencoder
 - **LangSplatV2** (2025) - Sparse codebook replacing MLP decoder, 450+ FPS
 - **4D LangSplat** (2025) - Extends to dynamic scenes with MLLM supervision
 - **GaussianDWM** (2025) - LangSplat-based world tokenizer for driving
+- **Gaussian Grouping** (2024) - DEVA-supervised per-Gaussian identity features for segmentation/editing
+- **SAGA** (2025) - SAM features + contrastive loss for segment-any-3DGS
+- **ObjectGS** (2025) - Discrete one-hot ID encoding per anchor; unified reconstruction + instance segmentation
 
 ### Dynamic Scenes
 Methods for reconstructing and rendering dynamic/temporal scenes.
@@ -268,6 +294,7 @@ Methods for reconstructing and rendering dynamic/temporal scenes.
 - **Dynamic 3D Gaussians** (2023) - Persistent Gaussians with local rigidity for tracking
 - **4D LangSplat** (2025) - Language fields in dynamic scenes
 - **Street Gaussians** (2024) - Compositional dynamic urban scene reconstruction
+- **MotionGS** (2024) - Explicit motion guidance for deformable 3DGS (NeurIPS 2024)
 
 ### Autonomous Driving
 Gaussian-based methods for driving scene simulation and understanding.
