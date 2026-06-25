@@ -275,16 +275,13 @@ symbols throughout all four passes:
   ````
 
 **GitHub rendering rules:**
-- Do NOT use `\mathcal`, `\mathbf`, `\mathbb`, or `\text` — these render
-  incorrectly in GitHub markdown. Use plain letters instead (e.g.,
-  `$L_{ground}$` not `$\mathcal{L}_{ground}$`).
-- For bold/calligraphic distinction, rely on subscripts, context, or naming
-  conventions rather than font commands.
-- **Punctuation after inline math:** GitHub fails to render inline math when
-  the closing `$` is immediately followed by any punctuation character
-  (`, . ) ] ; : ! ?` etc.). Always add a space between the closing `$` and
-  the following punctuation: write `$x$ ,` not `$x$,`, `$x$ .` not `$x$.`,
-  `$x$ )` not `$x$)`, and so on.
+- Do not use `\mathcal`, `\mathbf`, `\mathbb`, or `\text`. Use plain letters
+  instead (e.g., `$L_{ground}$` not `$\mathcal{L}_{ground}$`). Use
+  subscripts, context, or naming conventions for bold/calligraphic distinction.
+- Add a space between a closing `$` and any following punctuation
+  (`, . ) ] ; : ! ?`): write `$x$ ,` not `$x$,`.
+- Use `` $`expression`$ `` instead of `$expression$` when the expression
+  contains `}_` (e.g., `` $`\tilde{s}_i`$ `` not `$\tilde{s}_i$`).
 
 The MinerU-converted `paper.md` in `resources/` may use these font
 commands — simplify them when writing the README.
