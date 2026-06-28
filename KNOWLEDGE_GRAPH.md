@@ -37,7 +37,18 @@ graph TD
     GSAM["Grounded-SAM<br/>2024"]:::y2024
     MobileSAM["MobileSAM<br/>2023"]:::y2023
     GSAM2["Grounded-SAM 2<br/>2024"]:::y2024
-    DEVA["DEVA<br/>2023"]:::y2023
+    DEVA["DEVA<br/>2023 ✓"]:::y2023
+
+    %% DEVA predecessors / competitors
+    XMem["XMem<br/>2022"]:::y2022
+    STCN["STCN<br/>2021"]:::y2021
+    M2F["Mask2Former<br/>2022"]:::y2022
+    VKNet["Video-K-Net<br/>2022"]:::y2022
+    OWTB["OWTB<br/>2022"]:::y2022
+    SAMPT["SAM-PT<br/>2023"]:::y2023
+    GDINO["Grounding DINO<br/>2023"]:::y2023
+    UNINEXT["UNINEXT<br/>2023"]:::y2023
+    SAMURAI["SAMURAI<br/>2024"]:::y2024
 
     %% Language / Segmentation fields
     LERF["LERF<br/>2023"]:::y2023
