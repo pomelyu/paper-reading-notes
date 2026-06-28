@@ -144,6 +144,13 @@ graph TD
     ObjectGS -->|builds_on| LERF
     ObjectGS -->|builds_on| DEVA
 
+    DEVA -->|builds_on| XMem
+    DEVA -->|builds_on| SAM
+    DEVA -->|builds_on| M2F
+    DEVA -->|builds_on| VKNet
+    DEVA -->|builds_on| STCN
+    ScaffoldGS -->|builds_on| 3DGS
+
     %% === succeeded_by edges ===
     SAM -.->|succeeded_by| SAM2
     SAM -.->|succeeded_by| HQSAM
