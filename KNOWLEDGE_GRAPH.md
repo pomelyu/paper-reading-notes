@@ -144,6 +144,11 @@ graph TD
     ObjectGS -->|builds_on| LERF
     ObjectGS -->|builds_on| DEVA
 
+    GaussianGrouping -->|builds_on| 3DGS
+    GaussianGrouping -->|builds_on| SAM
+    GaussianGrouping -->|builds_on| DEVA
+    GaussianGrouping -.->|succeeded_by| ObjectGS
+
     DEVA -->|builds_on| XMem
     DEVA -->|builds_on| SAM
     DEVA -->|builds_on| M2F
