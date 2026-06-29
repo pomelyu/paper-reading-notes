@@ -21,6 +21,8 @@
 
 **30-second summary.** Scaffold-GS observes that vanilla 3D-GS lets Gaussians drift and overfit individual training views, producing redundant primitives that degrade with view changes and in texture-less or specular regions. The fix is a hierarchical dual-layer structure: a sparse set of *anchor points* (one per occupied voxel, initialized from SfM) each spawns k *neural Gaussians* whose attributes (opacity, color, scale, rotation) are decoded on-the-fly from a learned anchor feature conditioned on the viewing direction and distance. Only frustum-visible anchors with high-opacity Gaussians are activated per frame, giving comparable FPS to 3D-GS but with 4–10× less storage. Anchor growing (gradient-guided) and pruning (opacity-based) refine the scaffold over training. On challenging scenes with reflections, texture-less areas, and multi-scale content, Scaffold-GS consistently outperforms 3D-GS in quality while using a much more compact model.
 
+![teaser](resources/fig_01_teaser.jpg)
+
 ---
 
 ## Pass 2 — Careful Read
@@ -31,10 +33,14 @@ Scaffold-GS replaces free-floating 3D Gaussians with a sparse voxel scaffold of 
 
 ### Method / Approach
 
+![overview](resources/fig_02_method_overview.jpg)
+
 - **Anchor-point initialization:** SfM points are voxelized at size $\epsilon$ ; each occupied voxel center becomes an anchor $v$ carrying a 32-dim context feature $f_v$ , a scale factor $l_v \in R^3$ , and $k$ learnable 3D offsets $O_v \in R^{k \times 3}$ . A multi-resolution feature bank $\{f_v, f_{v \downarrow 1}, f_{v \downarrow 2}\}$ is maintained per anchor; view-dependent weighted combination via a tiny MLP $F_w$ produces an integrated feature $\hat{f}_v$ used for all attribute decoding.
 - **On-the-fly neural Gaussian derivation:** For each anchor visible in the view frustum, $k$ neural Gaussians are spawned at positions $x_v + \{O_i\} \cdot l_v$ . Four separate small MLPs decode opacity $F_\alpha$ , color $F_c$ , scale $F_s$ , and quaternion $F_q$ from $(\hat{f}_v, \delta_{vc}, \bar{d}_{vc})$ — the anchor feature, relative distance, and relative direction to the camera. Only non-trivial Gaussians (opacity $\geq \tau_\alpha$) are rasterized, keeping runtime cost near that of 3D-GS.
 - **Anchor refinement (growing + pruning):** Growing adds new anchors in high-gradient regions (poor initialization coverage) using a multi-resolution voxel quantization of neural Gaussians, with a random elimination step to curb runaway expansion. Pruning removes anchors whose accumulated neural Gaussian opacity falls below 0.5 over $N=100$ training iterations. Together they yield a compact but complete scaffold.
 - **Loss design:** $L = L_1 + \lambda_{SSIM} L_{SSIM} + \lambda_{vol} L_{vol}$ where $L_{vol} = \sum \text{Prod}(s_i)$ penalizes large or overlapping Gaussian scales ( $\lambda_{SSIM}=0.2, \lambda_{vol}=0.001$ ).
+
+![overview](resources/fig_03_anchor_refine.png)
 
 ### Key Results
 
