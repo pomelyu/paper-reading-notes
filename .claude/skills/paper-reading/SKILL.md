@@ -16,25 +16,12 @@ You are helping the user deeply understand a research paper using a structured
 reading methodology. Work through the four steps below in order. For each pass,
 explicitly label the section with the pass name so the user can follow along.
 
-## Before starting — obtain the paper content
+## Before starting — create content folder
 
-Identify what the user gave you, then get the content:
-
-**If a local file path or a URL pointing to a PDF/document:**
-
-Before running the conversion, determine the paper's title and year (from
+Before writing the note, determine the paper's title and year (from
 the filename, a quick skim of the abstract, or the URL). Use those to derive
 the output folder path (`{year}/{Paper_Title}/`), create it along with the
 `resources/` subdirectory.
-
-Then convert the PDF to Markdown. First check whether `{year}/{Paper_Title}/resources/paper.md` already exists — if it does, skip conversion and read it directly. If not, use the `mineru_doc2md` skill with `-o {year}/{Paper_Title}/resources/paper.md` so the converted Markdown lands inside the note's folder.
-Read that `.md` file for all four passes below.
-
-**If an arXiv link:** Fetch the abstract page to get metadata, then use
-`mineru_doc2md` to convert the PDF URL (e.g. `https://arxiv.org/pdf/<id>`),
-saving to `{year}/{Paper_Title}/resources/paper.md` as above.
-
-**If pasted text or a title only:** Read/search directly without conversion.
 
 ---
 
