@@ -64,7 +64,10 @@ graph TD
     GaussianDWM["GaussianDWM<br/>2025"]:::y2025
     MARS["MARS<br/>2023"]:::y2023
     EmerNeRF["EmerNeRF<br/>2024"]:::y2024
-    HUGSIM["HUGSIM<br/>2024"]:::y2024
+    HUGSIM["HUGSIM<br/>2024 ✓"]:::y2024
+    RAD["RAD<br/>2025 ✓"]:::y2025
+    VADv2["VADv2<br/>2024"]:::y2024
+    BEVFormer["BEVFormer<br/>2022"]:::y2022
 
     %% Driving simulators / benchmarks
     UniAD["UniAD<br/>2023"]:::y2023
