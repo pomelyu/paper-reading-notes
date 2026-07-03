@@ -19,6 +19,8 @@
 
 This paper measures what the computer vision / ML community actually worked on in 2023–2025 by running a hand-crafted, 35-category lexicon over 26,104 accepted-paper abstracts from CVPR, ICLR, and NeurIPS, and plotting yearly TF-IDF trajectories per direction. Three macro findings emerge: (1) Vision-Language/LLM work exploded from 16% to 40% of all papers by 2025, reframing classical perception tasks as instruction-following; (2) Generative/diffusion research grew steadily while consolidating around controllability, distillation, and speed; (3) 3D/video activity is resilient, with composition shifting from NeRFs to Gaussian splatting. Within VLMs, instruction tuning and LoRA adaptation dominate training; contrastive objectives decline relative to KL/distillation; ALIGN and LLaVA are the most and fastest-cited model families respectively; and grounding/referring tasks cede ground to reasoning/instruction.
 
+![research_trend](resources/fig_01_direction_trajectories.png)
+
 ---
 
 ## Pass 2 — Careful Read
