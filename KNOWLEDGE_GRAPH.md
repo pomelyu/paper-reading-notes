@@ -14,7 +14,7 @@ graph TD
     classDef y2024 fill:#87ceeb,stroke:#555
     classDef y2025 fill:#98fb98,stroke:#555
 
-    %% ── Peripheral reference nodes (no notes) ───────────────────
+    %% ── Peripheral reference nodes ───────────────────────────────
     XMem["XMem<br/>2022"]:::y2022
     STCN["STCN<br/>2021"]:::y2021
     M2F["Mask2Former<br/>2022"]:::y2022
@@ -40,7 +40,7 @@ graph TD
     GAE["GAE<br/>2015"]:::y2015
     ILRLDrive["IL+RL Driving<br/>2023"]:::y2023
 
-    %% ── Subgraph: Segmentation / Foundation Models ──────────────
+    %% ── Subgraph: Segmentation / Foundation Models ───────────────
     subgraph SEG["Segmentation / Foundation Models"]
         SAM["SAM<br/>2023 ✓"]:::y2023
         DEVA["DEVA<br/>2023 ✓"]:::y2023
@@ -50,7 +50,7 @@ graph TD
         GSAM2["Grounded-SAM 2<br/>2024"]:::y2024
     end
 
-    %% ── Subgraph: 3D Gaussian Splatting ─────────────────────────
+    %% ── Subgraph: 3D Gaussian Splatting ──────────────────────────
     subgraph GS3D["3D Gaussian Splatting"]
         ThreeDGS["3D-GS<br/>2023"]:::y2023
         ScaffoldGS["Scaffold-GS<br/>2023 ✓"]:::y2023
@@ -61,7 +61,7 @@ graph TD
         ObjectGS["ObjectGS<br/>2025 ✓"]:::y2025
     end
 
-    %% ── Subgraph: Autonomous Driving ────────────────────────────
+    %% ── Subgraph: Autonomous Driving ─────────────────────────────
     subgraph AD["Autonomous Driving"]
         HUGSIM["HUGSIM<br/>2024 ✓"]:::y2024
         VADv2["VADv2<br/>2024"]:::y2024
@@ -71,19 +71,31 @@ graph TD
         SparseDrive["SparseDrive<br/>2025"]:::y2025
     end
 
-    %% ── Subgraph: Vision-Language Models ────────────────────────
+    %% ── Subgraph: Vision-Language Models ─────────────────────────
     subgraph VLM["Vision-Language Models"]
         CLIP["CLIP<br/>2021"]:::y2021
         ALIGN["ALIGN<br/>2021"]:::y2021
+        Flamingo["Flamingo<br/>2022"]:::y2022
+        InstructGPT["InstructGPT<br/>2022"]:::y2022
         VLPSurvey["VLP Survey<br/>2022"]:::y2022
-        LLaVA["LLaVA<br/>2023"]:::y2023
+        LLaMA["LLaMA<br/>2023"]:::y2023
+        Vicuna["Vicuna<br/>2023"]:::y2023
+        BLIP2["BLIP-2<br/>2023"]:::y2023
+        LLaVA["LLaVA<br/>2023 ✓"]:::y2023
+        LLaVA15["LLaVA-1.5<br/>2023"]:::y2023
         LLMSurvey["LLM Survey<br/>2023"]:::y2023
         MLLMSurvey["MLLM Survey<br/>2023"]:::y2023
+        MiniGPT4["MiniGPT-4<br/>2023"]:::y2023
+        InstructBLIP["InstructBLIP<br/>2023"]:::y2023
+        OpenFlamingo["OpenFlamingo<br/>2023"]:::y2023
+        mPLUGOwl["mPLUG-Owl<br/>2023"]:::y2023
         VLMTasksSurvey["VLM Tasks Survey<br/>2024"]:::y2024
+        LLaVANext["LLaVA-NeXT<br/>2024"]:::y2024
+        LLaVAOV["LLaVA-OneVision<br/>2024"]:::y2024
         VLMSurvey["VLM Survey<br/>2025 ✓"]:::y2025
     end
 
-    %% ── Segmentation edges ──────────────────────────────────────
+    %% ── Segmentation edges ───────────────────────────────────────
     DEVA -->|builds_on| XMem
     DEVA -->|builds_on| SAM
     DEVA -->|builds_on| M2F
@@ -98,7 +110,7 @@ graph TD
     DEVA -->|succeeded_by| GSAM2
     SAM -->|succeeded_by| SAM2
 
-    %% ── 3DGS edges ──────────────────────────────────────────────
+    %% ── 3DGS edges ───────────────────────────────────────────────
     ScaffoldGS -->|builds_on| ThreeDGS
     ScaffoldGS -->|builds_on| MipNeRF360
     ScaffoldGS -->|builds_on| iNGP
@@ -111,7 +123,6 @@ graph TD
     ScaffoldGS -->|succeeded_by| TwoDGS
     ScaffoldGS -->|succeeded_by| StreetGS
     ScaffoldGS -->|succeeded_by| LangSplat
-
     GG -->|builds_on| ThreeDGS
     GG -->|builds_on| SAM
     GG -->|builds_on| DEVA
@@ -122,11 +133,10 @@ graph TD
     GG -.->|competes_with| DFFs
     GG -.->|competes_with| LangSplat
     GG -->|succeeded_by| ObjectGS
-
     ObjectGS -->|builds_on| ScaffoldGS
     ObjectGS -->|builds_on| GG
 
-    %% ── Autonomous Driving edges ────────────────────────────────
+    %% ── Autonomous Driving edges ─────────────────────────────────
     StreetGS -->|succeeded_by| RAD
     RAD -->|builds_on| ThreeDGS
     RAD -->|builds_on| StreetGS
@@ -140,7 +150,20 @@ graph TD
     RAD -.->|competes_with| SparseDrive
     RAD -.->|competes_with| NeuRAD
 
-    %% ── VLM edges ───────────────────────────────────────────────
+    %% ── VLM edges ────────────────────────────────────────────────
+    LLaVA -->|builds_on| CLIP
+    LLaVA -->|builds_on| LLaMA
+    LLaVA -->|builds_on| Vicuna
+    LLaVA -->|builds_on| InstructGPT
+    LLaVA -->|builds_on| Flamingo
+    LLaVA -->|builds_on| BLIP2
+    LLaVA -.->|competes_with| MiniGPT4
+    LLaVA -.->|competes_with| InstructBLIP
+    LLaVA -.->|competes_with| OpenFlamingo
+    LLaVA -.->|competes_with| mPLUGOwl
+    LLaVA -->|succeeded_by| LLaVA15
+    LLaVA -->|succeeded_by| LLaVANext
+    LLaVA -->|succeeded_by| LLaVAOV
     VLMSurvey -->|builds_on| VLPSurvey
     VLMSurvey -->|builds_on| CLIP
     VLMSurvey -->|builds_on| LLaVA
@@ -165,6 +188,7 @@ Papers with notes (✓) in this repository, organised by year.
 | [Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | 2023 | Scaffold-GS | 3DGS, anchor-based, view-adaptive rendering, neural Gaussians | 3D Gaussian Splatting |
 | [LangSplat: 3D Language Gaussian Splatting](2023/LangSplat-_3D_Language_Gaussian_Splatting/) | 2023 | LangSplat | 3DGS, language fields, CLIP, SAM | 3D Gaussian Splatting |
 | [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | 2023 | Gaussian Grouping | 3DGS, instance segmentation, open-world, scene editing, SAM | 3D Gaussian Splatting, Segmentation |
+| [Visual Instruction Tuning](2023/Visual_Instruction_Tuning/) | 2023 | LLaVA | visual instruction tuning, multimodal LLM, CLIP, Vicuna, GPT-4 data generation | Vision-Language Models |
 | [SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | 2024 | SAM 2 | video segmentation, streaming memory, foundation model | Segmentation / Foundation Models |
 | [2D Gaussian Splatting for Geometrically Accurate Radiance Fields](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | 2024 | 2DGS | 3DGS, surface reconstruction, geometry-accurate | 3D Gaussian Splatting |
 | [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | 2024 | Street Gaussians | 3DGS, dynamic urban scenes, autonomous driving | 3D Gaussian Splatting, Autonomous Driving |
@@ -211,13 +235,21 @@ Neural rendering and learned planning for closed-loop autonomous driving evaluat
 - **SparseDrive** (2025, ref) — Sparse scene representation for end-to-end AD
 
 ### Vision-Language Models
-Survey and foundational models in the VLM/multimodal research landscape.
+Foundational models, surveys, and the instruction-tuning ecosystem for vision-language understanding.
 
-- **VLM Survey (Lin 2025)** (2025 ✓) — Bibliometric analysis of 26,104 CVPR/ICLR/NeurIPS papers (2023–2025); VLM share rose 16% → 40%; instruction tuning and LoRA dominate
-- **CLIP** (2021, ref) — Contrastive image-text pretraining; top trend driver in the survey; also used by LangSplat
-- **ALIGN** (2021, ref) — Dual-encoder VLM pretraining on noisy data; most-cited model family across all VLM papers
-- **LLaVA** (2023, ref) — Visual instruction tuning; fastest-growing model family in the survey
-- **VLP Survey** (2022, ref) — Hand-curated vision-language pretraining survey that VLM Survey automates and scales
-- **LLM Survey** (2023, ref) — Broad LLM survey; contemporary bibliometric reference
-- **MLLM Survey** (2023, ref) — Manual multimodal LLM survey; complementary scope
-- **VLM Tasks Survey** (2024, ref) — Method-focused VLM survey; complementary to VLM Survey's trend-measurement approach
+- **LLaVA** (2023 ✓) — First visual instruction tuning paper: GPT-4-generated 158K multimodal data + CLIP encoder + Vicuna LLM + two-stage training; SoTA 92.53% on ScienceQA
+- **VLM Survey (Lin 2025)** (2025 ✓) — Bibliometric analysis of 26,104 CVPR/ICLR/NeurIPS papers; VLM share rose 16%→40%; LLaVA identified as fastest-growing model family
+- **CLIP** (2021, ref) — Contrastive vision-language pretraining; visual encoder used by LLaVA and LangSplat
+- **ALIGN** (2021, ref) — Dual-encoder VLM pretraining on noisy web data; most-cited model family in VLM Survey
+- **Flamingo** (2022, ref) — Pioneer multimodal LLM with gated cross-attention; predecessor to LLaVA
+- **InstructGPT** (2022, ref) — RLHF-based instruction tuning for LLMs; paradigm extended by LLaVA to vision
+- **LLaMA** (2023, ref) — Open-source LLM foundation underlying Vicuna and LLaVA
+- **Vicuna** (2023, ref) — Instruction-tuned LLaMA; LLM backbone of LLaVA
+- **BLIP-2** (2023, ref) — Q-Former-based multimodal LLM; main contemporary baseline for LLaVA
+- **LLaVA-1.5** (2023, ref) — Direct successor: MLP projection + CLIP-336px → dramatically stronger performance
+- **LLaVA-NeXT** (2024, ref) — Higher resolution via dynamic tiling; extends to video
+- **LLaVA-OneVision** (2024, ref) — Multi-image and video unification of LLaVA
+- **MiniGPT-4** (2023, ref) — Near-simultaneous work with same CLIP+LLM+projection recipe
+- **InstructBLIP** (2023, ref) — Instruction tuning applied to BLIP-2 Q-Former
+- **OpenFlamingo** (2023, ref) — Open-source Flamingo; direct LLaVA baseline in paper
+- **mPLUG-Owl** (2023, ref) — Concurrent modular multimodal instruction-tuning model
