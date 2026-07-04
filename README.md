@@ -7,7 +7,7 @@
 - [x] [LangSplat: 3D Language Gaussian Splatting](2023/LangSplat-_3D_Language_Gaussian_Splatting/)
 - [ ] [Tracking Anything with Decoupled Video Segmentation](2023/Tracking_Anything_with_Decoupled_Video_Segmentation/)
 - [x] [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/)
-- [ ] [Visual Instruction Tuning](2023/Visual_Instruction_Tuning/)
+- [x] [Visual Instruction Tuning](2023/Visual_Instruction_Tuning/)
 
 ### 2024
 - [x] [(SAM2) SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/)

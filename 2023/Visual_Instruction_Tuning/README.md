@@ -19,7 +19,7 @@
 | **Contributions** | (1) First visual instruction-tuning dataset generated automatically via GPT-4 (158K samples); (2) LLaVA model: CLIP visual encoder + trainable linear projection + Vicuna LLM, fine-tuned end-to-end; (3) LLaVA-Bench: two new multimodal instruction-following benchmarks; (4) SoTA 92.53% on ScienceQA via LLaVA+GPT-4 ensembling; (5) full open-source release |
 | **Clarity** | Well written and concise; motivation is clear; evaluation methodology honestly acknowledges limitations of GPT-4 as judge |
 
-The paper presents LLaVA (**L**arge **L**anguage **a**nd **V**ision **A**ssistant), the first model to apply the instruction-tuning paradigm from NLP to the multimodal vision-language domain. The core insight is that a text-only GPT-4 can generate diverse, high-quality vision-language instruction data by consuming image captions and bounding boxes as symbolic proxies for the visual content, eliminating the need for human annotators. The resulting model — CLIP ViT-L/14 connected to Vicuna-13B via a simple linear projection — achieves 85.1% of GPT-4's performance on a new multimodal chatbot benchmark and sets a new SoTA on ScienceQA at 92.53%.
+The paper presents LLaVA (**L**arge **L**anguage **a**nd **V**ision **A**ssistant), the first model to apply the instruction-tuning paradigm from NLP to the multimodal vision-language domain. **The core insight is that a text-only GPT-4 can generate diverse, high-quality vision-language instruction data by consuming image captions and bounding boxes as symbolic proxies for the visual content, eliminating the need for human annotators.** The resulting model — CLIP ViT-L/14 connected to Vicuna-13B via a simple linear projection — achieves 85.1% of GPT-4's performance on a new multimodal chatbot benchmark and sets a new SoTA on ScienceQA at 92.53%.
 
 ---
 
@@ -31,10 +31,14 @@ Use text-only GPT-4 to automatically generate 158K diverse visual instruction-fo
 
 ### Method / Approach
 
+![architecture](resources/fig_01_architecture.png)
+
 - **GPT-4-assisted data generation:** Given COCO captions and bounding boxes (both encoded as text so text-only GPT-4 can process them), generate three response types per image — *Conversation* (58K Q&A pairs), *Detailed Description* (23K), and *Complex Reasoning* (77K) — using hand-written few-shot seed examples as in-context prompts.
 - **Architecture:** Visual features $Z_v = g(X_v)$ are extracted from CLIP ViT-L/14 (penultimate layer), projected into LLM embedding space via a trainable matrix $W$ to produce visual tokens $H_v = W \cdot Z_v$ , then prepended to language tokens and fed to Vicuna-13B.
 - **Two-stage training:** Stage 1 trains only $W$ on CC-595K filtered image-caption pairs (feature alignment, 1 epoch, ~4h on 8×A100). Stage 2 fine-tunes both $W$ and Vicuna on LLaVA-Instruct-158K end-to-end (3 epochs, ~10h on 8×A100), with CLIP encoder frozen throughout.
 - **GPT-4-as-judge evaluation:** LLaVA-Bench consists of two suites — COCO (30 images, 90 structured questions) and In-the-Wild (24 images, 60 diverse questions) — scored by GPT-4 on a 1-10 helpfulness/accuracy/detail scale relative to a text-only GPT-4 upper bound.
+
+![instruction_following_data](resources/table_01_instruction_following_data.png)
 
 ### Key Results
 
@@ -122,7 +126,7 @@ The random ordering of image and first question at $t=1$ helps the model handle 
 **Training objective.** The model is trained with a standard auto-regressive language modelling loss, but crucially applied *only* to the assistant's answer tokens (green tokens in Table 2), not to the instruction tokens. For a sequence of length $L$ :
 
 ```math
-p(X_a | X_v, X_{instruct}) = \prod_{i=1}^{L} p_\theta(x_i | X_v, X_{instruct,<i}, X_{a,<i})
+p(X_a | X_v, X_{instruct}) = \prod_{i=1}^{L} p_\theta (x_i | X_v, X_{instruct,<i}, X_{a,<i})
 ```
 
 where $\theta$ denotes all trainable parameters. The image $X_v$ is explicitly included in the conditioning of every prediction to ground responses in visual content.
