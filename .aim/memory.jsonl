@@ -66,6 +66,21 @@
 {"type":"entity","name":"Improved Baselines with Visual Instruction Tuning (LLaVA-1.5)","entityType":"paper","observations":["Year: 2023","Authors: Haotian Liu, Chunyuan Li, Yuheng Li, Yong Jae Lee","Published: arXiv:2310.03744, CVPR 2024","Has note: false","Referenced by: LLaVA: Visual Instruction Tuning","Short name: LLaVA-1.5"]}
 {"type":"entity","name":"LLaVA-NeXT: Improved Reasoning, OCR, and World Knowledge","entityType":"paper","observations":["Year: 2024","Authors: Haotian Liu et al.","Published: Blog post / arXiv 2024","Has note: false","Referenced by: LLaVA: Visual Instruction Tuning","Short name: LLaVA-NeXT"]}
 {"type":"entity","name":"LLaVA-OneVision: Easy Visual Task Transfer","entityType":"paper","observations":["Year: 2024","Authors: Bo Li et al.","Published: arXiv 2024","Has note: false","Referenced by: LLaVA: Visual Instruction Tuning","Short name: LLaVA-OneVision"]}
+{"type":"entity","name":"DINOv3","entityType":"paper","observations":["Year: 2025","Authors: Oriane Siméoni, Huy V. Vo, Maximilian Seitzer, Federico Baldassarre, Maxime Oquab, Cijo Jose, Vasil Khalidov, Marc Szafraniec, Seungeun Yi, Michaël Ramamonjisoa, Francisco Massa, Daniel Haziza, Luca Wehrstedt, Jianyuan Wang, Timothée Darcet, Théo Moutakanni, Leonel Sentana, Claire Roberts, Andrea Vedaldi, Jamie Tolan, John Brandt, Camille Couprie, Julien Mairal, Hervé Jégou, Patrick Labatut, Piotr Bojanowski","Affiliations: Meta AI Research, WRI, Inria","Published: arXiv:2508.10104, August 13, 2025","Keywords: self-supervised learning, vision foundation model, dense features, Gram anchoring, ViT, knowledge distillation","Path: 2025/DINOv3/","Has note: true","Short name: DINOv3"]}
+{"type":"entity","name":"DINOv2: Learning Robust Visual Features without Supervision","entityType":"paper","observations":["Year: 2024","Authors: Oquab et al. (Meta AI)","Published: TMLR 2024","Has note: false","Referenced by: DINOv3","Short name: DINOv2"]}
+{"type":"entity","name":"DINO: Emerging Properties in Self-Supervised Vision Transformers","entityType":"paper","observations":["Year: 2021","Authors: Caron et al. (Meta AI / INRIA)","Published: ICCV 2021","Has note: false","Referenced by: DINOv3","Short name: DINO"]}
+{"type":"entity","name":"iBOT: Image BERT Pre-Training with Online Tokenizer","entityType":"paper","observations":["Year: 2021","Authors: Zhou et al.","Published: arXiv 2021 / ICLR 2022","Has note: false","Referenced by: DINOv3","Short name: iBOT"]}
+{"type":"entity","name":"Automatic Data Curation for SSL: A Clustering-Based Approach","entityType":"paper","observations":["Year: 2024","Authors: Vo et al. (Meta AI)","Published: TMLR 2024","Has note: false","Referenced by: DINOv3","Short name: LVD / Vo et al. 2024"]}
+{"type":"entity","name":"Vision Transformers Need Registers","entityType":"paper","observations":["Year: 2024","Authors: Darcet et al. (Meta AI / INRIA)","Published: ICLR 2024","Has note: false","Referenced by: DINOv3","Short name: Register Tokens"]}
+{"type":"entity","name":"SwAV: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments","entityType":"paper","observations":["Year: 2020","Authors: Caron et al.","Published: NeurIPS 2020","Has note: false","Referenced by: DINOv3","Short name: SwAV"]}
+{"type":"entity","name":"Perceptual Losses for Real-Time Style Transfer","entityType":"paper","observations":["Year: 2016","Authors: Johnson et al.","Published: ECCV 2016","Has note: false","Referenced by: DINOv3","Short name: Perceptual Losses"]}
+{"type":"entity","name":"Web-DINO: Scaling Language-Free Visual Representation Learning","entityType":"paper","observations":["Year: 2025","Authors: Fan et al.","Published: arXiv 2025","Has note: false","Referenced by: DINOv3","Short name: Web-DINO"]}
+{"type":"entity","name":"Franca: Nested Matryoshka Clustering for Scalable Visual Representation","entityType":"paper","observations":["Year: 2025","Authors: Venkataramanan et al.","Published: arXiv 2025","Has note: false","Referenced by: DINOv3","Short name: Franca"]}
+{"type":"entity","name":"AM-RADIO v2.5: Improved Baselines for Agglomerative Vision Foundation Models","entityType":"paper","observations":["Year: 2025","Authors: Heinrich et al. (NVIDIA)","Published: arXiv 2025","Has note: false","Referenced by: DINOv3","Short name: AM-RADIO"]}
+{"type":"entity","name":"Perception Encoder: The Best Visual Embeddings Are Not at the Output","entityType":"paper","observations":["Year: 2025","Authors: Bolya et al. (Meta AI)","Published: arXiv 2025","Has note: false","Referenced by: DINOv3","Short name: Perception Encoder"]}
+{"type":"entity","name":"SigLIP 2: Multilingual Vision-Language Encoders with Improved Dense Features","entityType":"paper","observations":["Year: 2025","Authors: Tschannen et al. (Google DeepMind)","Published: arXiv 2025","Has note: false","Referenced by: DINOv3","Short name: SigLIP 2"]}
+{"type":"entity","name":"VGGT: Visual Geometry Grounded Transformer","entityType":"paper","observations":["Year: 2025","Authors: Wang et al.","Published: CVPR 2025","Has note: false","Referenced by: DINOv3","Short name: VGGT"]}
+{"type":"entity","name":"Self-Supervised Learning / Vision Foundation Models","entityType":"topic","observations":["Papers: DINOv3, DINOv2: Learning Robust Visual Features without Supervision, DINO: Emerging Properties in Self-Supervised Vision Transformers"]}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"XMem: Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model","relationType":"builds_on"}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"Segment Anything","relationType":"builds_on"}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"Mask2Former","relationType":"builds_on"}
@@ -156,3 +171,23 @@
 {"type":"relation","from":"LLaVA: Visual Instruction Tuning","to":"LLaVA-NeXT: Improved Reasoning, OCR, and World Knowledge","relationType":"succeeded_by"}
 {"type":"relation","from":"LLaVA: Visual Instruction Tuning","to":"LLaVA-OneVision: Easy Visual Task Transfer","relationType":"succeeded_by"}
 {"type":"relation","from":"LLaVA: Visual Instruction Tuning","to":"Vision-Language Models","relationType":"belongs_to"}
+{"type":"relation","from":"LLaVA: Visual Instruction Tuning","to":"Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)","relationType":"succeeded_by"}
+{"type":"relation","from":"DINOv3","to":"DINOv2: Learning Robust Visual Features without Supervision","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"DINO: Emerging Properties in Self-Supervised Vision Transformers","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"iBOT: Image BERT Pre-Training with Online Tokenizer","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"Automatic Data Curation for SSL: A Clustering-Based Approach","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"Vision Transformers Need Registers","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"SwAV: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"Perceptual Losses for Real-Time Style Transfer","relationType":"builds_on"}
+{"type":"relation","from":"DINOv3","to":"Web-DINO: Scaling Language-Free Visual Representation Learning","relationType":"competes_with"}
+{"type":"relation","from":"DINOv3","to":"Franca: Nested Matryoshka Clustering for Scalable Visual Representation","relationType":"competes_with"}
+{"type":"relation","from":"DINOv3","to":"AM-RADIO v2.5: Improved Baselines for Agglomerative Vision Foundation Models","relationType":"competes_with"}
+{"type":"relation","from":"DINOv3","to":"Perception Encoder: The Best Visual Embeddings Are Not at the Output","relationType":"competes_with"}
+{"type":"relation","from":"DINOv3","to":"SigLIP 2: Multilingual Vision-Language Encoders with Improved Dense Features","relationType":"competes_with"}
+{"type":"relation","from":"DINOv3","to":"VGGT: Visual Geometry Grounded Transformer","relationType":"succeeded_by"}
+{"type":"relation","from":"DINOv3","to":"Self-Supervised Learning / Vision Foundation Models","relationType":"belongs_to"}
+{"type":"relation","from":"DINOv3","to":"Segmentation / Foundation Models","relationType":"belongs_to"}
+{"type":"relation","from":"DINOv2: Learning Robust Visual Features without Supervision","to":"DINOv3","relationType":"succeeded_by"}
+{"type":"relation","from":"DINO: Emerging Properties in Self-Supervised Vision Transformers","to":"DINOv2: Learning Robust Visual Features without Supervision","relationType":"succeeded_by"}
+{"type":"relation","from":"DINOv2: Learning Robust Visual Features without Supervision","to":"Self-Supervised Learning / Vision Foundation Models","relationType":"belongs_to"}
+{"type":"relation","from":"DINO: Emerging Properties in Self-Supervised Vision Transformers","to":"Self-Supervised Learning / Vision Foundation Models","relationType":"belongs_to"}

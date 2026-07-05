@@ -1,13 +1,14 @@
 # Paper Reading Knowledge Graph
 
-Auto-generated from the MCP knowledge graph. Last updated: 2026-07-03.
+Auto-generated from the MCP knowledge graph. Last updated: 2026-07-05.
 
 ## Relationship Diagram
 
 ```mermaid
 graph TD
-    classDef y2015 fill:#c8a0e8,stroke:#555
+    classDef y2016 fill:#c8a0e8,stroke:#555
     classDef y2017 fill:#c8a0e8,stroke:#555
+    classDef y2020 fill:#c8a0e8,stroke:#555
     classDef y2021 fill:#ffb3b3,stroke:#555
     classDef y2022 fill:#ffd9b3,stroke:#555
     classDef y2023 fill:#f9d71c,stroke:#555
@@ -37,8 +38,19 @@ graph TD
     OctreeGS["Octree-AnyGS<br/>2024"]:::y2024
     BEVFormer["BEVFormer<br/>2022"]:::y2022
     PPO["PPO<br/>2017"]:::y2017
-    GAE["GAE<br/>2015"]:::y2015
+    GAE["GAE<br/>2015"]:::y2021
     ILRLDrive["IL+RL Driving<br/>2023"]:::y2023
+    iBOT["iBOT<br/>2021"]:::y2021
+    SwAV["SwAV<br/>2020"]:::y2020
+    PercLoss["Perceptual Losses<br/>2016"]:::y2016
+    LVD["LVD / Vo et al.<br/>2024"]:::y2024
+    RegTokens["Register Tokens<br/>2024"]:::y2024
+    WebDINO["Web-DINO<br/>2025"]:::y2025
+    Franca["Franca<br/>2025"]:::y2025
+    AMRADIO["AM-RADIO<br/>2025"]:::y2025
+    PE["Perception Encoder<br/>2025"]:::y2025
+    SigLIP2["SigLIP 2<br/>2025"]:::y2025
+    VGGT["VGGT<br/>2025"]:::y2025
 
     %% ── Subgraph: Segmentation / Foundation Models ───────────────
     subgraph SEG["Segmentation / Foundation Models"]
@@ -93,6 +105,13 @@ graph TD
         LLaVANext["LLaVA-NeXT<br/>2024"]:::y2024
         LLaVAOV["LLaVA-OneVision<br/>2024"]:::y2024
         VLMSurvey["VLM Survey<br/>2025 ✓"]:::y2025
+    end
+
+    %% ── Subgraph: Self-Supervised Learning / Vision Foundation Models ──
+    subgraph SSL["Self-Supervised Learning / Vision Foundation Models"]
+        DINO["DINO<br/>2021"]:::y2021
+        DINOv2["DINOv2<br/>2024"]:::y2024
+        DINOv3["DINOv3<br/>2025 ✓"]:::y2025
     end
 
     %% ── Segmentation edges ───────────────────────────────────────
@@ -164,6 +183,7 @@ graph TD
     LLaVA -->|succeeded_by| LLaVA15
     LLaVA -->|succeeded_by| LLaVANext
     LLaVA -->|succeeded_by| LLaVAOV
+    LLaVA -->|succeeded_by| VLMSurvey
     VLMSurvey -->|builds_on| VLPSurvey
     VLMSurvey -->|builds_on| CLIP
     VLMSurvey -->|builds_on| LLaVA
@@ -171,6 +191,23 @@ graph TD
     VLMSurvey -.->|competes_with| LLMSurvey
     VLMSurvey -.->|competes_with| VLMTasksSurvey
     VLMSurvey -.->|competes_with| MLLMSurvey
+
+    %% ── SSL / Vision Foundation edges ────────────────────────────
+    DINO -->|succeeded_by| DINOv2
+    DINOv2 -->|succeeded_by| DINOv3
+    DINOv3 -->|builds_on| DINOv2
+    DINOv3 -->|builds_on| DINO
+    DINOv3 -->|builds_on| iBOT
+    DINOv3 -->|builds_on| LVD
+    DINOv3 -->|builds_on| RegTokens
+    DINOv3 -->|builds_on| SwAV
+    DINOv3 -->|builds_on| PercLoss
+    DINOv3 -.->|competes_with| WebDINO
+    DINOv3 -.->|competes_with| Franca
+    DINOv3 -.->|competes_with| AMRADIO
+    DINOv3 -.->|competes_with| PE
+    DINOv3 -.->|competes_with| SigLIP2
+    DINOv3 -->|succeeded_by| VGGT
 ```
 
 > **Legend:** ✓ = note exists in this repo · Solid arrow = builds\_on / succeeded\_by · Dashed arrow = competes\_with
@@ -196,6 +233,7 @@ Papers with notes (✓) in this repository, organised by year.
 | [ObjectGS: Object-aware Scene Reconstruction and Scene Understanding via Gaussian Splatting](2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/) | 2025 | ObjectGS | 3DGS, object-aware reconstruction, panoptic segmentation, open-vocabulary, Scaffold-GS | 3D Gaussian Splatting |
 | [RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/) | 2025 | RAD | autonomous driving, reinforcement learning, 3DGS, end-to-end, closed-loop, imitation learning | Autonomous Driving, 3D Gaussian Splatting |
 | [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/) | 2025 | VLM Survey | vision-language models, bibliometrics, research trends, survey, TF-IDF, multimodal LLMs | Vision-Language Models |
+| [DINOv3](2025/DINOv3/) | 2025 | DINOv3 | self-supervised learning, vision foundation model, dense features, Gram anchoring, ViT, knowledge distillation | Self-Supervised Learning / Vision Foundation Models, Segmentation |
 
 ---
 
@@ -219,6 +257,7 @@ Promptable segmentation foundations and video-consistent object tracking systems
 - **SAM** (2023 ✓) — Foundation model for promptable image segmentation; used by LangSplat, Gaussian Grouping, ObjectGS
 - **DEVA** (2023 ✓) — Decoupled video segmentation propagating any-image-model predictions temporally; succeeded by SAM 2
 - **SAM 2** (2024 ✓) — Streaming-memory extension of SAM for real-time video object segmentation
+- **DINOv3** (2025 ✓) — ViT-7B SSL encoder with Gram anchoring; dense features excel at ADE20k segmentation (55.9 mIoU linear probe)
 - **SAM-PT** (2023, ref) — SAM with point tracking for zero-shot video segmentation
 - **SAMURAI** (2024, ref) — Zero-shot visual object tracking with motion-aware memory
 - **Grounded-SAM 2** (2024, ref) — Text-driven segmentation composing Grounding DINO with SAM 2
@@ -253,3 +292,18 @@ Foundational models, surveys, and the instruction-tuning ecosystem for vision-la
 - **InstructBLIP** (2023, ref) — Instruction tuning applied to BLIP-2 Q-Former
 - **OpenFlamingo** (2023, ref) — Open-source Flamingo; direct LLaVA baseline in paper
 - **mPLUG-Owl** (2023, ref) — Concurrent modular multimodal instruction-tuning model
+
+### Self-Supervised Learning / Vision Foundation Models
+Self-supervised vision encoders trained without labels; the DINO lineage from Meta AI.
+
+- **DINO** (2021, ref) — Original self-distillation with no labels; established teacher-student SSL paradigm for ViTs
+- **DINOv2** (2024, ref) — Scaled DINO with iBOT + curated LVD-142M data; ViT-g (1.1B) producing strong frozen features
+- **DINOv3** (2025 ✓) — ViT-7B trained on 1.689B images; introduces Gram anchoring to preserve dense patch features during long training; distills to full ViT-S/B/L/H and ConvNeXt family; best-in-class on ADE20k, COCO, NYUv2, DAVIS-L
+- **iBOT** (2021, ref) — Online tokenizer masked image modeling; one of DINOv2/v3's core SSL objectives
+- **Register Tokens** (2024, ref) — Adds register tokens to ViT to fix artifact tokens; adopted in DINOv3
+- **Web-DINO** (2025, ref) — Competitor SSL model scaling to web-scale data without curation
+- **Franca** (2025, ref) — Nested Matryoshka clustering for scalable vision representation
+- **AM-RADIO** (2025, ref) — NVIDIA agglomerative multi-teacher distillation baseline
+- **Perception Encoder** (2025, ref) — Meta AI multi-task vision encoder via intermediate-layer extraction
+- **SigLIP 2** (2025, ref) — Google DeepMind multilingual vision-language encoder with improved dense features
+- **VGGT** (2025, ref) — Visual geometry grounded transformer; uses DINOv3 features downstream
