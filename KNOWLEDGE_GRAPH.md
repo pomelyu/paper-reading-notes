@@ -1,309 +1,231 @@
-# Paper Reading Knowledge Graph
+# Knowledge Graph
 
-Auto-generated from the MCP knowledge graph. Last updated: 2026-07-05.
+Auto-generated from paper notes. Last updated: 2026-07-06.
 
-## Relationship Diagram
+---
+
+## Graph Diagram
 
 ```mermaid
 graph TD
-    classDef y2016 fill:#c8a0e8,stroke:#555
-    classDef y2017 fill:#c8a0e8,stroke:#555
-    classDef y2020 fill:#c8a0e8,stroke:#555
-    classDef y2021 fill:#ffb3b3,stroke:#555
-    classDef y2022 fill:#ffd9b3,stroke:#555
-    classDef y2023 fill:#f9d71c,stroke:#555
-    classDef y2024 fill:#87ceeb,stroke:#555
-    classDef y2025 fill:#98fb98,stroke:#555
+    classDef y2021 fill:#f0e68c,stroke:#555
+    classDef y2022 fill:#f9d71c,stroke:#555
+    classDef y2023 fill:#87ceeb,stroke:#555
+    classDef y2024 fill:#98fb98,stroke:#555
+    classDef y2025 fill:#ffa07a,stroke:#555
+    classDef y2026 fill:#dda0dd,stroke:#555
+    classDef noNote fill:#fff,stroke:#aaa,stroke-dasharray:4 4
 
-    %% ── Peripheral reference nodes ───────────────────────────────
-    XMem["XMem<br/>2022"]:::y2022
-    STCN["STCN<br/>2021"]:::y2021
-    M2F["Mask2Former<br/>2022"]:::y2022
-    VKNet["Video-K-Net<br/>2022"]:::y2022
-    OWTB["OWTB<br/>2022"]:::y2022
-    GDino["Grounding DINO<br/>2023"]:::y2023
-    UNINEXT["UNINEXT<br/>2023"]:::y2023
-    SA3D["SA3D<br/>2023"]:::y2023
-    PanopticL["Panoptic Lifting<br/>2023"]:::y2023
-    SPInNeRF["SPIn-NeRF<br/>2023"]:::y2023
-    IN2N["Instruct-NeRF2NeRF<br/>2023"]:::y2023
-    DFFs["DFFs<br/>2022"]:::y2022
-    MipNeRF360["Mip-NeRF 360<br/>2022"]:::y2022
-    iNGP["iNGP<br/>2022"]:::y2022
-    Plenoxels["Plenoxels<br/>2022"]:::y2022
-    BungeeNeRF["BungeeNeRF<br/>2022"]:::y2022
-    MipSplatting["Mip-Splatting<br/>2023"]:::y2023
-    GShader["GaussianShader<br/>2023"]:::y2023
-    Compact3DGS["Compact3DGS<br/>2023"]:::y2023
-    OctreeGS["Octree-AnyGS<br/>2024"]:::y2024
-    BEVFormer["BEVFormer<br/>2022"]:::y2022
-    PPO["PPO<br/>2017"]:::y2017
-    GAE["GAE<br/>2015"]:::y2021
-    ILRLDrive["IL+RL Driving<br/>2023"]:::y2023
-    iBOT["iBOT<br/>2021"]:::y2021
-    SwAV["SwAV<br/>2020"]:::y2020
-    PercLoss["Perceptual Losses<br/>2016"]:::y2016
-    LVD["LVD / Vo et al.<br/>2024"]:::y2024
-    RegTokens["Register Tokens<br/>2024"]:::y2024
-    WebDINO["Web-DINO<br/>2025"]:::y2025
-    Franca["Franca<br/>2025"]:::y2025
-    AMRADIO["AM-RADIO<br/>2025"]:::y2025
-    PE["Perception Encoder<br/>2025"]:::y2025
-    SigLIP2["SigLIP 2<br/>2025"]:::y2025
-    VGGT["VGGT<br/>2025"]:::y2025
-
-    %% ── Subgraph: Segmentation / Foundation Models ───────────────
-    subgraph SEG["Segmentation / Foundation Models"]
-        SAM["SAM<br/>2023 ✓"]:::y2023
-        DEVA["DEVA<br/>2023 ✓"]:::y2023
-        SAM2["SAM 2<br/>2024 ✓"]:::y2024
-        SAMPT["SAM-PT<br/>2023"]:::y2023
-        SAMURAI["SAMURAI<br/>2024"]:::y2024
-        GSAM2["Grounded-SAM 2<br/>2024"]:::y2024
+    subgraph Seg["Segmentation / Foundation Models"]
+        SAM["SAM\n2023"]:::y2023
+        DEVA["DEVA\n2023"]:::y2023
+        SAM2["SAM 2\n2024"]:::y2024
     end
 
-    %% ── Subgraph: 3D Gaussian Splatting ──────────────────────────
-    subgraph GS3D["3D Gaussian Splatting"]
-        ThreeDGS["3D-GS<br/>2023"]:::y2023
-        ScaffoldGS["Scaffold-GS<br/>2023 ✓"]:::y2023
-        LangSplat["LangSplat<br/>2023 ✓"]:::y2023
-        GG["Gaussian Grouping<br/>2023 ✓"]:::y2023
-        TwoDGS["2DGS<br/>2024 ✓"]:::y2024
-        StreetGS["Street Gaussians<br/>2024 ✓"]:::y2024
-        ObjectGS["ObjectGS<br/>2025 ✓"]:::y2025
+    subgraph GS["3D Gaussian Splatting"]
+        GS3D["3D-GS\n2023"]:::noNote
+        SGS["Scaffold-GS\n2023"]:::y2023
+        LS["LangSplat\n2023"]:::y2023
+        GG["Gaussian Grouping\n2023"]:::y2023
+        GS2D["2DGS\n2024"]:::y2024
+        StrGS["Street Gaussians\n2024"]:::y2024
+        HUG["HUGSIM\n2024"]:::y2024
+        ObjGS["ObjectGS\n2025"]:::y2025
+        RAD["RAD\n2025"]:::y2025
     end
 
-    %% ── Subgraph: Autonomous Driving ─────────────────────────────
-    subgraph AD["Autonomous Driving"]
-        HUGSIM["HUGSIM<br/>2024 ✓"]:::y2024
-        VADv2["VADv2<br/>2024"]:::y2024
-        NeuRAD["NeuRAD<br/>2024"]:::y2024
-        RAD["RAD<br/>2025 ✓"]:::y2025
-        DiffDrive["DiffusionDrive<br/>2025"]:::y2025
-        SparseDrive["SparseDrive<br/>2025"]:::y2025
-    end
-
-    %% ── Subgraph: Vision-Language Models ─────────────────────────
     subgraph VLM["Vision-Language Models"]
-        CLIP["CLIP<br/>2021"]:::y2021
-        ALIGN["ALIGN<br/>2021"]:::y2021
-        Flamingo["Flamingo<br/>2022"]:::y2022
-        InstructGPT["InstructGPT<br/>2022"]:::y2022
-        VLPSurvey["VLP Survey<br/>2022"]:::y2022
-        LLaMA["LLaMA<br/>2023"]:::y2023
-        Vicuna["Vicuna<br/>2023"]:::y2023
-        BLIP2["BLIP-2<br/>2023"]:::y2023
-        LLaVA["LLaVA<br/>2023 ✓"]:::y2023
-        LLaVA15["LLaVA-1.5<br/>2023"]:::y2023
-        LLMSurvey["LLM Survey<br/>2023"]:::y2023
-        MLLMSurvey["MLLM Survey<br/>2023"]:::y2023
-        MiniGPT4["MiniGPT-4<br/>2023"]:::y2023
-        InstructBLIP["InstructBLIP<br/>2023"]:::y2023
-        OpenFlamingo["OpenFlamingo<br/>2023"]:::y2023
-        mPLUGOwl["mPLUG-Owl<br/>2023"]:::y2023
-        VLMTasksSurvey["VLM Tasks Survey<br/>2024"]:::y2024
-        LLaVANext["LLaVA-NeXT<br/>2024"]:::y2024
-        LLaVAOV["LLaVA-OneVision<br/>2024"]:::y2024
-        VLMSurvey["VLM Survey<br/>2025 ✓"]:::y2025
+        LLaVA["LLaVA\n2023"]:::y2023
+        VLMSurv["VLM Survey\n2025"]:::y2025
     end
 
-    %% ── Subgraph: Self-Supervised Learning / Vision Foundation Models ──
-    subgraph SSL["Self-Supervised Learning / Vision Foundation Models"]
-        DINO["DINO<br/>2021"]:::y2021
-        DINOv2["DINOv2<br/>2024"]:::y2024
-        DINOv3["DINOv3<br/>2025 ✓"]:::y2025
+    subgraph SSL["Self-Supervised Learning"]
+        DINO["DINO\n2021"]:::y2021
+        DINOv2["DINOv2\n2024"]:::y2024
+        DINOv3["DINOv3\n2025"]:::y2025
     end
 
-    %% ── Segmentation edges ───────────────────────────────────────
-    DEVA -->|builds_on| XMem
-    DEVA -->|builds_on| SAM
-    DEVA -->|builds_on| M2F
-    DEVA -->|builds_on| VKNet
-    DEVA -->|builds_on| STCN
-    DEVA -.->|competes_with| OWTB
-    DEVA -.->|competes_with| SAMPT
-    DEVA -.->|competes_with| GDino
-    DEVA -.->|competes_with| UNINEXT
-    DEVA -->|succeeded_by| SAM2
-    DEVA -->|succeeded_by| SAMURAI
-    DEVA -->|succeeded_by| GSAM2
+    subgraph Recon["3D Reconstruction / Multi-view Stereo"]
+        DUSt3R["DUSt3R\n2024"]:::noNote
+        MASt3R["MASt3R\n2024"]:::noNote
+        VGGSfM["VGGSfM\n2024"]:::noNote
+        Fast3R["Fast3R\n2025"]:::noNote
+        CUT3R["CUT3R\n2025"]:::noNote
+        VGGT["VGGT\n2025"]:::y2025
+        VGGTOmega["VGGT-Omega\n2026"]:::y2026
+    end
+
     SAM -->|succeeded_by| SAM2
-
-    %% ── 3DGS edges ───────────────────────────────────────────────
-    ScaffoldGS -->|builds_on| ThreeDGS
-    ScaffoldGS -->|builds_on| MipNeRF360
-    ScaffoldGS -->|builds_on| iNGP
-    ScaffoldGS -->|builds_on| Plenoxels
-    ScaffoldGS -->|builds_on| BungeeNeRF
-    ScaffoldGS -.->|competes_with| MipSplatting
-    ScaffoldGS -.->|competes_with| GShader
-    ScaffoldGS -.->|competes_with| Compact3DGS
-    ScaffoldGS -->|succeeded_by| OctreeGS
-    ScaffoldGS -->|succeeded_by| TwoDGS
-    ScaffoldGS -->|succeeded_by| StreetGS
-    ScaffoldGS -->|succeeded_by| LangSplat
-    GG -->|builds_on| ThreeDGS
-    GG -->|builds_on| SAM
+    DEVA -->|builds_on| SAM
     GG -->|builds_on| DEVA
-    GG -.->|competes_with| SA3D
-    GG -.->|competes_with| PanopticL
-    GG -.->|competes_with| SPInNeRF
-    GG -.->|competes_with| IN2N
-    GG -.->|competes_with| DFFs
-    GG -.->|competes_with| LangSplat
-    GG -->|succeeded_by| ObjectGS
-    ObjectGS -->|builds_on| ScaffoldGS
-    ObjectGS -->|builds_on| GG
+    GG -->|builds_on| SAM
+    GG -->|succeeded_by| ObjGS
 
-    %% ── Autonomous Driving edges ─────────────────────────────────
-    StreetGS -->|succeeded_by| RAD
-    RAD -->|builds_on| ThreeDGS
-    RAD -->|builds_on| StreetGS
-    RAD -->|builds_on| VADv2
-    RAD -->|builds_on| BEVFormer
-    RAD -->|builds_on| PPO
-    RAD -->|builds_on| GAE
-    RAD -->|builds_on| ILRLDrive
-    RAD -.->|competes_with| HUGSIM
-    RAD -.->|competes_with| DiffDrive
-    RAD -.->|competes_with| SparseDrive
-    RAD -.->|competes_with| NeuRAD
+    GS3D -->|succeeded_by| SGS
+    GS3D -->|succeeded_by| LS
+    GS3D -->|succeeded_by| GG
+    SGS -->|succeeded_by| GS2D
+    SGS -->|succeeded_by| StrGS
+    SGS -->|succeeded_by| LS
+    ObjGS -->|builds_on| SGS
+    StrGS -->|succeeded_by| RAD
+    RAD -->|competes_with| HUG
 
-    %% ── VLM edges ────────────────────────────────────────────────
-    LLaVA -->|builds_on| CLIP
-    LLaVA -->|builds_on| LLaMA
-    LLaVA -->|builds_on| Vicuna
-    LLaVA -->|builds_on| InstructGPT
-    LLaVA -->|builds_on| Flamingo
-    LLaVA -->|builds_on| BLIP2
-    LLaVA -.->|competes_with| MiniGPT4
-    LLaVA -.->|competes_with| InstructBLIP
-    LLaVA -.->|competes_with| OpenFlamingo
-    LLaVA -.->|competes_with| mPLUGOwl
-    LLaVA -->|succeeded_by| LLaVA15
-    LLaVA -->|succeeded_by| LLaVANext
-    LLaVA -->|succeeded_by| LLaVAOV
-    LLaVA -->|succeeded_by| VLMSurvey
-    VLMSurvey -->|builds_on| VLPSurvey
-    VLMSurvey -->|builds_on| CLIP
-    VLMSurvey -->|builds_on| LLaVA
-    VLMSurvey -->|builds_on| ALIGN
-    VLMSurvey -.->|competes_with| LLMSurvey
-    VLMSurvey -.->|competes_with| VLMTasksSurvey
-    VLMSurvey -.->|competes_with| MLLMSurvey
-
-    %% ── SSL / Vision Foundation edges ────────────────────────────
     DINO -->|succeeded_by| DINOv2
     DINOv2 -->|succeeded_by| DINOv3
-    DINOv3 -->|builds_on| DINOv2
-    DINOv3 -->|builds_on| DINO
-    DINOv3 -->|builds_on| iBOT
-    DINOv3 -->|builds_on| LVD
-    DINOv3 -->|builds_on| RegTokens
-    DINOv3 -->|builds_on| SwAV
-    DINOv3 -->|builds_on| PercLoss
-    DINOv3 -.->|competes_with| WebDINO
-    DINOv3 -.->|competes_with| Franca
-    DINOv3 -.->|competes_with| AMRADIO
-    DINOv3 -.->|competes_with| PE
-    DINOv3 -.->|competes_with| SigLIP2
-    DINOv3 -->|succeeded_by| VGGT
+    DINOv3 -.->|downstream_app| VGGT
+
+    DUSt3R -->|succeeded_by| MASt3R
+    VGGT -->|builds_on| DUSt3R
+    VGGT -->|builds_on| MASt3R
+    VGGT -->|builds_on| VGGSfM
+    VGGT -->|builds_on| DINOv2
+    VGGT -->|competes_with| Fast3R
+    VGGT -->|competes_with| CUT3R
+    VGGT -->|succeeded_by| VGGTOmega
+
+    LLaVA -->|succeeded_by| VLMSurv
 ```
 
-> **Legend:** ✓ = note exists in this repo · Solid arrow = builds\_on / succeeded\_by · Dashed arrow = competes\_with
+> Solid arrows = `builds_on` / `succeeded_by` / `competes_with`; dashed = downstream application.  
+> White/dashed nodes = referenced but no dedicated note in this repo yet.
 
 ---
 
 ## Paper Index
 
-Papers with notes (✓) in this repository, organised by year.
-
-| Paper | Year | Short Name | Keywords | Topics |
-|-------|------|------------|----------|--------|
-| [Segment Anything](2023/Segment_Anything/) | 2023 | SAM | image segmentation, foundation model, promptable segmentation | Segmentation / Foundation Models |
-| [Tracking Anything with Decoupled Video Segmentation](2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) | 2023 | DEVA | video segmentation, decoupled, temporal propagation, tracking, open-world | Segmentation / Foundation Models |
-| [Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | 2023 | Scaffold-GS | 3DGS, anchor-based, view-adaptive rendering, neural Gaussians | 3D Gaussian Splatting |
-| [LangSplat: 3D Language Gaussian Splatting](2023/LangSplat-_3D_Language_Gaussian_Splatting/) | 2023 | LangSplat | 3DGS, language fields, CLIP, SAM | 3D Gaussian Splatting |
-| [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | 2023 | Gaussian Grouping | 3DGS, instance segmentation, open-world, scene editing, SAM | 3D Gaussian Splatting, Segmentation |
-| [Visual Instruction Tuning](2023/Visual_Instruction_Tuning/) | 2023 | LLaVA | visual instruction tuning, multimodal LLM, CLIP, Vicuna, GPT-4 data generation | Vision-Language Models |
-| [SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | 2024 | SAM 2 | video segmentation, streaming memory, foundation model | Segmentation / Foundation Models |
-| [2D Gaussian Splatting for Geometrically Accurate Radiance Fields](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | 2024 | 2DGS | 3DGS, surface reconstruction, geometry-accurate | 3D Gaussian Splatting |
-| [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | 2024 | Street Gaussians | 3DGS, dynamic urban scenes, autonomous driving | 3D Gaussian Splatting, Autonomous Driving |
-| [HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/) | 2024 | HUGSIM | 3DGS, autonomous driving, closed-loop simulation | Autonomous Driving, 3D Gaussian Splatting |
-| [ObjectGS: Object-aware Scene Reconstruction and Scene Understanding via Gaussian Splatting](2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/) | 2025 | ObjectGS | 3DGS, object-aware reconstruction, panoptic segmentation, open-vocabulary, Scaffold-GS | 3D Gaussian Splatting |
-| [RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/) | 2025 | RAD | autonomous driving, reinforcement learning, 3DGS, end-to-end, closed-loop, imitation learning | Autonomous Driving, 3D Gaussian Splatting |
-| [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/) | 2025 | VLM Survey | vision-language models, bibliometrics, research trends, survey, TF-IDF, multimodal LLMs | Vision-Language Models |
-| [DINOv3](2025/DINOv3/) | 2025 | DINOv3 | self-supervised learning, vision foundation model, dense features, Gram anchoring, ViT, knowledge distillation | Self-Supervised Learning / Vision Foundation Models, Segmentation |
+| Paper | Short Name | Year | Venue | Keywords | Has Note |
+|---|---|---|---|---|---|
+| [Tracking Anything with Decoupled Video Segmentation](2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) | DEVA | 2023 | ICCV 2023 | video segmentation, tracking, open-world, SAM | ✅ |
+| [Segment Anything](2023/Segment_Anything/) | SAM | 2023 | ICCV 2023 | image segmentation, foundation model, promptable segmentation | ✅ |
+| [LangSplat: 3D Language Gaussian Splatting](2023/LangSplat-_3D_Language_Gaussian_Splatting/) | LangSplat | 2023 | CVPR 2024 | 3DGS, language fields, CLIP, SAM | ✅ |
+| [Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | Scaffold-GS | 2023 | CVPR 2024 | 3DGS, anchor-based, view-adaptive rendering | ✅ |
+| [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Gaussian Grouping | 2023 | ECCV 2024 | 3DGS, instance segmentation, SAM, scene editing | ✅ |
+| [Visual Instruction Tuning](2023/Visual_Instruction_Tuning/) | LLaVA | 2023 | NeurIPS 2023 | visual instruction tuning, multimodal LLM, CLIP, LLaMA | ✅ |
+| [SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | SAM 2 | 2024 | arXiv 2024 | image segmentation, video segmentation, streaming memory | ✅ |
+| [2D Gaussian Splatting for Geometrically Accurate Radiance Fields](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | 2DGS | 2024 | SIGGRAPH 2024 | 3DGS, geometry, surface reconstruction | ✅ |
+| [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Street Gaussians | 2024 | ECCV 2024 | 3DGS, autonomous driving, dynamic scenes | ✅ |
+| [HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/) | HUGSIM | 2024 | arXiv 2024 | 3DGS, autonomous driving, closed-loop simulator | ✅ |
+| [GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | GaussianDWM | 2025 | — | 3DGS, autonomous driving, world model | ✅ |
+| [LangSplatV2: High-dimensional 3D Language Gaussian Splatting with 450+ FPS](2025/LangSplatV2-_High-dimensional_3D_language_Gaussian_Splatting_with_450+_FPS/) | LangSplatV2 | 2025 | — | 3DGS, language fields, real-time | ✅ |
+| [4D LangSplat: 4D Language Gaussian Splatting via Multimodal Large Language Models](2025/4D_LangSplat-_4D_Language_Gaussian_Splatting_via_Multimodal_Large_Language_Models/) | 4D LangSplat | 2025 | — | 3DGS, language fields, dynamic, 4D | ✅ |
+| [ObjectGS: Object-aware Scene Reconstruction and Scene Understanding via Gaussian Splatting](2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/) | ObjectGS | 2025 | ICCV 2025 | 3DGS, object-aware, panoptic segmentation, anchor-based | ✅ |
+| [RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/) | RAD | 2025 | NeurIPS 2025 | autonomous driving, RL, 3DGS, end-to-end | ✅ |
+| [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/) | VLM Survey | 2025 | arXiv 2025 | VLMs, survey, bibliometrics, multimodal LLMs | ✅ |
+| [DINOv3](2025/DINOv3/) | DINOv3 | 2025 | arXiv Aug 2025 | SSL, vision foundation model, Gram anchoring, dense features, ViT-7B | ✅ |
+| [VGGT: Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | VGGT | 2025 | CVPR 2025 🏆 | 3D reconstruction, camera pose, depth, point tracking, feed-forward transformer | ✅ |
 
 ---
 
 ## Topic Clusters
 
-### 3D Gaussian Splatting
-Core and derived representations using 3D Gaussian primitives for rendering, reconstruction, and scene understanding.
-
-- **Scaffold-GS** (2023 ✓) — Anchor-based structured Gaussians for view-adaptive rendering; predecessor to ObjectGS and LangSplat
-- **LangSplat** (2023 ✓) — CLIP language features embedded in Gaussian primitives for open-vocabulary 3D querying
-- **Gaussian Grouping** (2023 ✓) — Identity-encoded Gaussians (DEVA-supervised) for instance segmentation and scene editing
-- **2DGS** (2024 ✓) — Planar 2D Gaussian disks for geometrically accurate surface reconstruction
-- **Street Gaussians** (2024 ✓) — Compositional 4D-SH Gaussians for dynamic urban scene reconstruction; succeeded by RAD
-- **ObjectGS** (2025 ✓) — Object-aware anchor-based Gaussians with discrete one-hot semantic encoding; builds on Scaffold-GS + Gaussian Grouping
-- **RAD** (2025 ✓) — Uses 3DGS digital twins as photorealistic RL training environments for driving policy
-- **HUGSIM** (2024 ✓) — 3DGS-based real-time closed-loop AD simulator (competes with RAD)
-
 ### Segmentation / Foundation Models
-Promptable segmentation foundations and video-consistent object tracking systems.
+**Papers with notes:** DEVA · SAM · SAM 2 · Gaussian Grouping  
+**Key chain:** SAM → SAM 2 · SAM → DEVA → Gaussian Grouping → ObjectGS
 
-- **SAM** (2023 ✓) — Foundation model for promptable image segmentation; used by LangSplat, Gaussian Grouping, ObjectGS
-- **DEVA** (2023 ✓) — Decoupled video segmentation propagating any-image-model predictions temporally; succeeded by SAM 2
-- **SAM 2** (2024 ✓) — Streaming-memory extension of SAM for real-time video object segmentation
-- **DINOv3** (2025 ✓) — ViT-7B SSL encoder with Gram anchoring; dense features excel at ADE20k segmentation (55.9 mIoU linear probe)
-- **SAM-PT** (2023, ref) — SAM with point tracking for zero-shot video segmentation
-- **SAMURAI** (2024, ref) — Zero-shot visual object tracking with motion-aware memory
-- **Grounded-SAM 2** (2024, ref) — Text-driven segmentation composing Grounding DINO with SAM 2
+| Paper | Role |
+|---|---|
+| SAM | Foundation promptable segmenter; backbone for all downstream |
+| DEVA | Decoupled video segmentation using SAM for detection |
+| SAM 2 | Unified image+video segmenter; streaming memory successor to SAM |
+| Gaussian Grouping | SAM-guided identity encoding for 3D scene segmentation and editing |
+
+---
+
+### 3D Gaussian Splatting
+**Papers with notes:** Scaffold-GS · LangSplat · Gaussian Grouping · 2DGS · Street Gaussians · HUGSIM · ObjectGS · RAD  
+**Key chain:** 3D-GS → Scaffold-GS → ObjectGS · 3D-GS → LangSplat → LangSplatV2 · Street Gaussians → RAD
+
+| Paper | Role |
+|---|---|
+| Scaffold-GS | Anchor-based 3DGS for view-adaptive rendering; backbone for ObjectGS |
+| LangSplat | First 3D language field via per-Gaussian CLIP features |
+| Gaussian Grouping | Open-world 3D segmentation and editing in Gaussian scenes |
+| 2DGS | Geometrically accurate surface reconstruction via 2D disk primitives |
+| Street Gaussians | Dynamic urban scene rendering for autonomous driving |
+| HUGSIM | Closed-loop photorealistic driving simulator based on 3DGS |
+| ObjectGS | Object-aware reconstruction extending Scaffold-GS with panoptic understanding |
+| RAD | RL-based end-to-end driving policy trained in 3DGS simulation |
+
+---
 
 ### Autonomous Driving
-Neural rendering and learned planning for closed-loop autonomous driving evaluation and training.
+**Papers with notes:** Street Gaussians · HUGSIM · RAD
 
-- **Street Gaussians** (2024 ✓) — First 3DGS-based dynamic urban scene representation for AD simulation
-- **HUGSIM** (2024 ✓) — Closed-loop 3DGS AD simulator with standardised benchmark protocol
-- **RAD** (2025 ✓) — First 3DGS-based closed-loop RL framework for end-to-end driving; 3× lower collision rate vs. IL baselines (NeurIPS 2025)
-- **VADv2** (2024, ref) — End-to-end vectorised AD via probabilistic planning; main IL backbone for RAD
-- **NeuRAD** (2024, ref) — Neural rendering for AD scene reconstruction
-- **DiffusionDrive** (2025, ref) — Truncated diffusion model for end-to-end AD planning
-- **SparseDrive** (2025, ref) — Sparse scene representation for end-to-end AD
+| Paper | Role |
+|---|---|
+| Street Gaussians | Differentiable urban scene renderer; predecessor to RAD's environment |
+| HUGSIM | Closed-loop photorealistic simulator; competes with RAD's training environment |
+| RAD | Large-scale RL training in 3DGS digital twins for end-to-end driving |
+
+---
 
 ### Vision-Language Models
-Foundational models, surveys, and the instruction-tuning ecosystem for vision-language understanding.
+**Papers with notes:** LLaVA · VLM Survey
 
-- **LLaVA** (2023 ✓) — First visual instruction tuning paper: GPT-4-generated 158K multimodal data + CLIP encoder + Vicuna LLM + two-stage training; SoTA 92.53% on ScienceQA
-- **VLM Survey (Lin 2025)** (2025 ✓) — Bibliometric analysis of 26,104 CVPR/ICLR/NeurIPS papers; VLM share rose 16%→40%; LLaVA identified as fastest-growing model family
-- **CLIP** (2021, ref) — Contrastive vision-language pretraining; visual encoder used by LLaVA and LangSplat
-- **ALIGN** (2021, ref) — Dual-encoder VLM pretraining on noisy web data; most-cited model family in VLM Survey
-- **Flamingo** (2022, ref) — Pioneer multimodal LLM with gated cross-attention; predecessor to LLaVA
-- **InstructGPT** (2022, ref) — RLHF-based instruction tuning for LLMs; paradigm extended by LLaVA to vision
-- **LLaMA** (2023, ref) — Open-source LLM foundation underlying Vicuna and LLaVA
-- **Vicuna** (2023, ref) — Instruction-tuned LLaMA; LLM backbone of LLaVA
-- **BLIP-2** (2023, ref) — Q-Former-based multimodal LLM; main contemporary baseline for LLaVA
-- **LLaVA-1.5** (2023, ref) — Direct successor: MLP projection + CLIP-336px → dramatically stronger performance
-- **LLaVA-NeXT** (2024, ref) — Higher resolution via dynamic tiling; extends to video
-- **LLaVA-OneVision** (2024, ref) — Multi-image and video unification of LLaVA
-- **MiniGPT-4** (2023, ref) — Near-simultaneous work with same CLIP+LLM+projection recipe
-- **InstructBLIP** (2023, ref) — Instruction tuning applied to BLIP-2 Q-Former
-- **OpenFlamingo** (2023, ref) — Open-source Flamingo; direct LLaVA baseline in paper
-- **mPLUG-Owl** (2023, ref) — Concurrent modular multimodal instruction-tuning model
+| Paper | Role |
+|---|---|
+| LLaVA | Pioneering visual instruction tuning with GPT-4-generated conversation data |
+| VLM Survey | Bibliometric analysis of 26K VLM papers across CVPR/ICLR/NeurIPS 2023–2025 |
+
+---
 
 ### Self-Supervised Learning / Vision Foundation Models
-Self-supervised vision encoders trained without labels; the DINO lineage from Meta AI.
+**Papers with notes:** DINOv3  
+**Key chain:** DINO → DINOv2 → DINOv3 ⟶ (downstream) VGGT
 
-- **DINO** (2021, ref) — Original self-distillation with no labels; established teacher-student SSL paradigm for ViTs
-- **DINOv2** (2024, ref) — Scaled DINO with iBOT + curated LVD-142M data; ViT-g (1.1B) producing strong frozen features
-- **DINOv3** (2025 ✓) — ViT-7B trained on 1.689B images; introduces Gram anchoring to preserve dense patch features during long training; distills to full ViT-S/B/L/H and ConvNeXt family; best-in-class on ADE20k, COCO, NYUv2, DAVIS-L
-- **iBOT** (2021, ref) — Online tokenizer masked image modeling; one of DINOv2/v3's core SSL objectives
-- **Register Tokens** (2024, ref) — Adds register tokens to ViT to fix artifact tokens; adopted in DINOv3
-- **Web-DINO** (2025, ref) — Competitor SSL model scaling to web-scale data without curation
-- **Franca** (2025, ref) — Nested Matryoshka clustering for scalable vision representation
-- **AM-RADIO** (2025, ref) — NVIDIA agglomerative multi-teacher distillation baseline
-- **Perception Encoder** (2025, ref) — Meta AI multi-task vision encoder via intermediate-layer extraction
-- **SigLIP 2** (2025, ref) — Google DeepMind multilingual vision-language encoder with improved dense features
-- **VGGT** (2025, ref) — Visual geometry grounded transformer; uses DINOv3 features downstream
+| Paper | Role |
+|---|---|
+| DINOv3 | 7B-parameter SSL ViT with Gram anchoring; SOTA dense features for segmentation, depth, detection |
+| DINOv2 (referenced) | Predecessor; frozen tokeniser used by VGGT; succeeded by DINOv3 |
+| DINO (referenced) | Original self-distillation objective; foundational SSL approach |
+
+---
+
+### 3D Reconstruction / Multi-view Stereo
+**Papers with notes:** VGGT  
+**Key chain:** DUSt3R → MASt3R · DUSt3R → VGGT → VGGT-Omega
+
+| Paper | Role |
+|---|---|
+| VGGT | CVPR 2025 Best Paper; feed-forward N-view 3D reconstruction (cameras, depth, pointmaps, tracks) in one pass |
+| DUSt3R (referenced) | Two-view pointmap pioneer; direct predecessor paradigm |
+| MASt3R (referenced) | Extends DUSt3R with matching-aware features |
+| VGGSfM (referenced) | Differentiable SfM; contributes camera parametrisation to VGGT |
+| CoTracker (referenced) | Point tracking architecture whose backbone VGGT replaces downstream |
+| Fast3R (referenced) | Concurrent N-view feed-forward competitor (tensor parallelism) |
+| CUT3R (referenced) | Concurrent; persistent recurrent scene state |
+| VGGT-Omega (referenced) | 2026 successor addressing dynamic scenes and memory efficiency |
+
+---
+
+## Referenced Papers (no note yet)
+
+| Short Name | Full Title | Year | Referenced By |
+|---|---|---|---|
+| 3D-GS | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | 2023 | Scaffold-GS, GG, RAD |
+| XMem | Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model | 2022 | DEVA |
+| DINO | Emerging Properties in Self-Supervised Vision Transformers | 2021 | DINOv3 |
+| DINOv2 | DINOv2: Learning Robust Visual Features without Supervision | 2024 | DINOv3, VGGT |
+| DUSt3R | DUSt3R: Geometric 3D Vision Made Easy | 2024 | VGGT |
+| MASt3R | MASt3R: Grounding Image Matching in 3D | 2024 | VGGT |
+| VGGSfM | VGGSfM: Visual Geometry Grounded Deep Structure from Motion | 2024 | VGGT |
+| CoTracker | CoTracker: It Is Better to Track Together | 2024 | VGGT |
+| DPT | DPT: Vision Transformers for Dense Prediction | 2021 | VGGT |
+| Fast3R | Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass | 2025 | VGGT |
+| CUT3R | CUT3R: Continuous 3D Perception with Persistent State | 2025 | VGGT |
+| FLARE | FLARE: Feed-Forward Geometry, Appearance and Camera Estimation | 2025 | VGGT |
+| MV-DUSt3R+ | MV-DUSt3R+: Single-Stage Scene Reconstruction from Sparse Views | 2024 | VGGT |
+| VGGT-Omega | VGGT-Omega | 2026 | VGGT |
+| SceneVGGT | SceneVGGT: VGGT-based Online 3D Semantic SLAM | 2026 | VGGT |
+| 3D-Mix for VLA | 3D-Mix for VLA: Integrating VGGT-based 3D Information into VLA Models | 2026 | VGGT |
+| Quantized VGGT | Quantized Visual Geometry Grounded Transformer | 2025 | VGGT |
+| Web-DINO | Web-DINO: Scaling Language-Free Visual Representation Learning | 2025 | DINOv3 |
+| AM-RADIO | AM-RADIO v2.5: Improved Baselines for Agglomerative Vision Foundation Models | 2025 | DINOv3 |
+| SigLIP 2 | SigLIP 2: Multilingual Vision-Language Encoders with Improved Dense Features | 2025 | DINOv3 |
+| Perception Encoder | Perception Encoder: The Best Visual Embeddings Are Not at the Output | 2025 | DINOv3 |
+| Register Tokens | Vision Transformers Need Registers | 2024 | DINOv3 |
+| LLaMA | LLaMA: Open and Efficient Foundation Language Models | 2023 | LLaVA |
+| BLIP-2 | BLIP-2: Bootstrapping Language-Image Pre-Training with Frozen Image Encoders | 2023 | LLaVA |
+| LLaVA-1.5 | Improved Baselines with Visual Instruction Tuning | 2023 | LLaVA |
+| LLaVA-NeXT | LLaVA-NeXT: Improved Reasoning, OCR, and World Knowledge | 2024 | LLaVA |
