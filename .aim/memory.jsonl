@@ -90,11 +90,11 @@
 {"type":"entity","name":"CUT3R: Continuous 3D Perception with Persistent State","entityType":"paper","observations":["Year: 2025","Authors: Qianqian Wang, Yifei Zhang et al.","Published: arXiv 2025","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: CUT3R"]}
 {"type":"entity","name":"FLARE: Feed-Forward Geometry, Appearance and Camera Estimation","entityType":"paper","observations":["Year: 2025","Authors: Shangzhan Zhang, Jianyuan Wang et al.","Published: arXiv 2025","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: FLARE"]}
 {"type":"entity","name":"MV-DUSt3R+: Single-Stage Scene Reconstruction from Sparse Views","entityType":"paper","observations":["Year: 2024","Authors: Zhenggang Tang, Yuchen Fan et al.","Published: arXiv 2024","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: MV-DUSt3R+"]}
-{"type":"entity","name":"VGGT-Omega","entityType":"paper","observations":["Year: 2026","Authors: Wang et al. (Meta AI / Oxford)","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: VGGT-Omega"]}
+{"type":"entity","name":"VGGT-Omega","entityType":"paper","observations":["Year: 2026","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: VGGT-Omega","Authors: Jianyuan Wang, Minghao Chen, Shangzhan Zhang, Nikita Karaev, Johannes Schönberger, Patrick Labatut, Piotr Bojanowski, David Novotny, Andrea Vedaldi, Christian Rupprecht","Affiliations: Visual Geometry Group, University of Oxford; Meta AI","Published: CVPR 2026 (Oral, Best Paper Finalist), arXiv:2605.15195","Keywords: 3D reconstruction, camera pose estimation, depth estimation, feed-forward transformer, scaling laws, register attention, self-supervised learning, dynamic scenes","Path: 2026/VGGT-Omega/","Has note: true"]}
 {"type":"entity","name":"SceneVGGT: VGGT-based Online 3D Semantic SLAM","entityType":"paper","observations":["Year: 2026","Published: arXiv 2026","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: SceneVGGT"]}
 {"type":"entity","name":"3D-Mix for VLA: Integrating VGGT-based 3D Information into VLA Models","entityType":"paper","observations":["Year: 2026","Published: arXiv 2026","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: 3D-Mix for VLA"]}
 {"type":"entity","name":"Quantized Visual Geometry Grounded Transformer","entityType":"paper","observations":["Year: 2025","Published: arXiv 2025","Has note: false","Referenced by: VGGT: Visual Geometry Grounded Transformer","Short name: Quantized VGGT"]}
-{"type":"entity","name":"3D Reconstruction / Multi-view Stereo","entityType":"topic","observations":["Papers: VGGT: Visual Geometry Grounded Transformer, DUSt3R: Geometric 3D Vision Made Easy, MASt3R: Grounding Image Matching in 3D, VGGSfM: Visual Geometry Grounded Deep Structure from Motion, Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass, CUT3R: Continuous 3D Perception with Persistent State"]}
+{"type":"entity","name":"3D Reconstruction / Multi-view Stereo","entityType":"topic","observations":["Papers: VGGT: Visual Geometry Grounded Transformer, DUSt3R: Geometric 3D Vision Made Easy, MASt3R: Grounding Image Matching in 3D, VGGSfM: Visual Geometry Grounded Deep Structure from Motion, Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass, CUT3R: Continuous 3D Perception with Persistent State","Papers: VGGT-Omega"]}
 {"type":"entity","name":"CroCo: Self-Supervised Pre-Training for 3D Vision Tasks by Masking Cross-View Context","entityType":"paper","observations":["Year: 2022","Authors: Weinzaepfel et al.","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy"]}
 {"type":"entity","name":"An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale","entityType":"paper","observations":["Year: 2021","Authors: Dosovitskiy et al.","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy","Short name: ViT"]}
 {"type":"entity","name":"Structure-from-Motion Revisited","entityType":"paper","observations":["Year: 2016","Authors: Schönberger & Frahm","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy","Short name: COLMAP"]}
@@ -103,6 +103,15 @@
 {"type":"entity","name":"PoseDiffusion: Solving Structure-from-Motion via Diffusion","entityType":"paper","observations":["Year: 2023","Authors: Wang et al.","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy"]}
 {"type":"entity","name":"PixSfM: Pixel-Perfect Structure-from-Motion with Featuremetric Refinement","entityType":"paper","observations":["Year: 2021","Authors: Lindenberger et al.","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy"]}
 {"type":"entity","name":"RelPose: Predicting Probabilistic Multi-Object 3D Relationships from a Single Image","entityType":"paper","observations":["Year: 2022","Authors: Zhang et al.","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy"]}
+{"type":"entity","name":"An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT)","entityType":"paper","observations":["Year: 2021","Authors: Alexey Dosovitskiy et al.","Published: ICLR 2021","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy","Short name: ViT"]}
+{"type":"entity","name":"Structure-from-Motion Revisited (COLMAP)","entityType":"paper","observations":["Year: 2016","Authors: Schönberger & Frahm","Published: CVPR 2016","Has note: false","Referenced by: DUSt3R: Geometric 3D Vision Made Easy","Short name: COLMAP"]}
+{"type":"entity","name":"DINO: Self-Supervised Vision Transformers","entityType":"paper","observations":["Year: 2021","Authors: Caron et al.","Published: ICCV 2021","Has note: false","Referenced by: VGGT-Omega","Short name: DINO"]}
+{"type":"entity","name":"DINOv2 / DINOv3","entityType":"paper","observations":["Year: 2023","Authors: Oquab et al.","Published: TMLR 2024 (DINOv2); arXiv 2025 (DINOv3)","Has note: false","Referenced by: VGGT-Omega","Short name: DINOv2/DINOv3"]}
+{"type":"entity","name":"MegaSaM","entityType":"paper","observations":["Year: 2025","Authors: Li et al.","Published: arXiv 2025","Has note: false","Referenced by: VGGT-Omega","Short name: MegaSaM"]}
+{"type":"entity","name":"FlashVGGT: Efficient Visual Geometry Transformers with Compressed Descriptor Attention","entityType":"paper","observations":["Year: 2025","Published: arXiv 2025","Has note: false","Referenced by: VGGT-Omega","Short name: FlashVGGT"]}
+{"type":"entity","name":"HD-VGGT: High-Resolution Visual Geometry Transformer","entityType":"paper","observations":["Year: 2026","Published: arXiv 2026","Has note: false","Referenced by: VGGT-Omega","Short name: HD-VGGT"]}
+{"type":"entity","name":"VGGT-Edit: Feed-Forward Native 3D Scene Editing with Residual Field Prediction","entityType":"paper","observations":["Year: 2026","Published: arXiv 2026","Has note: false","Referenced by: VGGT-Omega","Short name: VGGT-Edit"]}
+{"type":"entity","name":"Dynamic Scenes","entityType":"topic","observations":["Papers: VGGT-Omega, CUT3R: Continuous 3D Perception with Persistent State, MegaSaM"]}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"XMem: Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model","relationType":"builds_on"}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"Segment Anything","relationType":"builds_on"}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"Mask2Former","relationType":"builds_on"}
@@ -246,3 +255,25 @@
 {"type":"relation","from":"DUSt3R: Geometric 3D Vision Made Easy","to":"VGGT: Visual Geometry Grounded Transformer","relationType":"succeeded_by"}
 {"type":"relation","from":"DUSt3R: Geometric 3D Vision Made Easy","to":"Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass","relationType":"succeeded_by"}
 {"type":"relation","from":"DUSt3R: Geometric 3D Vision Made Easy","to":"CUT3R: Continuous 3D Perception with Persistent State","relationType":"succeeded_by"}
+{"type":"relation","from":"DUSt3R: Geometric 3D Vision Made Easy","to":"An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT)","relationType":"builds_on"}
+{"type":"relation","from":"DUSt3R: Geometric 3D Vision Made Easy","to":"Structure-from-Motion Revisited (COLMAP)","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"VGGT: Visual Geometry Grounded Transformer","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"DUSt3R: Geometric 3D Vision Made Easy","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"MASt3R: Grounding Image Matching in 3D","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"DINOv2 / DINOv3","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"DINO: Self-Supervised Vision Transformers","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"VGGSfM: Visual Geometry Grounded Deep Structure from Motion","relationType":"builds_on"}
+{"type":"relation","from":"VGGT-Omega","to":"Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass","relationType":"competes_with"}
+{"type":"relation","from":"VGGT-Omega","to":"CUT3R: Continuous 3D Perception with Persistent State","relationType":"competes_with"}
+{"type":"relation","from":"VGGT-Omega","to":"FLARE: Feed-Forward Geometry, Appearance and Camera Estimation","relationType":"competes_with"}
+{"type":"relation","from":"VGGT-Omega","to":"MegaSaM","relationType":"competes_with"}
+{"type":"relation","from":"VGGT-Omega","to":"FlashVGGT: Efficient Visual Geometry Transformers with Compressed Descriptor Attention","relationType":"competes_with"}
+{"type":"relation","from":"VGGT-Omega","to":"SceneVGGT: VGGT-based Online 3D Semantic SLAM","relationType":"succeeded_by"}
+{"type":"relation","from":"VGGT-Omega","to":"3D-Mix for VLA: Integrating VGGT-based 3D Information into VLA Models","relationType":"succeeded_by"}
+{"type":"relation","from":"VGGT-Omega","to":"Quantized Visual Geometry Grounded Transformer","relationType":"succeeded_by"}
+{"type":"relation","from":"VGGT-Omega","to":"HD-VGGT: High-Resolution Visual Geometry Transformer","relationType":"succeeded_by"}
+{"type":"relation","from":"VGGT-Omega","to":"VGGT-Edit: Feed-Forward Native 3D Scene Editing with Residual Field Prediction","relationType":"succeeded_by"}
+{"type":"relation","from":"VGGT-Omega","to":"3D Reconstruction / Multi-view Stereo","relationType":"belongs_to"}
+{"type":"relation","from":"VGGT-Omega","to":"Dynamic Scenes","relationType":"belongs_to"}
+{"type":"relation","from":"CUT3R: Continuous 3D Perception with Persistent State","to":"Dynamic Scenes","relationType":"belongs_to"}
+{"type":"relation","from":"MegaSaM","to":"Dynamic Scenes","relationType":"belongs_to"}

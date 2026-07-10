@@ -1,6 +1,6 @@
 # Knowledge Graph
 
-Auto-generated from paper notes. Last updated: 2026-07-06.
+Auto-generated from paper notes. Last updated: 2026-07-10.
 
 ---
 
@@ -52,7 +52,11 @@ graph TD
         Fast3R["Fast3R\n2025"]:::noNote
         CUT3R["CUT3R\n2025"]:::noNote
         VGGT["VGGT\n2025"]:::y2025
-        VGGTOmega["VGGT-Omega\n2026"]:::noNote
+        VGGTOmega["VGGT-Ω\n2026"]:::y2026
+    end
+
+    subgraph Dyn["Dynamic Scenes"]
+        MegaSaM["MegaSaM\n2025"]:::noNote
     end
 
     SAM -->|succeeded_by| SAM2
@@ -73,6 +77,7 @@ graph TD
     DINO -->|succeeded_by| DINOv2
     DINOv2 -->|succeeded_by| DINOv3
     DINOv3 -.->|downstream_app| VGGT
+    DINOv3 -.->|downstream_app| VGGTOmega
 
     DUSt3R -->|succeeded_by| MASt3R
     DUSt3R -->|succeeded_by| VGGT
@@ -84,6 +89,10 @@ graph TD
     VGGT -->|competes_with| Fast3R
     VGGT -->|competes_with| CUT3R
     VGGT -->|succeeded_by| VGGTOmega
+    VGGTOmega -->|builds_on| VGGT
+    VGGTOmega -->|competes_with| Fast3R
+    VGGTOmega -->|competes_with| CUT3R
+    VGGTOmega -->|competes_with| MegaSaM
 
     LLaVA -->|succeeded_by| VLMSurv
 ```
@@ -120,6 +129,7 @@ graph TD
 | [RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/) | RAD | 2025 | NeurIPS 2025 | autonomous driving, RL, 3DGS, end-to-end | ✅ |
 | [VGGT: Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | VGGT | 2025 | CVPR 2025 🏆 | 3D reconstruction, camera pose, depth, point tracking, feed-forward transformer | ✅ |
 | [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/) | VLM Survey | 2025 | arXiv 2025 | VLMs, survey, bibliometrics, multimodal LLMs | ✅ |
+| [VGGT-Ω](2026/VGGT-Omega/) | VGGT-Ω | 2026 | CVPR 2026 Oral 🏅 | 3D reconstruction, scaling laws, register attention, self-supervised learning, dynamic scenes | ✅ |
 
 ---
 
@@ -182,30 +192,46 @@ graph TD
 
 ### Self-Supervised Learning / Vision Foundation Models
 **Papers with notes:** DINOv3  
-**Key chain:** DINO → DINOv2 → DINOv3 ⟶ (downstream) VGGT
+**Key chain:** DINO → DINOv2 → DINOv3 ⟶ (downstream) VGGT → VGGT-Ω
 
 | Paper | Role |
 |---|---|
 | DINOv3 | 7B-parameter SSL ViT with Gram anchoring; SOTA dense features for segmentation, depth, detection |
 | DINOv2 (referenced) | Predecessor; frozen tokeniser used by VGGT; succeeded by DINOv3 |
-| DINO (referenced) | Original self-distillation objective; foundational SSL approach |
+| DINO (referenced) | Original self-distillation objective; teacher-student EMA protocol adopted by VGGT-Ω |
 
 ---
 
 ### 3D Reconstruction / Multi-view Stereo
-**Papers with notes:** DUSt3R · VGGT  
-**Key chain:** DUSt3R → MASt3R · DUSt3R → VGGT → VGGT-Omega
+**Papers with notes:** DUSt3R · VGGT · VGGT-Ω  
+**Key chain:** DUSt3R → MASt3R → VGGT → VGGT-Ω
 
 | Paper | Role |
 |---|---|
 | DUSt3R | CVPR 2024; defines the pointmap regression paradigm for uncalibrated pairwise 3D reconstruction |
 | VGGT | CVPR 2025 Best Paper; feed-forward N-view 3D reconstruction (cameras, depth, pointmaps, tracks) in one pass |
+| VGGT-Ω | CVPR 2026 Oral; scales VGGT via register attention + self-supervised learning; adds dynamic scene support and demonstrates power-law scaling |
 | MASt3R (referenced) | Extends DUSt3R with matching-aware features; between DUSt3R and VGGT in the chain |
-| VGGSfM (referenced) | Differentiable SfM; contributes camera parametrisation to VGGT |
-| CoTracker (referenced) | Point tracking architecture whose backbone VGGT replaces downstream |
+| VGGSfM (referenced) | Differentiable SfM; contributes camera parametrisation to VGGT and VGGT-Ω |
 | Fast3R (referenced) | Concurrent N-view feed-forward competitor (tensor parallelism) |
-| CUT3R (referenced) | Concurrent; persistent recurrent scene state |
-| VGGT-Omega (referenced) | 2026 successor addressing dynamic scenes and memory efficiency |
+| CUT3R (referenced) | Concurrent; persistent recurrent scene state; also handles dynamic scenes |
+| MegaSaM (referenced) | Dynamic scene reconstruction baseline; VGGT-Ω is 50× faster |
+| FlashVGGT (referenced) | Compressed descriptor attention variant; concurrent efficiency approach |
+| HD-VGGT (referenced) | 2026 extension adding high-resolution dense prediction |
+| VGGT-Edit (referenced) | 2026 extension for native 3D scene editing using VGGT-Ω backbone |
+| SceneVGGT (referenced) | 2026 online 3D semantic SLAM built on VGGT-Ω |
+
+---
+
+### Dynamic Scenes
+**Papers with notes:** VGGT-Ω  
+**Related (referenced):** CUT3R · MegaSaM
+
+| Paper | Role |
+|---|---|
+| VGGT-Ω | First in this repo to systematically tackle dynamic scene reconstruction in a feed-forward model |
+| CUT3R (referenced) | Recurrent persistent state for video-length dynamic perception |
+| MegaSaM (referenced) | Optimization-based dynamic scene reconstruction; VGGT-Ω is 50× faster |
 
 ---
 
@@ -214,18 +240,21 @@ graph TD
 | Short Name | Full Title | Year | Referenced By |
 |---|---|---|---|
 | 3D-GS | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | 2023 | Scaffold-GS, GG, RAD |
-| MASt3R | MASt3R: Grounding Image Matching in 3D | 2024 | VGGT, DUSt3R |
-| VGGSfM | VGGSfM: Visual Geometry Grounded Deep Structure from Motion | 2024 | VGGT |
+| MASt3R | MASt3R: Grounding Image Matching in 3D | 2024 | VGGT, DUSt3R, VGGT-Ω |
+| VGGSfM | VGGSfM: Visual Geometry Grounded Deep Structure from Motion | 2024 | VGGT, VGGT-Ω |
 | CoTracker | CoTracker: It Is Better to Track Together | 2024 | VGGT |
 | DPT | DPT: Vision Transformers for Dense Prediction | 2021 | VGGT, DUSt3R |
-| Fast3R | Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass | 2025 | VGGT, DUSt3R |
-| CUT3R | CUT3R: Continuous 3D Perception with Persistent State | 2025 | VGGT, DUSt3R |
-| FLARE | FLARE: Feed-Forward Geometry, Appearance and Camera Estimation | 2025 | VGGT |
+| Fast3R | Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass | 2025 | VGGT, DUSt3R, VGGT-Ω |
+| CUT3R | CUT3R: Continuous 3D Perception with Persistent State | 2025 | VGGT, DUSt3R, VGGT-Ω |
+| FLARE | FLARE: Feed-Forward Geometry, Appearance and Camera Estimation | 2025 | VGGT, VGGT-Ω |
 | MV-DUSt3R+ | MV-DUSt3R+: Single-Stage Scene Reconstruction from Sparse Views | 2024 | VGGT |
-| VGGT-Omega | VGGT-Omega | 2026 | VGGT |
-| SceneVGGT | SceneVGGT: VGGT-based Online 3D Semantic SLAM | 2026 | VGGT |
-| 3D-Mix for VLA | 3D-Mix for VLA: Integrating VGGT-based 3D Information into VLA Models | 2026 | VGGT |
-| Quantized VGGT | Quantized Visual Geometry Grounded Transformer | 2025 | VGGT |
+| MegaSaM | MegaSaM | 2025 | VGGT-Ω |
+| FlashVGGT | FlashVGGT: Efficient Visual Geometry Transformers with Compressed Descriptor Attention | 2025 | VGGT-Ω |
+| SceneVGGT | SceneVGGT: VGGT-based Online 3D Semantic SLAM | 2026 | VGGT, VGGT-Ω |
+| 3D-Mix for VLA | 3D-Mix for VLA: Integrating VGGT-based 3D Information into VLA Models | 2026 | VGGT, VGGT-Ω |
+| Quantized VGGT | Quantized Visual Geometry Grounded Transformer | 2025 | VGGT, VGGT-Ω |
+| HD-VGGT | HD-VGGT: High-Resolution Visual Geometry Transformer | 2026 | VGGT-Ω |
+| VGGT-Edit | VGGT-Edit: Feed-Forward Native 3D Scene Editing with Residual Field Prediction | 2026 | VGGT-Ω |
 | CroCo | CroCo: Self-Supervised Pre-Training for 3D Vision Tasks by Masking Cross-View Context | 2022 | DUSt3R |
 | ViT | An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale | 2021 | DUSt3R |
 | COLMAP | Structure-from-Motion Revisited | 2016 | DUSt3R |
@@ -233,8 +262,11 @@ graph TD
 | MegaDepth | MegaDepth: Learning Single-View Depth Prediction from Internet Photos | 2018 | DUSt3R |
 | PoseDiffusion | PoseDiffusion: Solving Structure-from-Motion via Diffusion | 2023 | DUSt3R |
 | PixSfM | PixSfM: Pixel-Perfect Structure-from-Motion with Featuremetric Refinement | 2021 | DUSt3R |
+| RelPose | RelPose: Predicting Probabilistic Multi-Object 3D Relationships from a Single Image | 2022 | DUSt3R |
 | DINOv2 | DINOv2: Learning Robust Visual Features without Supervision | 2024 | DINOv3, VGGT |
-| DINO | Emerging Properties in Self-Supervised Vision Transformers | 2021 | DINOv3 |
+| DINO | Emerging Properties in Self-Supervised Vision Transformers | 2021 | DINOv3, VGGT-Ω |
+| DINO (SSL, VGGT-Ω ref) | DINO: Self-Supervised Vision Transformers | 2021 | VGGT-Ω |
+| DINOv2/DINOv3 | DINOv2 / DINOv3 | 2023/2025 | VGGT-Ω |
 | Web-DINO | Web-DINO: Scaling Language-Free Visual Representation Learning | 2025 | DINOv3 |
 | AM-RADIO | AM-RADIO v2.5: Improved Baselines for Agglomerative Vision Foundation Models | 2025 | DINOv3 |
 | SigLIP 2 | SigLIP 2: Multilingual Vision-Language Encoders with Improved Dense Features | 2025 | DINOv3 |
