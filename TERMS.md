@@ -1,0 +1,26 @@
+# Glossary
+
+Shared abbreviation reference for all paper notes. See individual notes for paper-specific context.
+
+| Term | Expansion | Brief Definition |
+|------|-----------|-----------------|
+| 3DGS | 3D Gaussian Splatting | Scene representation using millions of anisotropic 3D Gaussians optimized for novel-view synthesis. |
+| BA | Bundle Adjustment | Joint non-linear optimization of camera poses and 3D point positions to minimize reprojection error. |
+| CLIP | Contrastive Language-Image Pre-training | OpenAI model trained to align image and text embeddings via contrastive loss on 400M image-text pairs. |
+| COLMAP | — | Widely-used open-source SfM + MVS pipeline (Schönberger & Frahm, CVPR 2016). |
+| DPT | Dense Prediction Transformer | Decoder head that fuses multi-scale ViT features through progressive convolutional upsampling to full resolution. |
+| EMA | Exponential Moving Average | Weight update rule for teacher networks: θ_T ← m·θ_T + (1−m)·θ_S; keeps teacher a slow-moving ensemble of the student. |
+| FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |
+| FLOPs | Floating Point Operations | Hardware-agnostic measure of computation cost (multiply-adds). |
+| FoV | Field of View | Angular extent of the scene visible to a camera; determined by focal length and sensor size. |
+| InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
+| LLM | Large Language Model | Transformer-based model trained on large text corpora for general language understanding and generation (e.g., GPT-4, LLaMA). |
+| MLP | Multi-Layer Perceptron | Fully-connected feedforward neural network. |
+| MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
+| NeRF | Neural Radiance Fields | Implicit scene representation as a continuous function (MLP or hash grid) mapping 3D position + view direction to color and density. |
+| NVS | Novel View Synthesis | Task of rendering a scene from a viewpoint not present in the input images. |
+| SfM | Structure from Motion | Pipeline that estimates 3D scene structure and camera poses from unordered 2D images via feature matching and bundle adjustment. |
+| SLAM | Simultaneous Localization and Mapping | Problem of building a map of an unknown environment while tracking an agent's position within it in real time. |
+| ViT | Vision Transformer | Transformer architecture applied to sequences of flattened image patches (Dosovitskiy et al., ICLR 2021). |
+| VLA | Vision-Language-Action model | Robot policy that takes image observations + natural-language instructions as input and outputs low-level actions (e.g., RT-2, OpenVLA). |
+| VLM | Vision-Language Model | Model trained on image-text pairs to align visual and language representations (e.g., CLIP, LLaVA, GPT-4V). |
