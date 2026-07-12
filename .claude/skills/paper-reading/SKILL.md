@@ -222,6 +222,28 @@ The `resources/` subdirectory holds the MinerU-converted `paper.md` (if
 conversion was run) plus any screenshots or figures extracted from the PDF.
 Create it before running `mineru_doc2md` so the output lands there directly.
 
+### Handling abbreviations
+
+Before writing, read `TERMS.md` at the repo root to know what is already
+registered. Then, at **first use** of each abbreviation in the note, apply
+this two-tier rule:
+
+**Tier 1 — common field term (in TERMS.md or should be):**
+Use a brief one-liner footnote and point to TERMS.md:
+```
+[^N]: **TERM** — Expansion. See [TERMS.md](/TERMS.md).
+```
+If the term is genuinely field-standard (appears across multiple papers in
+this area) but is not yet in TERMS.md, **add a row to TERMS.md** before
+writing the footnote. Keep TERMS.md alphabetically sorted.
+
+**Tier 2 — paper-specific term:**
+If the abbreviation is coined by or only meaningful in the context of this
+paper and its direct works, write a full inline footnote explaining the
+concept (no TERMS.md entry needed).
+
+---
+
 ### README.md content
 
 The note goes into `{year}/{Paper_Title}/README.md`. It starts with a
