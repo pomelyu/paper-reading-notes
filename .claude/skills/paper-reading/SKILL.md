@@ -299,6 +299,38 @@ If the paper is long and you are missing key sections (e.g., the appendix or
 supplementary), say so explicitly and ask the user to provide those pages
 rather than guessing.
 
+### Linking to existing notes
+
+Papers are more useful when they connect to each other. Apply this rule in
+two directions.
+
+**Forward links (while writing):** Whenever you mention a paper by title in
+the note — in the Pass 1 Context row, Pass 2 References to Follow Up,
+Pass 3 body text, or Pass 4 comparison tables — check whether that paper
+already has a note in this repo. Use the knowledge graph (`Has note: true`
+observation) or check for `{year}/{folder}/README.md` on disk. If a note
+exists, wrap the title with a relative markdown link:
+
+```
+[Paper Title](../../{year}/{folder_name}/)
+```
+
+The relative path starts with `../../` because the current note is two
+directories deep (`{year}/{folder}/README.md`).
+
+**Backward links (after writing):** Before or immediately after writing the
+note, check the knowledge graph for papers that already mention this paper
+as a successor, predecessor, or competitor. For each such paper where
+`Has note: true`, open its README and find every plain-text mention of the
+current paper's title. Wrap each mention with a markdown link pointing back
+to the new note, using the same relative path convention (but now calculated
+from the other note's location).
+
+If the knowledge graph is not available, skip the backward pass — the
+`update-graph` skill will handle cross-linking during the next graph update.
+
+---
+
 ### Updating the index
 
 After writing the note, register it in the root `README.md` index
