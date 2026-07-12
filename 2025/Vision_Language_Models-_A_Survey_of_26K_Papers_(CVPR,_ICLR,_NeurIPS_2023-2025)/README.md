@@ -256,6 +256,6 @@ This paper occupies an unusual but valuable niche: it is neither a method contri
 
 ---
 
-[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
-[^2]: **InfoNCE** — Information Noise-Contrastive Estimation. See `TERMS.md` at the repo root.
-[^3]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
+[^1]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).
+[^2]: **InfoNCE** — Information Noise-Contrastive Estimation. See the [glossary](../../common/terms/).
+[^3]: **SLAM** — Simultaneous Localization and Mapping. See the [glossary](../../common/terms/).

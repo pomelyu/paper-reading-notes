@@ -186,4 +186,4 @@ However, the paper is very new (v3, May 2026) with no independent external valid
 
 ---
 
-[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
+[^1]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).

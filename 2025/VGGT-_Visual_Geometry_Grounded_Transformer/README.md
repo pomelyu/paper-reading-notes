@@ -229,9 +229,9 @@ VGGT is a landmark paper that genuinely shifts the 3D reconstruction paradigm: i
 
 ---
 
-[^1]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
-[^2]: **MVS** — Multi-View Stereo. See `TERMS.md` at the repo root.
-[^3]: **BA** — Bundle Adjustment. See `TERMS.md` at the repo root.
-[^4]: **NVS** — Novel View Synthesis. See `TERMS.md` at the repo root.
-[^5]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
-[^6]: **VLA** — Vision-Language-Action model. See `TERMS.md` at the repo root.
+[^1]: **DPT** — Dense Prediction Transformer. See the [glossary](../../common/terms/).
+[^2]: **MVS** — Multi-View Stereo. See the [glossary](../../common/terms/).
+[^3]: **BA** — Bundle Adjustment. See the [glossary](../../common/terms/).
+[^4]: **NVS** — Novel View Synthesis. See the [glossary](../../common/terms/).
+[^5]: **SLAM** — Simultaneous Localization and Mapping. See the [glossary](../../common/terms/).
+[^6]: **VLA** — Vision-Language-Action model. See the [glossary](../../common/terms/).

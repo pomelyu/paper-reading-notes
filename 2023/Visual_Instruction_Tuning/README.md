@@ -231,4 +231,4 @@ LLaVA is a foundational paper and remains essential reading. Its contribution is
 
 ---
 
-[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
+[^1]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).

@@ -207,4 +207,4 @@ LangSplat is a clean, well-executed paper that made two important contributions 
 
 ---
 
-[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
+[^1]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).

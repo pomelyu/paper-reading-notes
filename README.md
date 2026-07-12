@@ -1,4 +1,8 @@
 # Paper Notes
+
+### Common
+- [Technical Terms](common/terms/README.md)
+
 ### 2026
 - [ ] [VGGT-Ω](2026/VGGT-Omega/)
 

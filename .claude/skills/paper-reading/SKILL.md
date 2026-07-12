@@ -224,37 +224,40 @@ Create it before running `mineru_doc2md` so the output lands there directly.
 
 ### Handling abbreviations
 
-Before writing, read `TERMS.md` at the repo root. It has two sections:
+Before writing, read the glossary at `common/terms/README.md` (repo root).
+It has two sections:
 
 - **`## Terms needs footnote`** — field terms that still need a footnote at
   first use in each note.
 - **`## Commonly-used Terms`** — terms the user already knows well. **Never
   write a footnote for these.** Use them plainly in the text with no
-  footnote, no expansion, no TERMS.md link.
+  footnote, no expansion, no glossary link.
 
 Then, at **first use** of each abbreviation in the note, apply this rule:
 
 **Case 1 — term is in `## Commonly-used Terms`:** skip entirely. No footnote.
 
 **Case 2 — term is in `## Terms needs footnote`:**
-Use a brief one-liner footnote with a plain-text pointer to TERMS.md.
-**Never use a markdown link for TERMS.md** — relative paths resolve
-differently on GitHub `tree/` vs `blob/` pages and break in footnotes:
+Use a brief one-liner footnote linking to the glossary. The glossary lives
+in its own directory (`common/terms/`) precisely so that a relative
+**directory** link renders correctly on both GitHub `tree/` and `blob/`
+pages — always link to the directory, never to `README.md` directly:
 ```
-[^N]: **TERM** — Expansion. See `TERMS.md` at the repo root.
+[^N]: **TERM** — Expansion. See the [glossary](../../common/terms/).
 ```
 
-**Case 3 — field-standard term not yet in TERMS.md:**
+**Case 3 — field-standard term not yet in the glossary:**
 If the term is genuinely field-standard (appears across multiple papers in
 this area), **add a row to the `## Terms needs footnote` section** of
-TERMS.md — new terms always go there, never into `## Commonly-used Terms`
-(only the user moves terms into that section). Keep each section
-alphabetically sorted. Then write the footnote as in Case 2.
+`common/terms/README.md` — new terms always go there, never into
+`## Commonly-used Terms` (only the user moves terms into that section).
+Keep each section alphabetically sorted. Then write the footnote as in
+Case 2.
 
 **Case 4 — paper-specific term:**
 If the abbreviation is coined by or only meaningful in the context of this
 paper and its direct works, write a full inline footnote explaining the
-concept (no TERMS.md entry needed).
+concept (no glossary entry needed).
 
 ---
 

@@ -233,5 +233,5 @@ DUSt3R is essential reading for anyone working in 3D reconstruction, camera pose
 
 ---
 
-[^1]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
-[^2]: **MVS** — Multi-View Stereo. See `TERMS.md` at the repo root.
+[^1]: **DPT** — Dense Prediction Transformer. See the [glossary](../../common/terms/).
+[^2]: **MVS** — Multi-View Stereo. See the [glossary](../../common/terms/).

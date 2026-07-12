@@ -263,5 +263,5 @@ MonoGS is a foundational paper that launched the GS-SLAM research direction and 
 
 ---
 
-[^1]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
-[^2]: **NVS** — Novel View Synthesis. See `TERMS.md` at the repo root.
+[^1]: **SLAM** — Simultaneous Localization and Mapping. See the [glossary](../../common/terms/).
+[^2]: **NVS** — Novel View Synthesis. See the [glossary](../../common/terms/).

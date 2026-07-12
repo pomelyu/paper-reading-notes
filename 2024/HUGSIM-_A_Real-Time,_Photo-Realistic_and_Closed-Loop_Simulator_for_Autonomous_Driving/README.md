@@ -258,4 +258,4 @@ HUGSIM represents a significant and practical contribution to the autonomous dri
 
 ---
 
-[^1]: **NVS** — Novel View Synthesis. See `TERMS.md` at the repo root.
+[^1]: **NVS** — Novel View Synthesis. See the [glossary](../../common/terms/).

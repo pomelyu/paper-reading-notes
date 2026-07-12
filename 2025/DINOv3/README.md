@@ -230,6 +230,6 @@ DINOv3 is a foundational paper for the SSL vision encoder field and is very much
 
 ---
 
-[^1]: **FFN** — Feed-Forward Network. See `TERMS.md` at the repo root.
-[^2]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
-[^3]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
+[^1]: **FFN** — Feed-Forward Network. See the [glossary](../../common/terms/).
+[^2]: **DPT** — Dense Prediction Transformer. See the [glossary](../../common/terms/).
+[^3]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).

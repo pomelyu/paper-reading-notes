@@ -234,4 +234,4 @@ Dynamic 3D Gaussians is a foundational paper that every researcher working on dy
 
 ---
 
-[^1]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
+[^1]: **SLAM** — Simultaneous Localization and Mapping. See the [glossary](../../common/terms/).

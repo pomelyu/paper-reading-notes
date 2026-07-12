@@ -246,4 +246,4 @@ ObjectGS is a well-executed paper with a clean central insight: that continuous 
 
 ---
 
-[^1]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
+[^1]: **SLAM** — Simultaneous Localization and Mapping. See the [glossary](../../common/terms/).

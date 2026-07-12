@@ -260,8 +260,8 @@ VGGT-Ω is essential reading for anyone working on feed-forward 3D reconstructio
 
 ---
 
-[^1]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
-[^2]: **VLA** — Vision-Language-Action model. See `TERMS.md` at the repo root.
-[^3]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
-[^4]: **FFN** — Feed-Forward Network. See `TERMS.md` at the repo root.
-[^5]: **InfoNCE** — Information Noise-Contrastive Estimation. See `TERMS.md` at the repo root.
+[^1]: **DPT** — Dense Prediction Transformer. See the [glossary](../../common/terms/).
+[^2]: **VLA** — Vision-Language-Action model. See the [glossary](../../common/terms/).
+[^3]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).
+[^4]: **FFN** — Feed-Forward Network. See the [glossary](../../common/terms/).
+[^5]: **InfoNCE** — Information Noise-Contrastive Estimation. See the [glossary](../../common/terms/).
