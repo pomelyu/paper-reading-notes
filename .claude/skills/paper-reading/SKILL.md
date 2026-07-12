@@ -183,6 +183,7 @@ with headers `| Paper | Authors | Year | Relation |`:
   roughly the same time with a different approach
 - **#### Successors / Extensions** — later papers that extend, improve, or
   challenge this work
+Always add the baselines from the paper's experiments to the comparison table
 
 Then another `---` divider, followed by:
 
