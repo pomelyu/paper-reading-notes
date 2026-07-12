@@ -237,9 +237,11 @@ Then, at **first use** of each abbreviation in the note, apply this rule:
 **Case 1 — term is in `## Commonly-used Terms`:** skip entirely. No footnote.
 
 **Case 2 — term is in `## Terms needs footnote`:**
-Use a brief one-liner footnote and point to TERMS.md:
+Use a brief one-liner footnote with a plain-text pointer to TERMS.md.
+**Never use a markdown link for TERMS.md** — relative paths resolve
+differently on GitHub `tree/` vs `blob/` pages and break in footnotes:
 ```
-[^N]: **TERM** — Expansion. See [TERMS.md](/TERMS.md).
+[^N]: **TERM** — Expansion. See `TERMS.md` at the repo root.
 ```
 
 **Case 3 — field-standard term not yet in TERMS.md:**
