@@ -14,7 +14,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Method paper combining dynamic scene reconstruction, novel-view synthesis, and dense 6-DOF point tracking in a single unified framework |
-| **Context** | Extends 3D Gaussian Splatting (Kerbl et al., SIGGRAPH 2023) to dynamic scenes; draws on non-rigid physical modelling (local rigidity priors from SLAM/reconstruction), and the emerging literature on long-term point tracking (PIPs, TAP-Vid, OmniMotion) |
+| **Context** | Extends 3D Gaussian Splatting (Kerbl et al., SIGGRAPH 2023) to dynamic scenes; draws on non-rigid physical modelling (local rigidity priors from SLAM[^1]/reconstruction), and the emerging literature on long-term point tracking (PIPs, TAP-Vid, OmniMotion) |
 | **Correctness** | Assumptions are physically motivated and well-grounded; local rigidity is a reasonable prior for most solid-object scenes; the multi-camera requirement is acknowledged as a limitation; minor concern over reliance on background frame-differencing for segmentation |
 | **Contributions** | (1) First method to use 3D Gaussians for dynamic scene reconstruction; (2) Dense full 6-DOF scene tracking emerging purely from persistent view synthesis, without any optical flow or correspondence input; (3) New PanopticSports benchmark; (4) Multiple downstream applications (first-person view, scene editing, 4D composition) |
 | **Clarity** | Well-written and logically structured; motivation is compelling; figures and tables effectively support the narrative |
@@ -231,3 +231,7 @@ D3DGS is widely regarded as a landmark paper that established the paradigm of tr
 ### Bottom Line
 
 Dynamic 3D Gaussians is a foundational paper that every researcher working on dynamic scene reconstruction or 4D content creation should read. Its conceptual contribution — that freezing appearance and letting position drift under physical priors is sufficient to produce accurate dense 6-DOF tracking as a side effect of rendering — is elegant, practically effective, and has seeded an entire subfield. The specific limitations (multi-camera, no new objects) are now mostly addressed in successor work, but the core idea remains highly influential. The paper's writing is clear, the experiments are thorough for their time, and the downstream applications (Fig. 7) still convey an inspiring vision. It is best read as a foundational classic of the 4D Gaussian era, not as a deployable system for real-world video.
+
+---
+
+[^1]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.

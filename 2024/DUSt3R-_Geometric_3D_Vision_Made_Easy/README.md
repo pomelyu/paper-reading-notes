@@ -17,9 +17,9 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Dense 3D reconstruction / geometry estimation; supervised feed-forward regression |
-| **Context** | Builds on CroCo cross-view completion pretraining; uses ViT encoder + DPT head; motivated by the fragility and complexity of traditional SfM pipelines (COLMAP) that require calibrated cameras, separate matching, and sequential bundle adjustment |
+| **Context** | Builds on CroCo cross-view completion pretraining; uses ViT encoder + DPT[^1] head; motivated by the fragility and complexity of traditional SfM pipelines (COLMAP) that require calibrated cameras, separate matching, and sequential bundle adjustment |
 | **Correctness** | Assumptions appear valid: pointmaps are a natural, camera-agnostic 3D representation; the global alignment step is principled (Weiszfeld/gradient-descent in 3D). The claim that 3D regression is easier than 2D matching is empirically supported but theoretically informal |
-| **Contributions** | (1) Pointmap representation as a unified 3D output target; (2) DUSt3R pairwise network that jointly estimates two pointmaps and confidence maps for any uncalibrated image pair; (3) global alignment procedure extending pairwise estimates to consistent N-view reconstructions; (4) SOTA results on multi-view pose, monocular depth, MVS, and visual localization |
+| **Contributions** | (1) Pointmap representation as a unified 3D output target; (2) DUSt3R pairwise network that jointly estimates two pointmaps and confidence maps for any uncalibrated image pair; (3) global alignment procedure extending pairwise estimates to consistent N-view reconstructions; (4) SOTA results on multi-view pose, monocular depth, MVS[^2], and visual localization |
 | **Clarity** | Clearly written; the pointmap concept is introduced early and consistently used throughout; good ablations; appendix covers training details and extended experiments |
 
 ### 30-Second Summary
@@ -230,3 +230,8 @@ DUSt3R's core claim — that 3D reconstruction can be recast as pointmap regress
 ### Bottom Line
 
 DUSt3R is essential reading for anyone working in 3D reconstruction, camera pose estimation, or multi-view geometry. It defines the pointmap regression paradigm that now underpins an entire generation of feed-forward reconstruction systems. The specific network architecture and global alignment procedure have been surpassed by VGGT and MASt3R, but the conceptual contribution — unifying depth, camera, and correspondence estimation into a single regression target — remains the defining idea of this research line. Read it as the foundational paper before reading any of its successors.
+
+---
+
+[^1]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
+[^2]: **MVS** — Multi-View Stereo. See `TERMS.md` at the repo root.

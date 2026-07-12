@@ -13,7 +13,7 @@
 
 | C | Assessment |
 |---|-----------|
-| **Category** | Systems paper introducing the first monocular SLAM system that uses 3D Gaussian Splatting as its sole scene representation, unifying tracking, mapping, and rendering |
+| **Category** | Systems paper introducing the first monocular SLAM[^1] system that uses 3D Gaussian Splatting as its sole scene representation, unifying tracking, mapping, and rendering |
 | **Context** | Builds on 3DGS (Kerbl et al., SIGGRAPH 2023), map-centric dense SLAM (iMAP, NICE-SLAM, Point-SLAM), and direct visual odometry (DSO); extends 3DGS to online settings by deriving Lie-group camera Jacobians |
 | **Correctness** | Technically sound; analytic Jacobians are derived step by step and validated empirically; ablations cover all major design choices; results averaged over 3 runs on standard benchmarks |
 | **Contributions** | (1) First near-real-time SLAM with 3DGS as the only representation supporting monocular input; (2) analytic SE(3) Jacobians for direct Gaussian-based pose estimation; (3) isotropic Gaussian regularization for incremental reconstruction; (4) Gaussian covisibility-based keyframe management with visibility-aware pruning |
@@ -175,7 +175,7 @@ penalizes the scale vector $s_i$ of each Gaussian by its deviation from its own 
 
 **Lie Group Jacobian Derivation (summary).** The left-perturbation Jacobian $D \mu_C / D T_{CW}$ is computed by applying $\text{Exp}(\tau)$ to the current pose and taking the Lie derivative, yielding $[I \; | \; -\mu_C^\times]$ — a $3 \times 6$ matrix combining translational and rotational sensitivities. For the rotation-only covariance Jacobian, $D W / D T_{CW} = [0 \; | \; -W_{:,2}^\times]$ is derived by noting that $\partial W / \partial \theta_x = e_1^\times W$ (and similarly for $y, z$), stacking column-wise after vectorization.
 
-**System Runtime.** Multi-process implementation (tracking and mapping in parallel): ~3.2 FPS monocular, ~2.5 FPS RGB-D on fr3/office (3491 frames, RTX 4090). Rendering FPS (forward pass only): 769 FPS at 1200×680 for Replica. Memory: 2.6 MB mono / 3.97 MB RGB-D (compared to ~300–700 MB for offline 3DGS on standard NVS benchmarks, because SH is omitted and pruning is aggressive).
+**System Runtime.** Multi-process implementation (tracking and mapping in parallel): ~3.2 FPS monocular, ~2.5 FPS RGB-D on fr3/office (3491 frames, RTX 4090). Rendering FPS (forward pass only): 769 FPS at 1200×680 for Replica. Memory: 2.6 MB mono / 3.97 MB RGB-D (compared to ~300–700 MB for offline 3DGS on standard NVS[^2] benchmarks, because SH is omitted and pruning is aggressive).
 
 ### Hidden Assumptions
 
@@ -260,3 +260,8 @@ MonoGS has been strongly accepted — it received a CVPR 2024 Highlight and Best
 ### Bottom Line
 
 MonoGS is a foundational paper that launched the GS-SLAM research direction and remains essential reading for anyone working on dense visual SLAM. Its core contributions — the SE(3) Lie-group Jacobians for 3DGS tracking, isotropic regularization, and covisibility-based keyframe management — are now standard building blocks adopted widely in subsequent work. The convergence basin analysis is one of the clearest demonstrations in the literature of why 3DGS is a superior representation for localization. The paper is not superseded: it is the canonical reference for monocular GS-SLAM, and understanding it is prerequisite for reading the large body of follow-on work. Its limitations (no loop closure, ~3 FPS, static scenes only) are well-known and have been addressed by successors, but MonoGS's unified-representation philosophy and analytic Jacobian derivation remain the intellectual core of the field.
+
+---
+
+[^1]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
+[^2]: **NVS** — Novel View Synthesis. See `TERMS.md` at the repo root.

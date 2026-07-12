@@ -149,7 +149,7 @@ where $\phi_{canon}^i \in \{\text{"object"}, \text{"things"}, \text{"stuff"}, \t
 1. **Feed-forward language Gaussians:** Train a network to predict per-Gaussian language features from images in a single forward pass, eliminating 30k-iteration per-scene optimization.
 2. **Universal autoencoder:** Rather than a per-scene autoencoder, train a scene-agnostic compressor using a diverse dataset of scenes — would enable zero-shot deployment.
 3. **Dynamic scenes:** Combine with Dynamic 3D Gaussians (Luiten et al.) to build time-varying language fields for grounding queries in dynamic videos.
-4. **Beyond CLIP:** Replace CLIP with stronger vision-language models (BLIP-2, SigLIP, or large VLMs) for richer semantic queries including spatial relations and attributes.
+4. **Beyond CLIP:** Replace CLIP with stronger vision-language models (BLIP-2, SigLIP, or large VLMs[^1]) for richer semantic queries including spatial relations and attributes.
 5. **Hierarchical query refinement:** Instead of selecting one of three fixed semantic levels, train a continuous selector that can interpolate between levels based on query specificity.
 6. **Cross-scene generalization:** Transfer learned language features from a source scene to a similar target scene without full retraining, leveraging shared object vocabularies.
 
@@ -204,3 +204,7 @@ LangSplat has been widely accepted as a foundational contribution. The core clai
 ### Bottom Line
 
 LangSplat is a clean, well-executed paper that made two important contributions at the right moment: (1) it demonstrated that 3DGS is dramatically better than NeRF for language field rendering, and (2) it showed SAM's hierarchical masks are a superior supervision signal to multi-scale patch crops. Both insights were non-obvious at publication and have been validated by the community. The paper is worth reading as the foundational 3D language Gaussian paper — it is frequently cited and serves as the starting point for most subsequent work combining 3DGS with language models. Its weaknesses (per-scene optimization, CLIP-only language, small evaluation domains) are now well-understood limitations of the entire paradigm rather than specific failures of LangSplat itself.
+
+---
+
+[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.

@@ -34,7 +34,7 @@ DINOv3 scales self-supervised ViT training to 7B parameters and 1.7B images, and
 ### Method / Approach
 
 - **Data curation (LVD-1689M):** Three-part dataset combining (1) ~1.689B images from Instagram curated via hierarchical k-means clustering (Vo et al., 2024), (2) retrieval-augmented images sourced near task-relevant seed datasets (Oquab et al., 2024), and (3) ImageNet-1k/22k and Mapillary to sharpen task-specific performance. Mixed-batch sampling uses homogeneous ImageNet batches for 10% of training steps.
-- **Scale and architecture:** ViT-7B teacher (40 blocks, patch 16, embed dim 4096, 32 attention heads × dim 128, SwiGLU FFN hidden dim 8192, RoPE-box-jittered positional embeddings, 4 register tokens). Training uses DINO + iBOT + Koleo objectives with constant learning rate and weight decay (no cosine schedule), AdamW, 256 global batch across 256 H100s for 1M iterations.
+- **Scale and architecture:** ViT-7B teacher (40 blocks, patch 16, embed dim 4096, 32 attention heads × dim 128, SwiGLU FFN[^1] hidden dim 8192, RoPE-box-jittered positional embeddings, 4 register tokens). Training uses DINO + iBOT + Koleo objectives with constant learning rate and weight decay (no cosine schedule), AdamW, 256 global batch across 256 H100s for 1M iterations.
 - **Gram anchoring:** After 1M iterations, a refinement phase adds $L_{Gram}$ — a Frobenius-norm penalty between the Gram matrices of student and a frozen "Gram teacher" (model at 200k iterations). Operating on the Gram matrix rather than raw features lets local feature directions move freely while preserving inter-patch similarity structure. A higher-resolution Gram variant ($L_{HRRef}$) additionally feeds the Gram teacher 2× images and down-samples, yielding sharper patch consistency.
 - **Post-training family:** High-resolution adaptation (mixed-resolution crops 512–768 for 10k steps), multi-student distillation (teacher fixed at 7B, students ViT-S/S+/B/L/H+ and CNX-T/S/B/L trained concurrently using an efficient all-gather NCCL pipeline), and text alignment of ViT-L using the LiT / dino.txt recipe (Jose et al., 2025).
 
@@ -51,7 +51,7 @@ Results are organized at two evaluation tiers: **lightweight probing** (frozen e
 | Segmentation (linear) | ADE20k mIoU ↑ | frozen encoder + linear head | **55.9** | 49.5 | 53.0 | 42.7 |
 | Segmentation (Mask2Former) | ADE20k mIoU ↑ | frozen encoder + Mask2Former decoder, TTA | **63.0** | — | — | — |
 | Depth (linear) | NYUv2 RMSE ↓ (m) | frozen encoder + linear head | **0.309** | 0.372 | 0.340 | 0.494 |
-| Depth (Depth Anything V2) | NYUv2 ARel ↓ (%) | frozen encoder + DPT decoder | **4.3** | — | — | — |
+| Depth (Depth Anything V2) | NYUv2 ARel ↓ (%) | frozen encoder + DPT[^2] decoder | **4.3** | — | — | — |
 | 3D geo. correspondence | NAVI recall ↑ | non-parametric, frozen encoder | **64.4** | 60.1 | 59.4 | 49.4 |
 | Object detection (frozen) | COCO mAP ↑ | frozen encoder + Plain-DETR | **65.6** | — | — | — |
 | Video tracking | DAVIS-L J&F ↑ | non-parametric, frozen encoder | **83.3** | 76.6 | 81.4 | 62.9 |
@@ -76,7 +76,7 @@ Ablation highlights:
 
 1. **Gram teacher selection is heuristic:** The 200k-iteration checkpoint is chosen without a principled criterion; the paper shows 100k and 1M teachers both perform worse but doesn't fully explain why the intermediate checkpoint is optimal.
 2. **Resolution ceiling:** Training at 256px main resolution with 10k steps of mixed 512–768 adaptation; it's unclear whether longer high-resolution training would continue to improve.
-3. **Text alignment lags behind VLMs:** dino.txt ViT-L trails SigLIP 2 and PE on zero-shot classification while being stronger on dense segmentation — the global–dense trade-off in text alignment is not fully resolved.
+3. **Text alignment lags behind VLMs[^3]:** dino.txt ViT-L trails SigLIP 2 and PE on zero-shot classification while being stronger on dense segmentation — the global–dense trade-off in text alignment is not fully resolved.
 4. **No open training data:** LVD-1689M uses Instagram images through platform-moderated APIs; the satellite SAT-493M uses Maxar commercial data. Neither is publicly available, limiting reproduction.
 5. **7B model compute requirements:** ViT-7B at inference (3550 GFLOPs at 256px) is impractical for many real-time applications; the distilled family addresses this, but the 7B model itself isn't broadly deployable.
 6. **Feature dimension outliers persist:** A small set of feature channels have extremely high magnitudes throughout training. While the final layer norm suppresses them for the last layer, intermediate-layer features require additional batch normalization.
@@ -227,3 +227,9 @@ DINOv3 is very recent (August 2025) so citation data is limited. However, the co
 ### Bottom Line
 
 DINOv3 is a foundational paper for the SSL vision encoder field and is very much worth reading — not just as a result report but as a methodological contribution. The Gram anchoring technique fills a genuine gap: long-schedule SSL training at scale was known to hurt dense features, and no clean fix existed. The paper provides a principled, low-overhead solution that generalizes to the high-resolution setting. The distilled model family (particularly ViT-L and ViT-H+) will likely become the go-to SSL backbone for a wide range of downstream tasks, displacing DINOv2. The geospatial experiments demonstrate that the recipe transfers domains with minimal modification. The main caveat is reproducibility: without access to LVD-1689M and significant H100 compute, the full 7B model cannot be retrained. But the code and distilled model weights are open, making DINOv3 immediately practical as a dense visual backbone for researchers at all scales.
+
+---
+
+[^1]: **FFN** — Feed-Forward Network. See `TERMS.md` at the repo root.
+[^2]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
+[^3]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.

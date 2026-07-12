@@ -77,7 +77,7 @@ Key ablation findings:
 
 1. **3D Gaussian Splatting for Real-Time Radiance Field Rendering** — Kerbl et al., SIGGRAPH 2023: The foundational Gaussian representation GaussianDWM builds on.
 2. **[LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/)** — Qin et al., CVPR 2024: The technique used to embed CLIP language features into Gaussians — directly inherited by the world tokenizer.
-3. **DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models** — Tian et al., 2024: Primary understanding baseline; represents the VLM-for-driving paradigm.
+3. **DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models** — Tian et al., 2024: Primary understanding baseline; represents the VLM[^1]-for-driving paradigm.
 4. **MagicDrive: Street View Generation with Diverse 3D Geometry Control** — Gao et al., 2023: Key generation baseline; 2D-based controllable driving video generation.
 5. **WoVogen: World Volume-aware Diffusion for Controllable Multi-camera Driving Scene Generation** — 2024: Close generation competitor with explicit 3D volume reasoning.
 
@@ -183,3 +183,7 @@ The paper is very recent (submitted Dec 2025, updated May 2026) and has not yet 
 GaussianDWM is a **timely and technically ambitious paper** that stakes out the underexplored intersection of 3D Gaussian scene representations and large language model-driven world models for autonomous driving. The unification of scene understanding and multi-modal generation within a single architecture is a genuine contribution, and the 3D Gaussian world tokenizer is a novel mechanism that provides explicit spatial grounding that 2D video-only world models lack.
 
 However, the paper is very new (v3, May 2026) with no independent external validation yet. Key practical limitations — per-scene optimization, no real-time inference, and a self-introduced benchmark — will need to be addressed by follow-on work before the approach can be considered practically deployed. It is worth reading as a forward-looking reference for the emerging category of 3D-grounded driving world models, and as a companion to Street Gaussians (for the Gaussian reconstruction backbone) and LangSplat (for language-aligned Gaussians).
+
+---
+
+[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.

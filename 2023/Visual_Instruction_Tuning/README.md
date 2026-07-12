@@ -180,7 +180,7 @@ Across both stages: Adam with no weight decay, BF16/TF32 mixed precision, FSDP (
 ### What Has Changed Since Publication
 
 - **MLP projection is now standard:** LLaVA-1.5 (Nov 2023) immediately replaced $W$ with a two-layer MLP and adopted CLIP-336px, achieving dramatically higher performance with the same recipe; linear projections are now considered a first-draft ablation point rather than a design choice.
-- **Resolution scaling is solved:** Dynamic high-resolution tiling (LLaVA-NeXT, 2024) and native-resolution encoders (InternVL, Qwen-VL) have largely eliminated the 224×224 bottleneck; modern VLMs routinely process 1024px+ images.
+- **Resolution scaling is solved:** Dynamic high-resolution tiling (LLaVA-NeXT, 2024) and native-resolution encoders (InternVL, Qwen-VL) have largely eliminated the 224×224 bottleneck; modern VLMs[^1] routinely process 1024px+ images.
 - **Scale of instruction data grew:** 158K samples was state-of-the-art in April 2023; by 2026, instruction datasets for VLMs routinely contain millions of samples across diverse domains (ShareGPT4V, LLaVA-665K, InternLM-XC2).
 - **GPT-4V as direct baseline:** GPT-4 with vision input (GPT-4V, Sep 2023) rendered text-proxy data generation less necessary; GPT-4V can produce high-quality VQA annotations directly from images.
 - **Evaluation standardised:** LLaVA-Bench's GPT-4-as-judge approach has been superseded by structured benchmarks (MMBench, MMMU, MMStar, LiveBench-Vision) with deterministic scoring; open-ended GPT-4 scoring is considered a supplementary rather than primary metric.
@@ -228,3 +228,7 @@ The community has fully accepted and amplified the core claims. The three contri
 ### Bottom Line
 
 LLaVA is a foundational paper and remains essential reading. Its contribution is not architectural sophistication — the linear projection is deliberately minimal — but conceptual: it demonstrated that (a) text-only GPT-4 is a scalable teacher for vision-language instruction data, (b) a frozen CLIP encoder can serve as an adequate visual front-end for an instruction-following LLM with only a lightweight alignment stage, and (c) end-to-end fine-tuning of the LLM on top is the critical ingredient that prior multimodal models missed. Every subsequent open-source VLM inherits at least one of these ideas. The specific numbers are superseded within months by LLaVA-1.5, and the linear projection is a known weakness. But Sections 3 and 4 (data generation pipeline and two-stage training recipe) are still the clearest and most concise explanation of the modern VLM training paradigm, and Pass 1 alone takes under 10 minutes. Read the full paper once; return to Sec. 3–4 whenever you need the canonical formulation of visual instruction tuning.
+
+---
+
+[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.

@@ -12,7 +12,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Bibliometric meta-survey — quantitative measurement of research trends across 26,104 accepted papers from CVPR, ICLR, and NeurIPS (2023–2025) using lexicon-based abstract analysis |
-| **Context** | Builds on TF-IDF text analysis and bibliometric methods; takes VLM literature (CLIP, BLIP, [LLaVA](../../2023/Visual_Instruction_Tuning/), Flamingo, ALIGN, DINO) as the subject of study rather than contributing to it; complements traditional hand-curated surveys with automated, reproducible measurement |
+| **Context** | Builds on TF-IDF text analysis and bibliometric methods; takes VLM[^1] literature (CLIP, BLIP, [LLaVA](../../2023/Visual_Instruction_Tuning/), Flamingo, ALIGN, DINO) as the subject of study rather than contributing to it; complements traditional hand-curated surveys with automated, reproducible measurement |
 | **Correctness** | Methodology is transparent and explicitly self-limited: abstract-only scope means datasets/training details are systematically under-reported; lexicon recall may miss niche synonyms; all caveats clearly stated in Sec. 6; numerical claims are internally consistent |
 | **Contributions** | (1) First quantitative trajectory analysis of 35 research directions across three top venues over three years; (2) Fine-grained VLM dissection across 8 dimensions (models, fusion, tasks, training, losses, datasets, co-modalities); (3) Cross-venue CVPR vs. ICLR vs. NeurIPS comparison; (4) Lexicon + methodology released for auditing and extension; (5) Actionable practical advice for VLM researchers derived from trend data |
 | **Clarity** | Very well written — compact (13 content pages), tables well-formatted, caveats clearly stated, practical takeaways explicit |
@@ -164,7 +164,7 @@ For the subset of papers matching the VLM/LLM category, 8 additional mining pass
 
 *Training Paradigms (Table 5)*: Regime phrase matching: pretrain+finetune, prompt/prefix, self/weak/semi-supervision, distillation, instruction tuning, LoRA/adapters, multi-task/curriculum.
 
-*Loss Families (Table 6)*: Loss objective matching: contrastive/InfoNCE, KL/distillation, triplet/ranking, cross-entropy/focal, MSE/L1/L2, Dice/IoU, Chamfer/EMD.
+*Loss Families (Table 6)*: Loss objective matching: contrastive/InfoNCE[^2], KL/distillation, triplet/ranking, cross-entropy/focal, MSE/L1/L2, Dice/IoU, Chamfer/EMD.
 
 *Datasets (Table 7)*: Explicit dataset name mentions: MS-COCO, ImageNet, LAION, RefCOCO variants, Flickr30k, CC3M/CC12M, VQA-v2/OK-VQA, WebVid/MSR-VTT/MSVD, YouCook2/HowTo100M, Visual Genome, COCO Captions.
 
@@ -211,7 +211,7 @@ Beyond the trend data, the paper provides interpretive summaries for each top mo
 
 - **VLM dominance confirmed**: The 40% VLM share at 2025 conferences appears to have continued or accelerated into 2026 submissions, consistent with the paper's trajectory; Qwen3-VL, InternVL 3.5, LLaVA-OneVision, and Gemini Flash represent the model families now dominating follow-on work.
 - **Instruction tuning as default**: By 2026, instruction-tuned multimodal models are the baseline assumption in most new VLM papers; the paper correctly predicted this would overtake contrastive pretraining as the primary training paradigm.
-- **3DGS further consolidated**: The NeRF→Gaussian Splatting composition shift the paper documents was largely complete by mid-2025; 2026 3D work focuses on applications (robotics, autonomous driving, SLAM) rather than representation changes.
+- **3DGS further consolidated**: The NeRF→Gaussian Splatting composition shift the paper documents was largely complete by mid-2025; 2026 3D work focuses on applications (robotics, autonomous driving, SLAM[^3]) rather than representation changes.
 - **Reasoning / chain-of-thought VLMs**: The Reasoning/Instruction rise (+11.5pp) has continued, now encompassing visual chain-of-thought, multi-step tool use, and preference optimization (RLHF for VLMs) — the paper captures the beginning of this trend.
 - **Sparse MoE proliferation**: MoE citation growth (+0.6pp) in the paper understates how central MoE has become; nearly all frontier VLMs (Qwen3-Omni, Gemini, GPT-4o) use sparse MoE architectures.
 - **Venues expanding**: ECCV 2026 and ICCV 2025 add additional data points not covered by the paper; the lexicon methodology is directly applicable.
@@ -253,3 +253,9 @@ As a bibliometric measurement paper, "acceptance" takes a different form than fo
 ### Bottom Line
 
 This paper occupies an unusual but valuable niche: it is neither a method contribution nor a traditional manual survey, but a transparent, reproducible *measurement* of what the research community actually published. Its core value is in answering questions like "what fraction of top-venue papers are VLMs now?" and "when did instruction tuning overtake contrastive pretraining?" with citable, defensible numbers rather than impressions. The 8-table fine-grained dissection of VLM practices (Table 1–8) is particularly useful as a snapshot of the field's technical defaults in 2023–2025. Practitioners who need to frame a new paper, reviewers assessing whether a direction is timely, and researchers writing related-work sections on field-level trends will all find the tables directly actionable. The paper's shelf life for the raw numbers is limited — a 2026 version extending to ICCV/ECCV/EMNLP would be immediately valuable — but the methodology and lexicon are durable tools. Worth reading Sections 4 and 5 in full; skim Section 3 if already familiar with the macro VLM narrative.
+
+---
+
+[^1]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
+[^2]: **InfoNCE** — Information Noise-Contrastive Estimation. See `TERMS.md` at the repo root.
+[^3]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.

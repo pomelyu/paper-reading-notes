@@ -185,7 +185,7 @@ with $\lambda_{SSIM} = 0.2$ , $\lambda_{vol}$ dataset-dependent (0.00002–0.000
 2. **Online object insertion:** Develop an incremental strategy where a new object ID can be added post-training (e.g., inserting a new anchor cluster with a new ID), avoiding full re-training.
 3. **Hierarchical IDs:** Replace flat one-hot with a hierarchical encoding (part → object → category) to enable multi-granularity queries without retraining.
 4. **Open-set extension:** Combine with CLIP embeddings per anchor to enable zero-shot ID assignment for novel objects not seen during training.
-5. **Scalability to outdoor/large scenes:** SLAM-style anchor management with a sliding window for large-scale outdoor scenes, mitigating the $O(n)$ memory cost for high object counts.
+5. **Scalability to outdoor/large scenes:** SLAM[^1]-style anchor management with a sliding window for large-scale outdoor scenes, mitigating the $O(n)$ memory cost for high object counts.
 6. **Self-supervised ID assignment:** Replace DEVA with a self-supervised 3D consistency loss (e.g., multi-view photometric contrastive learning) to eliminate the hard dependency on 2D segmentation quality.
 
 ---
@@ -243,3 +243,7 @@ ObjectGS is an ICCV 2025 paper, so formal community vetting is still in early st
 ### Bottom Line
 
 ObjectGS is a well-executed paper with a clean central insight: that continuous alpha-blended semantics are fundamentally the wrong choice for discrete object segmentation, and one-hot ID encoding removes this ambiguity without any extra cost. The results are strong and consistent, the ablations are thorough, and the improvements over Gaussian Grouping are both quantitatively large and qualitatively clear. It is recommended reading for anyone working on 3DGS-based semantic understanding — not because it introduces a radically new architecture, but because it correctly identifies and fixes a subtle but important design flaw that had been silently limiting the whole field. The static-scene, fixed-object-count assumptions are real limitations, but they are clearly stated and the paper does not overclaim. Worth reading alongside Scaffold-GS (architecture) and Gaussian Grouping (the baseline being improved upon).
+
+---
+
+[^1]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.

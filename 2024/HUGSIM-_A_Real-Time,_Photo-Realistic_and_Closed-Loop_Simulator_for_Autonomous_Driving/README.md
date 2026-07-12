@@ -237,7 +237,7 @@ HUGSIM has been well-received as a meaningful step toward bridging the gap betwe
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | DriveArena: A Closed-loop Generative Simulation Platform | Yang et al. | 2024 | Concurrent closed-loop simulator using generative scene generation |
-| NeuRAD: Neural Rendering for Autonomous Driving | Tonderski et al. | 2024 | Concurrent NeRF-based approach achieving state-of-the-art NVS for driving |
+| NeuRAD: Neural Rendering for Autonomous Driving | Tonderski et al. | 2024 | Concurrent NeRF-based approach achieving state-of-the-art NVS[^1] for driving |
 | NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation | Dauner et al. | 2024 | Open-loop benchmark that HUGSIM positions against |
 | StreetGaussian | — | 2024 | Concurrent work on Gaussian-based urban scene reconstruction |
 | RoGS: Large Scale Road Surface Reconstruction | — | 2024 | Concurrent Gaussian-based ground reconstruction for driving scenes |
@@ -255,3 +255,7 @@ HUGSIM has been well-received as a meaningful step toward bridging the gap betwe
 ### Bottom Line
 
 HUGSIM represents a significant and practical contribution to the autonomous driving simulation landscape. Its core value proposition — combining 3D Gaussian Splatting's real-time rendering with a proper closed-loop evaluation framework — addresses a genuine gap between fast-but-unrealistic synthetic simulators (CARLA) and realistic-but-open-loop benchmarks (nuScenes). The paper is worth reading for anyone working on AD simulation, neural scene reconstruction for driving, or AD algorithm evaluation. While generative world models may eventually offer greater scalability, HUGSIM's reconstruction-based approach provides unmatched geometric fidelity and physical grounding. The benchmark itself (70+ scenes, 400+ scenarios, HD-Score metric) is a durable contribution. The paper is not yet superseded — it remains the most comprehensive reconstruction-based closed-loop simulator and a useful reference for the specific technical solutions (multi-plane ground, unicycle regularization, 3D softmax semantics, Gaussian-based collision detection).
+
+---
+
+[^1]: **NVS** — Novel View Synthesis. See `TERMS.md` at the repo root.

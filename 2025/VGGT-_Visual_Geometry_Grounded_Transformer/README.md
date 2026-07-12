@@ -17,7 +17,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | System paper introducing a large feed-forward transformer for multi-task 3D scene understanding from images |
-| **Context** | Builds on the DUSt3R/MASt3R paradigm of learning pointmaps from image pairs, extends it to handle hundreds of views in one forward pass; draws on VGGSfM for camera parametrisation, DINOv2 for image tokenisation, DPT for dense prediction heads, and CoTracker2 for point tracking |
+| **Context** | Builds on the DUSt3R/MASt3R paradigm of learning pointmaps from image pairs, extends it to handle hundreds of views in one forward pass; draws on VGGSfM for camera parametrisation, DINOv2 for image tokenisation, DPT[^1] for dense prediction heads, and CoTracker2 for point tracking |
 | **Correctness** | Assumptions appear sound; the paper evaluates on standard benchmarks (CO3Dv2, RealEstate10K, DTU, ETH3D, ScanNet, TAP-Vid, IMC) and shows SOTA across all; ablations are thorough; scale-normalisation choices are well motivated |
 | **Contributions** | (1) First feed-forward network that jointly predicts camera parameters, depth maps, point maps, and 3D point tracks for up to hundreds of views in a single pass; (2) Alternating-Attention (AA) transformer design replacing cross-attention; (3) Multi-task training shown to boost all subtasks; (4) VGGT features serve as a strong backbone for downstream tasks (novel view synthesis, dynamic tracking) |
 | **Clarity** | Very well written; architecture and losses are clearly described, ablations are clean, and limitations are honestly stated |
@@ -30,7 +30,7 @@ VGGT is a 1.2 B-parameter feed-forward transformer that takes 1–hundreds of im
 
 ### Core Idea in One Sentence
 
-Replace the traditional SfM + MVS + tracking pipeline with a single large transformer that reads raw images and directly writes all key 3D scene attributes in one forward pass.
+Replace the traditional SfM + MVS[^2] + tracking pipeline with a single large transformer that reads raw images and directly writes all key 3D scene attributes in one forward pass.
 
 ### Method / Approach
 
@@ -43,7 +43,7 @@ Replace the traditional SfM + MVS + tracking pipeline with a single large transf
 
 ### Key Results
 
-| Benchmark | Metric | DUSt3R | MASt3R | VGGSfM v2 | VGGT (FF) | VGGT + BA |
+| Benchmark | Metric | DUSt3R | MASt3R | VGGSfM v2 | VGGT (FF) | VGGT + BA[^3] |
 |---|---|---|---|---|---|---|
 | CO3Dv2 camera | AUC@30 ↑ | 76.7 | 81.8 | 83.4 | **88.2** | **91.8** |
 | RealEstate10K camera | AUC@30 ↑ | 67.7 | 76.4 | 78.9 | **85.3** | **93.5** |
@@ -63,7 +63,7 @@ Ablation highlights:
 
 - **Generalist 3D backbone:** One model, one forward pass, all 3D tasks — including camera, dense geometry, and tracking.
 - **Speed:** 0.04–8.75 s for 1–200 frames; DUSt3R/MASt3R cannot even run 32+ frames without OOM.
-- **Transferability:** VGGT features improve CoTracker's dynamic tracking by large margins (e.g., $\delta_{avg}^{vis}$ +5.1 on TAP-Vid RGB-S) and match LVSM for NVS without requiring input cameras.
+- **Transferability:** VGGT features improve CoTracker's dynamic tracking by large margins (e.g., $\delta_{avg}^{vis}$ +5.1 on TAP-Vid RGB-S) and match LVSM for NVS[^4] without requiring input cameras.
 - **Strong generalisation:** Out-of-domain results (oil paintings, non-overlapping frames, textureless deserts) show robustness well beyond training distribution.
 - **Compatible with post-optimisation:** Adding BA on VGGT output takes ~1.8 s and achieves new SOTA on IMC, because predicted point maps serve as BA initialization without needing triangulation.
 
@@ -168,7 +168,7 @@ L_{track} = \sum_{j=1}^M \sum_{i=1}^N \| y_{j,i} - \hat{y}_{j,i} \|
 2. **Dynamic scene support:** Replace the static scene assumption with a per-frame surface model; MonST3R-style temporal reasoning within the AA backbone.
 3. **Memory-efficient global attention:** Integrate sliding-window or hierarchical attention so hundreds of frames can be processed on a single consumer GPU.
 4. **Self-supervised / unsupervised training:** Differentiable BA can serve as a supervision signal where GT 3D is unavailable; this was noted as promising in the discussion but excluded due to training cost.
-5. **Downstream robotics / SLAM integration:** VGGT's per-frame uncertainty maps are natural inputs to a Kalman filter or factor graph; combining with an online state estimator could enable real-time SLAM.
+5. **Downstream robotics / SLAM[^5] integration:** VGGT's per-frame uncertainty maps are natural inputs to a Kalman filter or factor graph; combining with an online state estimator could enable real-time SLAM.
 6. **Scaling laws:** The paper trains a single 1.2 B model; a study of how performance scales with parameters and data would clarify where VGGT sits on the frontier.
 
 ---
@@ -178,7 +178,7 @@ L_{track} = \sum_{j=1}^M \sum_{i=1}^N \| y_{j,i} - \hat{y}_{j,i} \|
 ### What Has Changed Since Publication
 
 - **[VGGT-Omega](../../2026/VGGT-Omega/) released (May 2026):** The successor model from the same group substantially extends VGGT with improved dynamic scene handling and better memory efficiency, validating that the design space opened by VGGT is still actively expanding.
-- **Concurrent feed-forward reconstruction wave:** At the time of CVPR 2025, Fast3R, CUT3R, FLARE, and MV-DUSt3R all tackled similar multi-view feed-forward reconstruction; post-publication, this space has continued to grow rapidly (SceneVGGT for 3D SLAM, 3D-Mix for VLA models, etc.).
+- **Concurrent feed-forward reconstruction wave:** At the time of CVPR 2025, Fast3R, CUT3R, FLARE, and MV-DUSt3R all tackled similar multi-view feed-forward reconstruction; post-publication, this space has continued to grow rapidly (SceneVGGT for 3D SLAM, 3D-Mix for VLA[^6] models, etc.).
 - **Gaussian Splatting integration:** VGGT's COLMAP-format export has been adopted as an initialisation for 3DGS pipelines, making the paper practically important beyond its stated benchmarks.
 - **Quantisation research:** A quantised VGGT variant has been published (arXiv 2509.21302), confirming demand for lighter deployment.
 - **SpatialBench:** New benchmarks evaluating "spatial foundation models" have begun to include VGGT as a reference baseline, suggesting it has been adopted as a canonical anchor point.
@@ -226,3 +226,12 @@ The community has broadly validated VGGT's central claims. The CVPR 2025 Best Pa
 ### Bottom Line
 
 VGGT is a landmark paper that genuinely shifts the 3D reconstruction paradigm: it demonstrates convincingly that a single large feed-forward transformer, trained carefully on diverse 3D-annotated data, can match or beat specialised optimisation-based pipelines across all standard 3D tasks simultaneously and in real time. The CVPR 2025 Best Paper Award and the wave of follow-on work treating it as a foundation confirm its impact. It is unambiguously worth reading — both for its concrete design decisions (alternating attention, multi-task training, uncertainty-weighted losses) and as a case study in "scale + data + simple architecture" displacing hand-crafted geometry pipelines. The main open question — how far this paradigm extends to dynamic, fisheye, and memory-constrained settings — is already being addressed by its successors.
+
+---
+
+[^1]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
+[^2]: **MVS** — Multi-View Stereo. See `TERMS.md` at the repo root.
+[^3]: **BA** — Bundle Adjustment. See `TERMS.md` at the repo root.
+[^4]: **NVS** — Novel View Synthesis. See `TERMS.md` at the repo root.
+[^5]: **SLAM** — Simultaneous Localization and Mapping. See `TERMS.md` at the repo root.
+[^6]: **VLA** — Vision-Language-Action model. See `TERMS.md` at the repo root.
