@@ -225,7 +225,7 @@ VGGT-Ω's CVPR 2026 Oral + Best Paper Finalist designation signals strong commun
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| [VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | Wang et al. | 2025 | Direct predecessor; VGGT-Ω is an architectural and data-scaling extension |
+| [VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | Wang et al. | 2025 | Direct predecessor and primary experiment baseline across all six static + dynamic benchmarks (Tab. 1–2); VGGT-Ω is an architectural and data-scaling extension |
 | [DUSt3R: Geometric 3D Vision Made Easy](../../2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/) | Wang et al. | 2024 | Foundational pointmap paradigm that VGGT (and therefore VGGT-Ω) builds on |
 | MASt3R: Grounding Image Matching in 3D | Leroy et al. | 2024 | Extended DUSt3R with matching; key baseline in the lineage |
 | DINOv2 / [DINOv3](../../2025/DINOv3/) | Oquab et al. | 2023/2025 | ViT backbone used for tokenization; DINOv3 initialization critical for convergence |
@@ -239,7 +239,11 @@ VGGT-Ω's CVPR 2026 Oral + Best Paper Finalist designation signals strong commun
 | Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass | Yang et al. | 2025 | Concurrent large-frame-count feed-forward competitor |
 | CUT3R: Continuous 3D Perception with Persistent State | Wang et al. | 2025 | Online video 3D perception alternative with persistent state |
 | FLARE: Feed-Forward Geometry, Appearance and Camera Estimation | Zhang et al. | 2025 | Feed-forward competitor adding appearance estimation |
-| MegaSaM | Li et al. | 2025 | Dynamic scene reconstruction baseline; VGGT-Ω is 50× faster |
+| Depth Anything 3: Recovering the Visual Space from Any Views (DA3) | Lin et al. | 2025 | VGGT-style feed-forward reconstruction; VGGT-Ω outperforms it on every benchmark especially videos with repeated features; experiment baseline for camera pose (Tab. 1), depth (Tab. 2) and memory/speed (Fig. 6–7) |
+| PI3 | — | 2025 | VGGT-style feed-forward model trained on dynamic data; removes reliance on a fixed reference view; experiment baseline (Tab. 1–2) |
+| MonST3R | Zhang et al. | 2024 | DUSt3R extension for dynamic 3D content; experiment baseline (Tab. 1–2) |
+| MapAnything: Universal Feed-Forward Metric 3D Reconstruction | Keetha et al. | 2025 | Universal feed-forward metric reconstruction; experiment baseline (Tab. 1–2) |
+| MegaSaM | Li et al. | 2025 | Optimization-based dynamic reconstruction baseline compared in experiments; VGGT-Ω is 50× faster |
 | FlashVGGT: Efficient Visual Geometry Transformers | — | 2025 | Independent efficiency improvement of VGGT via compressed descriptor attention |
 
 #### Successors / Extensions
