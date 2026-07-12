@@ -357,11 +357,42 @@ After writing the note, register it in the root `README.md` index
 ```markdown
 # Paper Notes
 ### 2023
-- [Paper Title](2023/Paper_Title_Folder/)
+- [x] [(Codename) Paper Title](2023/Paper_Title_Folder/)
 
 ### 2024
-- [Another Paper](2024/Another_Paper_Folder/)
+- [x] [(Another-Codename) Another Paper](2024/Another_Paper_Folder/)
 ```
+
+**Deriving the paper codename:** Each index entry is prefixed with the
+paper's codename in parentheses. Determine the codename as follows:
+
+1. **Title prefix before a colon** — most papers use the form
+   `Codename: Subtitle` (e.g. `DUSt3R: Geometric 3D Vision Made Easy`
+   → codename `DUSt3R`). Use the pre-colon name as the codename.
+2. **Name introduced in the paper** — if the title has no codename prefix,
+   look for the name the authors coin in the paper itself, typically in
+   phrases like "we introduce X", "we propose X", "we present X", or the
+   official project/model name (e.g. *Visual Instruction Tuning* → `LLaVA`;
+   *Tracking Anything with Decoupled Video Segmentation* → `DEVA`).
+3. **Title is already the codename** — if the full title is itself the
+   codename (e.g. `DINOv3`), use the title as-is with no parenthesised
+   prefix.
+4. **No codename exists** — some papers (e.g. surveys) introduce no
+   codename. Use the full title as-is with no parenthesised prefix.
+
+**Index entry format:** `- [ ] [({Codename}) {Title}]({year}/{folder_name}/)`
+
+- The link text is `({Codename}) ` followed by the paper title **without**
+  the `Codename: ` prefix (avoid repeating the codename, e.g.
+  `(DUSt3R) Geometric 3D Vision Made Easy`, not
+  `(DUSt3R) DUSt3R: Geometric 3D Vision Made Easy`).
+- For rules 3 and 4 above, the link text is just the full title.
+- The path uses the sanitised folder name (underscores, dashes).
+
+**Scope:** this codename convention applies only to the root `README.md`
+index. Inside the notes themselves, keep referring to other papers by their
+full title (optionally with the codename) — titles carry the content and
+context that a bare codename cannot.
 
 Steps:
 1. Read the current `README.md`.
@@ -369,9 +400,5 @@ Steps:
    - If the section exists, append a new bullet at the end of it.
    - If the section does not exist yet, create it in the correct
      chronological position among the other year sections.
-3. The new bullet format is:
-   `- [{Full Paper Title}]({year}/{folder_name}/)`
-   Use the paper's full original title (with spaces and colons) as the
-   link text, and the sanitised folder name (underscores, dashes) in the
-   path.
+3. Add the new entry using the codename rules and entry format above.
 4. Write the updated `README.md` back.
