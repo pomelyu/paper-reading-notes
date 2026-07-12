@@ -16,11 +16,13 @@
 |---|-----------|
 | **Category** | System paper — improved feed-forward transformer for multi-task 3D reconstruction of static and dynamic scenes, with a central focus on demonstrating predictable scaling laws |
 | **Context** | Builds directly on [VGGT](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) (CVPR 2025 Best Paper), which itself builds on [DUSt3R](../../2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/)/MASt3R; extends it with architectural efficiency via register attention, self-supervised learning on unlabeled video, and a dynamic-scene data pipeline; uses [DINOv3](../../2025/DINOv3/) as image tokenizer |
-| **Correctness** | Assumptions are well-grounded: scaling laws are verified empirically across 0.2B–10B parameters and 2K–2M sequences; results on 6 standard benchmarks (3 static, 3 dynamic) are rigorous; self-supervised protocol uses clean EMA[^1] teacher-student design |
-| **Contributions** | (1) Register attention reducing cross-frame information to 16 registers per image; (2) Lightweight MLP[^2]+pixel-shuffle decoder replacing expensive DPT[^3] convolutions; (3) Large-scale annotation pipeline supporting dynamic scenes (4M scenes, ~1/3 dynamic); (4) DINO-style self-supervised learning on 18M unlabeled videos; (5) Empirical power-law scaling curves for feed-forward 3D reconstruction; (6) Transferable register tokens for VLA[^4] robotics and language alignment |
+| **Correctness** | Assumptions are well-grounded: scaling laws are verified empirically across 0.2B–10B parameters and 2K–2M sequences; results on 6 standard benchmarks (3 static, 3 dynamic) are rigorous; self-supervised protocol uses clean EMA teacher-student design |
+| **Contributions** | (1) Register attention reducing cross-frame information to 16 registers per image; (2) Lightweight MLP+pixel-shuffle decoder replacing expensive DPT[^1] convolutions; (3) Large-scale annotation pipeline supporting dynamic scenes (4M scenes, ~1/3 dynamic); (4) DINO-style self-supervised learning on 18M unlabeled videos; (5) Empirical power-law scaling curves for feed-forward 3D reconstruction; (6) Transferable register tokens for VLA[^2] robotics and language alignment |
 | **Clarity** | Well-written; architecture changes are clearly motivated by efficiency analysis, scaling experiments are clean, ablations are informative |
 
-VGGT-Ω extends VGGT (CVPR 2025 Best Paper) by addressing its core bottlenecks — expensive high-resolution convolutions and quadratic global attention — with register attention (routing cross-frame communication through 16 learnable registers per image) and a lightweight MLP+pixel-shuffle decoding head, reducing GPU memory to 30% of VGGT. This efficiency enables training on 15× more supervised data (4M scenes, ~1/3 dynamic) plus 18M unlabeled videos via a DINO-style teacher-student protocol. The resulting model shows predictable power-law scaling with both model size (0.2B–10B) and data size (2K–2M sequences), achieves 77% better camera accuracy on Sintel, handles 1000+ frames on a single A100, and learns transferable registers that improve VLA models on LIBERO and align with natural language.
+**VGGT-Ω extends VGGT (CVPR 2025 Best Paper) by addressing its core bottlenecks — expensive high-resolution convolutions and quadratic global attention** — with register attention (routing cross-frame communication through 16 learnable registers per image) and a lightweight MLP+pixel-shuffle decoding head, reducing GPU memory to 30% of VGGT. This efficiency enables training on 15× more supervised data (4M scenes, ~1/3 dynamic) plus 18M unlabeled videos via a DINO-style teacher-student protocol. **The resulting model shows predictable power-law scaling with both model size (0.2B–10B) and data size (2K–2M sequences)**, achieves 77% better camera accuracy on Sintel, handles 1000+ frames on a single A100, and learns transferable registers that improve VLA models on LIBERO and align with natural language.
+
+![scaling_law](resources/fig_01_scaling_law.png)
 
 ---
 
@@ -32,8 +34,10 @@ Scale VGGT's feed-forward 3D reconstruction to orders-of-magnitude more data and
 
 ### Method / Approach
 
-- **Register-based tokenization:** Each input image is tokenized by a DINOv3 ViT[^5]; 1 camera token and 16 learnable scene registers are appended per image. Registers act as compact, free-floating summary slots that aggregate scene-wide information — with $N$ frames of $T$ tokens, full global attention is $O(N^2 T^2)$ , whereas routing cross-frame communication through $R{=}16$ registers is approximately $O(NTR)$ , orders of magnitude cheaper.
-- **Register attention:** Within 25% of global attention layers, inter-frame information exchange is restricted to the registers only; frames still apply full self-attention internally. The remaining 75% of global layers retain standard full attention. This reduces training FLOPs[^6] by ~23% and memory by ~16% on the attention component alone.
+![architecture](resources/fig_02_architecture.png)
+
+- **Register-based tokenization:** Each input image is tokenized by a DINOv3 ViT; 1 camera token and 16 learnable scene registers are appended per image. Registers act as compact, free-floating summary slots that aggregate scene-wide information — with $N$ frames of $T$ tokens, full global attention is $O(N^2 T^2)$ , whereas routing cross-frame communication through $R{=}16$ registers is approximately $O(NTR)$ , orders of magnitude cheaper.
+- **Register attention:** Within 25% of global attention layers, inter-frame information exchange is restricted to the registers only; frames still apply full self-attention internally. The remaining 75% of global layers retain standard full attention. This reduces training FLOPs by ~23% and memory by ~16% on the attention component alone.
 - **Lightweight upsampling head:** Replaces VGGT's DPT dense prediction heads (which used expensive high-resolution convolutional layers) with a single MLP followed by a pixel-shuffle operator. This alone reduces training GPU memory by 70%.
 - **Multi-task training + self-supervised extension:** Supervised training uses four losses ($L_{cam}$ , $L_{depth}$ , $L_{point}$ , $L_{match}$) on 4M annotated scenes from a new annotation pipeline; self-supervised training follows with a DINO-style teacher-student protocol on 18M unlabeled videos, with camera/depth heads frozen — enabling learning from in-the-wild video with no 3D labels.
 
@@ -80,7 +84,7 @@ Scale VGGT's feed-forward 3D reconstruction to orders-of-magnitude more data and
 ### Weaknesses / Open Questions
 
 1. **Self-supervised vs. supervised gap on dynamics:** The paper acknowledges that self-supervised learning from unlabeled video shows "less detail than supervised training" for dynamic scenes — the gap is not fully closed.
-2. **Annotation pipeline complexity:** The data pipeline (VLM[^7] filtering → Grounding DINO → COLMAP[^8] → XGBoost/RF/CatBoost) is elaborate and may be hard to reproduce without internal infrastructure.
+2. **Annotation pipeline complexity:** The data pipeline (VLM[^3] filtering → Grounding DINO → COLMAP → XGBoost/RF/CatBoost) is elaborate and may be hard to reproduce without internal infrastructure.
 3. **Register count fixed at 16:** No ablation on register count is presented; optimal register count may vary across scene complexity or frame count.
 4. **Full numerical benchmark tables not available in summary:** Detailed per-benchmark numerical tables are in the paper but not fully reproduced in secondary sources.
 5. **Language alignment scope limited:** Register-to-language alignment is demonstrated as a capability but not yet a full vision-language model; downstream task variety is limited to LIBERO.
@@ -146,7 +150,7 @@ The annotation pipeline processes raw video to produce 3D-annotated training seq
 1. **VLM pre-filtering:** A vision-language model scores video segments for reconstruction suitability; 90% of content is discarded (overly dark, textureless, featureless).
 2. **Dynamic object masking:** Grounding DINO localises and masks dynamic objects (people, cars) to avoid confusing COLMAP reconstruction.
 3. **Feature matching ensemble:** Multiple feature matchers (SuperGlue, ROMA, etc.) are ensembled; tracking is used for temporal consistency.
-4. **COLMAP reconstruction:** Multi-image SfM[^9] with multi-view consistency checks.
+4. **COLMAP reconstruction:** Multi-image SfM with multi-view consistency checks.
 5. **Geometric quality filtering:** XGBoost, random forest, and CatBoost classifiers trained on geometric quality signals filter out low-quality reconstructions.
 
 **Result:** 4M diverse scenes (0.8M annotated, ~1/3 dynamic), covering 15× more data than prior work.
@@ -168,8 +172,8 @@ Model size is varied from 0.2B to 10B parameters (matching ViT-S to ViT-G equiva
 **Interesting Emergent Findings**
 
 - **Motion awareness without explicit supervision:** The model learns to distinguish moving from static objects purely from multi-frame geometric consistency signals.
-- **Depth/FoV[^10] in frame-wise FFNs[^11]:** Analysis via model souping (linearly combining differently-trained models) reveals that depth and FoV estimation information is localized primarily in the feed-forward network layers of frame-wise attention blocks, not in cross-frame attention layers.
-- **Register transferability:** Frozen VGGT-Ω registers, when injected as additional tokens into a VLA model, improve all LIBERO benchmark tasks without fine-tuning the VLA model. Registers can also be aligned to VLM text embeddings via a symmetric InfoNCE[^12] loss.
+- **Depth/FoV in frame-wise FFNs[^4]:** Analysis via model souping (linearly combining differently-trained models) reveals that depth and FoV estimation information is localized primarily in the feed-forward network layers of frame-wise attention blocks, not in cross-frame attention layers.
+- **Register transferability:** Frozen VGGT-Ω registers, when injected as additional tokens into a VLA model, improve all LIBERO benchmark tasks without fine-tuning the VLA model. Registers can also be aligned to VLM text embeddings via a symmetric InfoNCE[^5] loss.
 
 ### Hidden Assumptions
 
@@ -205,7 +209,7 @@ Model size is varied from 0.2B to 10B parameters (matching ViT-S to ViT-G equiva
 ### What Has Changed Since Publication
 
 - **Dynamic scene benchmark matures:** Sintel, DyCheck, and TUM-Dynamic are now the de facto standard trio for evaluating feed-forward models on non-rigid scenes; VGGT-Ω's 77% Sintel improvement has set a new bar that subsequent papers must beat.
-- **Scaling laws established in 3D:** VGGT-Ω is among the first to publish clean scaling curves for geometric 3D tasks, mirroring LLM[^13] scaling law literature (Chinchilla, etc.) — this shifts community expectations toward data/compute budget analysis.
+- **Scaling laws established in 3D:** VGGT-Ω is among the first to publish clean scaling curves for geometric 3D tasks, mirroring LLM scaling law literature (Chinchilla, etc.) — this shifts community expectations toward data/compute budget analysis.
 - **Self-supervised 3D becoming mainstream:** The field is moving toward learning from in-the-wild video without dense 3D labels; VGGT-Ω's protocol provides a strong baseline design.
 - **Register representations as universal scene tokens:** The finding that registers transfer to VLA and language tasks positions them as a potential standard "3D scene context token" interface.
 
@@ -256,16 +260,8 @@ VGGT-Ω is essential reading for anyone working on feed-forward 3D reconstructio
 
 ---
 
-[^1]: **EMA** — Exponential Moving Average. See [TERMS.md](/TERMS.md).
-[^2]: **MLP** — Multi-Layer Perceptron. See [TERMS.md](/TERMS.md).
-[^3]: **DPT** — Dense Prediction Transformer. See [TERMS.md](/TERMS.md).
-[^4]: **VLA** — Vision-Language-Action model. See [TERMS.md](/TERMS.md).
-[^5]: **ViT** — Vision Transformer. See [TERMS.md](/TERMS.md).
-[^6]: **FLOPs** — Floating Point Operations. See [TERMS.md](/TERMS.md).
-[^7]: **VLM** — Vision-Language Model. See [TERMS.md](/TERMS.md).
-[^8]: **COLMAP** — Open-source SfM+MVS pipeline. See [TERMS.md](/TERMS.md).
-[^9]: **SfM** — Structure from Motion. See [TERMS.md](/TERMS.md).
-[^10]: **FoV** — Field of View. See [TERMS.md](/TERMS.md).
-[^11]: **FFN** — Feed-Forward Network. See [TERMS.md](/TERMS.md).
-[^12]: **InfoNCE** — Information Noise-Contrastive Estimation. See [TERMS.md](/TERMS.md).
-[^13]: **LLM** — Large Language Model. See [TERMS.md](/TERMS.md).
+[^1]: **DPT** — Dense Prediction Transformer. See `TERMS.md` at the repo root.
+[^2]: **VLA** — Vision-Language-Action model. See `TERMS.md` at the repo root.
+[^3]: **VLM** — Vision-Language Model. See `TERMS.md` at the repo root.
+[^4]: **FFN** — Feed-Forward Network. See `TERMS.md` at the repo root.
+[^5]: **InfoNCE** — Information Noise-Contrastive Estimation. See `TERMS.md` at the repo root.
