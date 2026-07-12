@@ -224,20 +224,32 @@ Create it before running `mineru_doc2md` so the output lands there directly.
 
 ### Handling abbreviations
 
-Before writing, read `TERMS.md` at the repo root to know what is already
-registered. Then, at **first use** of each abbreviation in the note, apply
-this two-tier rule:
+Before writing, read `TERMS.md` at the repo root. It has two sections:
 
-**Tier 1 — common field term (in TERMS.md or should be):**
+- **`## Terms needs footnote`** — field terms that still need a footnote at
+  first use in each note.
+- **`## Commonly-used Terms`** — terms the user already knows well. **Never
+  write a footnote for these.** Use them plainly in the text with no
+  footnote, no expansion, no TERMS.md link.
+
+Then, at **first use** of each abbreviation in the note, apply this rule:
+
+**Case 1 — term is in `## Commonly-used Terms`:** skip entirely. No footnote.
+
+**Case 2 — term is in `## Terms needs footnote`:**
 Use a brief one-liner footnote and point to TERMS.md:
 ```
 [^N]: **TERM** — Expansion. See [TERMS.md](/TERMS.md).
 ```
-If the term is genuinely field-standard (appears across multiple papers in
-this area) but is not yet in TERMS.md, **add a row to TERMS.md** before
-writing the footnote. Keep TERMS.md alphabetically sorted.
 
-**Tier 2 — paper-specific term:**
+**Case 3 — field-standard term not yet in TERMS.md:**
+If the term is genuinely field-standard (appears across multiple papers in
+this area), **add a row to the `## Terms needs footnote` section** of
+TERMS.md — new terms always go there, never into `## Commonly-used Terms`
+(only the user moves terms into that section). Keep each section
+alphabetically sorted. Then write the footnote as in Case 2.
+
+**Case 4 — paper-specific term:**
 If the abbreviation is coined by or only meaningful in the context of this
 paper and its direct works, write a full inline footnote explaining the
 concept (no TERMS.md entry needed).
