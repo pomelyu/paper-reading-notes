@@ -15,7 +15,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Method paper — extends 3D language Gaussian Splatting to dynamic (4D) scenes; primary contribution is a pipeline for generating temporally-aware language supervision and a deformable network for modeling discrete object state transitions |
-| **Context** | Builds on LangSplat (3D language fields via CLIP + SAM), 4D Gaussian Splatting (4D-GS with deformable fields and HexPlane), and Multimodal LLMs (MLLMs) for video understanding. Related to Gaussian Grouping and Feature-3DGS for open-vocabulary dynamic scene understanding |
+| **Context** | Builds on [LangSplat](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) (3D language fields via CLIP + SAM), 4D Gaussian Splatting (4D-GS with deformable fields and HexPlane), and Multimodal LLMs (MLLMs) for video understanding. Related to [Gaussian Grouping](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) and Feature-3DGS for open-vocabulary dynamic scene understanding |
 | **Correctness** | Assumptions are reasonable: MLLMs can generate object-specific temporally coherent captions, and object states in real scenes are discrete enough to be captured by K prototypes. No red flags; claims are well-supported by ablations isolating each component |
 | **Contributions** | (1) Multimodal Object-Wise Video Prompting (MOVP): uses MLLMs to produce pixel-aligned, object-level captions capturing temporal dynamics as supervision. (2) Status Deformable Network: models semantic features as a soft mixture over K=3 learnable state prototypes rather than unconstrained per-frame features. (3) Achieves state-of-the-art on both time-agnostic and time-sensitive open-vocabulary querying on HyperNeRF and Neu3D datasets |
 | **Clarity** | Well-organized with a clear three-contribution structure; the two-field design (agnostic + sensitive) is explained intuitively |
@@ -85,10 +85,10 @@ This constrains the feature space to a convex hull of K prototypes, enforcing st
 
 ### References to Follow Up
 
-1. **LangSplat: 3D Language Gaussian Splatting** — Qin et al., CVPR 2024: Direct predecessor; 4D LangSplat extends its CLIP-in-Gaussian pipeline to dynamic scenes.
+1. **[LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/)** — Qin et al., CVPR 2024: Direct predecessor; 4D LangSplat extends its CLIP-in-Gaussian pipeline to dynamic scenes.
 2. **4D Gaussian Splatting for Real-Time Dynamic Scene Rendering (4D-GS)** — Wu et al., CVPR 2024: The geometry backbone; introduces HexPlane + deformable fields for dynamic 3DGS.
 3. **Real-time Photorealistic Dynamic Scene Representation and Rendering with 4D Gaussian Splatting** — Yang et al., ICLR 2024 (Neu3D reference [61]): Alternative 4D-GS formulation used as one of the evaluation datasets.
-4. **Gaussian Grouping: Segment and Edit Anything in 3D Scenes** — Ye et al., ECCV 2024: Concurrent 3D open-vocabulary segmentation baseline; outperformed on dynamic scenes.
+4. **[Gaussian Grouping: Segment and Edit Anything in 3D Scenes](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/)** — Ye et al., ECCV 2024: Concurrent 3D open-vocabulary segmentation baseline; outperformed on dynamic scenes.
 5. **Qwen-VL / LLaVA** — MLLMs used as the video captioning backbone; understanding their spatial-temporal reasoning capability is important for judging the quality of the supervision signal.
 
 ---
@@ -212,15 +212,15 @@ The paper is an arXiv preprint and had not yet undergone peer review at publicat
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| LangSplat: 3D Language Gaussian Splatting | Qin et al. | 2024 | Direct predecessor; provides the static language field pipeline that 4D LangSplat extends |
-| 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering | Wu et al. | 2024 | Geometry backbone; HexPlane + deformable fields are adopted directly |
+| [LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | 2024 | Direct predecessor; provides the static language field pipeline that 4D LangSplat extends |
+| [4D Gaussian Splatting for Real-Time Dynamic Scene Rendering](../../2024/4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering/) | Wu et al. | 2024 | Geometry backbone; HexPlane + deformable fields are adopted directly |
 | LERF: Language Embedded Radiance Fields | Kerr et al. | 2023 | NeRF-based language field; established multi-scale open-vocabulary querying paradigm |
 
 #### Contemporaries / Competitors
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| Gaussian Grouping: Segment and Edit Anything in 3D Scenes | Ye et al. | 2024 | Competing open-vocabulary segmentation method for 3DGS; outperformed on dynamic tasks |
+| [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Ye et al. | 2024 | Competing open-vocabulary segmentation method for 3DGS; outperformed on dynamic tasks |
 | Feature-3DGS | Zhou et al. | 2024 | Distills 2D foundation model features into 3DGS; baseline on dynamic benchmarks |
 | DGD: Dynamic 3D Gaussians Distillation | Labe et al. | 2024 | Lifts features into 4D scene; concurrent direction |
 
@@ -228,7 +228,7 @@ The paper is an arXiv preprint and had not yet undergone peer review at publicat
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| LangSplatV2 | Li et al. | 2025 | Sibling work (same group) focusing on efficiency of static 3D language Gaussians; complementary in scope |
+| [LangSplatV2](../../2025/LangSplatV2-_High-dimensional_3D_language_Gaussian_Splatting_with_450+_FPS/) | Li et al. | 2025 | Sibling work (same group) focusing on efficiency of static 3D language Gaussians; complementary in scope |
 | (Open) Future work on generalizable dynamic language fields | — | — | Per-scene optimization is the key remaining gap; generalization is the next frontier |
 
 ---

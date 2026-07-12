@@ -12,7 +12,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Bibliometric meta-survey — quantitative measurement of research trends across 26,104 accepted papers from CVPR, ICLR, and NeurIPS (2023–2025) using lexicon-based abstract analysis |
-| **Context** | Builds on TF-IDF text analysis and bibliometric methods; takes VLM literature (CLIP, BLIP, LLaVA, Flamingo, ALIGN, DINO) as the subject of study rather than contributing to it; complements traditional hand-curated surveys with automated, reproducible measurement |
+| **Context** | Builds on TF-IDF text analysis and bibliometric methods; takes VLM literature (CLIP, BLIP, [LLaVA](../../2023/Visual_Instruction_Tuning/), Flamingo, ALIGN, DINO) as the subject of study rather than contributing to it; complements traditional hand-curated surveys with automated, reproducible measurement |
 | **Correctness** | Methodology is transparent and explicitly self-limited: abstract-only scope means datasets/training details are systematically under-reported; lexicon recall may miss niche synonyms; all caveats clearly stated in Sec. 6; numerical claims are internally consistent |
 | **Contributions** | (1) First quantitative trajectory analysis of 35 research directions across three top venues over three years; (2) Fine-grained VLM dissection across 8 dimensions (models, fusion, tasks, training, losses, datasets, co-modalities); (3) Cross-venue CVPR vs. ICLR vs. NeurIPS comparison; (4) Lexicon + methodology released for auditing and extension; (5) Actionable practical advice for VLM researchers derived from trend data |
 | **Clarity** | Very well written — compact (13 content pages), tables well-formatted, caveats clearly stated, practical takeaways explicit |
@@ -231,7 +231,7 @@ As a bibliometric measurement paper, "acceptance" takes a different form than fo
 | A Survey on Vision and Language Pre-training | Du et al. | 2022 | Comprehensive hand-curated VLM survey; Lin automates and scales this to 26K papers |
 | Trends in Computer Vision Research | Emerging literature in bibliometrics | various | General CV bibliometric methodology that Lin applies to VLMs specifically |
 | CLIP | Radford et al. | 2021 | Foundational VLM whose rise the survey documents as the #1 trend driver |
-| LLaVA | Liu et al. | 2023 | Fastest-growing model family in the survey; paradigm case for instruction-tuned VLMs |
+| [LLaVA](../../2023/Visual_Instruction_Tuning/) | Liu et al. | 2023 | Fastest-growing model family in the survey; paradigm case for instruction-tuned VLMs |
 | ALIGN | Jia et al. | 2021 | Most-cited model family across all VLM papers; anchor of dual-encoder pretraining era |
 
 #### Contemporaries / Competitors

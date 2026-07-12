@@ -235,9 +235,9 @@ Yes, broadly. The anchor-based neural Gaussian paradigm is now a widely cited de
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
 | Octree-AnyGS: Adaptive Anchor-Based Gaussian Primitives | city-super group | 2024 | Direct successor from same authors; generalizes Scaffold-GS's anchor framework to 2D-GS, 3D-GS, and neural Gaussians |
-| 2D Gaussian Splatting for Geometrically Accurate Radiance Fields | Huang et al. | 2024 | Adopts flat 2D surfels; Scaffold-GS's anchor idea influenced its structured initialization approach |
-| Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting | Yan et al. | 2024 | Applies structured Gaussian representation to dynamic autonomous driving scenes; cites Scaffold-GS as compact scene prior |
-| LangSplat: 3D Language Gaussian Splatting | Qin et al. | 2023 | Adds CLIP language features to 3D Gaussians; Scaffold-GS's compact anchor features are a natural fit for language field extensions |
+| [2D Gaussian Splatting for Geometrically Accurate Radiance Fields](../../2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | Huang et al. | 2024 | Adopts flat 2D surfels; Scaffold-GS's anchor idea influenced its structured initialization approach |
+| [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](../../2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Yan et al. | 2024 | Applies structured Gaussian representation to dynamic autonomous driving scenes; cites Scaffold-GS as compact scene prior |
+| [LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | 2023 | Adds CLIP language features to 3D Gaussians; Scaffold-GS's compact anchor features are a natural fit for language field extensions |
 
 ---
 

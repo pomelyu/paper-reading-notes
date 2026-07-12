@@ -77,7 +77,7 @@ Ablation highlights:
 
 ### References to Follow Up
 
-1. **DUSt3R: Geometric 3D Vision Made Easy** — Wang et al., CVPR 2024: The two-view pointmap predecessor that VGGT generalises.
+1. **[DUSt3R: Geometric 3D Vision Made Easy](../../2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/)** — Wang et al., CVPR 2024: The two-view pointmap predecessor that VGGT generalises.
 2. **MASt3R: Grounding Image Matching in 3D** — Leroy et al., ECCV 2024: Extends DUSt3R with matching-aware features; direct competitor.
 3. **VGGSfM: Visual Geometry Grounded Deep Structure from Motion** — Wang et al., CVPR 2024: Differentiable SfM backbone that VGGT's camera parametrisation and BA integration are based on.
 4. **CoTracker: It Is Better to Track Together** — Karaev et al., ECCV 2024: The point-tracking architecture whose backbone VGGT replaces for dynamic tracking.
@@ -177,7 +177,7 @@ L_{track} = \sum_{j=1}^M \sum_{i=1}^N \| y_{j,i} - \hat{y}_{j,i} \|
 
 ### What Has Changed Since Publication
 
-- **VGGT-Omega released (May 2026):** The successor model from the same group substantially extends VGGT with improved dynamic scene handling and better memory efficiency, validating that the design space opened by VGGT is still actively expanding.
+- **[VGGT-Omega](../../2026/VGGT-Omega/) released (May 2026):** The successor model from the same group substantially extends VGGT with improved dynamic scene handling and better memory efficiency, validating that the design space opened by VGGT is still actively expanding.
 - **Concurrent feed-forward reconstruction wave:** At the time of CVPR 2025, Fast3R, CUT3R, FLARE, and MV-DUSt3R all tackled similar multi-view feed-forward reconstruction; post-publication, this space has continued to grow rapidly (SceneVGGT for 3D SLAM, 3D-Mix for VLA models, etc.).
 - **Gaussian Splatting integration:** VGGT's COLMAP-format export has been adopted as an initialisation for 3DGS pipelines, making the paper practically important beyond its stated benchmarks.
 - **Quantisation research:** A quantised VGGT variant has been published (arXiv 2509.21302), confirming demand for lighter deployment.
@@ -195,7 +195,7 @@ The community has broadly validated VGGT's central claims. The CVPR 2025 Best Pa
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| DUSt3R: Geometric 3D Vision Made Easy | Wang, Leroy, Cabon et al. | 2024 | Direct predecessor: introduced the pointmap regression paradigm for image pairs; VGGT extends to N views in one pass |
+| [DUSt3R: Geometric 3D Vision Made Easy](../../2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/) | Wang, Leroy, Cabon et al. | 2024 | Direct predecessor: introduced the pointmap regression paradigm for image pairs; VGGT extends to N views in one pass |
 | MASt3R: Grounding Image Matching in 3D | Leroy, Cabon, Revaud | 2024 | Extends DUSt3R with matching-aware features; strongest direct baseline |
 | VGGSfM: Visual Geometry Grounded Deep Structure from Motion | Wang, Karaev, Rupprecht, Novotny | 2024 | Same author group; camera parametrisation (quaternion + FoV) and BA integration are reused |
 | DINOv2: Learning Robust Visual Features without Supervision | Oquab et al. | 2024 | Provides frozen image tokeniser; critical for training stability |
@@ -215,11 +215,11 @@ The community has broadly validated VGGT's central claims. The CVPR 2025 Best Pa
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| VGGT-Omega | Wang et al. (Meta AI / Oxford) | 2026 | Direct successor from the same group; extends VGGT for dynamic scenes and improved memory efficiency |
+| [VGGT-Omega](../../2026/VGGT-Omega/) | Wang et al. (Meta AI / Oxford) | 2026 | Direct successor from the same group; extends VGGT for dynamic scenes and improved memory efficiency |
 | SceneVGGT: VGGT-based Online 3D Semantic SLAM | — | 2026 | Integrates VGGT into a real-time SLAM pipeline for indoor scene understanding |
 | 3D-Mix for VLA: Integrating VGGT-based 3D Information into VLA Models | — | 2026 | Uses VGGT as a 3D perception module inside Vision-Language-Action models for robotics |
 | Quantized Visual Geometry Grounded Transformer | — | 2025 | Quantises VGGT-1B for efficient deployment on edge devices |
-| DINOv3 | — | 2025 | References VGGT as a downstream application of strong visual features (from knowledge graph) |
+| [DINOv3](../../2025/DINOv3/) | — | 2025 | References VGGT as a downstream application of strong visual features (from knowledge graph) |
 
 ---
 

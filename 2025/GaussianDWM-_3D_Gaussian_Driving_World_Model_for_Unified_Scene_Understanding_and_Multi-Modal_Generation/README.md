@@ -14,7 +14,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | System design / unified framework paper. Proposes the first 3D Gaussian-based driving world model that jointly handles scene understanding (QA, captioning, planning) and multi-modal generation (video, LiDAR, map, action). |
-| **Context** | Builds on 3D Gaussian Splatting (Kerbl 2023), LangSplat (Qin 2023) for language-embedded Gaussians, and large language models (Qwen3-8B) for world-level knowledge. Situates itself against vision-language driving models (GPT-Driver, DriveVLM, VAD) and generation-focused world models (WoVogen, DriveDreamer, MagicDrive). |
+| **Context** | Builds on 3D Gaussian Splatting (Kerbl 2023), [LangSplat](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) (Qin 2023) for language-embedded Gaussians, and large language models (Qwen3-8B) for world-level knowledge. Situates itself against vision-language driving models (GPT-Driver, DriveVLM, VAD) and generation-focused world models (WoVogen, DriveDreamer, MagicDrive). |
 | **Correctness** | Claims are generally well-supported by ablations and multi-benchmark results. The "first" unified 3D Gaussian DWM claim is plausible given the 2025 submission date. Two structural concerns: (1) **Per-scene optimization** — the Gaussian tokenizer requires reconstructing from all frames of a scene before inference, so there is no generalizable feed-forward path to unseen scenes. (2) **Non-causal evaluation** — the 3D Gaussians are built from the entire scene clip (including future frames), meaning planning and generation tasks have implicit access to future observations. This violates the causal constraint required for real-world deployment and inflates performance relative to an online, frame-by-frame system. |
 | **Contributions** | (1) First 3D Gaussian DWM unifying understanding and generation. (2) A 3D Gaussian world tokenizer that produces language-aligned tokens via LangSplat + CLIP. (3) Task-aware hybrid Gaussian sampling for efficient LLM token budgeting. (4) Dual-condition generation with high-level LLM world knowledge and low-level image appearance. (5) NuInteract benchmark for interactive scene understanding on nuScenes. |
 | **Clarity** | Well-structured with a clear pipeline figure (Fig. 2). Some notational complexity around the token compression and dual-condition generation — the paper would benefit from a worked example. The NuInteract benchmark description is somewhat terse. |
@@ -76,7 +76,7 @@ Key ablation findings:
 ### References to Follow Up
 
 1. **3D Gaussian Splatting for Real-Time Radiance Field Rendering** — Kerbl et al., SIGGRAPH 2023: The foundational Gaussian representation GaussianDWM builds on.
-2. **LangSplat: 3D Language Gaussian Splatting** — Qin et al., CVPR 2024: The technique used to embed CLIP language features into Gaussians — directly inherited by the world tokenizer.
+2. **[LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/)** — Qin et al., CVPR 2024: The technique used to embed CLIP language features into Gaussians — directly inherited by the world tokenizer.
 3. **DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models** — Tian et al., 2024: Primary understanding baseline; represents the VLM-for-driving paradigm.
 4. **MagicDrive: Street View Generation with Diverse 3D Geometry Control** — Gao et al., 2023: Key generation baseline; 2D-based controllable driving video generation.
 5. **WoVogen: World Volume-aware Diffusion for Controllable Multi-camera Driving Scene Generation** — 2024: Close generation competitor with explicit 3D volume reasoning.
@@ -158,8 +158,8 @@ The paper is very recent (submitted Dec 2025, updated May 2026) and has not yet 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | **3D Gaussian Splatting for Real-Time Radiance Field Rendering** | Kerbl et al. | SIGGRAPH 2023 | Core scene representation; GaussianDWM's world tokenizer is built on top of it |
-| **LangSplat: 3D Language Gaussian Splatting** | Qin et al. | CVPR 2024 | The CLIP-aligned Gaussian language embedding technique directly inherited by the world tokenizer |
-| **Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting** | Yan et al. | ECCV 2024 | The street-scene Gaussian reconstruction backbone GaussianDWM adapts for driving logs |
+| [**LangSplat: 3D Language Gaussian Splatting**](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | CVPR 2024 | The CLIP-aligned Gaussian language embedding technique directly inherited by the world tokenizer |
+| [**Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting**](../../2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Yan et al. | ECCV 2024 | The street-scene Gaussian reconstruction backbone GaussianDWM adapts for driving logs |
 
 #### Contemporaries / Competitors
 

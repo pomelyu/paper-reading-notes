@@ -177,7 +177,7 @@ Yes. The real-time rendering claim has been validated and widely cited. The HexP
 |-------|---------|------|----------|
 | **SC-GS: Sparse-Controlled Gaussian Splatting for Editable Dynamic Scenes** | Huang et al. | CVPR 2024 | Adds sparse control points to improve large-motion handling — directly addresses 4D-GS's main limitation |
 | **Gaussian Flow: 4D Reconstruction with Particle-Based Optical Flow** | — | 2024 | Uses optical flow regularization to fix monocular limitations of 4D-GS |
-| **Street Gaussians** | Yan et al. | ECCV 2024 | Applies compositional Gaussians to autonomous driving; uses a simpler 4D SH trick instead of a deformation network, and achieves far faster rendering on urban scenes |
+| [**Street Gaussians**](../../2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Yan et al. | ECCV 2024 | Applies compositional Gaussians to autonomous driving; uses a simpler 4D SH trick instead of a deformation network, and achieves far faster rendering on urban scenes |
 | **4DRotorGS / 4D-GS variants** | various | 2024 | Further refine rotation deformation modeling or extend to large-scale scenes |
 
 ---

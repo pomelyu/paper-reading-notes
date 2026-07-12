@@ -253,7 +253,7 @@ MonoGS has been strongly accepted — it received a CVPR 2024 Highlight and Best
 | Photo-SLAM: Real-time Simultaneous Localization and Photorealistic Mapping | Huang et al. | 2024 | Adds ORB-SLAM backbone for loop closure; significantly improves large-scale performance |
 | LoopSplat: Loop Closure by Registering 3D Gaussian Splats | Zhu et al. | 2024 | Adds explicit loop closure to GS-SLAM using Gaussian registration |
 | MASt3R-SLAM | Murai et al. | 2024 | From the same group; feed-forward approach for online reconstruction |
-| GaussianDWM | — | 2025 | Extends Gaussian-based scene modeling to world-model-level generation for driving (from knowledge graph) |
+| [GaussianDWM](../../2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | — | 2025 | Extends Gaussian-based scene modeling to world-model-level generation for driving (from knowledge graph) |
 
 ---
 

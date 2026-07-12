@@ -84,7 +84,7 @@ Data ablation highlights:
 
 ### References to Follow Up
 
-1. **Segment Anything (SAM)** — Kirillov et al., ICCV 2023: The direct predecessor; understanding SAM's architecture and data engine is prerequisite.
+1. **[Segment Anything (SAM)](../../2023/Segment_Anything/)** — Kirillov et al., ICCV 2023: The direct predecessor; understanding SAM's architecture and data engine is prerequisite.
 2. **Hiera: A Hierarchical Vision Transformer without the Bells-and-Whistles** — Ryali et al., ICML 2023: The image encoder backbone; understanding multiscale features explains why SAM 2 gets better boundaries than SAM.
 3. **Cutie: Putting the Object Back in Video Object Segmentation** — Cheng et al., CVPR 2024: Primary competitive baseline in interactive VOS; using memory-based propagation differently.
 4. **XMem++: Production-level Video Segmentation** — Bekuzarov et al., ICCV 2023: The other main VOS baseline; combined with SAM as SAM+XMem++ in evaluations.
@@ -189,7 +189,7 @@ SAM 2's claims have been broadly validated. The 3× fewer interactions result in
 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
-| Segment Anything (SAM) | Kirillov et al. | ICCV 2023 | Direct predecessor; SAM 2 is a strict generalisation with memory added |
+| [Segment Anything (SAM)](../../2023/Segment_Anything/) | Kirillov et al. | ICCV 2023 | Direct predecessor; SAM 2 is a strict generalisation with memory added |
 | Hiera: A Hierarchical Vision Transformer | Ryali et al. | ICML 2023 | The image encoder backbone; multiscale features are key to SAM 2's boundary quality |
 | XMem: Long-Term Video Object Segmentation | Cheng & Schwing | ECCV 2022 | Memory-based VOS approach that inspired the memory bank concept |
 | Masked Autoencoders (MAE) | He et al. | CVPR 2022 | Pre-training method for the Hiera image encoder |
@@ -207,8 +207,8 @@ SAM 2's claims have been broadly validated. The 3× fewer interactions result in
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | Grounded-SAM 2 | Ren et al. | 2024 | Combines SAM 2 with Grounding DINO for text-driven video segmentation |
-| 4D LangSplat | Li et al. | 2025 | Uses SAM 2 for temporal mask consistency in 4D language Gaussian fields |
-| LangSplatV2 | Li et al. | 2025 | Uses SAM 2's video tracking for multi-frame CLIP feature aggregation in 3DGS |
+| [4D LangSplat](../../2025/4D_LangSplat-_4D_Language_Gaussian_Splatting_via_Multimodal_Large_Language_Models/) | Li et al. | 2025 | Uses SAM 2 for temporal mask consistency in 4D language Gaussian fields |
+| [LangSplatV2](../../2025/LangSplatV2-_High-dimensional_3D_language_Gaussian_Splatting_with_450+_FPS/) | Li et al. | 2025 | Uses SAM 2's video tracking for multi-frame CLIP feature aggregation in 3DGS |
 | OmniRe | Chen et al. | 2024 | Uses SAM 2 for dynamic object segmentation in urban scene reconstruction |
 
 ---

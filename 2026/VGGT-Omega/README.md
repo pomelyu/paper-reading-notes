@@ -15,7 +15,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | System paper — improved feed-forward transformer for multi-task 3D reconstruction of static and dynamic scenes, with a central focus on demonstrating predictable scaling laws |
-| **Context** | Builds directly on VGGT (CVPR 2025 Best Paper), which itself builds on DUSt3R/MASt3R; extends it with architectural efficiency via register attention, self-supervised learning on unlabeled video, and a dynamic-scene data pipeline; uses DINOv3 as image tokenizer |
+| **Context** | Builds directly on [VGGT](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) (CVPR 2025 Best Paper), which itself builds on [DUSt3R](../../2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/)/MASt3R; extends it with architectural efficiency via register attention, self-supervised learning on unlabeled video, and a dynamic-scene data pipeline; uses [DINOv3](../../2025/DINOv3/) as image tokenizer |
 | **Correctness** | Assumptions are well-grounded: scaling laws are verified empirically across 0.2B–10B parameters and 2K–2M sequences; results on 6 standard benchmarks (3 static, 3 dynamic) are rigorous; self-supervised protocol uses clean EMA[^1] teacher-student design |
 | **Contributions** | (1) Register attention reducing cross-frame information to 16 registers per image; (2) Lightweight MLP[^2]+pixel-shuffle decoder replacing expensive DPT[^3] convolutions; (3) Large-scale annotation pipeline supporting dynamic scenes (4M scenes, ~1/3 dynamic); (4) DINO-style self-supervised learning on 18M unlabeled videos; (5) Empirical power-law scaling curves for feed-forward 3D reconstruction; (6) Transferable register tokens for VLA[^4] robotics and language alignment |
 | **Clarity** | Well-written; architecture changes are clearly motivated by efficiency analysis, scaling experiments are clean, ablations are informative |
@@ -88,8 +88,8 @@ Scale VGGT's feed-forward 3D reconstruction to orders-of-magnitude more data and
 
 ### References to Follow Up
 
-1. **VGGT: Visual Geometry Grounded Transformer** — Wang et al., CVPR 2025: The direct predecessor; understanding its architecture (alternating attention, DPT heads, multi-task losses) is essential to appreciate what VGGT-Ω changes.
-2. **DINOv3** — Oquab et al., arXiv 2025: The image backbone used for tokenization; its initialization properties are credited for faster training.
+1. **[VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/)** — Wang et al., CVPR 2025: The direct predecessor; understanding its architecture (alternating attention, DPT heads, multi-task losses) is essential to appreciate what VGGT-Ω changes.
+2. **[DINOv3](../../2025/DINOv3/)** — Oquab et al., arXiv 2025: The image backbone used for tokenization; its initialization properties are credited for faster training.
 3. **DINO / DINOv2** — Caron et al. / Oquab et al., ICCV 2021/2023: The teacher-student self-supervised learning paradigm that VGGT-Ω's self-supervised protocol is modelled on.
 4. **MegaSaM** — Li et al., 2024/2025: Used as a key dynamic-scene baseline; VGGT-Ω is claimed to be 50× faster.
 5. **Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass** — Yang et al., arXiv 2025: Contemporary competitor for large-frame-count feed-forward reconstruction.
@@ -221,10 +221,10 @@ VGGT-Ω's CVPR 2026 Oral + Best Paper Finalist designation signals strong commun
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| VGGT: Visual Geometry Grounded Transformer | Wang et al. | 2025 | Direct predecessor; VGGT-Ω is an architectural and data-scaling extension |
-| DUSt3R: Geometric 3D Vision Made Easy | Wang et al. | 2024 | Foundational pointmap paradigm that VGGT (and therefore VGGT-Ω) builds on |
+| [VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | Wang et al. | 2025 | Direct predecessor; VGGT-Ω is an architectural and data-scaling extension |
+| [DUSt3R: Geometric 3D Vision Made Easy](../../2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/) | Wang et al. | 2024 | Foundational pointmap paradigm that VGGT (and therefore VGGT-Ω) builds on |
 | MASt3R: Grounding Image Matching in 3D | Leroy et al. | 2024 | Extended DUSt3R with matching; key baseline in the lineage |
-| DINOv2 / DINOv3 | Oquab et al. | 2023/2025 | ViT backbone used for tokenization; DINOv3 initialization critical for convergence |
+| DINOv2 / [DINOv3](../../2025/DINOv3/) | Oquab et al. | 2023/2025 | ViT backbone used for tokenization; DINOv3 initialization critical for convergence |
 | DINO: Self-Supervised Vision Transformers | Caron et al. | 2021 | Teacher-student EMA protocol directly adopted for self-supervised stage |
 | VGGSfM: Visual Geometry Grounded Deep SfM | Wang et al. | 2024 | Camera parametrisation design used in VGGT and inherited here |
 

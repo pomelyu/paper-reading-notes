@@ -14,7 +14,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Systems paper extending Scaffold-GS with object-aware semantic modeling; jointly performs high-quality 3D scene reconstruction and open-world instance segmentation in a single training run |
-| **Context** | Builds on Scaffold-GS (anchor-based neural Gaussians), 3DGS, 2DGS, SAM/Grounded-SAM (segmentation backbone), DEVA (cross-frame video segmentation); directly competes with LangSplat, Gaussian Grouping, SAGA |
+| **Context** | Builds on [Scaffold-GS](../../2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) (anchor-based neural Gaussians), 3DGS, [2DGS](../../2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/), SAM/Grounded-SAM (segmentation backbone), [DEVA](../../2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) (cross-frame video segmentation); directly competes with [LangSplat](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/), [Gaussian Grouping](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/), SAGA |
 | **Correctness** | Claims and ablations are consistent; the argument against learnable semantics (alpha-blending ambiguity) is well-supported; controlled ablation on three semantic modeling variants isolates the contribution clearly |
 | **Contributions** | (1) Object-aware anchor/Gaussian representation where each anchor carries an object ID propagated through grow/prune; (2) discrete one-hot ID encoding as Gaussian semantics, eliminating alpha-blending ambiguity; (3) scene-level occlusion-aware semantic rendering via variable-length feature rasterizer; (4) demonstrated on OVS and panoptic segmentation with SOTA results and clean downstream applications |
 | **Clarity** | Well-organized; the three alternatives for semantic modeling (learnable / object-independent / one-hot) are clearly motivated and contrasted; figures directly illustrate the key failure modes being addressed |
@@ -96,11 +96,11 @@ ObjectGS binds each anchor to a fixed object ID so that all neural Gaussians it 
 
 ### References to Follow Up
 
-1. **"Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering"** — Lu et al., CVPR 2024: The direct foundation that ObjectGS extends; understanding the anchor/neural Gaussian architecture is prerequisite.
-2. **"Gaussian Grouping: Segment and Edit Anything in 3D Scenes"** — Ye et al., ECCV 2024: The primary baseline; uses learnable per-Gaussian identity features supervised by DEVA masks; understanding why it fails at boundaries motivates ObjectGS.
-3. **"Tracking Anything with Decoupled Video Segmentation (DEVA)"** — Cheng et al., ICCV 2023: The video segmentation backbone that provides cross-frame consistent object IDs; its failure modes become ObjectGS's failure modes.
+1. **["Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering"](../../2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/)** — Lu et al., CVPR 2024: The direct foundation that ObjectGS extends; understanding the anchor/neural Gaussian architecture is prerequisite.
+2. **["Gaussian Grouping: Segment and Edit Anything in 3D Scenes"](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/)** — Ye et al., ECCV 2024: The primary baseline; uses learnable per-Gaussian identity features supervised by DEVA masks; understanding why it fails at boundaries motivates ObjectGS.
+3. **["Tracking Anything with Decoupled Video Segmentation (DEVA)"](../../2023/Tracking_Anything_with_Decoupled_Video_Segmentation/)** — Cheng et al., ICCV 2023: The video segmentation backbone that provides cross-frame consistent object IDs; its failure modes become ObjectGS's failure modes.
 4. **"Segment Any 3D Gaussians (SAGA)"** — Cen et al., AAAI 2025: The nearest competitor in accuracy; uses SAM features distilled per-Gaussian with contrastive losses rather than discrete IDs — important to understand the trade-off.
-5. **"2D Gaussian Splatting for Geometrically Accurate Radiance Fields"** — Huang et al., SIGGRAPH 2024: The 2DGS variant used for mesh extraction; shows how ObjectGS can swap the underlying Gaussian primitive.
+5. **["2D Gaussian Splatting for Geometrically Accurate Radiance Fields"](../../2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/)** — Huang et al., SIGGRAPH 2024: The 2DGS variant used for mesh extraction; shows how ObjectGS can swap the underlying Gaussian primitive.
 
 ---
 
@@ -213,20 +213,20 @@ ObjectGS is an ICCV 2025 paper, so formal community vetting is still in early st
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | 3D Gaussian Splatting | Kerbl et al. | 2023 | Foundational representation; ObjectGS is built on top of 3DGS via Scaffold-GS |
-| Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering | Lu et al. | 2024 | Direct architectural foundation; ObjectGS adds object IDs to the anchor-based pipeline |
-| 2D Gaussian Splatting | Huang et al. | 2024 | Used in the mesh extraction variant; replaces 3DGS primitives when surface accuracy is needed |
-| Segment Anything (SAM) | Kirillov et al. | 2023 | Segmentation backbone; Grounded-SAM and DEVA both build on SAM for 2D mask generation |
-| Gaussian Grouping | Ye et al. | 2024 | Primary predecessor and baseline; uses DEVA for cross-frame consistency but with learnable continuous features — ObjectGS directly addresses its limitations |
+| [Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](../../2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | Lu et al. | 2024 | Direct architectural foundation; ObjectGS adds object IDs to the anchor-based pipeline |
+| [2D Gaussian Splatting](../../2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | Huang et al. | 2024 | Used in the mesh extraction variant; replaces 3DGS primitives when surface accuracy is needed |
+| [Segment Anything (SAM)](../../2023/Segment_Anything/) | Kirillov et al. | 2023 | Segmentation backbone; Grounded-SAM and DEVA both build on SAM for 2D mask generation |
+| [Gaussian Grouping](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Ye et al. | 2024 | Primary predecessor and baseline; uses DEVA for cross-frame consistency but with learnable continuous features — ObjectGS directly addresses its limitations |
 | LERF: Language Embedded Radiance Fields | Kerr et al. | 2023 | Represents the NeRF-based semantic field approach; ObjectGS's open-vocabulary evaluation follows LERF-Mask benchmarks |
-| Tracking Anything with Decoupled Video Segmentation (DEVA) | Cheng et al. | 2023 | Core backbone for cross-frame consistent mask generation; ObjectGS builds its initialization pipeline around DEVA |
+| [Tracking Anything with Decoupled Video Segmentation (DEVA)](../../2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) | Cheng et al. | 2023 | Core backbone for cross-frame consistent mask generation; ObjectGS builds its initialization pipeline around DEVA |
 
 #### Contemporaries / Competitors
 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | Segment Any 3D Gaussians (SAGA) | Cen et al. | 2025 | Near-SOTA on 3DOVS; uses SAM features + contrastive loss per-Gaussian; ObjectGS outperforms on most benchmarks |
-| Gaussian Grouping | Ye et al. | 2024 | Primary baseline across all experiments; ObjectGS consistently outperforms by large margins on both segmentation and reconstruction |
-| LangSplat: 3D Language Gaussian Splatting | Qin et al. | 2024 | CLIP-based semantic fields; weaker on segmentation (mIoU ~50–70 on LERF-Mask vs 88+) but enables text-query over a continuous semantic space |
+| [Gaussian Grouping](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Ye et al. | 2024 | Primary baseline across all experiments; ObjectGS consistently outperforms by large margins on both segmentation and reconstruction |
+| [LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | 2024 | CLIP-based semantic fields; weaker on segmentation (mIoU ~50–70 on LERF-Mask vs 88+) but enables text-query over a continuous semantic space |
 | Gaga: Group Any Gaussians | Lyu et al. | 2024 | 3D-aware memory bank for grouping; competitive on figurines but weaker on ramen/teatime; different architectural approach |
 | Lifting by Gaussians (LBG) | Chacko et al. | 2025 | Simple, fast 3D instance segmentation; close to SAGA on 3DOVS (94.9 mean IoU); ObjectGS edges ahead (96.4) |
 | OpenGaussian | Wu et al. | 2024 | Point-level open-vocabulary understanding; addresses a similar problem with a different architecture |

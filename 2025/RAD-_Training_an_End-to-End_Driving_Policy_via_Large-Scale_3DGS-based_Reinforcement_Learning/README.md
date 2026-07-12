@@ -81,8 +81,8 @@ Metric glossary: CR = Collision Ratio, DCR = Dynamic Collision Ratio, SCR = Stat
 
 ### References to Follow Up
 
-1. **Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting** — Yunzhi Yan et al., ECCV 2024: The 3DGS dynamic scene representation that RAD extends with mesh-constrained road and improved foreground reconstruction.
-2. **HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving** — Hongyu Zhou et al., arXiv 2024: Concurrent 3DGS-based AD simulator; RAD goes further by incorporating RL training rather than just closed-loop evaluation.
+1. **[Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](../../2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/)** — Yunzhi Yan et al., ECCV 2024: The 3DGS dynamic scene representation that RAD extends with mesh-constrained road and improved foreground reconstruction.
+2. **[HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving](../../2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/)** — Hongyu Zhou et al., arXiv 2024: Concurrent 3DGS-based AD simulator; RAD goes further by incorporating RL training rather than just closed-loop evaluation.
 3. **VADv2: End-to-End Vectorized Autonomous Driving via Probabilistic Planning** — Shaoyu Chen et al., arXiv 2024: The strongest IL baseline from the same lab that RAD post-trains from; understanding VADv2's architecture helps understand RAD's Stage 2.
 4. **Proximal Policy Optimization Algorithms** — Schulman et al., arXiv 2017: The PPO algorithm used as RAD's RL backbone, including the clipping and GAE formulations.
 5. **Imitation is Not Enough: Robustifying Imitation with RL for Challenging Driving Scenarios** — Lu et al., IROS 2023: Influential prior work on combining IL and RL for driving (in CARLA), which RAD generalizes to a photorealistic 3DGS environment.
@@ -283,7 +283,7 @@ RAD is a NeurIPS 2025 paper, so full community assessment is still in its early 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | Kerbl et al. | 2023 | Core scene representation RAD builds upon |
-| Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting | Yan et al. | 2024 | 3DGS extension for dynamic driving scenes; RAD's direct base for environment construction |
+| [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](../../2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Yan et al. | 2024 | 3DGS extension for dynamic driving scenes; RAD's direct base for environment construction |
 | VADv2: End-to-End Vectorized Autonomous Driving via Probabilistic Planning | Chen et al. | 2024 | IL-based predecessor from same lab; RAD Stage 2 initializes from this paradigm |
 | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Videos | Li et al. | 2022 | BEV encoder used in RAD's policy architecture |
 | Proximal Policy Optimization Algorithms | Schulman et al. | 2017 | RL algorithm (PPO) used for policy optimization in Stage 3 |

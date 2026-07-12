@@ -14,7 +14,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Systems paper augmenting 3D Gaussian Splatting with instance-level semantic grouping; enables open-world 3D segmentation and scene editing |
-| **Context** | Builds directly on 3D-GS (representation), SAM (2D mask proposals), and DEVA (cross-view mask association); competes with NeRF-based 3D understanding methods like SA3D, Panoptic Lifting, LERF |
+| **Context** | Builds directly on 3D-GS (representation), SAM (2D mask proposals), and [DEVA](../../2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) (cross-view mask association); competes with NeRF-based 3D understanding methods like SA3D, Panoptic Lifting, LERF |
 | **Correctness** | Claims are well-supported; ablations justify each design choice (encoding dim, K for regularization, 3D loss); the 60× speedup claim for mask association is verified against the cost-based linear assignment baseline |
 | **Contributions** | (1) Identity Encoding — a learnable 16-dim per-Gaussian embedding supervised by SAM 2D masks; (2) 3D spatial consistency regularization via KL divergence to nearest-neighbor Gaussians; (3) Local Gaussian Editing scheme for object removal, inpainting, colorization, style transfer, and scene recomposition; (4) LERF-Mask benchmark for fine-grained 3D segmentation evaluation |
 | **Clarity** | Well-structured; pipeline is cleanly decomposed into three stages with matching figure and pseudocode |
@@ -104,10 +104,10 @@ Negligible quality decrease while adding full scene segmentation capability.
 ### References to Follow Up
 
 1. **3D Gaussian Splatting for Real-Time Radiance Field Rendering** — Kerbl et al., SIGGRAPH 2023: The base representation this paper augments; essential for understanding the rendering pipeline.
-2. **Tracking Anything with Decoupled Video Segmentation (DEVA)** — Cheng et al., ICCV 2023: Cross-view mask association backbone; the reason Gaussian Grouping is 60× faster than prior assignment methods.
+2. **[Tracking Anything with Decoupled Video Segmentation (DEVA)](../../2023/Tracking_Anything_with_Decoupled_Video_Segmentation/)** — Cheng et al., ICCV 2023: Cross-view mask association backbone; the reason Gaussian Grouping is 60× faster than prior assignment methods.
 3. **Panoptic Lifting** — Siddiqui et al., CVPR 2023: Closest NeRF-based competitor for 3D panoptic segmentation; uses cost-based linear assignment that Gaussian Grouping replaces with DEVA.
 4. **SA3D: Segment Anything in 3D** — Cen et al., NeurIPS 2023: Alternative approach lifting SAM to 3D via NeRF; requires per-object training, so 35 min per object vs 9 min for all objects here.
-5. **ObjectGS** — Zhu et al., ICCV 2025: Extends Gaussian Grouping with Scaffold-GS backbone and discrete one-hot encoding to fix alpha-blending ambiguity; achieves IoU 88.4 vs 83.4 on Replica.
+5. **[ObjectGS](../../2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/)** — Zhu et al., ICCV 2025: Extends Gaussian Grouping with Scaffold-GS backbone and discrete one-hot encoding to fix alpha-blending ambiguity; achieves IoU 88.4 vs 83.4 on Replica.
 
 ---
 
@@ -256,8 +256,8 @@ Yes, broadly. Gaussian Grouping established the key paradigm — add a compact p
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
 | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | Kerbl et al. | 2023 | Base representation; Gaussian Grouping augments each Gaussian with Identity Encoding on top of the full 3D-GS pipeline |
-| Segment Anything (SAM) | Kirillov et al. | 2023 | 2D mask proposal generator; SAM "everything" mode produces per-image instance masks used as training supervision |
-| Tracking Anything with Decoupled Video Segmentation (DEVA) | Cheng et al. | 2023 | Cross-view mask association backbone; treats multi-view as video and propagates consistent IDs, achieving 60× speedup over linear assignment |
+| [Segment Anything (SAM)](../../2023/Segment_Anything/) | Kirillov et al. | 2023 | 2D mask proposal generator; SAM "everything" mode produces per-image instance masks used as training supervision |
+| [Tracking Anything with Decoupled Video Segmentation (DEVA)](../../2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) | Cheng et al. | 2023 | Cross-view mask association backbone; treats multi-view as video and propagates consistent IDs, achieving 60× speedup over linear assignment |
 | Language Embedded Radiance Fields (LERF) | Kerr et al. | 2023 | Baseline for open-vocab 3D localization; Gaussian Grouping borrows its LERF-Localization dataset and extends it into LERF-Mask |
 | LaMa (Large Mask Inpainting) | Suvorov et al. | 2022 | 2D inpainting backbone used in the 3D object inpainting pipeline to fill per-view holes after Gaussian deletion |
 | Grounding DINO | Liu et al. | 2023 | Used as text-driven detector to identify which mask ID corresponds to a text query at inference time |
@@ -271,13 +271,13 @@ Yes, broadly. Gaussian Grouping established the key paradigm — add a compact p
 | SPIn-NeRF | Mirzaei et al. | 2023 | 3D object inpainting via neural radiance fields; requires 5h training; Gaussian Grouping achieves better inpainting in 1h training + 20 min finetuning |
 | Instruct-NeRF2NeRF | Haque et al. | 2023 | 3D scene editing via InstructPix2Pix applied to NeRF; Gaussian Grouping adopts InstructPix2Pix for style transfer and outperforms it in CLIP similarity |
 | Distilled Feature Fields (DFFs) | Kobayashi et al. | 2022 | Feature field distillation for NeRF editing and object removal; limited by CLIP feature quality for large object removal; Gaussian Grouping outperforms on Tanks & Temples removal |
-| LangSplat | Qin et al. | 2023 | Concurrent work attaching 3-level CLIP language features to each Gaussian; focuses on open-vocabulary language queries rather than instance segmentation; competes on LERF-Mask but at lower accuracy |
+| [LangSplat](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | 2023 | Concurrent work attaching 3-level CLIP language features to each Gaussian; focuses on open-vocabulary language queries rather than instance segmentation; competes on LERF-Mask but at lower accuracy |
 
 #### Successors / Extensions
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| ObjectGS | Zhu et al. | 2025 | Extends to Scaffold-GS backbone; replaces continuous 16-dim encoding with discrete one-hot IDs, fixing alpha-blending ambiguity; achieves IoU 88.4 vs 83.4 on Replica; strongest follow-up (from knowledge graph) |
+| [ObjectGS](../../2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/) | Zhu et al. | 2025 | Extends to Scaffold-GS backbone; replaces continuous 16-dim encoding with discrete one-hot IDs, fixing alpha-blending ambiguity; achieves IoU 88.4 vs 83.4 on Replica; strongest follow-up (from knowledge graph) |
 | CosseGaussians | Dou et al. | 2024 | Compact Gaussian segmentation with dual feature fusion; targets efficient mobile-scale 3D instance segmentation |
 | Feature 3DGS / Gaussian Feature Fields | Various | 2024 | General paradigm of augmenting 3D-GS with per-Gaussian semantic/feature attributes; directly inherits the architecture introduced here |
 | SAGA / Segment Any 3D Gaussian | — | 2024 | Zero-shot 3D Gaussian segmentation using SAM prompts; refines the interaction modality while building on the same grouped Gaussian concept |

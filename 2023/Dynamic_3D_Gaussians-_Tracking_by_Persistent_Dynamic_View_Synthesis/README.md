@@ -214,7 +214,7 @@ D3DGS is widely regarded as a landmark paper that established the paradigm of tr
 |-------|---------|------|----------|
 | Tracking Everything Everywhere All at Once (OmniMotion) | Wang et al. | 2023 | Most similar in spirit; NeRF-based test-time tracking but requires dense optical flow input |
 | Deformable 3D Gaussians for High-Fidelity Monocular Dynamic Scene Reconstruction | Yang et al. | 2023 | Concurrent; adds deformation field to 3DGS but focuses on monocular video, not tracking |
-| 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering | Wu et al. | 2023 | Concurrent; uses polynomial trajectory Gaussians; targets rendering quality over tracking |
+| [4D Gaussian Splatting for Real-Time Dynamic Scene Rendering](../../2024/4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering/) | Wu et al. | 2023 | Concurrent; uses polynomial trajectory Gaussians; targets rendering quality over tracking |
 | SC-GS: Sparse-Controlled Gaussian Splatting | Huang et al. | 2023 | Concurrent; uses sparse control points to drive dense Gaussian motion |
 
 #### Successors / Extensions
@@ -222,7 +222,7 @@ D3DGS is widely regarded as a landmark paper that established the paradigm of tr
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
 | Shape of Motion: 4D Reconstruction from a Single Video | Wang et al. | 2024 | Extends tracking-by-rendering to monocular video using motion basis decomposition |
-| Gaussian Grouping: Segment and Edit Anything in 3D Scenes | Ye et al. | 2024 | Extends D3DGS-style editing by adding identity-aware grouping to Gaussians |
+| [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Ye et al. | 2024 | Extends D3DGS-style editing by adding identity-aware grouping to Gaussians |
 | SplatFlow: Learning Multi-Frame Optical Flow via Splatting | Fischer et al. | 2024 | Uses Gaussian splatting to compute flow, reversing the paper's direction |
 | PhysGaussian: Physically Integrated 3D Gaussians for Generative Dynamics | Xie et al. | 2024 | Integrates continuum mechanics physics (MPM) directly into Gaussian dynamics |
 

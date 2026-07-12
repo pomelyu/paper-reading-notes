@@ -188,10 +188,10 @@ SAM has been universally accepted as a landmark foundation model for segmentatio
 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
-| SAM 2: Segment Anything in Images and Videos | Ravi et al. | 2024 | Direct successor; streaming memory for video; replaces SAM for temporal tasks |
+| [SAM 2: Segment Anything in Images and Videos](../../2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | Ravi et al. | 2024 | Direct successor; streaming memory for video; replaces SAM for temporal tasks |
 | HQ-SAM: Segment Anything in High Quality | Ke et al. | NeurIPS 2023 | Adds high-quality output token to fix fine-grained boundary failures in original SAM |
 | Grounded-SAM | Ren et al. | 2024 | Combines Grounding DINO + SAM for open-vocabulary text-driven instance segmentation |
-| LangSplat: 3D Language Gaussian Splatting | Qin et al. | CVPR 2024 | Uses SAM's 3-level hierarchy for semantic supervision in 3D Gaussian language fields |
+| [LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | CVPR 2024 | Uses SAM's 3-level hierarchy for semantic supervision in 3D Gaussian language fields |
 | MobileSAM | Zhang et al. | 2023 | Knowledge distillation into tiny encoder; enables real-time end-to-end SAM |
 
 ---

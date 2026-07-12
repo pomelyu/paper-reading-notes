@@ -73,7 +73,7 @@ DEVA "tracks anything" by pairing a swappable task-specific image segmentation m
 ### References to Follow Up
 
 1. **XMem: Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model** — Cheng & Schwing, ECCV 2022: Core temporal propagation backbone; understanding its memory model is essential to understanding DEVA's propagation module.
-2. **Segment Anything** — Kirillov et al., ICCV 2023: Universal promptable image model that DEVA integrates as a drop-in image segmentation backbone for open-world tracking.
+2. **[Segment Anything](../../2023/Segment_Anything/)** — Kirillov et al., ICCV 2023: Universal promptable image model that DEVA integrates as a drop-in image segmentation backbone for open-world tracking.
 3. **Video-K-Net: A Simple, Strong, and Unified Baseline for Video Segmentation** — Li et al., CVPR 2022: Main end-to-end baseline on VIPSeg; directly compared against in ablations.
 4. **VIPSeg: Large-scale Video Panoptic Segmentation** — Miao et al., CVPR 2022: Primary large-vocabulary benchmark used to motivate and evaluate the decoupled approach.
 5. **BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video** — Athar et al., WACV 2023: Open-world tracking dataset central to the open-world evaluation.
@@ -220,7 +220,7 @@ Yes. The core DEVA claim — that decoupling video segmentation into an image mo
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
 | XMem: Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model | Cheng & Schwing | 2022 | Temporal propagation backbone; DEVA modifies XMem's memory architecture for class-agnostic use |
-| Segment Anything (SAM) | Kirillov et al. | 2023 | Universal image segmentation model integrated as DEVA's image module |
+| [Segment Anything (SAM)](../../2023/Segment_Anything/) | Kirillov et al. | 2023 | Universal image segmentation model integrated as DEVA's image module |
 | Mask2Former | Cheng et al. | 2022 | Primary image segmentation backbone for panoptic experiments |
 | Video-K-Net | Li et al. | 2022 | End-to-end VPS baseline; main comparison and image model source on VIPSeg |
 | STCN: Rethinking Space-Time Networks with Improved Memory Coverage for Efficient Video Object Segmentation | Cheng et al. | 2021 | Earlier propagation model; baseline tracker in BURST evaluation |
@@ -238,7 +238,7 @@ Yes. The core DEVA claim — that decoupling video segmentation into an image mo
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| SAM 2: Segment Anything in Images and Videos | Ravi et al. | 2024 | Direct successor in spirit; unified streaming-memory model for video segmentation; integrates image and propagation into one model |
+| [SAM 2: Segment Anything in Images and Videos](../../2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | Ravi et al. | 2024 | Direct successor in spirit; unified streaming-memory model for video segmentation; integrates image and propagation into one model |
 | SAMURAI: Adapting Segment Anything Model for Zero-Shot Visual Tracking with Motion-Aware Memory | Yang et al. | 2024 | Builds on SAM 2 with Kalman-filter motion priors; same decoupled-tracking spirit |
 | Grounded-SAM 2 | Community / IDEA Research | 2024 | Directly extends DEVA's integration idea (Grounding-DINO + SAM) to SAM 2's video backbone |
 

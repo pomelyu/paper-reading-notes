@@ -79,7 +79,7 @@ Ablation highlights (ramen scene, bench scene):
 
 1. **Language Embedded Radiance Fields (LERF)** — Kerr et al., ICCV 2023: The primary baseline LangSplat replaces; understanding LERF's multi-scale patch approach clarifies why SAM is better.
 2. **3D Gaussian Splatting for Real-Time Radiance Field Rendering** — Kerbl et al., SIGGRAPH 2023: The rendering backbone; the tile-based rasterizer is directly reused.
-3. **Segment Anything** — Kirillov et al., ICCV 2023: The foundation model providing hierarchical masks; LangSplat's key insight is using SAM's semantic hierarchy, not just its masks.
+3. **[Segment Anything](../../2023/Segment_Anything/)** — Kirillov et al., ICCV 2023: The foundation model providing hierarchical masks; LangSplat's key insight is using SAM's semantic hierarchy, not just its masks.
 4. **Distilled Feature Fields (DFF)** — Kobayashi et al., NeurIPS 2022: Early work on distilling 2D features (DINO/LSeg) into NeRF; the conceptual predecessor to LangSplat's language field approach.
 5. **Weakly Supervised 3D Open-Vocabulary Segmentation (3D-OVS)** — Liu et al., NeurIPS 2023: Key competitor and dataset provider; uses CLIP+DINO in NeRF with category list.
 
@@ -179,7 +179,7 @@ LangSplat has been widely accepted as a foundational contribution. The core clai
 |-------|---------|------|----------|
 | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | Kerbl, Kopanas, Leimkuehler, Drettakis | 2023 | Direct base renderer; LangSplat reuses the tile rasterizer and Gaussian primitives verbatim |
 | LERF: Language Embedded Radiance Fields | Kerr, Kim, Goldberg, Kanazawa, Tancik | ICCV 2023 | Primary baseline replaced; established the CLIP-in-NeRF paradigm and evaluation datasets |
-| Segment Anything | Kirillov et al. | ICCV 2023 | Provides the hierarchical mask generation that solves point ambiguity |
+| [Segment Anything](../../2023/Segment_Anything/) | Kirillov et al. | ICCV 2023 | Provides the hierarchical mask generation that solves point ambiguity |
 | Distilled Feature Fields | Kobayashi, Matsumoto, Sitzmann | NeurIPS 2022 | Conceptual predecessor: distills 2D features (DINO/LSeg) into NeRF for open-vocab understanding |
 
 #### Contemporaries / Competitors
@@ -194,8 +194,8 @@ LangSplat has been widely accepted as a foundational contribution. The core clai
 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
-| GaussianDWM | Deng, Chen et al. | 2025 | Uses LangSplat's language-embedded Gaussians as the world tokenizer in a driving world model |
-| Gaussian Grouping | Ye et al. | 2024 | Extends 3DGS with identity features for segmentation and editing; complements LangSplat's language features |
+| [GaussianDWM](../../2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | Deng, Chen et al. | 2025 | Uses LangSplat's language-embedded Gaussians as the world tokenizer in a driving world model |
+| [Gaussian Grouping](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Ye et al. | 2024 | Extends 3DGS with identity features for segmentation and editing; complements LangSplat's language features |
 | OpenGaussian | Wu et al. | 2024 | Extends language Gaussians to instance-level open-vocabulary 3D understanding |
 | LangSplat + SAM 2 (community extensions) | Various | 2024–2025 | Community work extending LangSplat to video/dynamic scenes using SAM 2 for temporal consistency |
 

@@ -81,7 +81,7 @@ Ablation shows each component contributes:
 2. **MARS** — Wu et al., CICAI 2023 [ref 64]: Primary NeRF-based competitor; instance-aware, modular
 3. **NSG (Neural Scene Graphs)** — Ost et al., CVPR 2021 [ref 39]: Compositional NeRF for dynamic scenes, most architecturally similar prior work
 4. **EmerNeRF** — Yang et al., ICLR 2024 [ref 69]: Concurrent emergent spatiotemporal decomposition; strong on Waymo
-5. **4D Gaussian Splatting** — Yang et al., ICLR 2024 [ref 73]: Concurrent general 4D Gaussian approach; relevant for understanding the design space
+5. **[4D Gaussian Splatting](../../2024/4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering/)** — Yang et al., ICLR 2024 [ref 73]: Concurrent general 4D Gaussian approach; relevant for understanding the design space
 
 ---
 
@@ -223,7 +223,7 @@ Yes. Street Gaussians is widely cited as the first strong Gaussian-based baselin
 | **EmerNeRF: Emergent Spatial-Temporal Scene Decomposition** | Yang et al. | ICLR 2024 | Concurrent NeRF-based decomposition method; strongest NeRF baseline on Waymo; does not require object tracklets |
 | **DrivingGaussian: Composite Gaussian Splatting for Surrounding Dynamic AD Scenes** | Zhou et al. | arXiv 2023 | Concurrent Gaussian-based method for autonomous driving; also uses compositional representation but targets surrounding cameras |
 | **Periodic Vibration Gaussian (PVG)** | Chen et al. | arXiv 2023 | Concurrent work modeling dynamic urban scenes with vibration-based Gaussians rather than compositional decomposition |
-| **4D Gaussian Splatting for Real-Time Dynamic Scene Rendering** | Yang et al. | ICLR 2024 | Concurrent general-purpose 4D Gaussian method; less specialized for driving but architecturally competitive |
+| [**4D Gaussian Splatting for Real-Time Dynamic Scene Rendering**](../../2024/4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering/) | Yang et al. | ICLR 2024 | Concurrent general-purpose 4D Gaussian method; less specialized for driving but architecturally competitive |
 
 #### Successors / Extensions
 
@@ -231,8 +231,8 @@ Yes. Street Gaussians is widely cited as the first strong Gaussian-based baselin
 |-------|---------|------|----------|
 | **OmniRe / OmniScene** | — | 2024–2025 | Extends the compositional Gaussian paradigm to full surround-view cameras and more object classes (pedestrians, cyclists) |
 | **UniSim** | Yang et al. | CVPR 2023 | Neural closed-loop sensor simulator for driving; related goal but NeRF-based; Street Gaussians is a faster replacement candidate |
-| **HUGSIM** | — | 2024 | Applies Gaussian-based reconstruction specifically to closed-loop autonomous driving simulation evaluation |
-| **Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis** | Luiten et al. | 3DV 2024 | Extends 3D Gaussians for persistent tracking of dynamic objects; complementary to Street Gaussians' tracking pipeline |
+| [**HUGSIM**](../../2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/) | — | 2024 | Applies Gaussian-based reconstruction specifically to closed-loop autonomous driving simulation evaluation |
+| [**Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis**](../../2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/) | Luiten et al. | 3DV 2024 | Extends 3D Gaussians for persistent tracking of dynamic objects; complementary to Street Gaussians' tracking pipeline |
 
 ---
 

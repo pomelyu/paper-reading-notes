@@ -248,7 +248,7 @@ HUGSIM has been well-received as a meaningful step toward bridging the gap betwe
 |-------|---------|------|----------|
 | GAIA-1: A Generative World Model for Autonomous Driving | Hu et al. | 2024 | Generative world model approach as alternative simulation paradigm |
 | GaussianDWM: 3D Gaussian Driving World Model | — | 2025 | Extends Gaussian-based driving world modeling with multi-modal generation |
-| 4D LangSplat | — | 2025 | Extends dynamic Gaussian representations with language grounding |
+| [4D LangSplat](../../2025/4D_LangSplat-_4D_Language_Gaussian_Splatting_via_Multimodal_Large_Language_Models/) | — | 2025 | Extends dynamic Gaussian representations with language grounding |
 
 ---
 

@@ -15,7 +15,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Method paper — 3D scene representation extended with high-dimensional language features; primary contribution is an efficiency technique for open-vocabulary 3D querying |
-| **Context** | Builds directly on LangSplat (3DGS + SAM masks + CLIP + per-scene autoencoder), LERF (language radiance fields), and 3DGS. Related to Gaussian compression work (LEGaussians, Comps, LightGaussian) that applies codebook/dictionary learning to Gaussian attributes |
+| **Context** | Builds directly on [LangSplat](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) (3DGS + SAM masks + CLIP + per-scene autoencoder), LERF (language radiance fields), and 3DGS. Related to Gaussian compression work (LEGaussians, Comps, LightGaussian) that applies codebook/dictionary learning to Gaussian attributes |
 | **Correctness** | The bottleneck diagnosis is empirically solid: MLP decoding accounts for 83 ms of LangSplat's 89 ms total, making it the clear target. Ablations (Table 9) carefully isolate the three components. The sparse approximation introduces a small representation tradeoff that L=64, K=4 ablations show is well-managed |
 | **Contributions** | (1) Sparse coefficient field: each Gaussian stores K=4 non-zero weights over a global L=64 codebook, replacing the per-scene MLP decoder. (2) Efficient CUDA sparse coefficient splatting: renders only the K active dimensions per Gaussian instead of the full L or D dimensions. (3) 47× speed increase over LangSplat (2.6 ms vs 122.1 ms per query), reaching 450+ FPS, while simultaneously improving accuracy on LERF, 3D-OVS, and Mip-NeRF360 |
 | **Clarity** | Well-written and focused; the bottleneck framing in the introduction is clear and the technical sections follow logically |
@@ -67,7 +67,7 @@ Replace LangSplat's per-scene MLP decoder with a globally shared dictionary and 
 
 ### References to Follow Up
 
-1. **LangSplat: 3D Language Gaussian Splatting** — Qin et al., CVPR 2024: The direct predecessor; understanding LangSplat's autoencoder + MLP design is essential to appreciate what LangSplatV2 changes.
+1. **[LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/)** — Qin et al., CVPR 2024: The direct predecessor; understanding LangSplat's autoencoder + MLP design is essential to appreciate what LangSplatV2 changes.
 2. **LERF: Language Embedded Radiance Fields** — Kerr et al., ICCV 2023: The NeRF-based antecedent to 3D language fields; establishes the three-scale evaluation protocol used throughout this paper.
 3. **Language Embedded 3D Gaussians for Open-Vocabulary Scene Understanding (LEGaussians)** — Shi et al., CVPR 2024: The main contemporary competitor using a different codebook strategy (2D codebook, MLP prediction); LangSplatV2's Appendix B directly rebuts it.
 4. **Fast-Splat: Fast, Ambiguity-Free Semantics Transfer in Gaussian Splatting** — Shorinwa et al., arXiv 2411.13753: Concurrent efficiency work on fast semantic Gaussians worth comparing.
@@ -161,7 +161,7 @@ The efficiency claims are straightforwardly verifiable (algorithmic, not reliant
 
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
-| LangSplat: 3D Language Gaussian Splatting | Qin et al. | 2024 | Direct predecessor; LangSplatV2 replaces its MLP decoder with the sparse codebook |
+| [LangSplat: 3D Language Gaussian Splatting](../../2023/LangSplat-_3D_Language_Gaussian_Splatting/) | Qin et al. | 2024 | Direct predecessor; LangSplatV2 replaces its MLP decoder with the sparse codebook |
 | LERF: Language Embedded Radiance Fields | Kerr et al. | 2023 | NeRF-based language field; established multi-scale query protocol and datasets used here |
 | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | Kerbl et al. | 2023 | Foundation geometry representation; LangSplatV2 adds language attributes to 3DGS |
 
@@ -179,7 +179,7 @@ The efficiency claims are straightforwardly verifiable (algorithmic, not reliant
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
 | 4D LangSplat: 4D Language Gaussian Splatting via Multimodal LLMs | Li et al. | 2025 | Extends the language-Gaussian approach to dynamic scenes using 4DGS |
-| Gaussian Grouping: Segment and Edit Anything in 3D Scenes | Ye et al. | 2024 | Downstream application combining 3D Gaussians with open-vocabulary segmentation |
+| [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](../../2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Ye et al. | 2024 | Downstream application combining 3D Gaussians with open-vocabulary segmentation |
 
 ---
 

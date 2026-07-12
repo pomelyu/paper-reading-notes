@@ -221,7 +221,7 @@ The community has fully accepted and amplified the core claims. The three contri
 | Improved Baselines with Visual Instruction Tuning (LLaVA-1.5) | Liu et al. | 2023 | Direct successor: MLP projection + CLIP-336px + richer data → large accuracy gains on structured benchmarks |
 | LLaVA-NeXT: Improved Reasoning, OCR, and World Knowledge | Liu et al. | 2024 | Higher resolution via dynamic tiling; stronger instruction data; extends to video |
 | LLaVA-OneVision | Li et al. | 2024 | Multi-image and video extension; unifies single-image, multi-image, video tasks in one model |
-| Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025) | Lin | 2025 | Bibliometric study identifying LLaVA as the fastest-growing model family in top-venue CV/ML papers (from knowledge graph) |
+| [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](<../../2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/>) | Lin | 2025 | Bibliometric study identifying LLaVA as the fastest-growing model family in top-venue CV/ML papers (from knowledge graph) |
 
 ---
 

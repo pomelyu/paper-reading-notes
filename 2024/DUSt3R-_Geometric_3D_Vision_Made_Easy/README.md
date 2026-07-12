@@ -221,7 +221,7 @@ DUSt3R's core claim — that 3D reconstruction can be recast as pointmap regress
 | Paper | Authors | Year | Relation |
 |---|---|---|---|
 | MASt3R: Grounding Image Matching in 3D | Leroy et al. | 2024 | Extends DUSt3R with matching-aware local feature heads; substantially better localization (from knowledge graph) |
-| VGGT: Visual Geometry Grounded Transformer | Wang et al. | 2025 | N-view feed-forward successor; alternating attention; CVPR 2025 Best Paper (from knowledge graph) |
+| [VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | Wang et al. | 2025 | N-view feed-forward successor; alternating attention; CVPR 2025 Best Paper (from knowledge graph) |
 | Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass | Yang et al. | 2025 | N-view scaling via tensor parallelism; concurrent with VGGT (from knowledge graph) |
 | CUT3R: Continuous 3D Perception with Persistent State | Chen et al. | 2025 | Recurrent state variant for video streams; removes the per-pair inference requirement (from knowledge graph) |
 

@@ -87,7 +87,7 @@ Ablation highlights:
 2. **Vision Transformers Need Registers** — Darcet et al., ICLR 2024: Introduces register tokens that DINOv3 adopts; key background for the high-norm patch outlier discussion.
 3. **Automatic Data Curation for Self-Supervised Learning: A Clustering-Based Approach** — Vo et al., TMLR 2024: The hierarchical k-means curation that produces the LVD-1689M backbone dataset.
 4. **Perception Encoder: The Best Visual Embeddings Are Not at the Output of the Network** — Bolya et al., 2025: Direct competitor that distills SAM v2 into a dense variant using Gram-like style losses; understanding the convergence helps situate DINOv3's Gram anchoring.
-5. **VGGT: Visual Geometry Grounded Transformer** — Wang et al., CVPR 2025: A key downstream application of DINOv3 features for 3D understanding; demonstrates how strong dense features translate to multi-view geometry tasks.
+5. **[VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/)** — Wang et al., CVPR 2025: A key downstream application of DINOv3 features for 3D understanding; demonstrates how strong dense features translate to multi-view geometry tasks.
 
 ---
 
@@ -220,7 +220,7 @@ DINOv3 is very recent (August 2025) so citation data is limited. However, the co
 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
-| VGGT: Visual Geometry Grounded Transformer | Wang et al. | 2025 | Swaps DINOv2 backbone for DINOv3 ViT-L; DINOv3 improves 3D understanding results on all benchmarks |
+| [VGGT: Visual Geometry Grounded Transformer](../../2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | Wang et al. | 2025 | Swaps DINOv2 backbone for DINOv3 ViT-L; DINOv3 improves 3D understanding results on all benchmarks |
 
 ---
 
