@@ -25,6 +25,31 @@
 ![scaling_law](resources/fig_01_scaling_law.png)
 
 ---
+### Self-Question
+#### Q: What are the inputs and outputs of the VGGT-Ω network?
+- inputs: multiple images
+- outputs: depth maps and camera parameters (quaternion, translation and FoV) for each image
+
+#### Q: What's the main difference between VGGT, VGGT-Ω and DA3?
+| name   | inputs | outputs | backbone | camera loss |
+| ------ | ------ | ------- | -------- | ----------- |
+| VGGT-Ω | multiple images, video frames | depth map, camera parameters | DINOv3 | L1 |
+| VGGT   | multiple images | depth map, camera parameters, point map, tracking feature | DINOv2 | Huber Loss |
+| DA3    | multiple images, (camera parameters) | depth map, ray map (ray origin + direction for each pixel) | DINOv2 | X |
+
+#### Q: What's the main purpose of self-supervised finetuning?
+Self-supervised finetuning in this paper is used to improve the prediction quality on video. The training starts from the VGGT-Ω trained on images only (supervised) and uses the teacher-student method for finetuning.
+
+#### Q: What's the reason to use teacher-student method in self-supervised finetuning?
+They use this method for self-supervised finetuning. In the **Further Insights** section, the authors say the teacher-student method is the only one they've tried that helps the finetuning. Note that this method is used to stabilize finetuning instead of distillation, see [Self-Supervised Learning Protocol](#detailed-technical-summary).
+
+### Highlight
+1. improved version of VGGT, reduces memory usage
+2. proposes scaling laws for 3D reconstruction in both model size and data
+3. data annotation pipeline, uses a VLM to filter video data
+4. **Further Insights** section is quite helpful
+
+---
 
 ## Pass 2 — Careful Read
 
@@ -97,6 +122,9 @@ Scale VGGT's feed-forward 3D reconstruction to orders-of-magnitude more data and
 3. **DINO / DINOv2** — Caron et al. / Oquab et al., ICCV 2021/2023: The teacher-student self-supervised learning paradigm that VGGT-Ω's self-supervised protocol is modelled on.
 4. **MegaSaM** — Li et al., 2024/2025: Used as a key dynamic-scene baseline; VGGT-Ω is claimed to be 50× faster.
 5. **Fast3R: Towards 3D Reconstruction of 1000+ Images in One Forward Pass** — Yang et al., arXiv 2025: Contemporary competitor for large-frame-count feed-forward reconstruction.
+6. **Depth Anything 3: Recovering the Visual Space from Any Views (DA3)** — Lin et al., arXiv 2025: Contemporary VGGT-style feed-forward competitor; compared against in camera pose, depth, and efficiency experiments.
+
+![DA3_comparison](resources/fig_06_DA3_comparison.png)
 
 ---
 
@@ -125,11 +153,15 @@ With $N=100$ frames and $T=1000$ tokens per frame: full global attention = $10^8
 
 **Lightweight Upsampling Decoder**
 
-VGGT used DPT (Dense Prediction Transformer) decoder heads with expensive high-resolution convolutional layers. VGGT-Ω replaces this with a single dense prediction head using:
-- A small MLP applied to each token's feature vector.
-- A pixel-shuffle (sub-pixel convolution) operator to upsample spatial resolution.
+VGGT used DPT (Dense Prediction Transformer) decoder heads with expensive high-resolution convolutional layers. VGGT-Ω replaces this with a single **depth** dense prediction head using:
+- A small MLP applied to each token's feature vector, outputting $2u^2$ channels ($u=4$ in the implementation).
+- A pixel-shuffle (sub-pixel convolution) operator that rearranges these into two full-resolution channels: **depth and confidence**.
 
-This single shared head handles all tasks (depth, point maps, tracking features) simultaneously. The convolutional replacement yields a 70% reduction in training GPU memory usage for the decoder component alone.
+Unlike VGGT — which predicts depth maps, point maps, and tracking features with separate dense heads — VGGT-Ω retains only this single dense head for depth (plus a separate sparse head for cameras, see below). It **does not directly predict point maps or tracking features**; those quantities are still *supervised* through their losses (§Loss Functions) but are inferred from the depth and camera outputs rather than emitted by a head. Dropping the redundant dense heads yields ~70% reduction in training GPU memory for the decoder component with nearly identical accuracy.
+
+**Camera Head**
+
+Cameras $(g_1, \ldots, g_N)$ are predicted by a separate lightweight (sparse) head: a small transformer applied jointly to the $N$ camera tokens and scene registers, followed by an MLP on each updated camera token. Unlike VGGT, VGGT-Ω predicts camera parameters in a **single pass**, without iterative refinement.
 
 **Loss Functions**
 

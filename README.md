@@ -4,7 +4,7 @@
 - [Technical Terms](common/terms/README.md)
 
 ### 2026
-- [ ] [VGGT-Ω](2026/VGGT-Omega/)
+- [x] [VGGT-Ω](2026/VGGT-Omega/)
 
 ### 2025
 - [x] [(GaussianDWM) 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/)
