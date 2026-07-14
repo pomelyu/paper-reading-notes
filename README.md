@@ -31,6 +31,9 @@
 - [x] [(Street Gaussians) Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/)
 - [x] [(HUGSIM) HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/)
 - [x] [(MonoGS) Gaussian Splatting SLAM](2024/Gaussian_Splatting_SLAM/)
+- [x] [(YOLOv10) YOLOv10: Real-Time End-to-End Object Detection](2024/YOLOv10-_Real-Time_End-to-End_Object_Detection/)
+  - Improved from YOLOv8 and removes the NMS post-processing via a dual-head training setup, hugely speeding up inference
+  - Optimizes the model structure design for better speed and accuracy
 
 ### 2023
 - [x] [(Lp3D) Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/)

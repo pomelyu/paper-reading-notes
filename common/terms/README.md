@@ -5,11 +5,15 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 ## Terms needs footnote
 | Term | Expansion | Brief Definition |
 |------|-----------|-----------------|
+| AP | Average Precision | Area under the precision-recall curve; COCO reports mean AP averaged over IoU thresholds 0.5:0.95 and object scales. |
 | BA | Bundle Adjustment | Joint non-linear optimization of camera poses and 3D point positions to minimize reprojection error. |
+| DETR | DEtection TRansformer | End-to-end object detector that treats detection as set prediction, using a transformer and bipartite (Hungarian) matching to remove hand-crafted components like NMS. |
 | DPT | Dense Prediction Transformer | Decoder head that fuses multi-scale ViT features through progressive convolutional upsampling to full resolution. |
 | FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |
 | InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
+| IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
 | MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
+| NMS | Non-Maximum Suppression | Post-processing step that removes duplicate detections by greedily keeping the highest-scoring box and suppressing overlapping boxes above an IoU threshold. |
 | NVS | Novel View Synthesis | Task of rendering a scene from a viewpoint not present in the input images. |
 | SLAM | Simultaneous Localization and Mapping | Problem of building a map of an unknown environment while tracking an agent's position within it in real time. |
 | VLA | Vision-Language-Action model | Robot policy that takes image observations + natural-language instructions as input and outputs low-level actions (e.g., RT-2, OpenVLA). |
