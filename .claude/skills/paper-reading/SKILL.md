@@ -357,7 +357,7 @@ After writing the note, register it in the root `README.md` index
 ```markdown
 # Paper Notes
 ### 2023
-- [x] [(Codename) Paper Title](2023/Paper_Title_Folder/)
+- [x] [(Codename) Full Paper Title](2023/Paper_Title_Folder/)
 
 ### 2024
 - [x] [(Another-Codename) Another Paper](2024/Another_Paper_Folder/)
@@ -380,13 +380,14 @@ paper's codename in parentheses. Determine the codename as follows:
 4. **No codename exists** — some papers (e.g. surveys) introduce no
    codename. Use the full title as-is with no parenthesised prefix.
 
-**Index entry format:** `- [ ] [({Codename}) {Title}]({year}/{folder_name}/)`
+**Index entry format:** `- [ ] [({Codename}) {Full Title}]({year}/{folder_name}/)`
 
-- The link text is `({Codename}) ` followed by the paper title **without**
-  the `Codename: ` prefix (avoid repeating the codename, e.g.
-  `(DUSt3R) Geometric 3D Vision Made Easy`, not
-  `(DUSt3R) DUSt3R: Geometric 3D Vision Made Easy`).
-- For rules 3 and 4 above, the link text is just the full title.
+- The link text is `({Codename}) ` followed by the **full paper title**,
+  keeping the `Codename: ` prefix if the title has one — always show the
+  complete paper name on the list, e.g.
+  `(DUSt3R) DUSt3R: Geometric 3D Vision Made Easy
+- For rules 3 and 4 above (title is itself the codename, or no codename
+  exists), the link text is just the full title with no parenthesised prefix.
 - The path uses the sanitised folder name (underscores, dashes).
 
 **Scope:** this codename convention applies only to the root `README.md`
