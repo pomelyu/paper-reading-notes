@@ -5,6 +5,10 @@
 
 ### 2026
 - [x] [VGGT-Ω](2026/VGGT-Omega/)
+  - VGGT improvement with lower GPU usage and better camera accuracy.
+  - predict depth map and camera parameters from a group of images or **a video**
+  - propose a data annotation pipeline to use VLM to filter video data
+  - showing the scaling laws for 3D reconstruction in both model and data size
 
 ### 2025
 - [x] [(GaussianDWM) 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/)
@@ -14,7 +18,10 @@
 - [ ] [(RAD) Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/)
 - [x] [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/)
 - [x] [DINOv3](2025/DINOv3/)
-- [ ] [(VGGT) Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/)
+
+- [x] [(VGGT) Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/)
+  - 1.2B FFN transformer to predict depth map, camera parameters and etc. from a group of images.
+  - Backbone for downstream tasks, such as feed-forward NVS and dynamic point tracking
 
 ### 2024
 - [x] [(SAM2) Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/)
