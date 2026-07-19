@@ -34,6 +34,7 @@
 - [x] [(YOLOv10) YOLOv10: Real-Time End-to-End Object Detection](2024/YOLOv10-_Real-Time_End-to-End_Object_Detection/)
   - Improved from YOLOv8 and removes the NMS post-processing via a dual-head training setup, hugely speeding up inference
   - Optimizes the model structure design for better speed and accuracy
+- [ ] [(AQLM) Extreme Compression of Large Language Models via Additive Quantization](2024/Extreme_Compression_of_Large_Language_Models_via_Additive_Quantization/)
 
 ### 2023
 - [x] [(Lp3D) Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/)
