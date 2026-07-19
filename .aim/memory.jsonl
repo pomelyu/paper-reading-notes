@@ -112,6 +112,32 @@
 {"type":"entity","name":"HD-VGGT: High-Resolution Visual Geometry Transformer","entityType":"paper","observations":["Year: 2026","Published: arXiv 2026","Has note: false","Referenced by: VGGT-Omega","Short name: HD-VGGT"]}
 {"type":"entity","name":"VGGT-Edit: Feed-Forward Native 3D Scene Editing with Residual Field Prediction","entityType":"paper","observations":["Year: 2026","Published: arXiv 2026","Has note: false","Referenced by: VGGT-Omega","Short name: VGGT-Edit"]}
 {"type":"entity","name":"Dynamic Scenes","entityType":"topic","observations":["Papers: VGGT-Omega, CUT3R: Continuous 3D Perception with Persistent State, MegaSaM"]}
+{"type":"entity","name":"End-to-End Object Detection with Transformers","entityType":"paper","observations":["Year: 2020","Authors: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, Sergey Zagoruyko","Published: ECCV 2020 (arXiv:2005.12872)","Keywords: object detection, set prediction, transformers, bipartite matching, Hungarian loss, panoptic segmentation","Path: 2020/End-to-End_Object_Detection_with_Transformers/","Has note: true"]}
+{"type":"entity","name":"YOLOv10: Real-Time End-to-End Object Detection","entityType":"paper","observations":["Year: 2024","Authors: Ao Wang, Hui Chen, Lihao Liu, Kai Chen, Zijia Lin, Jungong Han, Guiguang Ding","Published: NeurIPS 2024 (arXiv:2405.14458)","Keywords: real-time object detection, NMS-free, end-to-end detection, dual label assignment, efficient architecture, YOLO, COCO","Path: 2024/YOLOv10-_Real-Time_End-to-End_Object_Detection/","Has note: true"]}
+{"type":"entity","name":"Attention Is All You Need","entityType":"paper","observations":["Year: 2017","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"Deep Residual Learning for Image Recognition (ResNet)","entityType":"paper","observations":["Year: 2016","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks","entityType":"paper","observations":["Year: 2015","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"Generalized Intersection over Union (GIoU)","entityType":"paper","observations":["Year: 2019","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"End-to-end People Detection in Crowded Scenes","entityType":"paper","observations":["Year: 2016","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"FCOS: Fully Convolutional One-Stage Object Detection","entityType":"paper","observations":["Year: 2019","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"CenterNet: Objects as Points","entityType":"paper","observations":["Year: 2019","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"UPSNet / Panoptic FPN","entityType":"paper","observations":["Year: 2019","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"Deformable DETR","entityType":"paper","observations":["Year: 2021","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"Conditional DETR","entityType":"paper","observations":["Year: 2021","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"DAB-DETR","entityType":"paper","observations":["Year: 2022","Has note: false","Referenced by: End-to-End Object Detection with Transformers"]}
+{"type":"entity","name":"DN-DETR / DINO: DETR with Improved Denoising Anchor Boxes","entityType":"paper","observations":["Year: 2022","Has note: false","Referenced by: End-to-End Object Detection with Transformers","Referenced by: YOLOv10: Real-Time End-to-End Object Detection","Query denoising line; DETR-family reaches COCO SOTA"]}
+{"type":"entity","name":"YOLOv8","entityType":"paper","observations":["Year: 2023","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information","entityType":"paper","observations":["Year: 2024","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"YOLOv6 v3.0: A Full-Scale Reloading","entityType":"paper","observations":["Year: 2023","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"TOOD: Task-Aligned One-Stage Object Detection","entityType":"paper","observations":["Year: 2021","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"OneNet: What Makes for End-to-End Object Detection?","entityType":"paper","observations":["Year: 2021","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"MobileNet / MobileNetV2","entityType":"paper","observations":["Year: 2017/2018","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"RepVGG: Making VGG-style ConvNets Great Again","entityType":"paper","observations":["Year: 2021","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"RT-DETR: DETRs Beat YOLOs on Real-Time Object Detection","entityType":"paper","observations":["Year: 2023","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"Gold-YOLO: Efficient Object Detector via Gather-and-Distribute Mechanism","entityType":"paper","observations":["Year: 2024","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"YOLO-MS: Rethinking Multi-Scale Representation Learning","entityType":"paper","observations":["Year: 2023","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"YOLOv11","entityType":"paper","observations":["Year: 2024","Has note: false","Referenced by: YOLOv10: Real-Time End-to-End Object Detection"]}
+{"type":"entity","name":"Object Detection","entityType":"topic","observations":["Papers: End-to-End Object Detection with Transformers, YOLOv10: Real-Time End-to-End Object Detection"]}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"XMem: Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model","relationType":"builds_on"}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"Segment Anything","relationType":"builds_on"}
 {"type":"relation","from":"Tracking Anything with Decoupled Video Segmentation","to":"Mask2Former","relationType":"builds_on"}
@@ -277,3 +303,33 @@
 {"type":"relation","from":"VGGT-Omega","to":"Dynamic Scenes","relationType":"belongs_to"}
 {"type":"relation","from":"CUT3R: Continuous 3D Perception with Persistent State","to":"Dynamic Scenes","relationType":"belongs_to"}
 {"type":"relation","from":"MegaSaM","to":"Dynamic Scenes","relationType":"belongs_to"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Attention Is All You Need","relationType":"builds_on"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Deep Residual Learning for Image Recognition (ResNet)","relationType":"builds_on"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks","relationType":"builds_on"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Generalized Intersection over Union (GIoU)","relationType":"builds_on"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"End-to-end People Detection in Crowded Scenes","relationType":"builds_on"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks","relationType":"competes_with"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"FCOS: Fully Convolutional One-Stage Object Detection","relationType":"competes_with"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"CenterNet: Objects as Points","relationType":"competes_with"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"UPSNet / Panoptic FPN","relationType":"competes_with"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Deformable DETR","relationType":"succeeded_by"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Conditional DETR","relationType":"succeeded_by"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"DAB-DETR","relationType":"succeeded_by"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"DN-DETR / DINO: DETR with Improved Denoising Anchor Boxes","relationType":"succeeded_by"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Mask2Former","relationType":"succeeded_by"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"YOLOv10: Real-Time End-to-End Object Detection","relationType":"succeeded_by"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"YOLOv8","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"YOLOv6 v3.0: A Full-Scale Reloading","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"TOOD: Task-Aligned One-Stage Object Detection","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"End-to-End Object Detection with Transformers","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"OneNet: What Makes for End-to-End Object Detection?","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"MobileNet / MobileNetV2","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"RepVGG: Making VGG-style ConvNets Great Again","relationType":"builds_on"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"RT-DETR: DETRs Beat YOLOs on Real-Time Object Detection","relationType":"competes_with"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"Gold-YOLO: Efficient Object Detector via Gather-and-Distribute Mechanism","relationType":"competes_with"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"YOLO-MS: Rethinking Multi-Scale Representation Learning","relationType":"competes_with"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"DN-DETR / DINO: DETR with Improved Denoising Anchor Boxes","relationType":"competes_with"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"YOLOv11","relationType":"succeeded_by"}
+{"type":"relation","from":"End-to-End Object Detection with Transformers","to":"Object Detection","relationType":"belongs_to"}
+{"type":"relation","from":"YOLOv10: Real-Time End-to-End Object Detection","to":"Object Detection","relationType":"belongs_to"}

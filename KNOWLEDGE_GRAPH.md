@@ -1,6 +1,6 @@
 # Knowledge Graph
 
-Auto-generated from paper notes. Last updated: 2026-07-10.
+Auto-generated from paper notes. Last updated: 2026-07-19.
 
 ---
 
@@ -8,6 +8,7 @@ Auto-generated from paper notes. Last updated: 2026-07-10.
 
 ```mermaid
 graph TD
+    classDef y2020 fill:#d3d3d3,stroke:#555
     classDef y2021 fill:#f0e68c,stroke:#555
     classDef y2022 fill:#f9d71c,stroke:#555
     classDef y2023 fill:#87ceeb,stroke:#555
@@ -59,6 +60,18 @@ graph TD
         MegaSaM["MegaSaM\n2025"]:::noNote
     end
 
+    subgraph Det["Object Detection"]
+        FasterRCNN["Faster R-CNN\n2015"]:::noNote
+        DETR["DETR\n2020"]:::y2020
+        DeformDETR["Deformable DETR\n2021"]:::noNote
+        DINODETR["DN-DETR / DINO\n2022"]:::noNote
+        RTDETR["RT-DETR\n2023"]:::noNote
+        YOLOv8["YOLOv8\n2023"]:::noNote
+        YOLOv9["YOLOv9\n2024"]:::noNote
+        YOLOv10["YOLOv10\n2024"]:::y2024
+        YOLOv11["YOLOv11\n2024"]:::noNote
+    end
+
     SAM -->|succeeded_by| SAM2
     DEVA -->|builds_on| SAM
     GG -->|builds_on| DEVA
@@ -95,6 +108,16 @@ graph TD
     VGGTOmega -->|competes_with| MegaSaM
 
     LLaVA -->|succeeded_by| VLMSurv
+
+    DETR -->|builds_on| FasterRCNN
+    DETR -->|succeeded_by| DeformDETR
+    DETR -->|succeeded_by| DINODETR
+    DETR -->|succeeded_by| YOLOv10
+    YOLOv10 -->|builds_on| YOLOv8
+    YOLOv10 -->|builds_on| YOLOv9
+    YOLOv10 -->|competes_with| RTDETR
+    YOLOv10 -->|competes_with| DINODETR
+    YOLOv10 -->|succeeded_by| YOLOv11
 ```
 
 > Solid arrows = `builds_on` / `succeeded_by` / `competes_with`; dashed = downstream application.  
@@ -106,6 +129,7 @@ graph TD
 
 | Paper | Short Name | Year | Venue | Keywords | Has Note |
 |---|---|---|---|---|---|
+| [End-to-End Object Detection with Transformers](2020/End-to-End_Object_Detection_with_Transformers/) | DETR | 2020 | ECCV 2020 | object detection, set prediction, transformers, bipartite matching, Hungarian loss, panoptic segmentation | ✅ |
 | [Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis](2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/) | Dynamic 3DGS | 2023 | 3DV 2024 | 3DGS, dynamic scenes, dense tracking, novel-view synthesis | ✅ |
 | [Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/) | LP3D | 2023 | — | NeRF, portrait, single image | ✅ |
 | [Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | Scaffold-GS | 2023 | CVPR 2024 | 3DGS, anchor-based, view-adaptive rendering | ✅ |
@@ -121,6 +145,7 @@ graph TD
 | [HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/) | HUGSIM | 2024 | arXiv 2024 | 3DGS, autonomous driving, closed-loop simulator | ✅ |
 | [SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | SAM 2 | 2024 | arXiv 2024 | image segmentation, video segmentation, streaming memory | ✅ |
 | [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Street Gaussians | 2024 | ECCV 2024 | 3DGS, autonomous driving, dynamic scenes | ✅ |
+| [YOLOv10: Real-Time End-to-End Object Detection](2024/YOLOv10-_Real-Time_End-to-End_Object_Detection/) | YOLOv10 | 2024 | NeurIPS 2024 | real-time object detection, NMS-free, end-to-end detection, dual label assignment, YOLO, COCO | ✅ |
 | [4D LangSplat: 4D Language Gaussian Splatting via Multimodal Large Language Models](2025/4D_LangSplat-_4D_Language_Gaussian_Splatting_via_Multimodal_Large_Language_Models/) | 4D LangSplat | 2025 | — | 3DGS, language fields, dynamic, 4D, MLLM | ✅ |
 | [DINOv3](2025/DINOv3/) | DINOv3 | 2025 | arXiv Aug 2025 | SSL, vision foundation model, Gram anchoring, dense features, ViT-7B | ✅ |
 | [GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | GaussianDWM | 2025 | — | 3DGS, autonomous driving, world model | ✅ |
@@ -235,6 +260,21 @@ graph TD
 
 ---
 
+### Object Detection
+**Papers with notes:** DETR · YOLOv10  
+**Key chain:** Faster R-CNN → DETR → Deformable DETR / DN-DETR / DINO · DETR → (NMS-free idea) → YOLOv10 → YOLOv11
+
+| Paper | Role |
+|---|---|
+| DETR | Foundational end-to-end set-prediction detector; removes anchors and NMS via bipartite (Hungarian) matching and learned object queries |
+| YOLOv10 | Real-time CNN detector adopting DETR's NMS-free one-to-one matching via consistent dual assignments; efficiency-driven redesign of YOLOv8 |
+| Faster R-CNN (referenced) | Anchor/proposal baseline DETR simplifies and is benchmarked against |
+| Deformable DETR (referenced) | Multi-scale deformable attention; fixes DETR's slow convergence and small-object gap |
+| DN-DETR / DINO (referenced) | Query denoising line; DETR family reaches COCO SOTA; contemporary competitor to YOLOv10 |
+| RT-DETR (referenced) | Transformer-based real-time competitor to YOLOv10 |
+
+---
+
 ## Referenced Papers (no note yet)
 
 | Short Name | Full Title | Year | Referenced By |
@@ -277,3 +317,26 @@ graph TD
 | LLaVA-1.5 | Improved Baselines with Visual Instruction Tuning | 2023 | LLaVA |
 | LLaVA-NeXT | LLaVA-NeXT: Improved Reasoning, OCR, and World Knowledge | 2024 | LLaVA |
 | XMem | Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model | 2022 | DEVA |
+| Transformer | Attention Is All You Need | 2017 | DETR |
+| ResNet | Deep Residual Learning for Image Recognition | 2016 | DETR |
+| Faster R-CNN | Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks | 2015 | DETR |
+| GIoU | Generalized Intersection over Union | 2019 | DETR |
+| Stewart et al. | End-to-end People Detection in Crowded Scenes | 2016 | DETR |
+| FCOS | FCOS: Fully Convolutional One-Stage Object Detection | 2019 | DETR |
+| CenterNet | CenterNet: Objects as Points | 2019 | DETR |
+| UPSNet / Panoptic FPN | UPSNet / Panoptic FPN | 2019 | DETR |
+| Deformable DETR | Deformable DETR | 2021 | DETR |
+| Conditional DETR | Conditional DETR | 2021 | DETR |
+| DAB-DETR | DAB-DETR | 2022 | DETR |
+| DN-DETR / DINO | DN-DETR / DINO: DETR with Improved Denoising Anchor Boxes | 2022 | DETR, YOLOv10 |
+| YOLOv8 | YOLOv8 (Ultralytics) | 2023 | YOLOv10 |
+| YOLOv9 | YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information | 2024 | YOLOv10 |
+| YOLOv6 v3.0 | YOLOv6 v3.0: A Full-Scale Reloading | 2023 | YOLOv10 |
+| TOOD | TOOD: Task-Aligned One-Stage Object Detection | 2021 | YOLOv10 |
+| OneNet | What Makes for End-to-End Object Detection? | 2021 | YOLOv10 |
+| MobileNet | MobileNet / MobileNetV2 | 2017/2018 | YOLOv10 |
+| RepVGG | RepVGG: Making VGG-style ConvNets Great Again | 2021 | YOLOv10 |
+| RT-DETR | RT-DETR: DETRs Beat YOLOs on Real-Time Object Detection | 2023 | YOLOv10 |
+| Gold-YOLO | Gold-YOLO: Efficient Object Detector via Gather-and-Distribute Mechanism | 2024 | YOLOv10 |
+| YOLO-MS | YOLO-MS: Rethinking Multi-Scale Representation Learning | 2023 | YOLOv10 |
+| YOLOv11 | YOLOv11 (Ultralytics) | 2024 | YOLOv10 |

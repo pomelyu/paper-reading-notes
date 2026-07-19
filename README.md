@@ -44,3 +44,8 @@
 - [ ] [(DEVA) Tracking Anything with Decoupled Video Segmentation](2023/Tracking_Anything_with_Decoupled_Video_Segmentation/)
 - [x] [(Gaussian Grouping) Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/)
 - [x] [(LLaVA) Visual Instruction Tuning](2023/Visual_Instruction_Tuning/)
+
+### 2020
+- [x] [(DETR) End-to-End Object Detection with Transformers](2020/End-to-End_Object_Detection_with_Transformers/)
+  - Reframes detection as direct set prediction: CNN + transformer encoder-decoder with learned object queries, trained via bipartite (Hungarian) matching
+  - Removes anchors and NMS entirely; strong on large objects, weak on small ones, and needs very long training
