@@ -15,6 +15,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
 | NMS | Non-Maximum Suppression | Post-processing step that removes duplicate detections by greedily keeping the highest-scoring box and suppressing overlapping boxes above an IoU threshold. |
 | NVS | Novel View Synthesis | Task of rendering a scene from a viewpoint not present in the input images. |
+| PAN | Path Aggregation Network | Detector neck that augments an FPN with an extra bottom-up path so low-level localization features reach the top layers faster (PANet, CVPR 2018); the standard neck design in YOLO-family detectors. |
 | PPL | Perplexity | Exponential of the average per-token negative log-likelihood; the standard language-modeling quality metric (lower is better). |
 | PTQ | Post-Training Quantization | Compressing a trained model's weights (and possibly activations) to low bit-width without retraining, typically using only a small calibration set. |
 | QAT | Quantization-Aware Training | Training or fine-tuning with simulated quantization in the loop so weights adapt to the quantized representation; more accurate but far more expensive than PTQ. |
