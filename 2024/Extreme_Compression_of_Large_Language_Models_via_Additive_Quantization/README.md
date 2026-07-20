@@ -21,6 +21,8 @@
 
 **30-second summary.** AQLM compresses LLM weight matrices by representing each group of 8 consecutive weights as a *sum* of codewords chosen from several learned codebooks (classic Additive Quantization from retrieval), but retargets the optimization: instead of minimizing weight reconstruction error, it minimizes the error of the layer's *output* on calibration inputs, solving for discrete codes with beam search and for continuous codebooks with Adam. After quantizing the layers of a transformer block, it jointly fine-tunes the codebooks, scales, and non-quantized parameters to match the block's original output. On Llama 2 (7B/13B/70B) and Mixtral, AQLM beats GPTQ, SpQR, QuIP, and QuIP# across 2–4 bits, with the largest wins at 2 bits (e.g., Llama 2 13B: Wiki2 PPL 5.60 vs 6.06 for QuIP# at ~2 bits), and is the first method to be Pareto-optimal at ~2.5 bits per parameter. Custom kernels give ~1.2–3× GPU and ~2.3–4× CPU speedups over FP16/FP32 matrix-vector products.
 
+![comparsion](./resources/fig_01_comparsion.png)
+
 ---
 
 ## Pass 2 — Careful Read
@@ -30,6 +32,8 @@
 Represent each group of 8 LLM weights as a sum of $M$ codewords from learned $2^B$ -entry codebooks, and optimize the discrete codes (beam search) and continuous codebooks (Adam) to preserve each layer's — and then each transformer block's — output on calibration data.
 
 ### Method / Approach
+
+![restoration](./resources/fig_03_AQLM_procedure.png)
 
 - **Additive weight representation:** Each row of a weight matrix $W \in R^{d_{out} \times d_{in}}$ is split into groups of $g{=}8$ consecutive weights; each group is approximated as $\sum_{m=1}^{M} C_m b_m$ , where $C_m \in R^{g \times 2^B}$ are learned codebooks and $b_m$ is a one-hot code selecting one codeword per codebook. A per-output-unit FP16 scale $s_i$ multiplies each row. Storage is $B \cdot M$ bits per group plus amortized codebook cost (e.g., 1 codebook of $2^{16}$ codewords ≈ 2 bits/weight).
 - **Instance-aware objective:** Unlike classic AQ (which preserves the vectors themselves), AQLM minimizes $||WX - \widehat{W}X||_2^2$ over calibration activations $X$ . All inner products reduce to forms involving the precomputed $d_{in} \times d_{in}$ matrix $XX^T$ , so the calibration set never needs to be held in memory during optimization.
