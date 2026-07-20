@@ -19,13 +19,17 @@
 | **Contributions** | (1) Quantifying KV-cache memory waste (reserved slots, internal and external fragmentation) in existing serving systems; (2) PagedAttention — attention over KV cache stored in fixed-size, non-contiguous blocks; (3) vLLM — an end-to-end distributed serving engine with block tables, copy-on-write sharing, and preemptive scheduling; (4) 2–4× throughput over state of the art at equal latency, without changing model outputs. |
 | **Clarity** | Excellently written. The OS analogy (blocks = pages, tokens = bytes, requests = processes) carries the whole paper; worked examples (Figs. 6–9) make each mechanism concrete. A model systems paper. |
 
-**30-second summary.** LLM serving throughput is limited by how many requests can be batched, which is limited by GPU memory for the KV cache. Prior systems (FasterTransformer, Orca) store each request's KV cache as one contiguous tensor pre-allocated at maximum sequence length, wasting 60–80% of KV memory to reservation and fragmentation. PagedAttention borrows OS virtual-memory paging: the KV cache is split into fixed-size blocks (default 16 tokens) that live anywhere in GPU memory, addressed through per-request block tables, with new blocks allocated on demand. This bounds internal fragmentation to one block per sequence, eliminates external fragmentation entirely, and — because multiple logical blocks can map to one physical block with reference counting and block-level copy-on-write — enables KV sharing across parallel samples, beam candidates, and shared prompt prefixes. The vLLM engine adds all-or-nothing preemption (swap to CPU or recompute) and Megatron-style tensor parallelism. Result: near-zero KV waste (96.3% utilization), 2–4× higher throughput than Orca at the same latency (up to 22× vs FasterTransformer), with bigger gains for long sequences, large models, and beam search.
+**30-second summary.** LLM serving throughput is limited by how many requests can be batched, which is limited by GPU memory for the KV cache. Prior systems (FasterTransformer, Orca) store each request's KV cache as one contiguous tensor pre-allocated at maximum sequence length, wasting 60–80% of KV memory to reservation and fragmentation. PagedAttention borrows OS virtual-memory paging: the KV cache is split into fixed-size blocks (default 16 tokens) that live anywhere in GPU memory, addressed through per-request block tables, with new blocks allocated on demand. This bounds internal fragmentation to one block per sequence, eliminates external fragmentation entirely, and — because multiple logical blocks can map to one physical block with reference counting and block-level copy-on-write — enables KV sharing across parallel samples[^2], beam candidates[^3], and shared prompt prefixes. The vLLM engine adds all-or-nothing preemption (swap to CPU or recompute) and Megatron-style tensor parallelism. Result: near-zero KV waste (96.3% utilization), 2–4× higher throughput than Orca at the same latency (up to 22× vs FasterTransformer), with bigger gains for long sequences, large models, and beam search.
+
+![memory_usage](./resources/fig_01_memory_usage.png)
 
 ---
 
 ## Pass 2 — Careful Read
 
 ### Core Idea in One Sentence
+
+![issue_of_continous_KV_cache](./resources/fig_03_issue_of_continous_KV_cache.png)
 
 Store the KV cache in fixed-size non-contiguous blocks addressed through a per-request block table — exactly like OS virtual-memory pages — so KV memory can be allocated on demand and shared across sequences, letting far more requests fit in a batch.
 
@@ -84,6 +88,8 @@ Workloads: ShareGPT and Alpaca traces with Poisson arrivals; metric is *normaliz
 ## Pass 3 — Virtual Re-implementation
 
 ### Detailed Technical Summary
+
+![vLLM_and_PageAttention](./resources/fig_04_05_vLLM_and_PageAttention.png)
 
 **Why KV memory is the bottleneck.** Serving a 13B model on an A100-40GB: ~65% of memory is static weights, ~30% is KV cache, and activations are ephemeral. Each token's KV cache for OPT-13B costs $2 \times 5120 \times 40 \times 2$ bytes $= 800$ KB (key+value × hidden size × layers × FP16), so one 2048-token request needs up to 1.6 GB. Decode is autoregressive — one token per step, matrix-vector rather than matrix-matrix — so GPUs are underutilized and throughput comes from batching; batch size is capped by KV memory. Prior systems allocate each request's KV cache as one contiguous tensor sized to the *maximum possible* length (e.g., 2048), producing three kinds of waste: *reserved* slots held for future tokens for the whole request lifetime, *internal fragmentation* from over-provisioning (request finishes earlier than the maximum), and *external fragmentation* from the buddy allocator (chunks have request-specific sizes). Measured on real traces, only 20.4–38.2% of KV memory in Orca-style systems holds live token states.
 
@@ -204,3 +210,5 @@ Overwhelmingly. PagedAttention is one of the most influential systems ideas of t
 A foundational classic — arguably *the* systems paper of the LLM serving era. It identified the right bottleneck (KV cache memory waste, not compute), imported the right abstraction from a 60-year-old literature, quantified everything honestly, and shipped code that became industry-standard infrastructure. Reading it remains the fastest way to understand how modern inference engines actually manage memory, and its vocabulary (KV blocks, block tables, copy-on-write sharing, swap-vs-recompute) is now the field's lingua franca. The frontier has moved — to hardware-assisted paging, prefix trees, chunked prefill, and disaggregated clusters — but every one of those works defines itself relative to this paper. Read it first; read vAttention and Sarathi-Serve for the counterpoints.
 
 [^1]: **KV cache** — Key-Value cache. See the [glossary](../../common/terms/).
+[^2]: **Parallel sampling** — generating multiple independent outputs from one shared prompt. See the [glossary](../../common/terms/).
+[^3]: **Beam search** — decoding that keeps the top-k highest-probability partial sequences at each step. See the [glossary](../../common/terms/).

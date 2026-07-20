@@ -7,6 +7,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 |------|-----------|-----------------|
 | AP | Average Precision | Area under the precision-recall curve; COCO reports mean AP averaged over IoU thresholds 0.5:0.95 and object scales. |
 | BA | Bundle Adjustment | Joint non-linear optimization of camera poses and 3D point positions to minimize reprojection error. |
+| Beam search | — | Decoding strategy that keeps the top-k highest-probability partial sequences (the "beam") at each step, expanding each and retaining the best k, to approximate the most likely full output instead of greedily taking one token. |
 | DETR | DEtection TRansformer | End-to-end object detector that treats detection as set prediction, using a transformer and bipartite (Hungarian) matching to remove hand-crafted components like NMS. |
 | DPT | Dense Prediction Transformer | Decoder head that fuses multi-scale ViT features through progressive convolutional upsampling to full resolution. |
 | FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |
@@ -17,6 +18,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | NMS | Non-Maximum Suppression | Post-processing step that removes duplicate detections by greedily keeping the highest-scoring box and suppressing overlapping boxes above an IoU threshold. |
 | NVS | Novel View Synthesis | Task of rendering a scene from a viewpoint not present in the input images. |
 | PAN | Path Aggregation Network | Detector neck that augments an FPN with an extra bottom-up path so low-level localization features reach the top layers faster (PANet, CVPR 2018); the standard neck design in YOLO-family detectors. |
+| Parallel sampling | — | Decoding strategy that generates multiple independent output sequences from the same input prompt (e.g., to offer the user candidates or for self-consistency); the shared prompt lets the samples reuse its KV cache. |
 | PPL | Perplexity | Exponential of the average per-token negative log-likelihood; the standard language-modeling quality metric (lower is better). |
 | PTQ | Post-Training Quantization | Compressing a trained model's weights (and possibly activations) to low bit-width without retraining, typically using only a small calibration set. |
 | QAT | Quantization-Aware Training | Training or fine-tuning with simulated quantization in the loop so weights adapt to the quantized representation; more accurate but far more expensive than PTQ. |
