@@ -1,6 +1,6 @@
 # Knowledge Graph
 
-Auto-generated from paper notes. Last updated: 2026-07-19.
+Auto-generated from paper notes. Last updated: 2026-07-20.
 
 ---
 
@@ -60,6 +60,20 @@ graph TD
         MegaSaM["MegaSaM\n2025"]:::noNote
     end
 
+    subgraph LLMSys["LLM Efficiency & Serving"]
+        AQ2014["AQ\n2014"]:::noNote
+        GPTQ["GPTQ\n2022"]:::noNote
+        Orca["Orca\n2022"]:::noNote
+        FlashAttn["FlashAttention\n2022"]:::noNote
+        vLLM["vLLM (PagedAttention)\n2023"]:::y2023
+        QuIPs["QuIP#\n2024"]:::noNote
+        AQLM["AQLM\n2024"]:::y2024
+        PVTuning["PV-Tuning\n2024"]:::noNote
+        QTIP["QTIP\n2024"]:::noNote
+        SGLang["SGLang\n2024"]:::noNote
+        vAttn["vAttention\n2024"]:::noNote
+    end
+
     subgraph Det["Object Detection"]
         FasterRCNN["Faster R-CNN\n2015"]:::noNote
         DETR["DETR\n2020"]:::y2020
@@ -109,6 +123,16 @@ graph TD
 
     LLaVA -->|succeeded_by| VLMSurv
 
+    AQLM -->|builds_on| AQ2014
+    AQLM -->|builds_on| GPTQ
+    AQLM -->|competes_with| QuIPs
+    AQLM -->|succeeded_by| PVTuning
+    AQLM -->|succeeded_by| QTIP
+    vLLM -->|builds_on| Orca
+    vLLM -->|builds_on| FlashAttn
+    vLLM -->|succeeded_by| SGLang
+    vLLM -->|succeeded_by| vAttn
+
     DETR -->|builds_on| FasterRCNN
     DETR -->|succeeded_by| DeformDETR
     DETR -->|succeeded_by| DINODETR
@@ -138,6 +162,7 @@ graph TD
 | [Tracking Anything with Decoupled Video Segmentation](2023/Tracking_Anything_with_Decoupled_Video_Segmentation/) | DEVA | 2023 | ICCV 2023 | video segmentation, tracking, open-world, SAM | ✅ |
 | [Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/) | Gaussian Grouping | 2023 | ECCV 2024 | 3DGS, instance segmentation, SAM, scene editing | ✅ |
 | [Visual Instruction Tuning](2023/Visual_Instruction_Tuning/) | LLaVA | 2023 | NeurIPS 2023 | visual instruction tuning, multimodal LLM, CLIP, LLaMA | ✅ |
+| [Efficient Memory Management for Large Language Model Serving with PagedAttention](2023/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention/) | vLLM (PagedAttention) | 2023 | SOSP 2023 | LLM serving, KV cache, memory management, virtual memory, paging, continuous batching | ✅ |
 | [2D Gaussian Splatting for Geometrically Accurate Radiance Fields](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields/) | 2DGS | 2024 | SIGGRAPH 2024 | 3DGS, geometry, surface reconstruction | ✅ |
 | [4D Gaussian Splatting for Real-Time Dynamic Scene Rendering](2024/4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering/) | 4DGS | 2024 | CVPR 2024 | 3DGS, dynamic scenes, real-time rendering | ✅ |
 | [DUSt3R: Geometric 3D Vision Made Easy](2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/) | DUSt3R | 2024 | CVPR 2024 | 3D reconstruction, pointmap, multi-view stereo, camera pose, ViT, CroCo | ✅ |
@@ -146,6 +171,7 @@ graph TD
 | [SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/) | SAM 2 | 2024 | arXiv 2024 | image segmentation, video segmentation, streaming memory | ✅ |
 | [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Street Gaussians | 2024 | ECCV 2024 | 3DGS, autonomous driving, dynamic scenes | ✅ |
 | [YOLOv10: Real-Time End-to-End Object Detection](2024/YOLOv10-_Real-Time_End-to-End_Object_Detection/) | YOLOv10 | 2024 | NeurIPS 2024 | real-time object detection, NMS-free, end-to-end detection, dual label assignment, YOLO, COCO | ✅ |
+| [Extreme Compression of Large Language Models via Additive Quantization](2024/Extreme_Compression_of_Large_Language_Models_via_Additive_Quantization/) | AQLM | 2024 | ICML 2024 | LLM compression, post-training quantization, additive quantization, multi-codebook quantization, 2-bit | ✅ |
 | [4D LangSplat: 4D Language Gaussian Splatting via Multimodal Large Language Models](2025/4D_LangSplat-_4D_Language_Gaussian_Splatting_via_Multimodal_Large_Language_Models/) | 4D LangSplat | 2025 | — | 3DGS, language fields, dynamic, 4D, MLLM | ✅ |
 | [DINOv3](2025/DINOv3/) | DINOv3 | 2025 | arXiv Aug 2025 | SSL, vision foundation model, Gram anchoring, dense features, ViT-7B | ✅ |
 | [GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/) | GaussianDWM | 2025 | — | 3DGS, autonomous driving, world model | ✅ |
@@ -275,6 +301,22 @@ graph TD
 
 ---
 
+### LLM Efficiency & Serving
+**Papers with notes:** vLLM (PagedAttention) · AQLM  
+**Key chain:** AQ (2014) → AQLM · GPTQ → AQLM → PV-Tuning / QTIP · Orca → vLLM → SGLang / vAttention
+
+| Paper | Role |
+|---|---|
+| vLLM (PagedAttention) | SOSP 2023; OS-style paging for the KV cache — block tables, on-demand allocation, copy-on-write sharing; 2–4× serving throughput and the foundation of the vLLM engine |
+| AQLM | ICML 2024; multi-codebook additive quantization of LLM weights; first Pareto-optimal scheme below 3 bits/parameter; AQLM checkpoints are servable via vLLM |
+| GPTQ (referenced) | Data-aware layer-wise PTQ objective AQLM builds on |
+| QuIP# (referenced) | Strongest contemporary 2-bit competitor to AQLM (lattice + rotations) |
+| PV-Tuning / QTIP (referenced) | Successors improving AQLM's fine-tuning and quantization cost |
+| Orca (referenced) | Iteration-level continuous batching; vLLM's complementary predecessor and main baseline |
+| SGLang / vAttention (referenced) | Successors: radix-tree prefix sharing; hardware virtual-memory alternative to software paging |
+
+---
+
 ## Referenced Papers (no note yet)
 
 | Short Name | Full Title | Year | Referenced By |
@@ -340,3 +382,33 @@ graph TD
 | Gold-YOLO | Gold-YOLO: Efficient Object Detector via Gather-and-Distribute Mechanism | 2024 | YOLOv10 |
 | YOLO-MS | YOLO-MS: Rethinking Multi-Scale Representation Learning | 2023 | YOLOv10 |
 | YOLOv11 | YOLOv11 (Ultralytics) | 2024 | YOLOv10 |
+| AQ | Additive Quantization for Extreme Vector Compression | 2014 | AQLM |
+| PQ | Product Quantization for Nearest Neighbor Search | 2010 | AQLM |
+| LSQ | LSQ: Revisiting Additive Quantization | 2018 | AQLM |
+| GPTQ | GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers | 2022 | AQLM |
+| k-bit scaling laws | The case for 4-bit precision: k-bit inference scaling laws | 2022 | AQLM |
+| QuIP | QuIP: 2-Bit Quantization of Large Language Models with Guarantees | 2023 | AQLM |
+| QuIP# | QuIP#: Even Better LLM Quantization with Hadamard Incoherence and Lattice Codebooks | 2024 | AQLM |
+| SpQR | SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression | 2023 | AQLM |
+| SqueezeLLM | SqueezeLLM: Dense-and-Sparse Quantization | 2023 | AQLM |
+| AWQ | AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration | 2023 | AQLM |
+| PV-Tuning | PV-Tuning: Beyond Straight-Through Estimation for Extreme LLM Compression | 2024 | AQLM |
+| QTIP | QTIP: Quantization with Trellises and Incoherence Processing | 2024 | AQLM |
+| VPTQ | VPTQ: Extreme Low-bit Vector Post-Training Quantization for Large Language Models | 2024 | AQLM |
+| GPTVQ | GPTVQ: The Blessing of Dimensionality for LLM Quantization | 2024 | AQLM |
+| CALDERA | CALDERA: Low-Rank + Low-Precision Decomposition | 2024 | AQLM |
+| Orca | Orca: A Distributed Serving System for Transformer-Based Generative Models | 2022 | vLLM |
+| FasterTransformer | FasterTransformer (NVIDIA) | 2023 | vLLM |
+| One-Level Storage | One-Level Storage System (Kilburn et al.) | 1962 | vLLM |
+| Megatron-LM | Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism | 2019 | vLLM |
+| FlashAttention | FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness | 2022 | vLLM |
+| FlexGen | FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU | 2023 | vLLM |
+| TGI | Text Generation Inference (HuggingFace) | 2023 | vLLM |
+| DeepSpeed Inference | DeepSpeed Inference: Enabling Efficient Inference of Transformer Models at Unprecedented Scale | 2022 | vLLM |
+| Pope et al. | Efficiently Scaling Transformer Inference | 2023 | vLLM |
+| AlpaServe | AlpaServe: Statistical Multiplexing with Model Parallelism for Deep Learning Serving | 2023 | vLLM |
+| SGLang | SGLang: Efficient Execution of Structured Language Model Programs (RadixAttention) | 2024 | vLLM |
+| vAttention | vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention | 2024 | vLLM |
+| Sarathi-Serve | Sarathi-Serve: Taming Throughput-Latency Tradeoff in LLM Inference with Chunked Prefills | 2024 | vLLM |
+| DistServe | DistServe: Disaggregating Prefill and Decoding for Goodput-optimized LLM Serving | 2024 | vLLM |
+| Mooncake | Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving | 2024 | vLLM |
