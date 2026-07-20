@@ -12,6 +12,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |
 | InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
 | IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
+| KV cache | Key-Value cache | Cached attention key/value vectors of all previously processed tokens, reused at every autoregressive decoding step so past tokens need not be recomputed; grows linearly with sequence length and dominates LLM inference memory. |
 | MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
 | NMS | Non-Maximum Suppression | Post-processing step that removes duplicate detections by greedily keeping the highest-scoring box and suppressing overlapping boxes above an IoU threshold. |
 | NVS | Novel View Synthesis | Task of rendering a scene from a viewpoint not present in the input images. |

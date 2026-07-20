@@ -167,7 +167,7 @@ updating codebooks and per-unit scales; this takes a small fraction of total tim
 - **Newer models quantize worse:** multiple studies found Llama 3+ degrades much more under 2–3-bit PTQ than Llama 2 (likely due to more thorough training), softening the practical value of "2-bit Llama" results demonstrated on Llama 2.
 - **Hardware moved toward low-bit floating point:** Blackwell-class GPUs natively support FP4/MXFP4/NVFP4, and vendors increasingly release QAT or natively low-precision checkpoints (e.g., MXFP4 GPT-OSS releases), which competes with codebook methods on the deployment side where hardware-native formats are much faster to decode.
 - **Rotation-based weight-activation quantization matured:** QuaRot, SpinQuant, and successors target W4A4-style inference for serving throughput — a different regime than AQLM's weight-only, memory-bound single-stream focus.
-- **Ecosystem integration:** AQLM gained inference support in HuggingFace Transformers and vLLM, and PEFT-style fine-tuning on top of AQLM checkpoints, making it one of the few extreme-compression formats actually deployable off the shelf.
+- **Ecosystem integration:** AQLM gained inference support in HuggingFace Transformers and [vLLM](../../2023/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention/), and PEFT-style fine-tuning on top of AQLM checkpoints, making it one of the few extreme-compression formats actually deployable off the shelf.
 
 ### Has the Community Accepted the Claims?
 

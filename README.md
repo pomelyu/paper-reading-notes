@@ -45,6 +45,7 @@
 - [ ] [(DEVA) Tracking Anything with Decoupled Video Segmentation](2023/Tracking_Anything_with_Decoupled_Video_Segmentation/)
 - [x] [(Gaussian Grouping) Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/)
 - [x] [(LLaVA) Visual Instruction Tuning](2023/Visual_Instruction_Tuning/)
+- [ ] [(vLLM)(PageAttention) Efficient Memory Management for Large Language Model Serving with PagedAttention](2023/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention/)
 
 ### 2020
 - [x] [(DETR) End-to-End Object Detection with Transformers](2020/End-to-End_Object_Detection_with_Transformers/)
