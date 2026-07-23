@@ -61,6 +61,12 @@
   - Unified BEV feature serves both 3D detection and map segmentation; 56.9% NDS on nuScenes test, on par with some LiDAR baselines
   - Backbone for end-to-end driving stacks (UniAD) and occupancy models
 
+### 2021
+- [x] [(DETR3D) DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries](2021/DETR3D-_3D_Object_Detection_from_Multi-view_Images_via_3D-to-2D_Queries/)
+  - Predict 3D object bbox, class label, heading and velocity from multi-view images
+  - Use concept similar with DETR and calculate set-to-set loss
+  - learnable object query (900) → MLP to predict draft 3D point centers → [project to 2D points in image space → get image features which are encoded by ResNet + FPN → use attention to refine center points] x6 → predict class label, box and heading, velocity
+
 ### 2020
 - [x] [(LSS) Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](2020/Lift,_Splat,_Shoot-_Encoding_Images_from_Arbitrary_Camera_Rigs_by_Implicitly_Unprojecting_to_3D/)
   - Fused images from multi-view cameras to a feature map in BEV view for downstream tasks.

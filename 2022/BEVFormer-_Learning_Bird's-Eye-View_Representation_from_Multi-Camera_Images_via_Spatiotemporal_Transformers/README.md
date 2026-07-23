@@ -185,7 +185,7 @@ Yes — BEVFormer is now a canonical reference and a standard baseline for camer
 |---|---|---|---|
 | Lift, Splat, Shoot | Philion, Fidler | 2020 | Depth-based "push" BEV predecessor and baseline; BEVFormer is the attention-based "pull" counterpart ([has note](../../2020/Lift,_Splat,_Shoot-_Encoding_Images_from_Arbitrary_Camera_Rigs_by_Implicitly_Unprojecting_to_3D/)) |
 | Deformable DETR | Zhu et al. | 2021 | Source of the deformable attention primitive underlying both SCA and TSA |
-| DETR3D | Wang et al. | 2022 | Query-based 3D detector (sparse 3D queries); primary competitor and design inspiration |
+| [DETR3D](../../2021/DETR3D-_3D_Object_Detection_from_Multi-view_Images_via_3D-to-2D_Queries/) | Wang et al. | 2021 | Query-based 3D detector (sparse 3D queries); primary competitor and design inspiration |
 | DETR | Carion et al. | 2020 | Set-prediction / object-query paradigm behind the detection head ([has note](../../2020/End-to-End_Object_Detection_with_Transformers/)) |
 | PointPillars | Lang et al. | 2019 | Pillar abstraction reused to lift BEV queries into 3D reference pillars |
 | FIERY | Hu et al. | 2021 | Prior temporal-BEV method (frame stacking) motivating the cheaper recurrent design |
