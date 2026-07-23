@@ -8,6 +8,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | AP | Average Precision | Area under the precision-recall curve; COCO reports mean AP averaged over IoU thresholds 0.5:0.95 and object scales. |
 | BA | Bundle Adjustment | Joint non-linear optimization of camera poses and 3D point positions to minimize reprojection error. |
 | Beam search | — | Decoding strategy that keeps the top-k highest-probability partial sequences (the "beam") at each step, expanding each and retaining the best k, to approximate the most likely full output instead of greedily taking one token. |
+| BEV | Bird's-Eye-View | Top-down 2D representation of a scene in the ego-vehicle ground plane; the standard coordinate frame for autonomous-driving perception fused across sensors and consumed by planning. |
 | DETR | DEtection TRansformer | End-to-end object detector that treats detection as set prediction, using a transformer and bipartite (Hungarian) matching to remove hand-crafted components like NMS. |
 | DPT | Dense Prediction Transformer | Decoder head that fuses multi-scale ViT features through progressive convolutional upsampling to full resolution. |
 | FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |

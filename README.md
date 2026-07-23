@@ -55,6 +55,10 @@
   - Allows KV-cache sharing for a shared prompt-prefix (system prompt) or advanced decoding strategies (beam search, parallel sampling)
 
 ### 2020
+- [x] [(LSS) Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](2020/Lift,_Splat,_Shoot-_Encoding_Images_from_Arbitrary_Camera_Rigs_by_Implicitly_Unprojecting_to_3D/)
+  - Fused images from multi-view cameras to a feature map in BEV view for downstream tasks.
+  - Turns each image into point cloude frustrum and then project to BEV view, use sum-pooling along each verical voxel(related to a pixel in feature map) to create feature map
+  - Foundational template for the BEV-perception wave (BEVDet, BEVDepth, BEVFusion, BEVFormer)
 - [x] [(DETR) End-to-End Object Detection with Transformers](2020/End-to-End_Object_Detection_with_Transformers/)
   - Reframes detection as direct set prediction: CNN + transformer encoder-decoder with learned object queries, trained via bipartite (Hungarian) matching
   - Removes anchors and NMS entirely; strong on large objects, weak on small ones, and needs very long training
