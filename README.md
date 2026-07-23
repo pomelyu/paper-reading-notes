@@ -24,6 +24,10 @@
   - Backbone for downstream tasks, such as feed-forward NVS and dynamic point tracking
 
 ### 2024
+- [x] [(DriveVLM) DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models](2024/DriveVLM-_The_Convergence_of_Autonomous_Driving_and_Large_Vision-Language_Models/)
+  - One of the papers that opened the VLM/VLA era of AD: a large VLM (Qwen-VL) predicts coarse waypoints via a driving-specific chain-of-thought — scene description → scene analysis (critical objects) → hierarchical planning
+  - The VLM handles long-tail / ambiguous scenes and produces interpretable decisions that classical perception→prediction→planning stacks miss
+  - **DriveVLM-Dual** = slow-fast hybrid: the slow VLM (semantics + coarse plan) paired with a fast traditional 3D-detector/planner (VAD) for spatial grounding + waypoint refinement; deployed on a production car (~410 ms on dual OrinX), for which the paper details the choice of LLM and ViT (a smaller <4B LLM is used onboard)
 - [x] [(SAM2) SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/)
 - [x] [(DUSt3R) DUSt3R: Geometric 3D Vision Made Easy](2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/)
 - [x] [(2DGS) 2D Gaussian Splatting for Geometrically Accurate Radiance Fields](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields)
