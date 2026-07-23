@@ -17,6 +17,8 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
 | IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
 | KV cache | Key-Value cache | Cached attention key/value vectors of all previously processed tokens, reused at every autoregressive decoding step so past tokens need not be recomputed; grows linearly with sequence length and dominates LLM inference memory. |
+| MOT | Multi-Object Tracking | Perception task of detecting objects and maintaining a consistent identity for each across frames; nuScenes reports AMOTA/AMOTP and ID-switches (IDS). |
+| MTL | Multi-Task Learning | Training one shared model on several tasks at once (usually a shared backbone with per-task heads); can share useful features but risks "negative transfer" between conflicting tasks. |
 | MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
 | NDS | nuScenes Detection Score | Composite 3D-detection metric of the nuScenes benchmark combining mAP with five true-positive error terms (translation, scale, orientation, velocity, attribute); higher is better. |
 | NMS | Non-Maximum Suppression | Post-processing step that removes duplicate detections by greedily keeping the highest-scoring box and suppressing overlapping boxes above an IoU threshold. |

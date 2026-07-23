@@ -14,7 +14,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | System/method paper — first 3DGS-based closed-loop RL framework for training an end-to-end autonomous driving policy from raw sensor input |
-| **Context** | Builds on 3D Gaussian Splatting (3DGS) for photorealistic scene reconstruction, BEV-based end-to-end AD (UniAD, VAD, VADv2), and prior IL+RL hybrid methods (CADRE, CIRL); directly extends StreetGaussian for dynamic urban driving scenes |
+| **Context** | Builds on 3D Gaussian Splatting (3DGS) for photorealistic scene reconstruction, BEV-based end-to-end AD ([UniAD](../../2023/Planning-oriented_Autonomous_Driving/), VAD, VADv2), and prior IL+RL hybrid methods (CADRE, CIRL); directly extends StreetGaussian for dynamic urban driving scenes |
 | **Correctness** | Assumptions are mostly sound; 3DGS-to-real consistency is validated quantitatively (trajectory overlay) and qualitatively; the use of log-replay for other agents is a known limitation explicitly acknowledged |
 | **Contributions** | (1) First end-to-end AD policy trained via RL in a photorealistic 3DGS environment; (2) RL+IL hybrid training with a 4-component safety reward and dense auxiliary objectives; (3) A closed-loop 3DGS evaluation benchmark of 337 diverse, unseen scenes |
 | **Clarity** | Well written; clear separation of concerns across sections; figures effectively illustrate training paradigms and qualitative comparisons |

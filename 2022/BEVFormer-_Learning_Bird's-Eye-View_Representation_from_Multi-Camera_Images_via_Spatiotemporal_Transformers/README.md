@@ -206,7 +206,7 @@ Yes — BEVFormer is now a canonical reference and a standard baseline for camer
 | SOLOFusion | Park et al. | 2023 | Extends temporal fusion to long-term for large gains |
 | StreamPETR | Wang et al. | 2023 | Object-centric temporal propagation; sparse-query successor line |
 | BEVFormer v2 | Yang et al. | 2023 | Direct successor with perspective supervision and modern backbones |
-| UniAD | Hu et al. | 2023 | Uses BEVFormer as the perception backbone for end-to-end planning (CVPR 2023 best paper) |
+| [UniAD](../../2023/Planning-oriented_Autonomous_Driving/) | Hu et al. | 2023 | Uses BEVFormer as the perception backbone for end-to-end planning (CVPR 2023 best paper) |
 | Occ3D / SurroundOcc | Tian / Wei et al. | 2023 | 3D occupancy successors reusing BEVFormer-style spatial cross-attention |
 
 ---
