@@ -12,10 +12,12 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | DETR | DEtection TRansformer | End-to-end object detector that treats detection as set prediction, using a transformer and bipartite (Hungarian) matching to remove hand-crafted components like NMS. |
 | DPT | Dense Prediction Transformer | Decoder head that fuses multi-scale ViT features through progressive convolutional upsampling to full resolution. |
 | FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |
+| FPN | Feature Pyramid Network | Detector neck that builds a multi-scale feature pyramid via a top-down pathway with lateral connections, so both high- and low-resolution semantic features are available for prediction. |
 | InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
 | IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
 | KV cache | Key-Value cache | Cached attention key/value vectors of all previously processed tokens, reused at every autoregressive decoding step so past tokens need not be recomputed; grows linearly with sequence length and dominates LLM inference memory. |
 | MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
+| NDS | nuScenes Detection Score | Composite 3D-detection metric of the nuScenes benchmark combining mAP with five true-positive error terms (translation, scale, orientation, velocity, attribute); higher is better. |
 | NMS | Non-Maximum Suppression | Post-processing step that removes duplicate detections by greedily keeping the highest-scoring box and suppressing overlapping boxes above an IoU threshold. |
 | NVS | Novel View Synthesis | Task of rendering a scene from a viewpoint not present in the input images. |
 | PAN | Path Aggregation Network | Detector neck that augments an FPN with an extra bottom-up path so low-level localization features reach the top layers faster (PANet, CVPR 2018); the standard neck design in YOLO-family detectors. |

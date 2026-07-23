@@ -54,6 +54,13 @@
   - Allows block swapping (offloading to CPU RAM) or recomputation when under memory pressure
   - Allows KV-cache sharing for a shared prompt-prefix (system prompt) or advanced decoding strategies (beam search, parallel sampling)
 
+### 2022
+- [x] [(BEVFormer) BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers](2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/)
+  - Attention-based ("pull") BEV encoder: grid of learnable BEV queries gather multi-camera features via deformable spatial cross-attention, no explicit depth needed (vs. LSS's depth-based "push")
+  - Recurrent temporal self-attention fuses the previous frame's BEV (RNN-style), greatly improving velocity estimation and occluded-object recall
+  - Unified BEV feature serves both 3D detection and map segmentation; 56.9% NDS on nuScenes test, on par with some LiDAR baselines
+  - Backbone for end-to-end driving stacks (UniAD) and occupancy models
+
 ### 2020
 - [x] [(LSS) Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](2020/Lift,_Splat,_Shoot-_Encoding_Images_from_Arbitrary_Camera_Rigs_by_Implicitly_Unprojecting_to_3D/)
   - Fused images from multi-view cameras to a feature map in BEV view for downstream tasks.

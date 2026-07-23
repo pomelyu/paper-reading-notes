@@ -187,7 +187,7 @@ Emphatically yes — LSS is now regarded as a foundational paper of the modern B
 | BEVDet4D | Huang et al. | 2022 | Adds temporal fusion to BEVDet, addressing LSS's single-frame limitation |
 | BEVDepth | Li et al. | 2022 | Adds explicit LiDAR depth supervision to fix LSS's inaccurate implicit depth |
 | BEVFusion | Liu et al. / Liang et al. | 2022 | Fuses LSS-lifted camera features with LiDAR in a shared BEV grid |
-| BEVFormer | Li et al. | 2022 | Transformer/backward-projection alternative to LSS's forward projection, with temporal attention |
+| [BEVFormer](../../2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/) | Li et al. | 2022 | Transformer/backward-projection alternative to LSS's forward projection, with temporal attention |
 | PETR | Liu et al. | 2022 | 3D-position-embedding alternative avoiding explicit depth binning |
 | Simple-BEV / CVT | Harley et al. / Zhou, Krähenbühl | 2022 | Segmentation-focused successors probing what actually matters in the lift step |
 

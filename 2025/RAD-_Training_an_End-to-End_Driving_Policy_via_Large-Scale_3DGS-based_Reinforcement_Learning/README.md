@@ -285,7 +285,7 @@ RAD is a NeurIPS 2025 paper, so full community assessment is still in its early 
 | 3D Gaussian Splatting for Real-Time Radiance Field Rendering | Kerbl et al. | 2023 | Core scene representation RAD builds upon |
 | [Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting](../../2024/Street_Gaussians-_Modeling_Dynamic_Urban_Scenes_with_Gaussian_Splatting/) | Yan et al. | 2024 | 3DGS extension for dynamic driving scenes; RAD's direct base for environment construction |
 | VADv2: End-to-End Vectorized Autonomous Driving via Probabilistic Planning | Chen et al. | 2024 | IL-based predecessor from same lab; RAD Stage 2 initializes from this paradigm |
-| BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Videos | Li et al. | 2022 | BEV encoder used in RAD's policy architecture |
+| [BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Videos](../../2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/) | Li et al. | 2022 | BEV encoder used in RAD's policy architecture |
 | Proximal Policy Optimization Algorithms | Schulman et al. | 2017 | RL algorithm (PPO) used for policy optimization in Stage 3 |
 | High-Dimensional Continuous Control Using Generalized Advantage Estimation | Schulman et al. | 2015 | GAE formulation used for advantage estimation in RAD's decoupled PPO |
 | Imitation is Not Enough: Robustifying Imitation with RL for Challenging Scenarios | Lu et al. | 2023 | Prior IL+RL hybrid for CARLA driving; RAD generalizes to 3DGS photorealistic environment |
