@@ -47,6 +47,9 @@
 - [x] [(UniAD) Planning-oriented Autonomous Driving](2023/Planning-oriented_Autonomous_Driving/)
   - CVPR 2023 best paper: unifies the full driving stack (detection, tracking, mapping, motion forecast, occupancy, planning) into one end-to-end network, connected by task queries
   - "Planning-oriented" philosophy: choose and order perception/prediction tasks so each feeds better info to the final planner (vs. modular pipelines or naive multi-task learning)
+- [x] [(FlashOcc) FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin](2023/FlashOcc-_Fast_and_Memory-Efficient_Occupancy_Prediction_via_Channel-to-Height_Plugin/)
+  - Plug-and-play efficiency trick to replace highly cost 3D convs by 2D conv in BEV and later use **Channel-to-Height** transform to recover height information
+  - Matches or beats voxel baselines (+1.3 mIoU on BEVDetOcc) at ~2× speed and ~69% less inference memory; a standard efficient occupancy head
 - [x] [(Lp3D) Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/)
 - [x] [(Scaffold-GS) Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering)
 - [x] [(Dynamic 3D Gaussians) Tracking by Persistent Dynamic View Synthesis](2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/)

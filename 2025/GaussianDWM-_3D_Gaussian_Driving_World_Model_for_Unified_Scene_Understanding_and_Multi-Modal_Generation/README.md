@@ -165,7 +165,7 @@ The paper is very recent (submitted Dec 2025, updated May 2026) and has not yet 
 
 | Paper | Authors | Year | Relation |
 |-------|---------|------|----------|
-| **DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models** | Tian et al. | 2024 | Primary understanding competitor; VLM-based scene understanding without 3D Gaussian grounding |
+| [**DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models**](../../2024/DriveVLM-_The_Convergence_of_Autonomous_Driving_and_Large_Vision-Language_Models/) | Tian et al. | 2024 | Primary understanding competitor; VLM-based scene understanding without 3D Gaussian grounding |
 | **MagicDrive: Street View Generation with Diverse 3D Geometry Control** | Gao et al. | 2023 | Key generation competitor; 2D-conditioned controllable driving video synthesis |
 | **WoVogen: World Volume-aware Diffusion for Controllable Multi-camera Driving Scene Generation** | — | 2024 | Close competitor with 3D volumetric conditioning for multi-camera generation |
 | **DriveDreamer: Towards Real-world-driven World Models for Autonomous Driving** | Wang et al. | 2023 | Early driving world model combining video generation with planning; direct generation baseline |
