@@ -1,6 +1,6 @@
 # Knowledge Graph
 
-Auto-generated from paper notes. Last updated: 2026-07-20.
+Auto-generated from paper notes. Last updated: 2026-07-24.
 
 ---
 
@@ -86,6 +86,19 @@ graph TD
         YOLOv11["YOLOv11\n2024"]:::noNote
     end
 
+    subgraph AD["Autonomous Driving / BEV Perception"]
+        LSS["LSS\n2020"]:::y2020
+        DETR3D["DETR3D\n2021"]:::y2021
+        BEVFormer["BEVFormer\n2022"]:::y2022
+        UniAD["UniAD\n2023"]:::y2023
+        FlashOcc["FlashOcc\n2023"]:::y2023
+        DriveVLM["DriveVLM\n2024"]:::y2024
+        DWM["GaussianDWM\n2025"]:::y2025
+        BEVDepth["BEVDepth\n2022"]:::noNote
+        PETR["PETR\n2022"]:::noNote
+        VAD["VAD\n2023"]:::noNote
+    end
+
     SAM -->|succeeded_by| SAM2
     DEVA -->|builds_on| SAM
     GG -->|builds_on| DEVA
@@ -142,6 +155,23 @@ graph TD
     YOLOv10 -->|competes_with| RTDETR
     YOLOv10 -->|competes_with| DINODETR
     YOLOv10 -->|succeeded_by| YOLOv11
+
+    DETR -->|succeeded_by| DETR3D
+    LSS -->|succeeded_by| BEVDepth
+    DETR3D -->|competes_with| LSS
+    DETR3D -->|succeeded_by| PETR
+    BEVFormer -->|builds_on| LSS
+    BEVFormer -->|builds_on| DETR3D
+    BEVFormer -->|succeeded_by| BEVDepth
+    UniAD -->|builds_on| BEVFormer
+    FlashOcc -->|builds_on| LSS
+    UniAD -->|succeeded_by| VAD
+    UniAD -->|succeeded_by| RAD
+    DriveVLM -->|builds_on| UniAD
+    DriveVLM -->|builds_on| VAD
+    DriveVLM -->|succeeded_by| DWM
+    FlashOcc -->|succeeded_by| DWM
+    RAD -->|builds_on| BEVFormer
 ```
 
 > Solid arrows = `builds_on` / `succeeded_by` / `competes_with`; dashed = downstream application.  
@@ -154,6 +184,12 @@ graph TD
 | Paper | Short Name | Year | Venue | Keywords | Has Note |
 |---|---|---|---|---|---|
 | [End-to-End Object Detection with Transformers](2020/End-to-End_Object_Detection_with_Transformers/) | DETR | 2020 | ECCV 2020 | object detection, set prediction, transformers, bipartite matching, Hungarian loss, panoptic segmentation | ✅ |
+| [Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](2020/Lift,_Splat,_Shoot-_Encoding_Images_from_Arbitrary_Camera_Rigs_by_Implicitly_Unprojecting_to_3D/) | LSS | 2020 | ECCV 2020 | bird's-eye-view, autonomous driving, multi-view perception, monocular depth, sensor fusion, BEV segmentation | ✅ |
+| [DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries](2021/DETR3D-_3D_Object_Detection_from_Multi-view_Images_via_3D-to-2D_Queries/) | DETR3D | 2021 | CoRL 2021 | multi-view 3D object detection, object queries, backward projection, set-to-set loss, NMS-free | ✅ |
+| [BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers](2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/) | BEVFormer | 2022 | ECCV 2022 | bird's-eye-view, 3D object detection, map segmentation, deformable attention, spatiotemporal transformer | ✅ |
+| [Planning-oriented Autonomous Driving](2023/Planning-oriented_Autonomous_Driving/) | UniAD | 2023 | CVPR 2023 🏆 | end-to-end autonomous driving, planning-oriented, query-based, multi-task, occupancy prediction | ✅ |
+| [FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin](2023/FlashOcc-_Fast_and_Memory-Efficient_Occupancy_Prediction_via_Channel-to-Height_Plugin/) | FlashOcc | 2023 | arXiv 2023 | 3D occupancy prediction, bird's-eye-view, channel-to-height, plug-and-play, deployment efficiency | ✅ |
+| [DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models](2024/DriveVLM-_The_Convergence_of_Autonomous_Driving_and_Large_Vision-Language_Models/) | DriveVLM | 2024 | CoRL 2024 | autonomous driving, vision-language model, chain-of-thought, hierarchical planning, dual system, slow-fast | ✅ |
 | [Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis](2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/) | Dynamic 3DGS | 2023 | 3DV 2024 | 3DGS, dynamic scenes, dense tracking, novel-view synthesis | ✅ |
 | [Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/) | LP3D | 2023 | — | NeRF, portrait, single image | ✅ |
 | [Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering/) | Scaffold-GS | 2023 | CVPR 2024 | 3DGS, anchor-based, view-adaptive rendering | ✅ |
@@ -220,10 +256,18 @@ graph TD
 ---
 
 ### Autonomous Driving
-**Papers with notes:** Street Gaussians · HUGSIM · GaussianDWM · RAD
+**Papers with notes:** LSS · DETR3D · BEVFormer · UniAD · FlashOcc · DriveVLM · Street Gaussians · HUGSIM · GaussianDWM · RAD  
+**BEV/planning chain:** LSS → DETR3D → BEVFormer → UniAD → DriveVLM/RAD; LSS → FlashOcc (occupancy)  
+**Two axes:** push (LSS, depth) vs pull (BEVFormer/DETR3D, attention); modular BEV → end-to-end (UniAD) → VLM/RL (DriveVLM, RAD)
 
 | Paper | Role |
 |---|---|
+| LSS | Depth-based ("push") multi-camera → BEV; foundation of the BEV-perception wave |
+| DETR3D | Sparse 3D-query ("pull") multi-view detector; NMS-free, predecessor to PETR/BEVFormer |
+| BEVFormer | Attention-based dense-BEV encoder with temporal fusion; backbone for UniAD |
+| UniAD | Planning-oriented end-to-end stack (track/map/motion/occupancy/plan) on a BEVFormer backbone |
+| FlashOcc | Efficient occupancy: 2D-conv BEV + channel-to-height plugin (no 3D voxels) |
+| DriveVLM | VLM-based driving with chain-of-thought; slow-fast dual system with a traditional planner |
 | Street Gaussians | Differentiable urban scene renderer; predecessor to RAD's environment |
 | HUGSIM | Closed-loop photorealistic simulator; competes with RAD's training environment |
 | GaussianDWM | 3DGS-based driving world model for scene understanding and multi-modal generation |
