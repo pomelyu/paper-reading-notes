@@ -18,12 +18,21 @@
 - [ ] [(RAD) RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/)
 - [x] [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/)
 - [x] [DINOv3](2025/DINOv3/)
-
 - [x] [(VGGT) VGGT: Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/)
   - 1.2B FFN transformer to predict depth map, camera parameters and etc. from a group of images.
   - Backbone for downstream tasks, such as feed-forward NVS and dynamic point tracking
 
 ### 2024
+- [x] [(Medusa) Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads](2024/Medusa-_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads/)
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Draft-model-free speculative decoding: predict K extra tokens from the last hidden state and verify all of them at once in a single forward pass</li>
+    <li>Provide different training receipts: <b>Medusa-1</b> (frozen backbone, lossless, trainable on 1 GPU in hours) vs <b>Medusa-2</b> (joint training, faster); plus <b>self-distillation</b> (no data needed)</li>
+    <li>2.2× (Medusa-1) to 2.3–2.8× (Medusa-2) wall-clock speedup at batch size 1 on Vicuna-7B/13B/33B, Zephyr-7B with ~unchanged quality; superseded on acceptance by EAGLE-family</li>
+  </ul>
+</details>
+
 - [x] [(DriveVLM) DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models](2024/DriveVLM-_The_Convergence_of_Autonomous_Driving_and_Large_Vision-Language_Models/)
   - One of the papers that opened the VLM/VLA era of AD: a large VLM (Qwen-VL) predicts coarse waypoints via a driving-specific chain-of-thought — scene description → scene analysis (critical objects) → hierarchical planning
   - The VLM handles long-tail / ambiguous scenes and produces interpretable decisions that classical perception→prediction→planning stacks miss

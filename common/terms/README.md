@@ -16,9 +16,11 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | DPT | Dense Prediction Transformer | Decoder head that fuses multi-scale ViT features through progressive convolutional upsampling to full resolution. |
 | FFN | Feed-Forward Network | Two-layer MLP sublayer inside each transformer block; applied per-token after attention. |
 | FPN | Feature Pyramid Network | Detector neck that builds a multi-scale feature pyramid via a top-down pathway with lateral connections, so both high- and low-resolution semantic features are available for prediction. |
+| HBM | High-Bandwidth Memory | Stacked DRAM on the accelerator package (e.g., GPU VRAM); autoregressive LLM decoding is bottlenecked by moving model weights from HBM to on-chip cache each step, not by arithmetic. |
 | InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
 | IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
 | KV cache | Key-Value cache | Cached attention key/value vectors of all previously processed tokens, reused at every autoregressive decoding step so past tokens need not be recomputed; grows linearly with sequence length and dominates LLM inference memory. |
+| LoRA | Low-Rank Adaptation | Parameter-efficient fine-tuning that freezes the base weights and learns a low-rank update $\Delta W = BA$ per weight matrix; QLoRA adds 4-bit quantization of the frozen base to cut memory further. |
 | MoE | Mixture of Experts | Architecture where a learned router activates only a few expert FFN sublayers per token, decoupling total parameter count from per-token compute (e.g., Mixtral). |
 | MOT | Multi-Object Tracking | Perception task of detecting objects and maintaining a consistent identity for each across frames; nuScenes reports AMOTA/AMOTP and ID-switches (IDS). |
 | MTL | Multi-Task Learning | Training one shared model on several tasks at once (usually a shared backbone with per-task heads); can share useful features but risks "negative transfer" between conflicting tasks. |
@@ -31,8 +33,11 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | PPL | Perplexity | Exponential of the average per-token negative log-likelihood; the standard language-modeling quality metric (lower is better). |
 | PTQ | Post-Training Quantization | Compressing a trained model's weights (and possibly activations) to low bit-width without retraining, typically using only a small calibration set. |
 | QAT | Quantization-Aware Training | Training or fine-tuning with simulated quantization in the loop so weights adapt to the quantized representation; more accurate but far more expensive than PTQ. |
+| RLHF | Reinforcement Learning from Human Feedback | Post-training that fine-tunes an LLM against a reward model learned from human preference comparisons (e.g., via PPO); shifts the model's output distribution away from the pretraining/SFT data. |
 | RTN | Round-To-Nearest | Simplest PTQ baseline: scale weights per group/channel and round each to the nearest quantization grid point, with no calibration-based error compensation. |
+| SFT | Supervised Fine-Tuning | Fine-tuning a pretrained LLM on curated instruction/response (or chat) pairs with the standard next-token loss; the usual stage before RLHF. |
 | SLAM | Simultaneous Localization and Mapping | Problem of building a map of an unknown environment while tracking an agent's position within it in real time. |
+| Speculative decoding | — | LLM inference acceleration where a cheap draft model proposes several future tokens that the large target model verifies in one parallel forward pass; accepted tokens (via rejection sampling) preserve the target's output distribution, turning many sequential steps into few parallel ones. |
 | VLA | Vision-Language-Action model | Robot policy that takes image observations + natural-language instructions as input and outputs low-level actions (e.g., RT-2, OpenVLA). |
 | VLM | Vision-Language Model | Model trained on image-text pairs to align visual and language representations (e.g., CLIP, LLaVA, GPT-4V). |
 
