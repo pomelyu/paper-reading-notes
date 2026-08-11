@@ -5,10 +5,15 @@
 
 ### 2026
 - [x] [VGGT-Ω](2026/VGGT-Omega/)
-  - VGGT improvement with lower GPU usage and better camera accuracy.
-  - predict depth map and camera parameters from a group of images or **a video**
-  - propose a data annotation pipeline to use VLM to filter video data
-  - showing the scaling laws for 3D reconstruction in both model and data size
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>VGGT improvement with lower GPU usage and better camera accuracy.</li>
+    <li>predict depth map and camera parameters from a group of images or <b>a video</b></li>
+    <li>propose a data annotation pipeline to use VLM to filter video data</li>
+    <li>showing the scaling laws for 3D reconstruction in both model and data size</li>
+  </ul>
+</details>
 
 ### 2025
 - [x] [(GaussianDWM) 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation](2025/GaussianDWM-_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_and_Multi-Modal_Generation/)
@@ -19,8 +24,13 @@
 - [x] [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/)
 - [x] [DINOv3](2025/DINOv3/)
 - [x] [(VGGT) VGGT: Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/)
-  - 1.2B FFN transformer to predict depth map, camera parameters and etc. from a group of images.
-  - Backbone for downstream tasks, such as feed-forward NVS and dynamic point tracking
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>1.2B FFN transformer to predict depth map, camera parameters and etc. from a group of images.</li>
+    <li>Backbone for downstream tasks, such as feed-forward NVS and dynamic point tracking</li>
+  </ul>
+</details>
 
 ### 2024
 - [x] [(Medusa) Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads](2024/Medusa-_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads/)
@@ -34,9 +44,15 @@
 </details>
 
 - [x] [(DriveVLM) DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models](2024/DriveVLM-_The_Convergence_of_Autonomous_Driving_and_Large_Vision-Language_Models/)
-  - One of the papers that opened the VLM/VLA era of AD: a large VLM (Qwen-VL) predicts coarse waypoints via a driving-specific chain-of-thought — scene description → scene analysis (critical objects) → hierarchical planning
-  - The VLM handles long-tail / ambiguous scenes and produces interpretable decisions that classical perception→prediction→planning stacks miss
-  - **DriveVLM-Dual** = slow-fast hybrid: the slow VLM (semantics + coarse plan) paired with a fast traditional 3D-detector/planner (VAD) for spatial grounding + waypoint refinement; deployed on a production car (~410 ms on dual OrinX), for which the paper details the choice of LLM and ViT (a smaller <4B LLM is used onboard)
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>One of the papers that opened the VLM/VLA era of AD: a large VLM (Qwen-VL) predicts coarse waypoints via a driving-specific chain-of-thought — scene description → scene analysis (critical objects) → hierarchical planning</li>
+    <li>The VLM handles long-tail / ambiguous scenes and produces interpretable decisions that classical perception→prediction→planning stacks miss</li>
+    <li><b>DriveVLM-Dual</b> = slow-fast hybrid: the slow VLM (semantics + coarse plan) paired with a fast traditional 3D-detector/planner (VAD) for spatial grounding + waypoint refinement; deployed on a production car (~410 ms on dual OrinX), for which the paper details the choice of LLM and ViT (a smaller &lt;4B LLM is used onboard)</li>
+  </ul>
+</details>
+
 - [x] [(SAM2) SAM 2: Segment Anything in Images and Videos](2024/SAM_2-_Segment_Anything_in_Images_and_Videos/)
 - [x] [(DUSt3R) DUSt3R: Geometric 3D Vision Made Easy](2024/DUSt3R-_Geometric_3D_Vision_Made_Easy/)
 - [x] [(2DGS) 2D Gaussian Splatting for Geometrically Accurate Radiance Fields](2024/2D_Gaussian_Splatting_for_geometrically_accurate_radiance_fields)
@@ -45,20 +61,43 @@
 - [x] [(HUGSIM) HUGSIM: A Real-Time, Photo-Realistic and Closed-Loop Simulator for Autonomous Driving](2024/HUGSIM-_A_Real-Time,_Photo-Realistic_and_Closed-Loop_Simulator_for_Autonomous_Driving/)
 - [x] [(MonoGS) Gaussian Splatting SLAM](2024/Gaussian_Splatting_SLAM/)
 - [x] [(YOLOv10) YOLOv10: Real-Time End-to-End Object Detection](2024/YOLOv10-_Real-Time_End-to-End_Object_Detection/)
-  - Improved from YOLOv8 and removes the NMS post-processing via a dual-head training setup, hugely speeding up inference
-  - Optimizes the model structure design for better speed and accuracy
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Improved from YOLOv8 and removes the NMS post-processing via a dual-head training setup, hugely speeding up inference</li>
+    <li>Optimizes the model structure design for better speed and accuracy</li>
+  </ul>
+</details>
+
 - [ ] [(AQLM) Extreme Compression of Large Language Models via Additive Quantization](2024/Extreme_Compression_of_Large_Language_Models_via_Additive_Quantization/)
-  - Represent the weights as the sum of per-layer trained codebook elements. (weight-only)
-  - Large inference overhead due to codebook lookups and long training time(days), large calibration dataset to train codebook
-  - Beat by FP8 inference and MoE VRAM offload.
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Represent the weights as the sum of per-layer trained codebook elements. (weight-only)</li>
+    <li>Large inference overhead due to codebook lookups and long training time(days), large calibration dataset to train codebook</li>
+    <li>Beat by FP8 inference and MoE VRAM offload.</li>
+  </ul>
+</details>
 
 ### 2023
 - [x] [(UniAD) Planning-oriented Autonomous Driving](2023/Planning-oriented_Autonomous_Driving/)
-  - CVPR 2023 best paper: unifies the full driving stack (detection, tracking, mapping, motion forecast, occupancy, planning) into one end-to-end network, connected by task queries
-  - "Planning-oriented" philosophy: choose and order perception/prediction tasks so each feeds better info to the final planner (vs. modular pipelines or naive multi-task learning)
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>CVPR 2023 best paper: unifies the full driving stack (detection, tracking, mapping, motion forecast, occupancy, planning) into one end-to-end network, connected by task queries</li>
+    <li>"Planning-oriented" philosophy: choose and order perception/prediction tasks so each feeds better info to the final planner (vs. modular pipelines or naive multi-task learning)</li>
+  </ul>
+</details>
+
 - [x] [(FlashOcc) FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin](2023/FlashOcc-_Fast_and_Memory-Efficient_Occupancy_Prediction_via_Channel-to-Height_Plugin/)
-  - Plug-and-play efficiency trick to replace highly cost 3D convs by 2D conv in BEV and later use **Channel-to-Height** transform to recover height information
-  - Matches or beats voxel baselines (+1.3 mIoU on BEVDetOcc) at ~2× speed and ~69% less inference memory; a standard efficient occupancy head
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Plug-and-play efficiency trick to replace highly cost 3D convs by 2D conv in BEV and later use <b>Channel-to-Height</b> transform to recover height information</li>
+    <li>Matches or beats voxel baselines (+1.3 mIoU on BEVDetOcc) at ~2× speed and ~69% less inference memory; a standard efficient occupancy head</li>
+  </ul>
+</details>
+
 - [x] [(Lp3D) Real-Time Radiance Fields for Single-Image Portrait View Synthesis](2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/)
 - [x] [(Scaffold-GS) Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering](2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering)
 - [x] [(Dynamic 3D Gaussians) Tracking by Persistent Dynamic View Synthesis](2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/)
@@ -68,33 +107,65 @@
 - [x] [(Gaussian Grouping) Gaussian Grouping: Segment and Edit Anything in 3D Scenes](2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/)
 - [x] [(LLaVA) Visual Instruction Tuning](2023/Visual_Instruction_Tuning/)
 - [x] [(vLLM)(PageAttention) Efficient Memory Management for Large Language Model Serving with PagedAttention](2023/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention/)
-  - Complete inference system (vLLM) built on top of PagedAttention
-  - Identifies the KV-cache memory fragmentation in prior LLM serving systems that limits inference throughput, and solves it with paged memory management
-  - Allows block swapping (offloading to CPU RAM) or recomputation when under memory pressure
-  - Allows KV-cache sharing for a shared prompt-prefix (system prompt) or advanced decoding strategies (beam search, parallel sampling)
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Complete inference system (vLLM) built on top of PagedAttention</li>
+    <li>Identifies the KV-cache memory fragmentation in prior LLM serving systems that limits inference throughput, and solves it with paged memory management</li>
+    <li>Allows block swapping (offloading to CPU RAM) or recomputation when under memory pressure</li>
+    <li>Allows KV-cache sharing for a shared prompt-prefix (system prompt) or advanced decoding strategies (beam search, parallel sampling)</li>
+  </ul>
+</details>
+
 - [x] [(AWQ) AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](2023/AWQ-_Activation-aware_Weight_Quantization_for_LLM_Compression_and_Acceleration/)
-  - Find the most salient weights by analyzing the input statistics.
-  - Use per-channel scaling to preserve the accuracy of salient weights (`X*Q(W) -> X/s*Q(sW)`)
-  - The input scaling can be fused into the previous layer, typically LayerNorm, making the operation free.
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Find the most salient weights by analyzing the input statistics.</li>
+    <li>Use per-channel scaling to preserve the accuracy of salient weights (<code>X*Q(W) -> X/s*Q(sW)</code>)</li>
+    <li>The input scaling can be fused into the previous layer, typically LayerNorm, making the operation free.</li>
+  </ul>
+</details>
 
 ### 2022
 - [x] [(BEVFormer) BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers](2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/)
-  - Attention-based ("pull") BEV encoder: grid of learnable BEV queries gather multi-camera features via deformable spatial cross-attention, no explicit depth needed (vs. LSS's depth-based "push")
-  - Recurrent temporal self-attention fuses the previous frame's BEV (RNN-style), greatly improving velocity estimation and occluded-object recall
-  - Unified BEV feature serves both 3D detection and map segmentation; 56.9% NDS on nuScenes test, on par with some LiDAR baselines
-  - Backbone for end-to-end driving stacks (UniAD) and occupancy models
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Attention-based ("pull") BEV encoder: grid of learnable BEV queries gather multi-camera features via deformable spatial cross-attention, no explicit depth needed (vs. LSS's depth-based "push")</li>
+    <li>Recurrent temporal self-attention fuses the previous frame's BEV (RNN-style), greatly improving velocity estimation and occluded-object recall</li>
+    <li>Unified BEV feature serves both 3D detection and map segmentation; 56.9% NDS on nuScenes test, on par with some LiDAR baselines</li>
+    <li>Backbone for end-to-end driving stacks (UniAD) and occupancy models</li>
+  </ul>
+</details>
 
 ### 2021
 - [x] [(DETR3D) DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries](2021/DETR3D-_3D_Object_Detection_from_Multi-view_Images_via_3D-to-2D_Queries/)
-  - Predict 3D object bbox, class label, heading and velocity from multi-view images
-  - Use concept similar with DETR and calculate set-to-set loss
-  - learnable object query (900) → MLP to predict draft 3D point centers → [project to 2D points in image space → get image features which are encoded by ResNet + FPN → use attention to refine center points] x6 → predict class label, box and heading, velocity
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Predict 3D object bbox, class label, heading and velocity from multi-view images</li>
+    <li>Use concept similar with DETR and calculate set-to-set loss</li>
+    <li>learnable object query (900) → MLP to predict draft 3D point centers → [project to 2D points in image space → get image features which are encoded by ResNet + FPN → use attention to refine center points] x6 → predict class label, box and heading, velocity</li>
+  </ul>
+</details>
 
 ### 2020
 - [x] [(LSS) Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](2020/Lift,_Splat,_Shoot-_Encoding_Images_from_Arbitrary_Camera_Rigs_by_Implicitly_Unprojecting_to_3D/)
-  - Fused images from multi-view cameras to a feature map in BEV view for downstream tasks.
-  - Turns each image into point cloude frustrum and then project to BEV view, use sum-pooling along each verical voxel(related to a pixel in feature map) to create feature map
-  - Foundational template for the BEV-perception wave (BEVDet, BEVDepth, BEVFusion, BEVFormer)
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Fused images from multi-view cameras to a feature map in BEV view for downstream tasks.</li>
+    <li>Turns each image into point cloude frustrum and then project to BEV view, use sum-pooling along each verical voxel(related to a pixel in feature map) to create feature map</li>
+    <li>Foundational template for the BEV-perception wave (BEVDet, BEVDepth, BEVFusion, BEVFormer)</li>
+  </ul>
+</details>
+
 - [x] [(DETR) End-to-End Object Detection with Transformers](2020/End-to-End_Object_Detection_with_Transformers/)
-  - Reframes detection as direct set prediction: CNN + transformer encoder-decoder with learned object queries, trained via bipartite (Hungarian) matching
-  - Removes anchors and NMS entirely; strong on large objects, weak on small ones, and needs very long training
+<details style="margin-left: 2em">
+  <summary>note</summary>
+  <ul>
+    <li>Reframes detection as direct set prediction: CNN + transformer encoder-decoder with learned object queries, trained via bipartite (Hungarian) matching</li>
+    <li>Removes anchors and NMS entirely; strong on large objects, weak on small ones, and needs very long training</li>
+  </ul>
+</details>
