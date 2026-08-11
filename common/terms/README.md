@@ -5,6 +5,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 ## Terms needs footnote
 | Term | Expansion | Brief Definition |
 |------|-----------|-----------------|
+| W4A8 | Weight 4-bit, Activation 8-bit | In quantization, weights are stored in 4-bit and activations (intermediate tensors) are stored in 8-bit. Note that "activation" here means the output of a neural-network layer, which is different from an activation function (e.g., ReLU). |
 | AP | Average Precision | Area under the precision-recall curve; COCO reports mean AP averaged over IoU thresholds 0.5:0.95 and object scales. |
 | BA | Bundle Adjustment | Joint non-linear optimization of camera poses and 3D point positions to minimize reprojection error. |
 | Beam search | — | Decoding strategy that keeps the top-k highest-probability partial sequences (the "beam") at each step, expanding each and retaining the best k, to approximate the most likely full output instead of greedily taking one token. |
@@ -18,6 +19,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | InfoNCE | Information Noise-Contrastive Estimation | Contrastive loss that maximises mutual information between matched pairs by pulling them together and pushing unmatched pairs apart. |
 | IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
 | KV cache | Key-Value cache | Cached attention key/value vectors of all previously processed tokens, reused at every autoregressive decoding step so past tokens need not be recomputed; grows linearly with sequence length and dominates LLM inference memory. |
+| MoE | Mixture of Experts | Architecture where a learned router activates only a few expert FFN sublayers per token, decoupling total parameter count from per-token compute (e.g., Mixtral). |
 | MOT | Multi-Object Tracking | Perception task of detecting objects and maintaining a consistent identity for each across frames; nuScenes reports AMOTA/AMOTP and ID-switches (IDS). |
 | MTL | Multi-Task Learning | Training one shared model on several tasks at once (usually a shared backbone with per-task heads); can share useful features but risks "negative transfer" between conflicting tasks. |
 | MVS | Multi-View Stereo | Dense 3D reconstruction from multiple calibrated images by finding per-pixel depth via multi-view photo-consistency. |
@@ -29,6 +31,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | PPL | Perplexity | Exponential of the average per-token negative log-likelihood; the standard language-modeling quality metric (lower is better). |
 | PTQ | Post-Training Quantization | Compressing a trained model's weights (and possibly activations) to low bit-width without retraining, typically using only a small calibration set. |
 | QAT | Quantization-Aware Training | Training or fine-tuning with simulated quantization in the loop so weights adapt to the quantized representation; more accurate but far more expensive than PTQ. |
+| RTN | Round-To-Nearest | Simplest PTQ baseline: scale weights per group/channel and round each to the nearest quantization grid point, with no calibration-based error compensation. |
 | SLAM | Simultaneous Localization and Mapping | Problem of building a map of an unknown environment while tracking an agent's position within it in real time. |
 | VLA | Vision-Language-Action model | Robot policy that takes image observations + natural-language instructions as input and outputs low-level actions (e.g., RT-2, OpenVLA). |
 | VLM | Vision-Language Model | Model trained on image-text pairs to align visual and language representations (e.g., CLIP, LLaVA, GPT-4V). |

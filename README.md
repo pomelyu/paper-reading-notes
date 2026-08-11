@@ -63,6 +63,10 @@
   - Identifies the KV-cache memory fragmentation in prior LLM serving systems that limits inference throughput, and solves it with paged memory management
   - Allows block swapping (offloading to CPU RAM) or recomputation when under memory pressure
   - Allows KV-cache sharing for a shared prompt-prefix (system prompt) or advanced decoding strategies (beam search, parallel sampling)
+- [x] [(AWQ) AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](2023/AWQ-_Activation-aware_Weight_Quantization_for_LLM_Compression_and_Acceleration/)
+  - Find the most salient weights by analyzing the input statistics.
+  - Use per-channel scaling to preserve the accuracy of salient weights (`X*Q(W) -> X/s*Q(sW)`)
+  - The input scaling can be fused into the previous layer, typically LayerNorm, making the operation free.
 
 ### 2022
 - [x] [(BEVFormer) BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers](2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/)

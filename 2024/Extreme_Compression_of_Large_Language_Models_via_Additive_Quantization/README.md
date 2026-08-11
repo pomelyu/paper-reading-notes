@@ -14,7 +14,7 @@
 | C | Assessment |
 |---|-----------|
 | **Category** | Methods paper on "extreme" (2–3 bits per weight) PTQ[^1] of LLM weights. Introduces the AQLM algorithm plus GPU/CPU inference kernels. |
-| **Context** | Marries two previously separate lines: (1) LLM weight PTQ — GPTQ, SpQR, SqueezeLLM, AWQ, QuIP/QuIP# — and (2) Multi-Codebook Quantization (MCQ) from approximate nearest-neighbor retrieval — Product Quantization (Jegou et al., 2010), Additive Quantization (Babenko & Lempitsky, 2014), LSQ (Martinez et al., 2018). Uses the Pareto-optimality framing of Dettmers & Zettlemoyer (2022). |
+| **Context** | Marries two previously separate lines: (1) LLM weight PTQ — GPTQ, SpQR, SqueezeLLM, [AWQ](../../2023/AWQ-_Activation-aware_Weight_Quantization_for_LLM_Compression_and_Acceleration/), QuIP/QuIP# — and (2) Multi-Codebook Quantization (MCQ) from approximate nearest-neighbor retrieval — Product Quantization (Jegou et al., 2010), Additive Quantization (Babenko & Lempitsky, 2014), LSQ (Martinez et al., 2018). Uses the Pareto-optimality framing of Dettmers & Zettlemoyer (2022). |
 | **Correctness** | Sound. Standard evaluation protocol (WikiText-2/C4 PPL[^2] , five zero-shot tasks via LM Eval Harness), fair bit-accounting that includes codebook overhead (Appendix H). One caveat: AQLM calibrates on 8M tokens, more than baselines typically use, though the authors show baselines like GPTQ saturate around 256 sequences while AQLM keeps improving. |
 | **Contributions** | (1) AQLM: additive quantization made *instance-aware* — codes and codebooks optimized to preserve layer outputs on calibration activations, not the weights themselves; (2) joint block-wise fine-tuning of codebooks across each transformer block; (3) first scheme that is Pareto-optimal below 3 bits per parameter; (4) practical GPU/CPU kernels that match or beat FP16 speed. |
 | **Clarity** | Well written. The derivation from the AQ objective to the precomputable $XX^T$ form is clean, Algorithm 1 summarizes the whole pipeline, and the appendix is unusually thorough (configs, timings, ablations, extra models). |
@@ -199,7 +199,7 @@ Largely yes. AQLM's central claims — that learned multi-codebook (additive) qu
 | QuIP#: Hadamard Incoherence and Lattice Codebooks | Tseng et al. | 2024 | Strongest concurrent 2-bit method (fixed E8P lattice + rotations vs AQLM's learned additive codebooks); main baseline |
 | SpQR | Dettmers et al. | 2023 | Sparse-outlier + quantized format; baseline at 3–4 bits, contrasts with AQLM's homogeneous format |
 | SqueezeLLM | Kim et al. | 2023 | Non-uniform (K-means) scalar quantization with outlier separation; contrast for hybrid formats |
-| AWQ | Lin et al. | 2023 | Activation-aware per-channel scaling; mainstream 4-bit competitor outside the extreme regime |
+| [AWQ: Activation-aware Weight Quantization](../../2023/AWQ-_Activation-aware_Weight_Quantization_for_LLM_Compression_and_Acceleration/) | Lin et al. | 2023 | Activation-aware per-channel scaling; mainstream 4-bit competitor outside the extreme regime |
 
 #### Successors / Extensions
 
