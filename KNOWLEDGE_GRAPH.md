@@ -1,6 +1,6 @@
 # Knowledge Graph
 
-Auto-generated from paper notes. Last updated: 2026-07-24.
+Auto-generated from paper notes. Last updated: 2026-08-12.
 
 ---
 
@@ -94,6 +94,7 @@ graph TD
         FlashOcc["FlashOcc\n2023"]:::y2023
         DriveVLM["DriveVLM\n2024"]:::y2024
         DWM["GaussianDWM\n2025"]:::y2025
+        OpenDriveVLA["OpenDriveVLA\n2026"]:::y2026
         BEVDepth["BEVDepth\n2022"]:::noNote
         PETR["PETR\n2022"]:::noNote
         VAD["VAD\n2023"]:::noNote
@@ -170,6 +171,9 @@ graph TD
     DriveVLM -->|builds_on| UniAD
     DriveVLM -->|builds_on| VAD
     DriveVLM -->|succeeded_by| DWM
+    OpenDriveVLA -->|builds_on| BEVFormer
+    OpenDriveVLA -->|builds_on| UniAD
+    OpenDriveVLA -->|builds_on| DriveVLM
     FlashOcc -->|succeeded_by| DWM
     RAD -->|builds_on| BEVFormer
 ```
@@ -216,6 +220,7 @@ graph TD
 | [RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning](2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/) | RAD | 2025 | NeurIPS 2025 | autonomous driving, RL, 3DGS, end-to-end | ✅ |
 | [VGGT: Visual Geometry Grounded Transformer](2025/VGGT-_Visual_Geometry_Grounded_Transformer/) | VGGT | 2025 | CVPR 2025 🏆 | 3D reconstruction, camera pose, depth, point tracking, feed-forward transformer | ✅ |
 | [Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)](2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/) | VLM Survey | 2025 | arXiv 2025 | VLMs, survey, bibliometrics, multimodal LLMs | ✅ |
+| [OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model](2026/OpenDriveVLA-_Towards_End-to-end_Autonomous_Driving_with_Large_Vision_Language_Action_Model/) | OpenDriveVLA | 2026 | AAAI 2026 | end-to-end autonomous driving, vision-language-action, trajectory planning, 3D perception, instruction tuning, nuScenes | ✅ |
 | [VGGT-Ω](2026/VGGT-Omega/) | VGGT-Ω | 2026 | CVPR 2026 Oral 🏅 | 3D reconstruction, scaling laws, register attention, self-supervised learning, dynamic scenes | ✅ |
 
 ---
@@ -256,9 +261,9 @@ graph TD
 ---
 
 ### Autonomous Driving
-**Papers with notes:** LSS · DETR3D · BEVFormer · UniAD · FlashOcc · DriveVLM · Street Gaussians · HUGSIM · GaussianDWM · RAD  
-**BEV/planning chain:** LSS → DETR3D → BEVFormer → UniAD → DriveVLM/RAD; LSS → FlashOcc (occupancy)  
-**Two axes:** push (LSS, depth) vs pull (BEVFormer/DETR3D, attention); modular BEV → end-to-end (UniAD) → VLM/RL (DriveVLM, RAD)
+**Papers with notes:** LSS · DETR3D · BEVFormer · UniAD · FlashOcc · DriveVLM · Street Gaussians · HUGSIM · GaussianDWM · RAD · OpenDriveVLA
+**BEV/planning chain:** LSS → DETR3D → BEVFormer → UniAD → DriveVLM/OpenDriveVLA/RAD; LSS → FlashOcc (occupancy)
+**Two axes:** push (LSS, depth) vs pull (BEVFormer/DETR3D, attention); modular BEV → end-to-end (UniAD) → VLM/RL (DriveVLM, OpenDriveVLA, RAD)
 
 | Paper | Role |
 |---|---|
@@ -268,6 +273,7 @@ graph TD
 | UniAD | Planning-oriented end-to-end stack (track/map/motion/occupancy/plan) on a BEVFormer backbone |
 | FlashOcc | Efficient occupancy: 2D-conv BEV + channel-to-height plugin (no 3D voxels) |
 | DriveVLM | VLM-based driving with chain-of-thought; slow-fast dual system with a traditional planner |
+| OpenDriveVLA | Structured scene/agent/map token interface plus staged language alignment and interaction forecasting for autoregressive driving plans |
 | Street Gaussians | Differentiable urban scene renderer; predecessor to RAD's environment |
 | HUGSIM | Closed-loop photorealistic simulator; competes with RAD's training environment |
 | GaussianDWM | 3DGS-based driving world model for scene understanding and multi-modal generation |

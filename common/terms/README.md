@@ -40,6 +40,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | Speculative decoding | — | LLM inference acceleration where a cheap draft model proposes several future tokens that the large target model verifies in one parallel forward pass; accepted tokens (via rejection sampling) preserve the target's output distribution, turning many sequential steps into few parallel ones. |
 | VLA | Vision-Language-Action model | Robot policy that takes image observations + natural-language instructions as input and outputs low-level actions (e.g., RT-2, OpenVLA). |
 | VLM | Vision-Language Model | Model trained on image-text pairs to align visual and language representations (e.g., CLIP, LLaVA, GPT-4V). |
+| VQA | Visual Question Answering | Task in which a model answers natural-language questions about visual input; driving variants test scene, object, spatial, and decision understanding. |
 
 ## Commonly-used Terms
 | Term | Expansion | Brief Definition |

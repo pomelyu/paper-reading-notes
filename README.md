@@ -5,6 +5,7 @@
 
 ### 2026
 <ul>
+  <li><a href="2026/OpenDriveVLA-_Towards_End-to-end_Autonomous_Driving_with_Large_Vision_Language_Action_Model/">(OpenDriveVLA) OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model</a></li>
   <li><details><summary><a href="2026/VGGT-Omega/">VGGT-Ω</a></summary>
     <ul>
       <li>VGGT improvement with lower GPU usage and better camera accuracy.</li>
