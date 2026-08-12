@@ -229,5 +229,5 @@ When triggered by `--full` flag or first-time run:
   `/update-graph --full` to rebuild from scratch.
 - If `aim_` tools are not available, the MCP server hasn't loaded yet.
   Still generate `KNOWLEDGE_GRAPH.md` from file reads and tell the user
-  to restart Claude Code, then run `/update-graph` again.
+  to restart Codex CLI, then run the `update-graph` skill again.
 - Batch MCP calls where possible (up to 10 entities per call).

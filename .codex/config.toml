@@ -1,0 +1,5 @@
+# Repository-scoped Codex CLI configuration.
+
+[mcp_servers.knowledge-graph]
+command = "npx"
+args = ["-y", "mcp-knowledge-graph"]
