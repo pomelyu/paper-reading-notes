@@ -207,6 +207,57 @@ Model size is varied from 0.2B to 10B parameters (matching ViT-S to ViT-G equiva
 - **Depth/FoV in frame-wise FFNs[^4]:** Analysis via model souping (linearly combining differently-trained models) reveals that depth and FoV estimation information is localized primarily in the feed-forward network layers of frame-wise attention blocks, not in cross-frame attention layers.
 - **Register transferability:** Frozen VGGT-Ω registers, when injected as additional tokens into a VLA model, improve all LIBERO benchmark tasks without fine-tuning the VLA model. Registers can also be aligned to VLM text embeddings via a symmetric InfoNCE[^5] loss.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| Aria series | supervised geometry training |
+| BEDLAM | synthetic human-motion training |
+| BEHAVIOR-1K | embodied synthetic training |
+| Co3D-v2 | multi-view geometry training |
+| uCO3D | multi-view geometry training |
+| DL3DV | multi-view geometry training |
+| Dynamic Replica | synthetic dynamic-scene training |
+| EDEN | synthetic-scene training |
+| EFM3D | egocentric geometry training |
+| HOT3D | hand-object tracking training |
+| Habitat | synthetic indoor geometry training |
+| HyperSim | synthetic indoor geometry training |
+| Mapfree | visual localization training |
+| Mapillary Metropolis | outdoor geometry training |
+| MPSD | synthetic geometry training |
+| MegaDepth | multi-view geometry training |
+| MegaSynth | synthetic geometry training |
+| Mid-Air | aerial geometry training |
+| MVSSynth | synthetic multi-view geometry training |
+| ParallelDomain-4D | synthetic dynamic-scene training |
+| Replica | synthetic indoor geometry training |
+| SAIL-VOS | video-object geometry training |
+| ScanNet series | indoor geometry training |
+| TartanAirV2 | simulated robot-trajectory training |
+| Tartan-Ground | ground-robot training |
+| Taskonomy | indoor geometry training |
+| UnrealStereo4K | synthetic stereo training |
+| Virtual KITTI | synthetic driving training |
+| Waymo Open Dataset | driving geometry training |
+| WildRGBD | RGB-D geometry training |
+| internal annotated video collection | pseudo-labeled static and dynamic reconstruction training |
+| internal unlabeled video collection | teacher-student self-supervised training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| 7Scenes | static camera-pose and depth evaluation |
+| NRGBD | static camera-pose and depth evaluation |
+| ETH3D | static camera-pose and depth evaluation |
+| DyCheck | dynamic reconstruction evaluation |
+| Sintel | dynamic reconstruction evaluation |
+| TUM-Dynamic | dynamic reconstruction evaluation |
+| LIBERO | downstream robotics transfer evaluation. |
+
 ### Hidden Assumptions
 
 1. DINOv3 features are sufficiently rich for geometric reconstruction without task-specific pretraining of the backbone.

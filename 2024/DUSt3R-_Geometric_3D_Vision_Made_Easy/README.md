@@ -153,6 +153,38 @@ This is minimized with AdamW gradient descent, treating $P_e$ in the Lie algebra
 
 Training data: 8.5M pairs from 8 datasets (Habitat 1M, ARKitScenes 2M, MegaDepth 1.8M, Blended MVS 1.1M, Waymo 1.1M, CO3Dv2 941k, Static Scenes 3D 337k, ScanNet++ 224k). AdamW, lr=1e-4, cosine decay, batch 128→64→64, initialized from CroCo v2.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| Habitat | supervised geometry training |
+| MegaDepth | supervised geometry training |
+| ARKitScenes | supervised geometry training |
+| Static Scenes 3D | supervised geometry training |
+| BlendedMVS | supervised geometry training |
+| ScanNet++ | supervised geometry training |
+| Co3D-v2 | supervised geometry training |
+| Waymo Open Dataset | supervised geometry training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| 7Scenes | visual localization |
+| Cambridge Landmarks | visual localization |
+| Co3D-v2 | multi-view pose estimation |
+| RealEstate10K | multi-view pose estimation |
+| DDAD | monocular depth |
+| KITTI | monocular depth |
+| NYUv2 | monocular depth |
+| BONN | monocular depth |
+| TUM RGB-D | monocular depth |
+| DTU | multi-view reconstruction |
+| Tanks and Temples | multi-view reconstruction |
+| ETH3D | multi-view reconstruction. |
+
 ### Hidden Assumptions
 
 1. **Centered principal point**: Focal recovery and the coordinate mapping assume the principal point is at the image center. The paper acknowledges this but shows it has little practical effect.

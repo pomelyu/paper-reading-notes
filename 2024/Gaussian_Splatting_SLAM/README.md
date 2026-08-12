@@ -177,6 +177,23 @@ penalizes the scale vector $s_i$ of each Gaussian by its deviation from its own 
 
 **System Runtime.** Multi-process implementation (tracking and mapping in parallel): ~3.2 FPS monocular, ~2.5 FPS RGB-D on fr3/office (3491 frames, RTX 4090). Rendering FPS (forward pass only): 769 FPS at 1200×680 for Replica. Memory: 2.6 MB mono / 3.97 MB RGB-D (compared to ~300–700 MB for offline 3DGS on standard NVS[^2] benchmarks, because SH is omitted and pruning is aggressive).
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| None stated | the SLAM map is optimized online per sequence. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| TUM RGB-D | monocular and RGB-D SLAM benchmark |
+| Replica | RGB-D SLAM and rendering benchmark |
+| EuRoC | large-scale stereo SLAM evaluation |
+| self-captured sequences | qualitative real-world evaluation. |
+
 ### Hidden Assumptions
 
 1. **Static scene:** All Gaussians are fixed world primitives; dynamic objects create photometric inconsistencies that degrade both tracking and map quality.

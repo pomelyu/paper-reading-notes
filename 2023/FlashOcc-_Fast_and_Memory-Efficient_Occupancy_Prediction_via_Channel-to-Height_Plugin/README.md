@@ -106,6 +106,20 @@ where $B$ = batch, $C^*$ = #classes, $Z$ = #height bins, and $W,H$ = BEV spatial
 
 **Training / benchmark.** Occ3D-nuScenes (700 train / 150 val scenes; range −40–40 m in X/Y, −1–5.4 m in Z; 0.4 m voxels; 17 classes; 2 Hz). AdamW, lr 1e-4, gradient clip, batch 64 on 8 GPUs; 24 epochs (BEVDetOcc/UniOcc) or 20 (FBOcc); no class-balanced grouping/sampling. Metric: mIoU over classes. FPS measured via TensorRT FP16 on RTX3090.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| Occ3D-nuScenes | occupancy-prediction training for all plugin substitutions. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| Occ3D-nuScenes | occupancy mIoU and efficiency evaluation. |
+
 ### Hidden Assumptions
 1. **BEV pooling retains enough height information.** The whole method hinges on the vertical structure surviving LSS's height pooling into the BEV channels; scenes with rich, overlapping vertical structure could stress this.
 2. **Channel budget covers the needed $Z\times C^*$ .** The BEV channel count $C$ must equal $C^*\times Z$ ; the model implicitly assumes this is affordable at the desired height resolution.

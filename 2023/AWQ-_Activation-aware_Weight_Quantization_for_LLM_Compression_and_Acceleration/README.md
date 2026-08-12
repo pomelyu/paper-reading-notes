@@ -130,6 +130,24 @@ with the search space collapsed to one scalar: $s = s_X^{\alpha}$ , where $s_X$ 
 
 **Results synthesis.** Accuracy: AWQ beats RTN and GPTQ(-R) on every LLaMA/Llama-2 size at INT3/INT4-g128, matches or beats on Mistral-7B/Mixtral (works with grouped-query attention and MoE[^5] ), improves GPT-4-judged Vicuna win-rates, and is lossless on VILA VLM benchmarks. Speed: 3.2–3.3× average over HF FP16 across Llama-2/MPT/Falcon on 4090 and Orin; Llama-2-70B deployable on a single 64 GB Jetson Orin; 4-bit Llama-2-13B interactive (30 tok/s) on an 8 GB laptop GPU. Versus other systems: ≥2.6× over AutoGPTQ, up to 1.7× over llama.cpp on Orin, broader model coverage than exllama.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| The Pile | calibration activations for AWQ search. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| WikiText-2 | perplexity evaluation |
+| Vicuna benchmark | GPT-4-judged instruction-following evaluation |
+| COCO | OpenFlamingo captioning evaluation |
+| MBPP | code-generation evaluation |
+| GSM8K | mathematical reasoning evaluation. |
+
 ### Hidden Assumptions
 
 1. **Activation statistics are stable across inputs:** ranking channels by *average* calibration magnitude assumes per-channel salience is input-independent — true for the outlier-channel structure of 2022-era LLMs, but a property of the architecture/training recipe, not a law.

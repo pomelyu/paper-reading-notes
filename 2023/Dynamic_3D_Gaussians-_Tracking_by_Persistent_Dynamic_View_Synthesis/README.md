@@ -149,6 +149,21 @@ Weaker than rigidity (only preserves distances, not directions), but acts over l
 
 **Tracking inference.** To track a 3D point $p$ from time $t_1$ to $t_2$, find the most-influential Gaussian $i^* = \arg\max_i f_{i,t_1}(p)$. Express $p$ in $i^*$ 's local frame at $t_1$, then transform by $i^*$ 's motion to get its location at $t_2.$ If no Gaussian has $f > 0.5,$ the point is classified as static background. For 2D tracking: unproject pixel→3D using rendered depth, track in 3D, re-project into target camera.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| None stated | the method optimizes each target scene at test time rather than training a cross-scene model. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| CMU Panoptic Studio | PanopticSports novel-view synthesis and tracking benchmark |
+| Particle-NeRF dataset | synthetic dynamic-scene comparison benchmark. |
+
 ### Hidden Assumptions
 
 1. All foreground scene elements visible in frame 0 undergo locally rigid motion throughout the sequence — fails for fluids, smoke, cloth with complex draping, or highly articulated joints with very different local motions.

@@ -137,6 +137,21 @@ where — unlike vanilla deformable attention — the offsets $\Delta p$ are pre
 
 **Efficiency & ablations.** Latency (V100, R101-DCN, 900×1600 input): backbone ~391 ms dominates; full BEVFormer module ~130 ms. Reducing to single-scale + 100×100 + 1 layer cuts the module to 7 ms at a 3.9-point NDS cost. Attention ablation: deformable *local* (0.448) > *point-only* (0.423) > *global* (0.404, needs ~36 GB). Temporal frame count saturates at 4 (0.448 → 0.517 NDS from 1 → 4 frames). Ego-motion alignment (+0.7 NDS), 4-from-5 random sampling (+0.4), and predicting TSA offsets from both $Q$ and $B'_{t-1}$ (+0.4) each help.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | camera-based detection and map-segmentation training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | detection and map-segmentation benchmark |
+| Waymo Open Dataset | vehicle-only detection evaluation. |
+
 ### Hidden Assumptions
 1. **Accurate calibration at every frame.** Projection $T_i$ must be reliable; the robustness appendix shows graceful but real degradation under extrinsic noise.
 2. **Reliable ego-motion for temporal alignment.** TSA presumes $B_{t-1}$ can be warped to the current frame; large odometry error would misalign the recurrent state.

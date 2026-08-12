@@ -160,6 +160,23 @@ with $\lambda_{SSIM} = 0.2$ , $\lambda_{vol}$ dataset-dependent (0.00002–0.000
 
 **Compute and efficiency.** Training: 30,000 iterations on an A800 GPU. Time scales from ~72 min (7 objects) to ~113 min (80+ objects). FPS from ~80 (simple scenes) to ~40 (complex large scenes with many objects). Memory ~10–45 GB depending on scene complexity. Compared to Gaussian Grouping: faster and lighter for small scenes; comparable or slightly heavier for large scenes.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| None stated | ObjectGS is optimized independently for each reconstructed scene. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| LERF-Mask | open-vocabulary segmentation |
+| 3DOVS | open-vocabulary segmentation |
+| Replica | panoptic segmentation |
+| ScanNet++ | panoptic segmentation and 3D segmentation. |
+
 ### Hidden Assumptions
 
 1. **Static scene:** All objects are rigid and stationary during capture; dynamic objects are not modeled.

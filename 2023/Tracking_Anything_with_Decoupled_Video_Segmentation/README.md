@@ -170,6 +170,27 @@ Matched pairs are unioned (consensus refines the propagation mask). Unmatched pr
 
 For referring video segmentation, 10 uniformly spaced frames are run through the image model; the highest-confidence frame is the "key frame". In-clip consensus is computed at the key frame only (aligning other candidate frames to it). Temporal propagation then runs forward and backward from the key frame. No additional image model queries after initialization.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| DAVIS | class-agnostic mask-propagation training |
+| YouTube-VOS | class-agnostic mask-propagation training |
+| OVIS | additional class-agnostic mask-propagation training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| VIPSeg | video panoptic segmentation |
+| BURST | open-world video segmentation |
+| Ref-YouTubeVOS | referring video object segmentation |
+| Ref-DAVIS | referring video object segmentation |
+| DAVIS-16/17 | unsupervised video object segmentation |
+| YouTube-VIS | appendix reference benchmark. |
+
 ### Hidden Assumptions
 
 1. The temporal propagation model, trained on class-agnostic generic datasets, generalizes sufficiently to novel object categories and domains without fine-tuning.

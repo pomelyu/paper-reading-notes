@@ -135,6 +135,23 @@ updating codebooks and per-unit scales; this takes a small fraction of total tim
 
 **Inference kernels.** For GPU, a $1{\times}16$ codebook (one 16-bit code per group of 8) gives ×1.2–1.3 layer speedup over FP16; multiple small $8$ -bit codebooks (e.g., 2×8) fit GPU cache better and reach ×1.57–3.05 at slightly lower accuracy. On CPU, replacing one 16-bit codebook with several 8-bit ones enables lookup-table matrix multiplication, giving up to ×4 over FP32. Learned code usage is near-uniform (entropy 15.91 of 16 bits), so the codebook capacity is actually exploited.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| RedPajama-v1 | calibration token slice for codebook optimization. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| WikiText-2 | language-model perplexity |
+| C4 | language-model perplexity |
+| Penn Treebank | language-model perplexity |
+| ZeroShotTasks | LM Eval Harness downstream evaluation. |
+
 ### Hidden Assumptions
 
 1. **Calibration data is representative:** all objectives reduce to $XX^T$ computed on RedPajama samples; distribution shift between calibration and deployment domains silently changes what "output-preserving" means.

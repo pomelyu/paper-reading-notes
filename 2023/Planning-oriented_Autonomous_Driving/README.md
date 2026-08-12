@@ -27,7 +27,6 @@
 
 **A:** No — the ego-vehicle query is a *single* extra learnable embedding, and the same one is used in every scene at inference. It acts like a fixed question — *where am I, what's around me, where should I go?* — asked of every frame; the scene-specific answer is what the network computes as its output.
 
-
 #### Q2: What are the inputs and outputs of each module?
 
 **A:** **Module I/O summary.** Every module also reads the shared BEV feature $B$ (produced by the BEVFormer encoder from the 6 surround-view image sequence). Queries are the inter-module interface: an upstream module's output queries become a downstream module's input.
@@ -44,7 +43,6 @@
 #### Q3: Are all queries learnable? If not, where do they come from and what do they represent?
 
 **A:** No — only some are. Three provenances coexist: (1) **genuinely learnable embeddings** trained by gradient and shared across scenes — detection queries (DETR-style), the ego-vehicle query, map queries, and the three command embeddings; (2) **propagated / derived** states that are *not* freshly initialized parameters — track queries (carried-over states of previously tracked agents), motion queries (whose position part $`Q_{pos}`$ comes from k-means scene/agent anchors + start + goal, i.e. data-/geometry-derived), and the plan query (composed from ego query + command embedding); (3) **feature-as-query** — OccFormer uses the dense BEV feature $`F_{ds}^t`$ itself as the query. So the query interface is mostly *dynamically produced from upstream outputs, previous-frame states, and anchors*, with only a few learnable embedding sets. Conceptually a query is a "probe / question" filled in by attention, not a stored memory.
-
 
 #### Q4: Why is a navigation command one of the Planner's *inputs* rather than an output?
 
@@ -158,6 +156,20 @@ with $`U^t`$ an MLP of the mask feature and $`F_{dec}^t`$ the upsampled scene fe
 where $D$ is a Gaussian collision penalty over occupied neighbors — pulling toward the predicted trajectory while pushing off occupied grids.
 
 **Learning.** Stage 1: jointly train tracking + mapping for ~6 epochs. Stage 2: train all five modules end-to-end for 20 epochs. Bipartite matching in perception, reused for consistent agent identity through prediction.
+
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | multi-task driving-stack training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | detection, tracking, mapping, motion, occupancy, and planning evaluation. |
 
 ### Hidden Assumptions
 1. **BEV quality is sufficient upstream.** All modules read from one BEV feature; whatever it drops (small/occluded/far objects) is unrecoverable downstream.

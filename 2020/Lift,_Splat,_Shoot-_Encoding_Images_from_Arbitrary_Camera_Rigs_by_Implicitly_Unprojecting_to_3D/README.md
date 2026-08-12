@@ -122,6 +122,22 @@ Training: label each ground-truth trajectory with its nearest-neighbor (L2) temp
 
 **Training.** Object segmentation uses binary cross-entropy (positive weight 1.0); lane segmentation uses positive weight 5.0, road 1.0. All models train **300k** steps with **Adam**, lr $10^{-3}$ , weight decay $10^{-7}$ , in PyTorch. Ground-truth BEV targets come from projecting nuScenes/Lyft 3D boxes and map layers (via 6-DOF localization) into the ego BEV plane. Both datasets use 6-camera rigs (forward, front-left, front-right, back-left, back-right, back) with small FoV overlap and shifting calibration across scenes.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | multi-camera BEV segmentation and planning training |
+| Lyft Level 5 | multi-camera BEV segmentation training and cross-rig transfer. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | BEV segmentation and planning evaluation |
+| Lyft Level 5 | cross-rig transfer evaluation. |
+
 ### Hidden Assumptions
 1. **Accurate calibration is available at inference.** The splat step *requires* per-camera intrinsics/extrinsics to place frustums; robustness experiments assume noise is bounded and roughly the training noise model.
 2. **Static single-frame scene.** Depth and BEV are inferred from one timestamp; the formulation implicitly assumes no need for motion/temporal cues (which is precisely why it trails LiDAR).

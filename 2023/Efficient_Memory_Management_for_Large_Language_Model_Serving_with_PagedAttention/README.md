@@ -125,6 +125,21 @@ where $A_{ij}$ is the row vector of attention scores over the $j$ -th block. The
 
 **Evaluation setup.** Models: OPT-13B (1×A100), OPT-66B (4×A100), OPT-175B (8×A100-80GB), LLaMA-13B. Workloads synthesized from ShareGPT (mean input 161 tokens, output 338) and Alpaca (input 19, output 58) with Poisson arrival rates; 1-hour traces (15 min for 175B). Baselines: FasterTransformer with a dynamic-batching scheduler, and three in-house Orca variants differing in output-length knowledge: Oracle (true lengths — infeasible upper bound), Pow2 (reserves ≤2× true length), Max (reserves model maximum, 2048). Metric: normalized latency (s/token) vs request rate; throughput is the highest rate sustaining low normalized latency.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| None stated | this is a serving-system evaluation without model training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| ShareGPT | real conversation workload traces |
+| Alpaca | instruction workload traces. |
+
 ### Hidden Assumptions
 
 1. **Decode dominates and is memory-bound:** the design targets the autoregressive phase; if workloads were prefill-heavy (very long prompts, short outputs), the KV-residency benefit shrinks and prefill compute becomes the bottleneck — a regime the paper does not evaluate.

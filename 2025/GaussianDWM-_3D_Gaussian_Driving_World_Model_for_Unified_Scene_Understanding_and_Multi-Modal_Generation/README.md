@@ -107,6 +107,22 @@ These two conditions are combined via cross-attention in the decoder's U-Net-sty
 
 **Training.** Multi-task training on nuScenes driving logs with a mixture of reconstruction loss (for Gaussian fitting), language alignment loss (CLIP contrastive for LangSplat), LLM instruction-following loss (cross-entropy on text outputs), and generation loss (diffusion ELBO / DDPM loss). Specific loss weights and training schedule are not fully detailed in the paper.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | driving-scene understanding and generation training |
+| NuInteract | vision-language scene-understanding training. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | scene-understanding and generation evaluation |
+| NuInteract | scene-understanding evaluation. |
+
 ### Hidden Assumptions
 
 1. **Static or slow-dynamic scenes**: The Gaussian tokenizer is built from per-log reconstruction; abrupt dynamic changes (sudden pedestrian appearance) may not be captured.

@@ -126,6 +126,21 @@ $$\text{relevancy}(v) = \min_i \frac{\exp(\phi_{img}(v) \cdot \phi_{qry})}{\exp(
 
 where $\phi_{canon}^i \in \{\text{"object"}, \text{"things"}, \text{"stuff"}, \text{"texture"}\}$ are canonical phrases. The semantic level with the highest smoothed relevancy is chosen. For localization: pick max-relevancy point. For segmentation: threshold relevancy map.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| None stated | the language field is optimized independently for each evaluated scene. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| LERF | 3D object localization and semantic segmentation |
+| 3DOVS | open-vocabulary 3D semantic segmentation. |
+
 ### Hidden Assumptions
 
 1. SAM's three-level hierarchy (subpart/part/whole) is sufficient to capture all semantically distinct granularities a user might query — fails for highly specific sub-object parts or scene-level queries.

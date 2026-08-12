@@ -140,10 +140,37 @@ Produce these named sub-sections:
 
 **### Detailed Technical Summary** — narrative prose with **bold section
 headers** for each major component (e.g., the representation, the training
-procedure, the loss function). Use LaTeX math notation for all equations and
-mathematical symbols: `$...$` for inline expressions and `$$...$$` on their
-own line for standalone equations. This should be dense enough that a reader
-could implement the method from this section alone.
+procedure, and the loss function). Use LaTeX for mathematical notation, with
+inline expressions in `$...$` and standalone equations in fenced `math` blocks
+as specified in **Math formatting** below. This should be dense enough that a
+reader could implement the method from this section alone.
+
+**### Datasets** — place this section immediately after `### Detailed
+Technical Summary` and before `### Hidden Assumptions`. Include these two
+subsections as markdown tables:
+
+```markdown
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| Dataset A | pretraining/fine-tuning/calibration purpose |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| Dataset C | validation/test/benchmark purpose |
+```
+
+Use one canonical dataset per row. Put pretraining, fine-tuning, calibration,
+synthetic, and self-generated data in **Train Data**. Put validation, test, and
+benchmark datasets in **Evaluation/Validation Data**. If a category has no
+named dataset, add `None stated` and explain why in `Usage`.
+
+Derive the tables from the source paper, or from `resources/paper.md` when it
+is available. Dataset counts and stage-specific sample totals may be included
+in `Usage` when reported by the paper.
 
 **### Hidden Assumptions** — numbered list of assumptions that the work
 depends on but that are never stated explicitly.
@@ -281,8 +308,8 @@ document header block:
 ---
 ```
 
-Then the four passes follow with `## Pass N — Name` headings and
-`### Sub-section` headings exactly as described above.
+Then the four passes follow with `## Pass N — Name` headings and the
+sub-section headings specified for each pass above.
 
 Aim for depth over brevity — the user is building a durable reference they
 will return to, not a quick abstract. Use markdown tables and bold-labeled

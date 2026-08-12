@@ -139,6 +139,20 @@ Substituting $`t_{o2o,i}=u^*`$ and ordering the one-to-many targets $`\hat{t}_1 
 
 **Training setup.** SGD, 500 epochs, momentum 0.937, weight decay $5\times10^{-4}$ , lr $10^{-2}\to10^{-4}$ linear decay, 3 warm-up epochs, Mosaic + MixUp + copy-paste augmentation (closed in the last 10 epochs), box/cls/DFL loss gains 7.5/0.5/1.5, trained from scratch on 8× RTX 3090. Six scales N/S/M/B/L/X; B is M with width factor 1.0.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| COCO 2017 | object-detection training from scratch. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| COCO 2017 | object-detection validation and test benchmark. |
+
 ### Hidden Assumptions
 
 1. **YOLOv8 is a near-optimal starting point** — the whole redesign is differential against YOLOv8; conclusions about which components are "redundant" are relative to that baseline.

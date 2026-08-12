@@ -118,6 +118,29 @@ Decode the generated token sequence to numerical coordinates. In stage 3, tune t
 
 **Training recipe.** For the 0.5B variant, use four H100s, bf16, gradient checkpointing, per-GPU batch size 1, and one epoch per stage. Stage 1 uses only 3.1 MB trainable projector parameters with learning rate $10^{-4}$; stages 2 and 2.5 tune 496.9 MB at $10^{-5}$; stage 3 tunes 552.6 MB (except the 2D backbone) at $10^{-5}$. The full process reportedly takes about two days. At test time use temperature zero, then decode the coordinate sequence deterministically.
 
+### Datasets
+
+#### Train Data
+
+| Name | Usage |
+|---|---|
+| TOD3Cap | 1.89M training examples for Stage 1 agent-token alignment; object captions covering appearance, motion, context, and relations. |
+| nuCaption | 348K training examples for Stage 1 scene-token alignment and Stage 2 instruction tuning; global and viewpoint-specific scene captions. |
+| nuScenes-QA | 376K training examples for Stage 2 driving VQA instruction tuning; questions about existence, counting, object attributes, status, spatial relations, and comparison. |
+| nuX | 28K training examples for Stage 2 driving reasoning and instruction tuning; factual narration and causal decision explanations. |
+| nuScenes | Stages 2.5 and 3 trajectory supervision; tracked-agent futures and six ego waypoints over a 3-second horizon. |
+
+#### Evaluation/Validation Data
+
+| Name | Usage |
+|---|---|
+| nuScenes | Standard validation split for open-loop trajectory planning. |
+| nuCaption | 72K validation examples for scene-caption evaluation with BLEU and BERTScore. |
+| nuScenes-QA | 83K validation examples for driving VQA evaluation with question-type accuracy. |
+| nuX | 6K validation examples for driving explanation evaluation with CIDEr, BLEU-4, METEOR, and ROUGE-L. |
+
+The processed stage-level training mixture contains 536K alignment, 566K instruction-tuning, 459K agent–environment–ego interaction, and 28K final-planning samples. These totals are task-specific and should not be added to the source-dataset counts.
+
 ### Hidden Assumptions
 
 1. **Perception is trusted:** The LLM only sees what the frozen/partly frozen visual stack proposes. Missed objects, wrong map queries, or poor confidence calibration cannot be repaired reliably by language reasoning.
@@ -130,7 +153,7 @@ Decode the generated token sequence to numerical coordinates. In stage 3, tune t
 ### Reproducibility Notes
 
 - **Code and weights:** The public repository includes environment setup and inference code; the official page/repository report an OpenDriveVLA-0.5B checkpoint. The paper's main 3B/7B results should not be assumed reproducible from that released checkpoint alone.
-- **Data:** Prepare nuScenes plus TOD3Cap, nuCaption, nuScenes-QA, and nuX annotations. The reported stage sample counts are 536k alignment, 566k instruction, 459k interaction, and 28k planning examples; licenses and preprocessing for every derived dataset must be checked separately.
+- **Data:** Prepare nuScenes plus TOD3Cap, nuCaption, nuScenes-QA, and nuX annotations. The paper reports 1.89M/410K TOD3Cap, 376K/83K nuScenes-QA, 348K/72K nuCaption, and 28K/6K nuX train/validation examples, plus processed stage totals of 536K, 566K, 459K, and 28K. Licenses and preprocessing for every derived dataset must be checked separately.
 - **Model dependencies:** Use the specified ResNet-101/FPN + BEVFormer perception model, TrackQFormer/MapQFormer heads, LLaVA-NeXT-style multimodal integration, and Qwen2.5-Instruct. The repository carries customized mmcv/mmdet3d compatibility code, so a generic modern stack may not reproduce results.
 - **Compute:** The reported 0.5B recipe needs four H100s for roughly two days; inference reporting uses one A100 and 6,019 nuScenes validation samples. Batch size 1 makes training sensitive to optimizer, accumulation, and distributed-training details.
 - **Missing/underspecified:** The paper does not provide closed-loop evaluation, exact quantization bins/tokenizer serialization for waypoints in the main text, a full end-to-end latency breakdown, robustness protocols, or confidence calibration criteria for retained agent tokens.
