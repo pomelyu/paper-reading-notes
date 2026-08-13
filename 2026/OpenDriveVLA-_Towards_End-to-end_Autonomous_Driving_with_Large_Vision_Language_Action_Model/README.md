@@ -17,10 +17,14 @@
 | **Category** | A camera-only, end-to-end autonomous-driving policy that treats driving as language-conditioned autoregressive trajectory generation. |
 | **Context** | Extends planning-oriented structured perception in [Planning-oriented Autonomous Driving](../../2023/Planning-oriented_Autonomous_Driving/) and large-VLM driving work such as [DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models](../../2024/DriveVLM-_The_Convergence_of_Autonomous_Driving_and_Large_Vision-Language_Models/). Its BEV[^1] encoder inherits the query-based multi-camera design of [BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers](../../2022/BEVFormer-_Learning_Bird's-Eye-View_Representation_from_Multi-Camera_Images_via_Spatiotemporal_Transformers/). |
 | **Correctness** | The staged design makes its claimed spatial grounding plausible, and the ablations support contributions from ego state, commands, alignment, and interaction prediction. However, every planning result is offline/open-loop on nuScenes; it does not establish closed-loop safety, recovery behavior, or deployability. |
-| **Contributions** | (1) structured scene, agent, and map tokens rather than generic image patches; (2) per-token visual-language alignment; (3) an auxiliary agent–environment–ego forecasting task; and (4) unified question answering and waypoint prediction from an open Qwen2.5 backbone. |
+| **Contributions** | (1) structured scene, agent[^4], and map tokens rather than generic image patches; (2) per-token visual-language alignment; (3) an auxiliary agent–environment–ego forecasting task; and (4) unified question answering and waypoint prediction from an open Qwen2.5 backbone. |
 | **Clarity** | The pipeline and supplement are unusually concrete: token interfaces, prompts, data sources, learning rates, model scales, and qualitative failures are reported. The distinction between language fluency and safety-critical planning validity needs stronger empirical treatment. |
 
 OpenDriveVLA is best understood as a structured adapter around an LLM: a strong driving perception stack turns six camera views into global-scene, tracked-agent, and map tokens; small projectors translate them into the LLM embedding space; then a Qwen2.5-Instruct model answers driving questions and emits six future waypoints. Its key bet is that explicit 3D, instance-level tokenization plus auxiliary prediction of other agents makes language-conditioned planning more grounded than directly feeding image tokens into a VLM[^2]. It is a compelling open-source research baseline, but its open-loop metrics and approximately 1.36 s best-case planning latency leave the central closed-loop, real-time safety question unresolved.
+
+![overview](./resources/fig_01_overview.png)
+- input: multi-view image, ego state, driving command(go ahead, turn left, turn right)
+- output: trajectory
 
 ## Pass 2 — Careful Read
 
@@ -89,6 +93,13 @@ V_{env} = \{V_{scene}, V_{agent}, V_{map}\}.
 ```
 
 The scene sampler uses adaptive max pooling to produce $6 \times 3 \times 5 = 90$ global image-context tokens. A six-layer TrackQFormer decodes dynamic-object tokens from the BEV grid and filters detections by confidence (maximum $900$ queries). A six-layer MapQFormer emits map-element tokens (maximum $300$ queries). Thus the LLM is never asked to parse unrestricted image-patch streams: it receives a typed, bounded set of pretrained perception features.
+
+![training stages](./resources/fig_03_training_stages.png)
+The training can be divided multiple stages:
+- Stage 1 固定 visual encoder 和 LLM，以 caption generation 作為 supervised objective，訓練三種 projector，讓 scene、agent、map visual embeddings 成為 LLM 能理解的輸入表示。
+- Stage 2 讓 LLM 能結合視覺環境 token 與 ego state，理解並以文字回答駕駛領域的問題，從而建立駕駛場景理解和語意推理能力。
+- Stage 2.5 透過「逐一預測 detected agent 的未來軌跡」，訓練 LLM 和 projectors 學習 agent–environment–ego 的空間與互動先驗，為 Stage 3 的 ego trajectory planning 做準備。
+- Stage 3 使用與 inference 相同的輸入條件和 trajectory 輸出格式，聯合 fine-tune 3D visual encoder、projectors 與LLM，但保持 2D backbone 固定；訓練使用 ground truth 與 teacher forcing，inference 則完全依賴模型自己的生成結果。
 
 **Stage 1: token-specific vision-language alignment.** Keep the visual encoder and Qwen2.5-Instruct frozen. Train a distinct GeLU two-layer projector $\Phi_k$ for $k \in \{scene, agent, map\}$ so each projected token conditions caption generation. Agent captions include an object's appearance and BEV location; scene captions summarize multiple views; map captions describe road geometry. In notation, the alignment target is the caption $X_k$ generated from the projected feature:
 
@@ -221,3 +232,4 @@ OpenDriveVLA is worth reading as a clear, reproducible bridge between structured
 [^1]: **BEV** — Bird's-Eye-View. See the [glossary](../../common/terms/).
 [^2]: **VLM** — Vision-Language Model. See the [glossary](../../common/terms/).
 [^3]: **VQA** — Visual Question Answering. See the [glossary](../../common/terms/).
+[^4]: **agent* - An agent is a detected dynamic road user, such as a vehicle, pedestrian, or cyclist, whose future motion may affect the ego vehicle’s trajectory.
