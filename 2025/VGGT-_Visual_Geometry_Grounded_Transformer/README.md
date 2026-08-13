@@ -149,38 +149,38 @@ L_{track} = \sum_{j=1}^M \sum_{i=1}^N \| y_{j,i} - \hat{y}_{j,i} \|
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| Co3D-v2 | multi-view geometry training |
-| BlendedMVS | multi-view geometry training |
-| DL3DV | multi-view geometry training |
-| MegaDepth | multi-view geometry training |
-| Kubric | synthetic geometry training |
-| WildRGB | geometry training |
-| ScanNet | geometry training |
-| HyperSim | synthetic indoor geometry training |
-| Mapillary | outdoor geometry training |
-| Habitat | synthetic indoor geometry training |
-| Replica | synthetic indoor geometry training |
-| MVS-Synth | synthetic multi-view geometry training |
-| PointOdyssey | point-tracking training |
-| Virtual KITTI | synthetic driving geometry training |
-| Aria Synthetic Environments | egocentric geometry training |
-| Aria Digital Twin | egocentric geometry training |
-| internal Objaverse-like dataset | synthetic asset training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Co3D-v2 | multi-view geometry training | — |
+| BlendedMVS | multi-view geometry training | — |
+| DL3DV | multi-view geometry training | — |
+| MegaDepth | multi-view geometry training | — |
+| Kubric | synthetic geometry training | — |
+| WildRGB | geometry training | — |
+| ScanNet | geometry training | — |
+| HyperSim | synthetic indoor geometry training | — |
+| Mapillary | outdoor geometry training | — |
+| Habitat | synthetic indoor geometry training | — |
+| Replica | synthetic indoor geometry training | — |
+| MVS-Synth | synthetic multi-view geometry training | — |
+| PointOdyssey | point-tracking training | — |
+| Virtual KITTI | synthetic driving geometry training | — |
+| Aria Synthetic Environments | egocentric geometry training | — |
+| Aria Digital Twin | egocentric geometry training | — |
+| internal Objaverse-like dataset | synthetic asset training. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| Co3D-v2 | camera-pose evaluation |
-| RealEstate10K | camera-pose evaluation |
-| ScanNet-1500 | visual localization evaluation |
-| ETH3D | multi-view reconstruction evaluation |
-| TUM RGB-D | depth evaluation |
-| Sintel | point tracking evaluation |
-| FlyingThings3D | point tracking evaluation |
-| GSO | novel-view synthesis evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Co3D-v2 | camera-pose evaluation | — |
+| RealEstate10K | camera-pose evaluation | — |
+| ScanNet-1500 | visual localization evaluation | — |
+| ETH3D | multi-view reconstruction evaluation | — |
+| TUM RGB-D | depth evaluation | — |
+| Sintel | point tracking evaluation | — |
+| FlyingThings3D | point tracking evaluation | — |
+| GSO | novel-view synthesis evaluation. | — |
 
 ### Hidden Assumptions
 

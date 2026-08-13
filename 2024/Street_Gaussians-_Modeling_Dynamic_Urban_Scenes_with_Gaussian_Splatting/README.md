@@ -153,6 +153,21 @@ L = L_color + λ₁ L_depth + λ₂ L_sky + λ₃ L_sem + λ₄ L_reg
 - Adaptive density control from 3DGS [19]: scale of background model fixed at 20 m; object model scale determined by bounding box dimensions; Gaussians outside bounding box pruned
 - Single RTX 4090, ~30 minutes
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Waymo Open Dataset | Dynamic urban-scene training/evaluation | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| KITTI | Dynamic urban-scene evaluation | — |
+| Waymo Open Dataset | Dynamic urban-scene evaluation | Waymo Open Dataset |
+
 ### Hidden Assumptions
 
 1. **Rigid vehicle motion**: All foreground dynamics are modeled as rigid 6-DoF transforms (yaw + translation). Non-rigid deformation (suspension bounce, door opening) is not modeled.

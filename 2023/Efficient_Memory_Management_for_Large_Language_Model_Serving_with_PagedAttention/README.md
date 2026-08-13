@@ -129,16 +129,16 @@ where $A_{ij}$ is the row vector of attention scores over the $j$ -th block. The
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| None stated | this is a serving-system evaluation without model training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| None stated | this is a serving-system evaluation without model training. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| ShareGPT | real conversation workload traces |
-| Alpaca | instruction workload traces. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| ShareGPT | real conversation workload traces | — |
+| Alpaca | instruction workload traces. | — |
 
 ### Hidden Assumptions
 

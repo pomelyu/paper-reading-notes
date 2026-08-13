@@ -143,15 +143,15 @@ Substituting $`t_{o2o,i}=u^*`$ and ordering the one-to-many targets $`\hat{t}_1 
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| COCO 2017 | object-detection training from scratch. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| COCO 2017 | object-detection training from scratch. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| COCO 2017 | object-detection validation and test benchmark. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| COCO 2017 | object-detection validation and test benchmark. | — |
 
 ### Hidden Assumptions
 

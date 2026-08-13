@@ -174,22 +174,22 @@ For referring video segmentation, 10 uniformly spaced frames are run through the
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| DAVIS | class-agnostic mask-propagation training |
-| YouTube-VOS | class-agnostic mask-propagation training |
-| OVIS | additional class-agnostic mask-propagation training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| DAVIS | class-agnostic mask-propagation training | — |
+| YouTube-VOS | class-agnostic mask-propagation training | — |
+| OVIS | additional class-agnostic mask-propagation training. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| VIPSeg | video panoptic segmentation |
-| BURST | open-world video segmentation |
-| Ref-YouTubeVOS | referring video object segmentation |
-| Ref-DAVIS | referring video object segmentation |
-| DAVIS-16/17 | unsupervised video object segmentation |
-| YouTube-VIS | appendix reference benchmark. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| VIPSeg | video panoptic segmentation | — |
+| BURST | open-world video segmentation | — |
+| Ref-YouTubeVOS | referring video object segmentation | — |
+| Ref-DAVIS | referring video object segmentation | — |
+| DAVIS-16/17 | unsupervised video object segmentation | — |
+| YouTube-VIS | appendix reference benchmark. | — |
 
 ### Hidden Assumptions
 

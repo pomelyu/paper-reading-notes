@@ -120,6 +120,23 @@ with $\lambda_{\text{focal}} = 20$, $\lambda_{\text{dice}} = 1$. IoU prediction 
 
 The resulting 1.1B masks are the SA-1B dataset. Human raters scored 94% of masks as having predicted IoU $> 75\%$ — comparable to professional annotators.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| SA-1B | 11M licensed images with over 1B masks for SAM training | SAM |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| COCO | Zero-shot image segmentation evaluation | — |
+| LVIS | Zero-shot image segmentation evaluation | — |
+| Open Images | Zero-shot image segmentation evaluation | — |
+| Pascal VOC 2012 | Zero-shot image segmentation evaluation | Pascal VOC |
+
 ### Hidden Assumptions
 
 1. A single valid segmentation mask is the right output granularity — the approach doesn't naturally handle panoptic segmentation (stuff regions) or overlapping instance masks without additional post-processing.

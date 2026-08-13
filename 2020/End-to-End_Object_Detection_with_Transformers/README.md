@@ -127,6 +127,20 @@ normalized by the number of objects in the batch.
 
 [^3]: **FFN** — Feed-Forward Network. See the [glossary](../../common/terms/).
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| COCO 2017 | Object detection and panoptic segmentation training split | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| COCO 2017 | Object detection and panoptic segmentation validation split | — |
+
 ### Hidden Assumptions
 1. **The true number of objects never exceeds $N$.** With $N=100$ and COCO images having ≤63 instances, this holds — but the framework silently fails if an image has more objects than slots.
 2. **A CNN feature map at stride 32 (or 16 for DC5) carries enough spatial detail.** The single-scale design implicitly assumes small objects are rare enough to tolerate the AP$_S$ penalty.

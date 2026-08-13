@@ -153,16 +153,16 @@ Weaker than rigidity (only preserves distances, not directions), but acts over l
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| None stated | the method optimizes each target scene at test time rather than training a cross-scene model. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| None stated | the method optimizes each target scene at test time rather than training a cross-scene model. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| CMU Panoptic Studio | PanopticSports novel-view synthesis and tracking benchmark |
-| Particle-NeRF dataset | synthetic dynamic-scene comparison benchmark. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| CMU Panoptic Studio | PanopticSports novel-view synthesis and tracking benchmark | — |
+| Particle-NeRF dataset | synthetic dynamic-scene comparison benchmark. | — |
 
 ### Hidden Assumptions
 

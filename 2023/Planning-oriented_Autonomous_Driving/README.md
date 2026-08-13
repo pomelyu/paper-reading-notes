@@ -161,15 +161,15 @@ where $D$ is a Gaussian collision penalty over occupied neighbors — pulling to
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | multi-task driving-stack training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | multi-task driving-stack training. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | detection, tracking, mapping, motion, occupancy, and planning evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | detection, tracking, mapping, motion, occupancy, and planning evaluation. | — |
 
 ### Hidden Assumptions
 1. **BEV quality is sufficient upstream.** All modules read from one BEV feature; whatever it drops (small/occluded/far objects) is unrecoverable downstream.

@@ -122,22 +122,22 @@ Decode the generated token sequence to numerical coordinates. In stage 3, tune t
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| TOD3Cap | 1.89M training examples for Stage 1 agent-token alignment; object captions covering appearance, motion, context, and relations. |
-| nuCaption | 348K training examples for Stage 1 scene-token alignment and Stage 2 instruction tuning; global and viewpoint-specific scene captions. |
-| nuScenes-QA | 376K training examples for Stage 2 driving VQA instruction tuning; questions about existence, counting, object attributes, status, spatial relations, and comparison. |
-| nuX | 28K training examples for Stage 2 driving reasoning and instruction tuning; factual narration and causal decision explanations. |
-| nuScenes | Stages 2.5 and 3 trajectory supervision; tracked-agent futures and six ego waypoints over a 3-second horizon. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| TOD3Cap | 1.89M training examples for Stage 1 agent-token alignment; object captions covering appearance, motion, context, and relations. | TOD3Cap |
+| nuCaption | 348K training examples for Stage 1 scene-token alignment and Stage 2 instruction tuning; global and viewpoint-specific scene captions. | LiDAR-LLM |
+| nuScenes-QA | 376K training examples for Stage 2 driving VQA instruction tuning; questions about existence, counting, object attributes, status, spatial relations, and comparison. | nuScenes-QA |
+| nuX | 28K training examples for Stage 2 driving reasoning and instruction tuning; factual narration and causal decision explanations. | Hint-AD |
+| nuScenes | Stages 2.5 and 3 trajectory supervision; tracked-agent futures and six ego waypoints over a 3-second horizon. | nuScenes |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | Standard validation split for open-loop trajectory planning. |
-| nuCaption | 72K validation examples for scene-caption evaluation with BLEU and BERTScore. |
-| nuScenes-QA | 83K validation examples for driving VQA evaluation with question-type accuracy. |
-| nuX | 6K validation examples for driving explanation evaluation with CIDEr, BLEU-4, METEOR, and ROUGE-L. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | Standard validation split for open-loop trajectory planning. | nuScenes |
+| nuCaption | 72K validation examples for scene-caption evaluation with BLEU and BERTScore. | LiDAR-LLM |
+| nuScenes-QA | 83K validation examples for driving VQA evaluation with question-type accuracy. | nuScenes-QA |
+| nuX | 6K validation examples for driving explanation evaluation with CIDEr, BLEU-4, METEOR, and ROUGE-L. | Hint-AD |
 
 The processed stage-level training mixture contains 536K alignment, 566K instruction-tuning, 459K agent–environment–ego interaction, and 28K final-planning samples. These totals are task-specific and should not be added to the source-dataset counts.
 

@@ -6,7 +6,7 @@
 ### 2026
 <ul>
   <li><a href="2026/OpenDriveVLA-_Towards_End-to-end_Autonomous_Driving_with_Large_Vision_Language_Action_Model/">(OpenDriveVLA) OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model</a></li>
-  <li><details><summary><a href="2026/VGGT-Omega/">VGGT-Ω</a></summary>
+  <li><details><summary><a href="2026/VGGT-Omega/">(VGGT-Ω) VGGT-Ω</a></summary>
     <ul>
       <li>VGGT improvement with lower GPU usage and better camera accuracy.</li>
       <li>predict depth map and camera parameters from a group of images or <b>a video</b></li>
@@ -23,8 +23,8 @@
   <li><a href="2025/4D_LangSplat-_4D_Language_Gaussian_Splatting_via_Multimodal_Large_Language_Models/">(4D LangSplat) 4D LangSplat: 4D Language Gaussian Splatting via Multimodal Large Language Models</a></li>
   <li><a href="2025/ObjectGS-_Object-aware_scene_reconstruction_and_scene_understanding_via_Gaussian_Splatting/">(ObjectGS) ObjectGS: Object-aware Scene Reconstruction and Scene Understanding via Gaussian Splatting</a></li>
   <li><a href="2025/RAD-_Training_an_End-to-End_Driving_Policy_via_Large-Scale_3DGS-based_Reinforcement_Learning/">(RAD) RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning</a></li>
-  <li><a href="2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/">Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)</a></li>
-  <li><a href="2025/DINOv3/">DINOv3</a></li>
+  <li><a href="2025/Vision_Language_Models-_A_Survey_of_26K_Papers_(CVPR,_ICLR,_NeurIPS_2023-2025)/">(VLM Survey) Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025)</a></li>
+  <li><a href="2025/DINOv3/">(DINOv3) DINOv3</a></li>
   <li><details><summary><a href="2025/VGGT-_Visual_Geometry_Grounded_Transformer/">(VGGT) VGGT: Visual Geometry Grounded Transformer</a></summary>
     <ul>
       <li>1.2B FFN transformer to predict depth map, camera parameters and etc. from a group of images.</li>
@@ -85,7 +85,7 @@
       <li>Matches or beats voxel baselines (+1.3 mIoU on BEVDetOcc) at ~2× speed and ~69% less inference memory; a standard efficient occupancy head</li>
     </ul>
   </details></li>
-  <li><a href="2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/">(Lp3D) Real-Time Radiance Fields for Single-Image Portrait View Synthesis</a></li>
+  <li><a href="2023/Real-Time_Radiance_Fields_for_Single-Image_Portrait_View_Synthesis/">(Live 3D Portrait) Real-Time Radiance Fields for Single-Image Portrait View Synthesis</a></li>
   <li><a href="2023/Scaffold-GS-_Structured_3D_Gaussians_for_View-Adaptive_Rendering">(Scaffold-GS) Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering</a></li>
   <li><a href="2023/Dynamic_3D_Gaussians-_Tracking_by_Persistent_Dynamic_View_Synthesis/">(Dynamic 3D Gaussians) Tracking by Persistent Dynamic View Synthesis</a></li>
   <li><a href="2023/Segment_Anything/">(SAM) Segment Anything</a></li>

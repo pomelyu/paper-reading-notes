@@ -233,6 +233,21 @@ Full composite objective:
 L(\theta) = L^{PPO}(\theta) + \lambda_1 L_{dc}(\theta) + \lambda_2 L_{sc}(\theta) + \lambda_3 L_{pd}(\theta) + \lambda_4 L_{hd}(\theta)
 ```
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Horizon Robotics driving data | 2,000-hour proprietary driving corpus for scene reconstruction and policy training | — |
+| 3DGS reconstructed scenes | 4,305 scenes; 3,968 used for RL training | RAD |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| 3DGS closed-loop benchmark | 337 unseen scenes for policy evaluation | RAD |
+
 ### Hidden Assumptions
 
 1. The 3DGS rendering is visually close enough to the real sensor feed that a policy trained on 3DGS frames generalizes without explicit domain adaptation. The consistency analysis (Fig. 5) supports this but does not formally bound the gap.

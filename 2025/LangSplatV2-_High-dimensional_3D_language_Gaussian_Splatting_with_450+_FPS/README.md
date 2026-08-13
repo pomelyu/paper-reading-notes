@@ -113,6 +113,22 @@ Both the per-Gaussian sparse coefficients $\{w_i\}$ and the global codebook $S$ 
 
 **Key Hyperparameters.** $L=64$ (codebook size), $K=4$ (sparsity), $D=512$ (CLIP feature dimension), 3 semantic scales (subpart/part/whole), 1 A100 GPU, 21.2 GPU-hours training, 21.2 GB memory. Optimizer and learning rate not specified in the main paper.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| LERF | 3D language feature training/evaluation benchmark | LERF |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| 3D-OVS | 3D open-vocabulary segmentation evaluation benchmark | 3D-OVS |
+| Mip-NeRF360 | 3D language feature reconstruction benchmark | — |
+| LERF | 3D language localization and segmentation evaluation | LERF |
+
 ### Hidden Assumptions
 
 1. **Alpha compositing linearity is exact for the coefficient decomposition**: The derivation $\mathbf{F} = \mathbf{W}S$ assumes the same compositing weights are applied to $w_i$ and that $S$ is shared across all pixels — this holds exactly only if $S$ is view-independent (which it is, being a global dictionary).

@@ -32,6 +32,22 @@ This paper proposed a EG3D[^1] version of StyleGAN encoder, which can generated 
 ## Limitation
 - Since the model is based on EG3D, it can not generate the good results for large head poses(yaw > 60 degrees)
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| EG3D synthetic faces | Generated multi-view images and triplane features for encoder training | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| FFHQ | Real-image portrait generalization evaluation | — |
+| AFHQv2 Cats | Real-image cat-portrait generalization evaluation | StarGAN v2 |
+| H3DS | Ground-truth multi-view and 3D head-geometry evaluation | H3DS |
+
 ## Comments
 
 [^1]: Efficient Geometry-aware 3D Generative Adversarial Network. [Note](https://github.com/pomelyu/paper-reading-notes/issues/7)

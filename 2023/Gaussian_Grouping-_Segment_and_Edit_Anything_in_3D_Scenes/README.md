@@ -207,6 +207,25 @@ After training, editing is performed without re-training the full scene:
 | Training iterations | 30K |
 | Hardware | 1× A100 GPU |
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Mip-NeRF360 | 3D Gaussian reconstruction and feature training scenes | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| LERF-Mask | 3D referring-expression segmentation evaluation | Gaussian Grouping |
+| Replica | 3D segmentation evaluation | — |
+| ScanNet | 3D panoptic segmentation evaluation | — |
+| LLFF | Scene reconstruction and editing evaluation | LLFF |
+| Tanks and Temples | Scene reconstruction and object-removal evaluation | Tanks and Temples |
+| Instruct-NeRF2NeRF | Scene-editing evaluation | Instruct-NeRF2NeRF |
+
 ### Hidden Assumptions
 
 1. **SAM masks are semantically coherent within a view:** The method assumes SAM's "everything" masks respect object boundaries well enough to serve as noisy but useful instance supervision.

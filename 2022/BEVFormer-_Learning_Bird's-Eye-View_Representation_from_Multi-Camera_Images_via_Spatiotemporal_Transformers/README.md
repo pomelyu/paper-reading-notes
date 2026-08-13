@@ -141,16 +141,16 @@ where — unlike vanilla deformable attention — the offsets $\Delta p$ are pre
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | camera-based detection and map-segmentation training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | camera-based detection and map-segmentation training. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | detection and map-segmentation benchmark |
-| Waymo Open Dataset | vehicle-only detection evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | detection and map-segmentation benchmark | — |
+| Waymo Open Dataset | vehicle-only detection evaluation. | — |
 
 ### Hidden Assumptions
 1. **Accurate calibration at every frame.** Projection $T_i$ must be reliable; the robustness appendix shows graceful but real degradation under extrinsic noise.

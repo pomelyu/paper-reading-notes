@@ -168,6 +168,25 @@ L_{vol} = \sum_{i=1}^{N_{ng}} \text{Prod}(s_i)
 
 where $\text{Prod}(\cdot)$ is the product of the scale vector values, encouraging compact, non-overlapping Gaussians. $\lambda_{SSIM}=0.2, \lambda_{vol}=0.001$.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Mip-NeRF360 | Per-scene reconstruction training/evaluation | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Tanks and Temples | Per-scene reconstruction evaluation | — |
+| Deep Blending | Per-scene reconstruction evaluation | — |
+| BungeeNeRF | Large-scale scene evaluation | — |
+| VR-NeRF | Large-scale scene evaluation | — |
+| Synthetic Blender | Synthetic scene evaluation | — |
+| Mip-NeRF360 | Per-scene novel-view synthesis evaluation | — |
+
 ### Hidden Assumptions
 
 1. SfM produces a sufficient point cloud to initialize anchors across the scene; sparse or textureless areas require the growing mechanism to recover, which depends on gradient signal during training.

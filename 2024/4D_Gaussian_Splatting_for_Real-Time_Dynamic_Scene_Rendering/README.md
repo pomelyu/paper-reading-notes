@@ -109,6 +109,24 @@ The K-Planes trick is used: 4D voxels are decomposed into `C(4,2) = 6` 2D planes
 
 **Rendering speed analysis (Fig. 9).** Speed scales roughly inversely with Gaussian count. Below ~30,000 Gaussians, up to 90 FPS. The deformation field query is the bottleneck for large Gaussian counts.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| D-NeRF | Per-scene dynamic reconstruction training | D-NeRF |
+| HyperNeRF | Per-scene dynamic reconstruction training | HyperNeRF |
+| DyNeRF | Per-scene dynamic reconstruction training | Neural 3D Video Synthesis from Multi-view Video |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| D-NeRF | Synthetic monocular dynamic-scene evaluation | D-NeRF |
+| HyperNeRF | Real monocular dynamic-scene evaluation | HyperNeRF |
+| DyNeRF | Multi-view dynamic-scene evaluation | Neural 3D Video Synthesis from Multi-view Video |
+
 ### Hidden Assumptions
 
 1. **Smooth motions**: The HexPlane encoder interpolates spatiotemporally, implicitly assuming motion is smooth and locally consistent. Large discontinuous motions (object entries/exits) violate this.

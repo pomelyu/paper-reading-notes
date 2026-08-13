@@ -110,15 +110,15 @@ where $B$ = batch, $C^*$ = #classes, $Z$ = #height bins, and $W,H$ = BEV spatial
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| Occ3D-nuScenes | occupancy-prediction training for all plugin substitutions. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Occ3D-nuScenes | occupancy-prediction training for all plugin substitutions. | Occ3D |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| Occ3D-nuScenes | occupancy mIoU and efficiency evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Occ3D-nuScenes | occupancy mIoU and efficiency evaluation. | Occ3D |
 
 ### Hidden Assumptions
 1. **BEV pooling retains enough height information.** The whole method hinges on the vertical structure surviving LSS's height pooling into the BEV channels; scenes with rich, overlapping vertical structure could stress this.

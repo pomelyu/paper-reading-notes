@@ -130,6 +130,20 @@ The one-to-one matching is what removes the need for NMS.
 
 **Implementation.** ResNet101 with deformable convolutions (stages 3–4) + FPN (4 levels); a 6-layer DETR3D head, hidden dim 256, LayerNorm, two 2-layer MLP heads per layer; 900 object queries. AdamW, weight decay $10^{-4}$ , lr $10^{-4}$ decayed to $10^{-5}$ / $10^{-6}$ at epochs 8/11, 12 epochs total, 8× RTX 3090, batch 1/GPU, ~18 h. Evaluated with the nuScenes toolkit; no NMS.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | 28K training samples | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | 6K validation samples and test-set benchmark | — |
+
 ### Hidden Assumptions
 1. **Accurate camera calibration.** Back-projection depends entirely on correct $T_m$ ; calibration error directly corrupts feature sampling (unlike LSS/BEVFormer, no robustness study is reported).
 2. **The reference point is close enough to sample useful features.** Early-layer reference points must land near the true object in image space for the single-point sample to be informative; a badly initialized query may never recover.

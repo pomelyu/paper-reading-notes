@@ -160,6 +160,26 @@ The authors discuss several limitations of their approach:
 
 4. **High-light Regions**: The method tends to create holes in areas with high light intensity due to the difficulty in modeling specular highlights with surface-based representation.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| DTU | Per-scene geometry reconstruction training | — |
+| Tanks and Temples | Per-scene geometry reconstruction training | — |
+| Mip-NeRF360 | Per-scene novel-view synthesis training | — |
+| Deep Blending | Per-scene novel-view synthesis training | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| DTU | Geometry accuracy evaluation | — |
+| Tanks and Temples | Geometry accuracy evaluation | — |
+| Mip-NeRF360 | Novel-view synthesis evaluation | — |
+| Deep Blending | Novel-view synthesis evaluation | — |
+
 ## Comments
 
 [^1]: Schönberger & Frahm, "Structure-from-Motion Revisited", CVPR 2016.

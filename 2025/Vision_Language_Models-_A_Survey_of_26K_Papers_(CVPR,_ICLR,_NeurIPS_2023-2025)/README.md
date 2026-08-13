@@ -178,6 +178,20 @@ The entire pipeline is conditioned on venue (CVPR / ICLR / NeurIPS) as a stratif
 
 Beyond the trend data, the paper provides interpretive summaries for each top model family (Sec. 4.1): ALIGN (dual-encoder, web-scale noisy pairs, contrastive), CLIP (InfoNCE dual-encoder, 400M web pairs, universal embeddings), BLIP (MED: ITC+ITM+LM, CapFilt data bootstrapping), Flamingo (gated cross-attention, Perceiver-Resampler, few-shot generalization), LLaVA (CLIP encoder + MLP projector + LLM decoder, GPT-4 synthetic SFT data), DINO/DINOv2/DINOv3 (student-teacher self-distillation on ViTs), Grounding DINO (region-text pretraining for open-set detection), MoE/Switch Transformers (sparse expert routing for scaling).
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| 26,104 accepted-paper abstracts | Bibliometric corpus covering CVPR, ICLR, and NeurIPS 2023–2025; no model training data | VLM Survey |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| None stated | None stated | — |
+
 ### Hidden Assumptions
 
 1. The 35-category lexicon has high enough precision that matching papers are actually about the labeled topic — i.e., the regexes do not fire on papers that merely *mention* VLMs as related work rather than contributing to them.

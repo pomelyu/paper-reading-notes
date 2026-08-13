@@ -134,19 +134,19 @@ with the search space collapsed to one scalar: $s = s_X^{\alpha}$ , where $s_X$ 
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| The Pile | calibration activations for AWQ search. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| The Pile | calibration activations for AWQ search. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| WikiText-2 | perplexity evaluation |
-| Vicuna benchmark | GPT-4-judged instruction-following evaluation |
-| COCO | OpenFlamingo captioning evaluation |
-| MBPP | code-generation evaluation |
-| GSM8K | mathematical reasoning evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| WikiText-2 | perplexity evaluation | — |
+| Vicuna benchmark | GPT-4-judged instruction-following evaluation | — |
+| COCO | OpenFlamingo captioning evaluation | — |
+| MBPP | code-generation evaluation | — |
+| GSM8K | mathematical reasoning evaluation. | — |
 
 ### Hidden Assumptions
 

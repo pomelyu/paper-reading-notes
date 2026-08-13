@@ -130,16 +130,16 @@ where $\phi_{canon}^i \in \{\text{"object"}, \text{"things"}, \text{"stuff"}, \t
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| None stated | the language field is optimized independently for each evaluated scene. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| None stated | the language field is optimized independently for each evaluated scene. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| LERF | 3D object localization and semantic segmentation |
-| 3DOVS | open-vocabulary 3D semantic segmentation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| LERF | 3D object localization and semantic segmentation | LERF |
+| 3D-OVS | open-vocabulary 3D semantic segmentation. | 3D-OVS |
 
 ### Hidden Assumptions
 

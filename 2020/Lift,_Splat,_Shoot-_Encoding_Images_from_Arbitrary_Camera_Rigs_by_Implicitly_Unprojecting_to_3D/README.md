@@ -126,17 +126,17 @@ Training: label each ground-truth trajectory with its nearest-neighbor (L2) temp
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | multi-camera BEV segmentation and planning training |
-| Lyft Level 5 | multi-camera BEV segmentation training and cross-rig transfer. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | multi-camera BEV segmentation and planning training | — |
+| Lyft Level 5 | multi-camera BEV segmentation training and cross-rig transfer. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | BEV segmentation and planning evaluation |
-| Lyft Level 5 | cross-rig transfer evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | BEV segmentation and planning evaluation | — |
+| Lyft Level 5 | cross-rig transfer evaluation. | — |
 
 ### Hidden Assumptions
 1. **Accurate calibration is available at inference.** The splat step *requires* per-camera intrinsics/extrinsics to place frustums; robustness experiments assume noise is bounded and roughly the training noise model.

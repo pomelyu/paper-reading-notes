@@ -126,6 +126,27 @@ where $`W_{slow}`$ is the initial solution for an optimization-based planner, or
 ![token_and_sampling](resources/table_08_09_token_sampling_performance.png)
 
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| SUP-AD | Scene-understanding and planning training/evaluation | DriveVLM |
+| nuScenes | Trajectory-planning training | nuScenes |
+| Talk2Car | Co-tuning data for visual grounding and driving language | Talk2Car |
+| BDD-X | Co-tuning data for driving explanations | BDD-X |
+| DRAMA | Co-tuning data for driving risk assessment | DRAMA |
+| SUTD-TrafficQA | Co-tuning data for traffic-scene reasoning | SUTD-TrafficQA |
+| LLaVA-Instruct | General visual-instruction co-tuning data | LLaVA |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | Autonomous-driving perception and planning benchmark | — |
+| SUP-AD | Scene-understanding and planning evaluation | DriveVLM |
+
 ### Hidden Assumptions
 1. **The VLM's critical-object selection is complete.** Planning safety assumes the VLM does not drop a truly critical object; a missed object is never analyzed downstream.
 2. **Language tokenization of boxes/waypoints is precise enough.** Encoding coordinates as language tokens assumes acceptable spatial resolution for planning.

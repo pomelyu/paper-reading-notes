@@ -162,6 +162,22 @@ where $\alpha_{i,t}$ comes from the 4D-GS deformable geometry at time $t$.
 
 Learning rates: $1.6 \times 10^{-4}$ (deformable network), $2.5 \times 10^{-3}$ (state prototypes). MLLM used: largest SAM-level masks as input context.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| HyperNeRF | Per-scene 4D reconstruction and language-feature training | HyperNeRF |
+| Neu3D | Per-scene 4D reconstruction and language-feature training | Neu3D |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| HyperNeRF | Monocular dynamic-scene language evaluation | HyperNeRF |
+| Neu3D | Multi-view dynamic-scene language evaluation | Neu3D |
+
 ### Hidden Assumptions
 
 1. **Object states are discrete and finite**: The K-prototype design assumes each object's semantic trajectory can be approximated by K discrete poles and smooth interpolation between them. This fails for continuously varying attributes (e.g., gradual color change, progressive fluid diffusion) where no clear discrete states exist.

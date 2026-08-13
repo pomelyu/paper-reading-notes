@@ -140,6 +140,25 @@ A *16-frame fine-tuning* stage is appended: the model is fine-tuned for 50k addi
 
 Auto masklet generation: in all phases, SAM 2 is prompted with a 32×32 grid on the first frame + 16×16 grid on zoomed crops to generate automatic masklets. Auto masklets passing a quality check are added directly to SA-V; "unsatisfactory" ones are shown to annotators for refinement.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| SA-V | 51K videos and 35.5M masks for video model training | SAM2 |
+| SA-1B | Image data used for image segmentation training | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| DAVIS | Video object segmentation evaluation | — |
+| YouTube-VOS | Video object segmentation evaluation | — |
+| MOSE | Video object segmentation evaluation | — |
+| LVOS | Long-term video object segmentation evaluation | — |
+| SA-V | Held-out video segmentation evaluation | SAM2 |
+
 ### Hidden Assumptions
 
 1. Six recent frames ($N=6$) are sufficient temporal context for tracking most objects — fails for very long occlusions where the object disappears for more than $N$ frames.

@@ -147,6 +147,24 @@ Across both stages: Adam with no weight decay, BF16/TF32 mixed precision, FSDP (
 - *Complement:* Use LLaVA's prediction unless GPT-4 reports insufficient context → 90.97% (essentially same as LLaVA alone)
 - *Judge:* When LLaVA and GPT-4 disagree, ask GPT-4 to reason over both outputs and give a final answer → 92.53% SoTA. The text-only GPT-4 is surprisingly able to identify visually grounded errors in LLaVA's reasoning even without seeing the image.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| CC-595K | Filtered image-text pretraining subset constructed from CC3M | LLaVA |
+| LLaVA-Instruct-158K | GPT-4-generated multimodal instruction fine-tuning data | LLaVA |
+| ScienceQA | Multimodal reasoning evaluation/fine-tuning benchmark | — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| LLaVA-Bench (COCO) | 90 questions generated from 30 COCO-Val-2014 images | LLaVA |
+| LLaVA-Bench (In-the-Wild) | 60 questions over 24 diverse web images | LLaVA |
+| ScienceQA | Multimodal science reasoning evaluation | ScienceQA |
+
 ### Hidden Assumptions
 
 1. **Text is a sufficient proxy for vision:** The entire data generation pipeline assumes that COCO captions + bounding boxes fully capture the visual content relevant to instruction-following. Objects not annotated and visual attributes like colour, texture, and spatial relationships beyond bounding boxes are systematically underrepresented.

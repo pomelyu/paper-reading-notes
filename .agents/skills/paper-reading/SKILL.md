@@ -152,15 +152,15 @@ subsections as markdown tables:
 ```markdown
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| Dataset A | pretraining/fine-tuning/calibration purpose |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Dataset A | pretraining/fine-tuning/calibration purpose | Paper abbreviation or — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| Dataset C | validation/test/benchmark purpose |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Dataset C | validation/test/benchmark purpose | Paper abbreviation or — |
 ```
 
 Use one canonical dataset per row. Put pretraining, fine-tuning, calibration,
@@ -171,6 +171,13 @@ named dataset, add `None stated` and explain why in `Usage`.
 Derive the tables from the source paper, or from `resources/paper.md` when it
 is available. Dataset counts and stage-specific sample totals may be included
 in `Usage` when reported by the paper.
+
+In `Proposed by`, identify the paper that originally introduced the dataset.
+Use the canonical abbreviation from the root `README.md` when that paper has a
+note in this repository. Otherwise use a recognizable paper title. Use `—`
+only when the reviewed source does not establish the dataset's origin; do not
+guess. Keep the value consistent whenever the same dataset appears in both
+tables or in another note.
 
 **### Hidden Assumptions** — numbered list of assumptions that the work
 depends on but that are never stated explicitly.

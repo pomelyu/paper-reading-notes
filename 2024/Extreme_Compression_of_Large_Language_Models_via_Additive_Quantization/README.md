@@ -139,18 +139,18 @@ updating codebooks and per-unit scales; this takes a small fraction of total tim
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| RedPajama-v1 | calibration token slice for codebook optimization. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| RedPajama-v1 | calibration token slice for codebook optimization. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| WikiText-2 | language-model perplexity |
-| C4 | language-model perplexity |
-| Penn Treebank | language-model perplexity |
-| ZeroShotTasks | LM Eval Harness downstream evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| WikiText-2 | language-model perplexity | — |
+| C4 | language-model perplexity | — |
+| Penn Treebank | language-model perplexity | — |
+| ZeroShotTasks | LM Eval Harness downstream evaluation. | — |
 
 ### Hidden Assumptions
 

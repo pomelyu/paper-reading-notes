@@ -181,18 +181,18 @@ penalizes the scale vector $s_i$ of each Gaussian by its deviation from its own 
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| None stated | the SLAM map is optimized online per sequence. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| None stated | the SLAM map is optimized online per sequence. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| TUM RGB-D | monocular and RGB-D SLAM benchmark |
-| Replica | RGB-D SLAM and rendering benchmark |
-| EuRoC | large-scale stereo SLAM evaluation |
-| self-captured sequences | qualitative real-world evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| TUM RGB-D | monocular and RGB-D SLAM benchmark | — |
+| Replica | RGB-D SLAM and rendering benchmark | — |
+| EuRoC | large-scale stereo SLAM evaluation | — |
+| self-captured sequences | qualitative real-world evaluation. | — |
 
 ### Hidden Assumptions
 

@@ -111,17 +111,17 @@ These two conditions are combined via cross-attention in the decoder's U-Net-sty
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | driving-scene understanding and generation training |
-| NuInteract | vision-language scene-understanding training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | driving-scene understanding and generation training | — |
+| NuInteract | vision-language scene-understanding training. | DriveMonkey |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| nuScenes | scene-understanding and generation evaluation |
-| NuInteract | scene-understanding evaluation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| nuScenes | scene-understanding and generation evaluation | — |
+| NuInteract | scene-understanding evaluation. | DriveMonkey |
 
 ### Hidden Assumptions
 

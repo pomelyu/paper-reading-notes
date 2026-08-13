@@ -148,6 +148,22 @@ where $H(\cdot)$ is entropy, $\epsilon$ a hard threshold and $\delta$ an entropy
 
 **Optimized (sparse) tree construction.** A regular Cartesian tree wastes budget on unlikely deep branches. Using a calibration set, measure $`a_k^{(i)}`$ = accuracy of the $i$-th top prediction of head $k$. Assuming independence, a candidate's expected acceptance is $\prod_j a_j^{(i_j)}$, and the expected accepted length of the whole tree is $\sum_{[i_1,\dots,i_k]\in I}\prod_{j=1}^{k} a_j^{(i_j)}$. Since each node contributes exactly its accuracy to this sum, **greedily add the node with the highest accuracy** connected to the current tree until the node budget is reached — yielding a sparse tree that maximizes expected accepted length per node.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| ShareGPT | 60K conversational samples for Medusa-head training | — |
+| UltraChat | Seed prompts for self-distilled Zephyr training data | UltraChat |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| MT-Bench | Instruction-following evaluation | — |
+| AlpacaEval | Instruction-following quality and speed evaluation | AlpacaEval |
+
 ### Hidden Assumptions
 1. **Bandwidth-bound regime:** the whole free-lunch argument assumes decoding is memory-bandwidth-bound — true at batch size 1, false under heavy batching where the extra candidate tokens cost real FLOPs.
 2. **Local last-hidden-state suffices:** all $K$ future tokens are predicted from a *single* position's hidden state $`h_t`$ , assuming enough future information is linearly recoverable there — which caps the useful horizon at ~5 heads.

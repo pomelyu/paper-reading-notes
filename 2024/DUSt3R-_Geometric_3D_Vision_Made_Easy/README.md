@@ -157,33 +157,33 @@ Training data: 8.5M pairs from 8 datasets (Habitat 1M, ARKitScenes 2M, MegaDepth
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| Habitat | supervised geometry training |
-| MegaDepth | supervised geometry training |
-| ARKitScenes | supervised geometry training |
-| Static Scenes 3D | supervised geometry training |
-| BlendedMVS | supervised geometry training |
-| ScanNet++ | supervised geometry training |
-| Co3D-v2 | supervised geometry training |
-| Waymo Open Dataset | supervised geometry training. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Habitat | supervised geometry training | — |
+| MegaDepth | supervised geometry training | — |
+| ARKitScenes | supervised geometry training | — |
+| Static Scenes 3D | supervised geometry training | — |
+| BlendedMVS | supervised geometry training | — |
+| ScanNet++ | supervised geometry training | — |
+| Co3D-v2 | supervised geometry training | — |
+| Waymo Open Dataset | supervised geometry training. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| 7Scenes | visual localization |
-| Cambridge Landmarks | visual localization |
-| Co3D-v2 | multi-view pose estimation |
-| RealEstate10K | multi-view pose estimation |
-| DDAD | monocular depth |
-| KITTI | monocular depth |
-| NYUv2 | monocular depth |
-| BONN | monocular depth |
-| TUM RGB-D | monocular depth |
-| DTU | multi-view reconstruction |
-| Tanks and Temples | multi-view reconstruction |
-| ETH3D | multi-view reconstruction. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| 7Scenes | visual localization | — |
+| Cambridge Landmarks | visual localization | — |
+| Co3D-v2 | multi-view pose estimation | — |
+| RealEstate10K | multi-view pose estimation | — |
+| DDAD | monocular depth | — |
+| KITTI | monocular depth | — |
+| NYUv2 | monocular depth | — |
+| BONN | monocular depth | — |
+| TUM RGB-D | monocular depth | — |
+| DTU | multi-view reconstruction | — |
+| Tanks and Temples | multi-view reconstruction | — |
+| ETH3D | multi-view reconstruction. | — |
 
 ### Hidden Assumptions
 

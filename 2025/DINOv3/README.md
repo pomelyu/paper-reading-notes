@@ -149,6 +149,40 @@ Two outlier types exist in DINOv3:
 - *High-norm patch outliers*: Resolved by 4 register tokens (Darcet et al., 2024) which absorb global information and prevent it from leaking into patch tokens.
 - *Feature dimension outliers*: A small set of feature channels have high values consistent across patches and images. These are suppressed by the final layer norm at inference and do not degrade last-layer performance; intermediate layers require batch normalization.
 
+### Datasets
+
+#### Train Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| LVD-1689M | Large-scale curated background image corpus for self-supervised pretraining | DINOv3 |
+| ImageNet-1k | Specialized pretraining data and linear-probe evaluation | — |
+| SAT-493M | Domain-specific self-supervised pretraining for the satellite DINOv3 model | DINOv3 |
+| SatLidar1M | DPT canopy-height head training for the satellite model | DINOv3 |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| COCO | Object-detection evaluation | — |
+| ADE20K | Semantic-segmentation evaluation | — |
+| DAVIS | Video object segmentation evaluation | — |
+| ImageNet-1k | Linear-probe and zero-shot classification evaluation | ImageNet |
+| Cityscapes | Semantic-segmentation evaluation | Cityscapes |
+| Pascal VOC 2012 | Semantic-segmentation evaluation | Pascal VOC |
+| NYUv2 | Monocular-depth evaluation | NYUv2 |
+| KITTI | Monocular-depth evaluation | KITTI |
+| ObjectNet | Out-of-distribution classification evaluation | ObjectNet |
+| Oxford and Paris Revisited | Landmark-retrieval evaluation | Revisiting Oxford and Paris |
+| Met Dataset | Artwork instance-retrieval evaluation | The Met Dataset |
+| AmsterTime | Historical image instance-retrieval evaluation | AmsterTime |
+| SatLidar1M | Satellite canopy-height estimation training and evaluation | DINOv3 |
+| Open-Canopy | National-scale canopy-height evaluation | Open-Canopy |
+| GEO-Bench | Earth-observation classification and segmentation evaluation | GEO-Bench |
+| LoveDA | Geospatial semantic-segmentation evaluation | LoveDA |
+| iSAID | Aerial instance-segmentation evaluation | iSAID |
+| DIOR | Aerial object-detection evaluation | DIOR |
+
 ### Hidden Assumptions
 
 1. The Gram matrix of an early (200k-iteration) model checkpoint faithfully captures the *correct* inter-patch similarity structure, rather than one that is simply different from the later model.

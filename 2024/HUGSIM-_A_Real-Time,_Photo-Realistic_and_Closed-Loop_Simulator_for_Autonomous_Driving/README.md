@@ -177,26 +177,26 @@ where $NC$ = no collision, $DAC$ = drivable area compliance (driving policy item
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| KITTI | per-scene reconstruction training |
-| Virtual KITTI 2 | per-scene reconstruction training |
-| KITTI-360 | per-scene reconstruction training |
-| Waymo Open Dataset | per-scene reconstruction training |
-| nuScenes | per-scene reconstruction training |
-| PandaSet | per-scene reconstruction training |
-| 3DRealCar | vehicle-asset insertion. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| KITTI | per-scene reconstruction training | — |
+| Virtual KITTI 2 | per-scene reconstruction training | — |
+| KITTI-360 | per-scene reconstruction training | — |
+| Waymo Open Dataset | per-scene reconstruction training | — |
+| nuScenes | per-scene reconstruction training | — |
+| PandaSet | per-scene reconstruction training | — |
+| 3DRealCar | vehicle-asset insertion. | 3DRealCar |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| KITTI | novel-view synthesis |
-| Virtual KITTI 2 | novel-view synthesis |
-| KITTI-360 | novel-view synthesis and closed-loop simulation |
-| Waymo Open Dataset | extrapolated-view and closed-loop simulation |
-| nuScenes | extrapolated-view and closed-loop simulation |
-| PandaSet | closed-loop simulation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| KITTI | novel-view synthesis | — |
+| Virtual KITTI 2 | novel-view synthesis | — |
+| KITTI-360 | novel-view synthesis and closed-loop simulation | — |
+| Waymo Open Dataset | extrapolated-view and closed-loop simulation | — |
+| nuScenes | extrapolated-view and closed-loop simulation | — |
+| PandaSet | closed-loop simulation. | — |
 
 ### Hidden Assumptions
 

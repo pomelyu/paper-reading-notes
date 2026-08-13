@@ -164,18 +164,18 @@ with $\lambda_{SSIM} = 0.2$ , $\lambda_{vol}$ dataset-dependent (0.00002–0.000
 
 #### Train Data
 
-| Name | Usage |
-|---|---|
-| None stated | ObjectGS is optimized independently for each reconstructed scene. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| None stated | ObjectGS is optimized independently for each reconstructed scene. | — |
 
 #### Evaluation/Validation Data
 
-| Name | Usage |
-|---|---|
-| LERF-Mask | open-vocabulary segmentation |
-| 3DOVS | open-vocabulary segmentation |
-| Replica | panoptic segmentation |
-| ScanNet++ | panoptic segmentation and 3D segmentation. |
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| LERF-Mask | open-vocabulary segmentation | Gaussian Grouping |
+| 3D-OVS | open-vocabulary segmentation | 3D-OVS |
+| Replica | panoptic segmentation | — |
+| ScanNet++ | panoptic segmentation and 3D segmentation. | — |
 
 ### Hidden Assumptions
 
