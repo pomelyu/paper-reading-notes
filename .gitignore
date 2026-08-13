@@ -159,6 +159,9 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Local MCP knowledge-graph cache. Markdown files are the versioned source of truth.
+.aim/*.jsonl
+
 # IPython
 profile_default/
 ipython_config.py

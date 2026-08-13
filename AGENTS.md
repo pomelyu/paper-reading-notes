@@ -12,4 +12,5 @@ This repository stores structured notes for research papers.
   Evaluation/Validation Data` sections, each with `Name` and `Usage` columns,
   immediately after `### Method / Approach` and before `### Key Results`. Use
   the source paper, use canonical dataset names, and run
-  `python3 scripts/sync_knowledge_graph.py` after changing paper metadata.
+  `python3 .agents/skills/update-graph/scripts/sync_knowledge_graph.py` after
+  changing paper metadata.

@@ -1,233 +1,118 @@
 ---
 name: update-graph
 description: >
-  Incrementally update the MCP knowledge graph when paper notes are added or
-  changed. Only processes changed files (detected via git), not the entire repo.
-  Also regenerates KNOWLEDGE_GRAPH.md. Use when the user says "update graph",
-  "rebuild graph", "sync knowledge graph", or after adding a new paper note.
-  Supports `--full` flag to force a full rebuild.
+  Rebuild or incrementally synchronize the paper knowledge graph, dataset
+  catalog, term usage index, and missing-source list from Markdown notes.
 ---
 
 # Update Knowledge Graph Skill
 
-You are incrementally updating the paper knowledge graph. The key principle
-is: **only read and process what has changed**, then patch the existing graph.
+Use this skill when the user asks to update, rebuild, or sync the knowledge
+graph. Markdown is authoritative; the local MCP `.aim` JSONL is a disposable
+cache and must never be used as the source for rebuilding the graph.
 
----
+## Source schema
 
-## Step 1 — Determine update scope
+Each sourced paper note (`20*/*/resources/paper.md` exists) must have a
+`### Datasets` section in Pass 3, immediately after `### Detailed Technical
+Summary` and before `### Hidden Assumptions`. It must contain these two
+subsections:
 
-Check if the user passed `--full`. If so, skip to **Full Rebuild** below.
+```markdown
+#### Train Data
 
-Otherwise, detect which paper notes changed by running:
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Dataset A | purpose | Paper abbreviation or — |
+
+#### Evaluation/Validation Data
+
+| Dataset | Usage | Proposed by |
+|---|---|---|
+| Dataset C | purpose | Paper abbreviation or — |
+```
+
+`Train Data` covers pretraining, fine-tuning, calibration, synthetic, and
+self-generated data. `Evaluation/Validation Data` covers validation, test,
+and benchmark data. Names before ` — ` are canonical dataset entity names.
+`None stated — reason` creates no dataset relation. A glossary footnote that
+links to `../../common/terms/` creates a `uses_term` relation.
+
+`Proposed by` names the paper that originally introduced the dataset. Use the
+repository's canonical paper abbreviation when that paper has a note; use a
+recognizable paper title for an external work, and `—` only when the origin is
+not established by the reviewed source. Repeated uses of the same dataset must
+agree on this value.
+
+## Step 1 — Determine scope
+
+For a normal incremental update, inspect changed `20*/*/README.md`,
+`common/terms/README.md`, and `resources/paper.md` files with git. If a paper
+has no `resources/paper.md`, add it to `missing_paper.md`; do not infer or
+backfill its dataset fields. Use full rebuild when requested with `--full`,
+when the MCP cache is empty, or after changing the schema.
+
+## Step 2 — Validate and generate repository views
+
+Run:
 
 ```bash
-git diff --name-only HEAD~1 -- '20*/*/README.md'
+python3 .agents/skills/update-graph/scripts/sync_knowledge_graph.py
 ```
 
-If this returns nothing (e.g., no recent commits), also check for unstaged
-or untracked paper notes:
+The command fails if any sourced note lacks either required dataset field. It
+regenerates:
 
-```bash
-git diff --name-only -- '20*/*/README.md'
-git ls-files --others --exclude-standard -- '20*/*/README.md'
+- `common/datasets.md` — public canonical dataset index and paper usage;
+  internal datasets remain in paper metadata and the MCP graph but are omitted.
+- `missing_paper.md` — notes without `resources/paper.md`.
+- marked Dataset and Term Usage sections of `KNOWLEDGE_GRAPH.md`.
+
+Review its output before patching MCP state.
+
+## Step 3 — Synchronize MCP cache
+
+The configured `mcp-knowledge-graph` v1.3.2 server exposes these tool names:
+
+- `aim_memory_read_all`
+- `aim_memory_store`
+- `aim_memory_add_facts`
+- `aim_memory_link`
+- `aim_memory_search`
+- `aim_memory_get`
+- `aim_memory_forget`
+- `aim_memory_unlink`
+
+Use the project-local default store. For each paper, upsert a `paper` entity
+with title, year, authors, venue, keywords, path, and `Has note: true`. Upsert
+each glossary term as `term` and each canonical catalog entry as `dataset`.
+
+Create only missing directed relations:
+
+```text
+paper -[builds_on|competes_with|succeeded_by]-> paper
+paper -[trains_on]-> dataset
+paper -[evaluates_on]-> dataset
+paper -[uses_term]-> term
 ```
 
-Combine the results into a **changed file list**. If the list is empty,
-tell the user "Knowledge graph is already up to date — no paper notes have
-changed." and stop.
+Extract paper-to-paper edges only from the three `Comparison Papers` tables.
+Extract datasets only from the two data sections. Extract terms only from
+glossary-linked footnotes. For a full rebuild, clear the project cache with
+`aim_memory_forget`, then recreate every entity and relation from Markdown.
 
-If this is the **first time running** (i.e., `aim_read_graph` returns an
-empty graph with no entities), automatically switch to Full Rebuild mode.
+## Step 4 — Regenerate and report
 
----
+Run `python3 .agents/skills/update-graph/scripts/sync_knowledge_graph.py`
+once more after cache sync.
+Keep existing paper relationship/topic sections in `KNOWLEDGE_GRAPH.md`; the
+script replaces only its marked derived indexes. Report processed notes,
+datasets and terms created/updated, new relations, and any entries added to
+`missing_paper.md`.
 
-## Step 2 — Read only changed papers
+## Invariants
 
-For each file in the changed list, read the README.md and extract:
-
-- **Title**: the `# ` heading on line 1
-- **Authors**: from `- **Authors:**` line
-- **Year**: from the folder path (e.g., `2024/...` → 2024)
-- **Published**: from `- **Published:**` line
-- **Keywords**: from `- **Keywords:**` line (comma-separated list)
-- **Folder path**: relative path like `2024/Street_Gaussians-.../`
-
----
-
-## Step 3 — Extract relationships from changed papers
-
-If the changed paper has a `### Comparison Papers` section, parse the three
-sub-tables:
-
-- `#### Predecessors` → relation type: `builds_on`
-- `#### Contemporaries / Competitors` → relation type: `competes_with`
-- `#### Successors / Extensions` → relation type: `succeeded_by`
-
-Extract each row's paper name, authors, year, and the "Relation" column
-description.
-
----
-
-## Step 4 — Patch the knowledge graph via MCP
-
-Use the `aim_` prefixed tools from the `knowledge-graph` MCP server.
-
-### 4a. Read current graph state
-
-Call `aim_read_graph` to get existing entities and relations.
-
-### 4b. Upsert the changed paper entity
-
-For each changed paper, check if an entity with that name already exists:
-
-- **If it exists**: call `aim_add_observations` to update/add any changed
-  observations. If observations need correction, call
-  `aim_delete_observations` first for the stale ones, then add new ones.
-- **If it doesn't exist**: call `aim_create_entities`:
-  ```json
-  {
-    "name": "<paper title>",
-    "entityType": "paper",
-    "observations": [
-      "Year: <year>",
-      "Authors: <authors>",
-      "Published: <venue>",
-      "Keywords: <keyword1>, <keyword2>, ...",
-      "Path: <folder path>",
-      "Has note: true"
-    ]
-  }
-  ```
-
-### 4c. Upsert referenced papers (lightweight entities)
-
-For papers in the comparison tables that do NOT already exist in the graph
-AND do not have their own note in the repo:
-
-```json
-{
-  "name": "<paper title>",
-  "entityType": "paper",
-  "observations": [
-    "Year: <year>",
-    "Has note: false",
-    "Referenced by: <referencing paper title>"
-  ]
-}
-```
-
-Skip creating these if they already exist in the graph.
-
-### 4d. Upsert relations
-
-For each relationship from the comparison tables, check if the relation
-already exists in the graph. Only call `aim_create_relations` for **new**
-relations that don't already exist.
-
-```json
-{
-  "from": "<paper A title>",
-  "to": "<paper B title>",
-  "relationType": "builds_on | competes_with | succeeded_by"
-}
-```
-
-### 4e. Update topic clusters
-
-Check if the changed paper's keywords match existing topic entities. If so,
-add `belongs_to` relations. If a new topic emerges (2+ papers share a theme
-not yet captured), create a topic entity:
-
-```json
-{
-  "name": "<topic name>",
-  "entityType": "topic",
-  "observations": ["Papers: <paper1>, <paper2>, ..."]
-}
-```
-
-Major topics to recognize:
-- "3D Gaussian Splatting"
-- "Segmentation / Foundation Models"
-- "Autonomous Driving"
-- "Language Fields / Open-Vocabulary"
-- "Dynamic Scenes"
-
----
-
-## Step 5 — Regenerate KNOWLEDGE_GRAPH.md
-
-After patching the graph, call `aim_read_graph` to get the **full** current
-state, then regenerate `KNOWLEDGE_GRAPH.md` at the repo root.
-
-### 5a. Mermaid diagram
-
-Generate a `graph TD` diagram from the full graph:
-- Paper nodes use short names (not full titles), labeled with year
-- Edges labeled with relation type
-- Group papers into subgraphs by topic cluster
-- Color-code by year using `classDef`
-
-```mermaid
-graph TD
-    classDef y2023 fill:#f9d71c,stroke:#333
-    classDef y2024 fill:#87ceeb,stroke:#333
-    classDef y2025 fill:#98fb98,stroke:#333
-
-    SAM["SAM<br/>2023"]:::y2023
-    SAM2["SAM 2<br/>2024"]:::y2024
-    SAM -->|builds_on| SAM2
-
-    subgraph Language Fields
-        LS["LangSplat<br/>2023"]:::y2023
-        LSV2["LangSplatV2<br/>2025"]:::y2025
-    end
-```
-
-### 5b. Paper index table
-
-| Paper | Year | Keywords | Related Papers |
-|---|---|---|---|
-
-### 5c. Topic clusters
-
-For each topic, list member papers and their key relationships.
-
----
-
-## Step 6 — Report
-
-Output a brief summary:
-- Which papers were processed (list the changed ones)
-- How many entities created vs. updated
-- How many new relations added
-- Any new topic clusters
-
----
-
-## Full Rebuild mode (`--full`)
-
-When triggered by `--full` flag or first-time run:
-
-1. Use Glob to find ALL `20*/*/README.md` files
-2. Call `aim_read_graph` — if entities exist, delete them all with
-   `aim_delete_entities` to start fresh
-3. Read every paper README and extract metadata + relationships
-4. Create all entities, relations, and topic clusters from scratch
-5. Generate `KNOWLEDGE_GRAPH.md`
-6. Report total counts
-
----
-
-## Notes
-
-- **Incremental by default**: only reads changed files, only creates
-  missing entities/relations. This keeps the skill fast.
-- **Idempotent**: running multiple times without changes does nothing.
-- **`--full` for recovery**: if the graph gets out of sync, use
-  `/update-graph --full` to rebuild from scratch.
-- If `aim_` tools are not available, the MCP server hasn't loaded yet.
-  Still generate `KNOWLEDGE_GRAPH.md` from file reads and tell the user
-  to restart Codex CLI, then run the `update-graph` skill again.
-- Batch MCP calls where possible (up to 10 entities per call).
+- Do not version ` .aim/*.jsonl`; versioned Markdown fully reconstructs it.
+- Do not use `KNOWLEDGE_GRAPH.md` as a rebuild input.
+- The workflow is idempotent: a second run must not duplicate catalog rows or
+  MCP relations.
