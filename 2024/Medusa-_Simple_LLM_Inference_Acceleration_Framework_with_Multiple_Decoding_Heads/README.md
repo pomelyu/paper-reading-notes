@@ -212,7 +212,7 @@ Yes — Medusa is a widely-cited, adopted milestone. Its central claims held up:
 | Accelerating LLM Decoding with Speculative Sampling | Chen et al. | 2023 | Parallel speculative sampling; the draft-model serving pain Medusa removes (baseline) |
 | SpecInfer: Tree-based Speculative Inference | Miao et al. | 2023 | Tree-of-candidates verification (bottom-up); Medusa uses a top-down head-driven tree |
 | Truncation Sampling as Language Model Desmoothing | Hewitt et al. | 2022 | Basis for the typical-acceptance threshold |
-| QLoRA: Efficient Finetuning of Quantized LLMs | Dettmers et al. | 2023 | Quantized single-GPU training enabling cheap head training |
+| [QLoRA: Efficient Finetuning of Quantized LLMs](../../2023/QLoRA-_Efficient_Finetuning_of_Quantized_LLMs/) | Dettmers et al. | 2023 | Quantized single-GPU training enabling cheap head training |
 | [Efficient Memory Management for LLM Serving with PagedAttention (vLLM)](../../2023/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention/) | Kwon et al. | 2023 | Serving-system context (KV-cache mgmt) into which Medusa integrates |
 
 #### Contemporaries / Competitors

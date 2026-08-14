@@ -13,7 +13,8 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | 7Scenes | — | DUSt3R, VGGT-Ω | — |
 | ADE20K | — | DINOv3 | — |
 | AFHQv2 Cats | — | Live 3D Portrait | StarGAN v2 |
-| Alpaca | — | vLLM | — |
+| AI2 Reasoning Challenge | — | QLoRA | AI2 Reasoning Challenge |
+| Alpaca | QLoRA | vLLM | Stanford Alpaca |
 | AlpacaEval | — | Medusa | AlpacaEval |
 | AmsterTime | — | DINOv3 | AmsterTime |
 | Aria Digital Twin | VGGT | — | — |
@@ -30,11 +31,13 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | C4 | — | AQLM | — |
 | Cambridge Landmarks | — | DUSt3R | — |
 | CC-595K | LLaVA | — | LLaVA |
+| Chip2 | QLoRA | — | Open Instruction Generalist |
 | Cityscapes | — | DINOv3 | Cityscapes |
 | CMU Panoptic Studio | — | Dynamic 3D Gaussians | — |
 | Co3D-v2 | DUSt3R, VGGT, VGGT-Ω | DUSt3R, VGGT | — |
 | COCO | — | AWQ, DINOv3, SAM | — |
 | COCO 2017 | DETR, YOLOv10 | DETR, YOLOv10 | — |
+| CrowS-Pairs | — | QLoRA | CrowS-Pairs |
 | D-NeRF | 4DGS | 4DGS | D-NeRF |
 | DAVIS | DEVA | DINOv3, SAM2 | — |
 | DAVIS-16/17 | — | DEVA | — |
@@ -53,12 +56,16 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | ETH3D | — | DUSt3R, VGGT, VGGT-Ω | — |
 | EuRoC | — | MonoGS | — |
 | FFHQ | — | Live 3D Portrait | — |
+| FLAN v2 | QLoRA | — | The FLAN Collection |
 | FlyingThings3D | — | VGGT | — |
 | GEO-Bench | — | DINOv3 | GEO-Bench |
+| GLUE | QLoRA | QLoRA | GLUE |
 | GSM8K | — | AWQ | — |
 | GSO | — | VGGT | — |
 | H3DS | — | Live 3D Portrait | H3DS |
 | Habitat | DUSt3R, VGGT, VGGT-Ω | — | — |
+| HellaSwag | — | QLoRA | HellaSwag |
+| HH-RLHF | QLoRA | — | Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback |
 | Horizon Robotics driving data | RAD | — | — |
 | HOT3D | VGGT-Ω | — | — |
 | HyperNeRF | 4D LangSplat, 4DGS | 4D LangSplat, 4DGS | HyperNeRF |
@@ -77,6 +84,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | LLaVA-Instruct | DriveVLM | — | LLaVA |
 | LLaVA-Instruct-158K | LLaVA | — | LLaVA |
 | LLFF | — | Gaussian Grouping | LLFF |
+| LongForm | QLoRA | — | LongForm |
 | LoveDA | — | DINOv3 | LoveDA |
 | LVD-1689M | DINOv3 | — | DINOv3 |
 | LVIS | — | SAM | — |
@@ -91,6 +99,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | Met Dataset | — | DINOv3 | The Met Dataset |
 | Mid-Air | VGGT-Ω | — | — |
 | Mip-NeRF360 | 2DGS, Gaussian Grouping, Scaffold-GS | 2DGS, LangSplatV2, Scaffold-GS | — |
+| MMLU | — | QLoRA | Measuring Massive Multitask Language Understanding |
 | MOSE | — | SAM2 | — |
 | MPSD | VGGT-Ω | — | — |
 | MT-Bench | — | Medusa | — |
@@ -103,10 +112,12 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | nuScenes-QA | OpenDriveVLA | OpenDriveVLA | nuScenes-QA |
 | nuX | OpenDriveVLA | OpenDriveVLA | Hint-AD |
 | NYUv2 | — | DINOv3, DUSt3R | NYUv2 |
+| OASST1 | QLoRA | — | OpenAssistant Conversations |
 | ObjectNet | — | DINOv3 | ObjectNet |
 | Occ3D-nuScenes | FlashOcc | FlashOcc | Occ3D |
 | Open Images | — | SAM | — |
 | Open-Canopy | — | DINOv3 | Open-Canopy |
+| OpenAssistant validation benchmark | — | QLoRA | OpenAssistant Conversations |
 | OVIS | DEVA | — | — |
 | Oxford and Paris Revisited | — | DINOv3 | Revisiting Oxford and Paris |
 | PandaSet | HUGSIM | HUGSIM | — |
@@ -114,6 +125,8 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | Particle-NeRF dataset | — | Dynamic 3D Gaussians | — |
 | Pascal VOC 2012 | — | DINOv3, SAM | Pascal VOC |
 | Penn Treebank | — | AQLM | — |
+| Pile Common Crawl | — | QLoRA | The Pile |
+| PIQA | — | QLoRA | PIQA |
 | PointOdyssey | VGGT | — | — |
 | RealEstate10K | — | DUSt3R, VGGT | — |
 | RedPajama-v1 | AQLM | — | — |
@@ -131,10 +144,12 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | ScanNet-1500 | — | VGGT | — |
 | ScienceQA | LLaVA | LLaVA | ScienceQA |
 | self-captured sequences | — | MonoGS | — |
+| Self-Instruct | QLoRA | — | Self-Instruct |
 | ShareGPT | Medusa | vLLM | — |
 | Sintel | — | VGGT, VGGT-Ω | — |
 | Static Scenes 3D | DUSt3R | — | — |
 | SUP-AD | DriveVLM | DriveVLM | DriveVLM |
+| Super-NaturalInstructions | QLoRA | QLoRA | Super-NaturalInstructions |
 | SUTD-TrafficQA | DriveVLM | — | SUTD-TrafficQA |
 | Synthetic Blender | — | Scaffold-GS | — |
 | Talk2Car | DriveVLM | — | Talk2Car |
@@ -148,8 +163,9 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | TUM-Dynamic | — | VGGT-Ω | — |
 | uCO3D | VGGT-Ω | — | — |
 | UltraChat | Medusa | — | UltraChat |
+| Unnatural Instructions | QLoRA | — | Unnatural Instructions |
 | UnrealStereo4K | VGGT-Ω | — | — |
-| Vicuna benchmark | — | AWQ | — |
+| Vicuna benchmark | — | AWQ, QLoRA | Vicuna |
 | VIPSeg | — | DEVA | — |
 | Virtual KITTI | VGGT, VGGT-Ω | — | — |
 | Virtual KITTI 2 | HUGSIM | HUGSIM | — |
@@ -158,6 +174,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | WikiText-2 | — | AQLM, AWQ | — |
 | WildRGB | VGGT | — | — |
 | WildRGBD | VGGT-Ω | — | — |
+| WinoGrande | — | QLoRA | WinoGrande |
 | YouTube-VIS | — | DEVA | — |
 | YouTube-VOS | DEVA | SAM2 | — |
 | ZeroShotTasks | — | AQLM | — |

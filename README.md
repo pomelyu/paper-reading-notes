@@ -113,6 +113,12 @@
       <li>The input scaling can be fused into the previous layer, typically LayerNorm, making the operation free.</li>
     </ul>
   </details></li>
+  <li><details><summary><a href="2023/QLoRA-_Efficient_Finetuning_of_Quantized_LLMs/">(QLoRA) QLoRA: Efficient Finetuning of Quantized LLMs</a></summary>
+    <ul>
+      <li>Fine-tunes LoRA adapters over a frozen 4-bit NF4 base model while retaining bfloat16 computation.</li>
+      <li>Reduces 65B fine-tuning memory from more than 780 GB to less than 48 GB using double quantization and paged optimizers.</li>
+    </ul>
+  </details></li>
 </ul>
 
 ### 2022
