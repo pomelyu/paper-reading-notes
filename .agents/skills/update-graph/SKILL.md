@@ -2,7 +2,7 @@
 name: update-graph
 description: >
   Rebuild or incrementally synchronize the paper knowledge graph, dataset
-  catalog, term usage index, and missing-source list from Markdown notes.
+  catalog, and term usage index from Markdown notes.
 ---
 
 # Update Knowledge Graph Skill
@@ -47,10 +47,9 @@ agree on this value.
 ## Step 1 — Determine scope
 
 For a normal incremental update, inspect changed `20*/*/README.md`,
-`common/terms/README.md`, and `resources/paper.md` files with git. If a paper
-has no `resources/paper.md`, add it to `missing_paper.md`; do not infer or
-backfill its dataset fields. Use full rebuild when requested with `--full`,
-when the MCP cache is empty, or after changing the schema.
+`common/terms/README.md`, and `resources/paper.md` files with git. Use full
+rebuild when requested with `--full`, when the MCP cache is empty, or after
+changing the schema.
 
 ## Step 2 — Validate and generate repository views
 
@@ -65,7 +64,6 @@ regenerates:
 
 - `common/datasets.md` — public canonical dataset index and paper usage;
   internal datasets remain in paper metadata and the MCP graph but are omitted.
-- `missing_paper.md` — notes without `resources/paper.md`.
 - marked Dataset and Term Usage sections of `KNOWLEDGE_GRAPH.md`.
 
 Review its output before patching MCP state.
@@ -107,12 +105,11 @@ Run `python3 .agents/skills/update-graph/scripts/sync_knowledge_graph.py`
 once more after cache sync.
 Keep existing paper relationship/topic sections in `KNOWLEDGE_GRAPH.md`; the
 script replaces only its marked derived indexes. Report processed notes,
-datasets and terms created/updated, new relations, and any entries added to
-`missing_paper.md`.
+datasets and terms created or updated, and new relations.
 
 ## Invariants
 
-- Do not version ` .aim/*.jsonl`; versioned Markdown fully reconstructs it.
+- Do not version `.aim/*.jsonl`; versioned Markdown fully reconstructs it.
 - Do not use `KNOWLEDGE_GRAPH.md` as a rebuild input.
 - The workflow is idempotent: a second run must not duplicate catalog rows or
   MCP relations.

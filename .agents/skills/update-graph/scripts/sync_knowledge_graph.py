@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate dataset, missing-source, and derived graph indexes from Markdown.
+"""Regenerate dataset and derived graph indexes from Markdown.
 
 Paper README metadata and glossary footnotes are the source of truth. This
 script deliberately never reads or writes the local MCP `.aim` cache.
@@ -115,14 +115,11 @@ def paper_short_names() -> dict[str, str]:
 def main() -> None:
     train, evaluation, proposed_by, term_usage = defaultdict(set), defaultdict(set), defaultdict(set), defaultdict(set)
     short_names = paper_short_names()
-    missing = []
     checked = 0
     for readme in sorted(ROOT.glob(NOTE_GLOB)):
         title, fields, terms = title_and_fields(readme)
         source = readme.parent / "resources/paper.md"
-        if not source.exists():
-            missing.append((title, readme.parent.relative_to(ROOT)))
-        else:
+        if source.exists():
             checked += 1
             if set(fields) != {"Train Data", "Evaluation/Validation Data"}:
                 raise SystemExit(f"Missing standardized dataset fields: {readme.relative_to(ROOT)}")
@@ -160,15 +157,6 @@ def main() -> None:
         )
     (ROOT / "common/datasets.md").write_text("\n".join(dataset_lines) + "\n")
 
-    missing_lines = [
-        "# Papers Missing Source Markdown", "",
-        "These notes have no `resources/paper.md`; their dataset metadata is not backfilled or inferred until the source paper is available.", "",
-        "| Paper | Note path |", "|---|---|",
-    ]
-    for title, path in missing:
-        missing_lines.append(f"| {title} | `{path}/` |")
-    (ROOT / "missing_paper.md").write_text("\n".join(missing_lines) + "\n")
-
     graph_datasets = ["## Dataset Index", "", "| Dataset | Train Data papers | Evaluation/Validation papers | Proposed by |", "|---|---|---|---|"]
     for dataset in all_datasets:
         graph_datasets.append(f"| {dataset} | {', '.join(sorted(train[dataset])) or '—'} | {', '.join(sorted(evaluation[dataset])) or '—'} | {', '.join(sorted(proposed_by[dataset])) or '—'} |")
@@ -181,7 +169,7 @@ def main() -> None:
     print(
         f"validated {checked} sourced notes; generated {len(all_datasets)} datasets "
         f"({sum(bool(proposed_by[name]) for name in all_datasets)} with known proposers), "
-        f"{len(missing)} missing-source entries, and {len(term_usage)} terms"
+        f"and {len(term_usage)} terms"
     )
 
 
