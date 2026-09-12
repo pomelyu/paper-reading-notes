@@ -5,6 +5,7 @@
 
 ### 2026
 <ul>
+  <li><a href="2026/NoRD-_A_Data-Efficient_Vision-Language-Action_Model_that_Drives_without_Reasoning/">(NoRD) NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning</a></li>
   <li><details><summary><a href="2026/OpenDriveVLA-_Towards_End-to-end_Autonomous_Driving_with_Large_Vision_Language_Action_Model/">(OpenDriveVLA) OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model</a></summary>
     <ul>
       <li>receive multi-view images and ego state as input and predict car trajector.</li>

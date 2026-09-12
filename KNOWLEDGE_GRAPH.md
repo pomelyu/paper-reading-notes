@@ -570,6 +570,7 @@ graph TD
 | MPSD | VGGT-Ω | — | — |
 | MT-Bench | — | Medusa | — |
 | MVS-Synth | VGGT, VGGT-Ω | — | DeepMVS |
+| NAVSIM | NoRD | NoRD | NAVSIM |
 | Neu3D | 4D LangSplat | 4D LangSplat | Neu3D |
 | NRGBD | — | VGGT-Ω | — |
 | nuCaption | OpenDriveVLA | OpenDriveVLA | LiDAR-LLM |
@@ -637,6 +638,7 @@ graph TD
 | Virtual KITTI 2 | HUGSIM | HUGSIM | — |
 | VR-NeRF | — | Scaffold-GS | — |
 | Waymo Open Dataset | DUSt3R, HUGSIM, Street Gaussians, VGGT-Ω | BEVFormer, HUGSIM, Street Gaussians | Waymo Open Dataset |
+| Waymo Vision-Based End-to-End Driving Dataset (WaymoE2E) | NoRD | NoRD | Waymo Vision-Based End-to-End Driving Dataset |
 | WikiText-2 | — | AQLM, AWQ | — |
 | WildRGB | VGGT | — | — |
 | WildRGBD | VGGT-Ω | — | — |
@@ -657,7 +659,7 @@ Only glossary-linked footnotes create `uses_term` relationships.
 | BA | VGGT: Visual Geometry Grounded Transformer |
 | Beam search | Efficient Memory Management for Large Language Model Serving with PagedAttention |
 | BEV | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin, Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, Planning-oriented Autonomous Driving |
-| CoT | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models |
+| CoT | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning |
 | DETR | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, Planning-oriented Autonomous Driving, YOLOv10: Real-Time End-to-End Object Detection |
 | DPT | DINOv3, DUSt3R: Geometric 3D Vision Made Easy, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
 | FFN | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DINOv3, End-to-End Object Detection with Transformers, VGGT-Ω, YOLOv10: Real-Time End-to-End Object Detection |
@@ -681,7 +683,7 @@ Only glossary-linked footnotes create `uses_term` relationships.
 | RTN | AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration |
 | SLAM | Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis, Gaussian Splatting SLAM, ObjectGS: Object-aware Scene Reconstruction and Scene Understanding via Gaussian Splatting, VGGT: Visual Geometry Grounded Transformer, Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025) |
 | Speculative decoding | Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads |
-| VLA | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
+| VLA | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
 | VLM | DINOv3, GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation, LangSplat: 3D Language Gaussian Splatting, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, VGGT-Ω, Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025), Visual Instruction Tuning |
 | VQA | OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model |
 <!-- TERM_USAGE_INDEX:END -->
