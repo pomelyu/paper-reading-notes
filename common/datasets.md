@@ -104,6 +104,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | MPSD | VGGT-Ω | — | — |
 | MT-Bench | — | Medusa | — |
 | MVS-Synth | VGGT, VGGT-Ω | — | DeepMVS |
+| NAVSIM | NoRD | NoRD | NAVSIM |
 | Neu3D | 4D LangSplat | 4D LangSplat | Neu3D |
 | NRGBD | — | VGGT-Ω | — |
 | nuCaption | OpenDriveVLA | OpenDriveVLA | LiDAR-LLM |
@@ -171,6 +172,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | Virtual KITTI 2 | HUGSIM | HUGSIM | — |
 | VR-NeRF | — | Scaffold-GS | — |
 | Waymo Open Dataset | DUSt3R, HUGSIM, Street Gaussians, VGGT-Ω | BEVFormer, HUGSIM, Street Gaussians | Waymo Open Dataset |
+| Waymo Vision-Based End-to-End Driving Dataset (WaymoE2E) | NoRD | NoRD | Waymo Vision-Based End-to-End Driving Dataset |
 | WikiText-2 | — | AQLM, AWQ | — |
 | WildRGB | VGGT | — | — |
 | WildRGBD | VGGT-Ω | — | — |

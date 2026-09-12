@@ -5,6 +5,12 @@
 
 ### 2026
 <ul>
+  <li><details><summary><a href="2026/NoRD-_A_Data-Efficient_Vision-Language-Action_Model_that_Drives_without_Reasoning/">(NoRD) NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning</a></summary>
+    <ul>
+      <li>Perform SFT and RL-training on Qwen2.5-VL-3B with limited data without Chain-of-Thought(CoT), i.e. predict trajectory from the multi-view images, ego history and navigation command</li>
+      <li>Proof that GRPO(a RL-training stratgy) doesn't perform if the dataset is small and the model is weak. Dr. GRPO is a better choice under this circumstance.</li>
+    </ul>
+  </details></li>
   <li><details><summary><a href="2026/OpenDriveVLA-_Towards_End-to-end_Autonomous_Driving_with_Large_Vision_Language_Action_Model/">(OpenDriveVLA) OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model</a></summary>
     <ul>
       <li>receive multi-view images and ego state as input and predict car trajector.</li>
