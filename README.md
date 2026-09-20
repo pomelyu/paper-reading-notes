@@ -103,7 +103,12 @@
   <li><a href="2023/LangSplat-_3D_Language_Gaussian_Splatting/">(LangSplat) LangSplat: 3D Language Gaussian Splatting</a></li>
   <li><a href="2023/Tracking_Anything_with_Decoupled_Video_Segmentation/">(DEVA) Tracking Anything with Decoupled Video Segmentation</a></li>
   <li><a href="2023/Gaussian_Grouping-_Segment_and_Edit_Anything_in_3D_Scenes/">(Gaussian Grouping) Gaussian Grouping: Segment and Edit Anything in 3D Scenes</a></li>
-  <li><a href="2023/Visual_Instruction_Tuning/">(LLaVA) Visual Instruction Tuning</a></li>
+  <li><details><summary><a href="2023/Visual_Instruction_Tuning/">(LLaVA) Visual Instruction Tuning</a></summary>
+    <ul>
+      <li>The first model to extend the instruction-tuning paradigm from NLP to multimodal vision-language tasks, moving beyond prior VLMs that primarily focused on image understanding and retrieval.</li>
+      <li>The core insight is that a text-only LLM can generate diverse, high-quality vision-language instruction data by consuming image captions and bounding boxes as symbolic proxies for the visual content, eliminating the need for human annotators.</li>
+    </ul>
+  </details></li>
   <li><details><summary><a href="2023/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention/">(vLLM)(PageAttention) Efficient Memory Management for Large Language Model Serving with PagedAttention</a></summary>
     <ul>
       <li>Complete inference system (vLLM) built on top of PagedAttention</li>
