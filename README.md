@@ -42,6 +42,13 @@
       <li>Backbone for downstream tasks, such as feed-forward NVS and dynamic point tracking</li>
     </ul>
   </details></li>
+  <li><details><summary><a href="2025/Towards_Efficient_and_Effective_Multi-Camera_Encoding_for_End-to-End_Driving/">(Flex) Towards Efficient and Effective Multi-Camera Encoding for End-to-End Driving</a></summary>
+    <ul>
+      <li>Use a query-based transformer scene encoder to compress all image tokens across different cameras and timestamps with minimum geometry-specific priors</li>
+      <li>Achive 2.2x greater inference throughput while improve performance compared to triplane solution(Efficient multi-camera tokenization with triplanes)</li>
+      <li>Both image encoder and LLM are finetuned with scene encoder</li>
+    </ul>
+  </details></li>
 </ul>
 
 ### 2024

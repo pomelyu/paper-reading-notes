@@ -535,7 +535,9 @@ graph TD
 | HyperSim | VGGT, VGGT-Ω | — | — |
 | ImageNet-1k | DINOv3 | DINOv3 | ImageNet |
 | Instruct-NeRF2NeRF | — | Gaussian Grouping | Instruct-NeRF2NeRF |
+| Internal 20,000-hour multi-country driving dataset | Flex | Flex | — |
 | internal annotated video collection | VGGT-Ω | — | — |
+| Internal geographically separated holdout | — | Flex | — |
 | internal Objaverse-like dataset | VGGT | — | — |
 | internal unlabeled video collection | VGGT-Ω | — | — |
 | iSAID | — | DINOv3 | iSAID |
@@ -658,7 +660,7 @@ Only glossary-linked footnotes create `uses_term` relationships.
 | AP | End-to-End Object Detection with Transformers, YOLOv10: Real-Time End-to-End Object Detection |
 | BA | VGGT: Visual Geometry Grounded Transformer |
 | Beam search | Efficient Memory Management for Large Language Model Serving with PagedAttention |
-| BEV | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin, Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, Planning-oriented Autonomous Driving |
+| BEV | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin, Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, Planning-oriented Autonomous Driving, Towards Efficient and Effective Multi-Camera Encoding for End-to-End Driving |
 | CoT | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning |
 | DETR | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, Planning-oriented Autonomous Driving, YOLOv10: Real-Time End-to-End Object Detection |
 | DPT | DINOv3, DUSt3R: Geometric 3D Vision Made Easy, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
@@ -683,7 +685,7 @@ Only glossary-linked footnotes create `uses_term` relationships.
 | RTN | AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration |
 | SLAM | Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis, Gaussian Splatting SLAM, ObjectGS: Object-aware Scene Reconstruction and Scene Understanding via Gaussian Splatting, VGGT: Visual Geometry Grounded Transformer, Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025) |
 | Speculative decoding | Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads |
-| VLA | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
+| VLA | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning, Towards Efficient and Effective Multi-Camera Encoding for End-to-End Driving, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
 | VLM | DINOv3, GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation, LangSplat: 3D Language Gaussian Splatting, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, VGGT-Ω, Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025), Visual Instruction Tuning |
 | VQA | OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model |
 <!-- TERM_USAGE_INDEX:END -->
