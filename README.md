@@ -49,6 +49,14 @@
       <li>Both image encoder and LLM are finetuned with scene encoder</li>
     </ul>
   </details></li>
+  <li><details><summary><a href="2025/Efficient_Multi-Camera_Tokenization_with_Triplanes_for_End-to-End_Driving/">Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving</a></summary>
+    <ul>
+      <li>Use a query-based transformer scene encoder to compress tokens from multi-view cameras into a triplane representation</li>
+      <li>The number of tokens is independent of the number of cameras and the image resolution.</li>
+      <li>Depends on camera calibration, per-timestamp representation</li>
+      <li>Multi-stage training: tokenizer -> tokenizer + LLM</li>
+    </ul>
+  </details></li>
 </ul>
 
 ### 2024

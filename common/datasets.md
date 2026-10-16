@@ -70,7 +70,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | HOT3D | VGGT-Ω | — | — |
 | HyperNeRF | 4D LangSplat, 4DGS | 4D LangSplat, 4DGS | HyperNeRF |
 | HyperSim | VGGT, VGGT-Ω | — | — |
-| ImageNet-1k | DINOv3 | DINOv3 | ImageNet |
+| ImageNet-1k | DINOv3, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving | DINOv3 | ImageNet |
 | Instruct-NeRF2NeRF | — | Gaussian Grouping | Instruct-NeRF2NeRF |
 | iSAID | — | DINOv3 | iSAID |
 | KITTI | HUGSIM | DINOv3, DUSt3R, HUGSIM, Street Gaussians | KITTI |
@@ -109,7 +109,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | NRGBD | — | VGGT-Ω | — |
 | nuCaption | OpenDriveVLA | OpenDriveVLA | LiDAR-LLM |
 | NuInteract | GaussianDWM | GaussianDWM | DriveMonkey |
-| nuScenes | BEVFormer, DETR3D, DriveVLM, GaussianDWM, HUGSIM, LSS, OpenDriveVLA, UniAD | BEVFormer, DETR3D, DriveVLM, GaussianDWM, HUGSIM, LSS, OpenDriveVLA, UniAD | nuScenes |
+| nuScenes | BEVFormer, DETR3D, DriveVLM, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, GaussianDWM, HUGSIM, LSS, OpenDriveVLA, UniAD | BEVFormer, DETR3D, DriveVLM, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, GaussianDWM, HUGSIM, LSS, OpenDriveVLA, UniAD | nuScenes |
 | nuScenes-QA | OpenDriveVLA | OpenDriveVLA | nuScenes-QA |
 | nuX | OpenDriveVLA | OpenDriveVLA | Hint-AD |
 | NYUv2 | — | DINOv3, DUSt3R | NYUv2 |
@@ -171,7 +171,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | Virtual KITTI | VGGT, VGGT-Ω | — | — |
 | Virtual KITTI 2 | HUGSIM | HUGSIM | — |
 | VR-NeRF | — | Scaffold-GS | — |
-| Waymo Open Dataset | DUSt3R, HUGSIM, Street Gaussians, VGGT-Ω | BEVFormer, HUGSIM, Street Gaussians | Waymo Open Dataset |
+| Waymo Open Dataset | DUSt3R, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, HUGSIM, Street Gaussians, VGGT-Ω | BEVFormer, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, HUGSIM, Street Gaussians | Waymo Open Dataset |
 | Waymo Vision-Based End-to-End Driving Dataset (WaymoE2E) | NoRD | NoRD | Waymo Vision-Based End-to-End Driving Dataset |
 | WikiText-2 | — | AQLM, AWQ | — |
 | WildRGB | VGGT | — | — |

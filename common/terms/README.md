@@ -21,6 +21,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | IoU | Intersection over Union | Overlap ratio between predicted and ground-truth boxes (area of intersection / area of union); the standard localization metric and matching criterion in detection. |
 | KV cache | Key-Value cache | Cached attention key/value vectors of all previously processed tokens, reused at every autoregressive decoding step so past tokens need not be recomputed; grows linearly with sequence length and dominates LLM inference memory. |
 | LoRA | Low-Rank Adaptation | Parameter-efficient fine-tuning that freezes the base weights and learns a low-rank update $\Delta W = BA$ per weight matrix; QLoRA adds 4-bit quantization of the frozen base to cut memory further. |
+| LPIPS | Learned Perceptual Image Patch Similarity | Perceptual image-distance metric computed from differences between deep-network features; lower values indicate closer perceptual similarity. |
 | MoE | Mixture of Experts | Architecture where a learned router activates only a few expert FFN sublayers per token, decoupling total parameter count from per-token compute (e.g., Mixtral). |
 | MOT | Multi-Object Tracking | Perception task of detecting objects and maintaining a consistent identity for each across frames; nuScenes reports AMOTA/AMOTP and ID-switches (IDS). |
 | MTL | Multi-Task Learning | Training one shared model on several tasks at once (usually a shared backbone with per-task heads); can share useful features but risks "negative transfer" between conflicting tasks. |
@@ -31,6 +32,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | PAN | Path Aggregation Network | Detector neck that augments an FPN with an extra bottom-up path so low-level localization features reach the top layers faster (PANet, CVPR 2018); the standard neck design in YOLO-family detectors. |
 | Parallel sampling | — | Decoding strategy that generates multiple independent output sequences from the same input prompt (e.g., to offer the user candidates or for self-consistency); the shared prompt lets the samples reuse its KV cache. |
 | PPL | Perplexity | Exponential of the average per-token negative log-likelihood; the standard language-modeling quality metric (lower is better). |
+| PSNR | Peak Signal-to-Noise Ratio | Logarithmic reconstruction-quality metric derived from mean squared error; higher values indicate closer pixel-level agreement. |
 | PTQ | Post-Training Quantization | Compressing a trained model's weights (and possibly activations) to low bit-width without retraining, typically using only a small calibration set. |
 | QAT | Quantization-Aware Training | Training or fine-tuning with simulated quantization in the loop so weights adapt to the quantized representation; more accurate but far more expensive than PTQ. |
 | RLHF | Reinforcement Learning from Human Feedback | Post-training that fine-tunes an LLM against a reward model learned from human preference comparisons (e.g., via PPO); shifts the model's output distribution away from the pretraining/SFT data. |
@@ -38,6 +40,7 @@ Shared abbreviation reference for all paper notes. See individual notes for pape
 | SFT | Supervised Fine-Tuning | Fine-tuning a pretrained LLM on curated instruction/response (or chat) pairs with the standard next-token loss; the usual stage before RLHF. |
 | SLAM | Simultaneous Localization and Mapping | Problem of building a map of an unknown environment while tracking an agent's position within it in real time. |
 | Speculative decoding | — | LLM inference acceleration where a cheap draft model proposes several future tokens that the large target model verifies in one parallel forward pass; accepted tokens (via rejection sampling) preserve the target's output distribution, turning many sequential steps into few parallel ones. |
+| SSIM | Structural Similarity Index Measure | Image-quality metric comparing luminance, contrast, and structure; higher values indicate greater structural similarity. |
 | VLA | Vision-Language-Action model | Robot policy that takes image observations + natural-language instructions as input and outputs low-level actions (e.g., RT-2, OpenVLA). |
 | VLM | Vision-Language Model | Model trained on image-text pairs to align visual and language representations (e.g., CLIP, LLaVA, GPT-4V). |
 | VQA | Visual Question Answering | Task in which a model answers natural-language questions about visual input; driving variants test scene, object, spatial, and decision understanding. |
