@@ -49,6 +49,7 @@
       <li>Both image encoder and LLM are finetuned with scene encoder</li>
     </ul>
   </details></li>
+  <li><a href="2025/Efficient_Multi-Camera_Tokenization_with_Triplanes_for_End-to-End_Driving/">Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving</a></li>
 </ul>
 
 ### 2024
