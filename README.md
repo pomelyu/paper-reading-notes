@@ -57,6 +57,7 @@
       <li>Multi-stage training: tokenizer -> tokenizer + LLM</li>
     </ul>
   </details></li>
+  <li><a href="2025/DSDrive-_Distilling_Large_Language_Model_for_Lightweight_End-to-End_Autonomous_Driving_with_Unified_Reasoning_and_Planning/">(DSDrive) DSDrive: Distilling Large Language Model for Lightweight End-to-End Autonomous Driving with Unified Reasoning and Planning</a></li>
 </ul>
 
 ### 2024

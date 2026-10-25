@@ -537,6 +537,7 @@ graph TD
 | Instruct-NeRF2NeRF | — | Gaussian Grouping | Instruct-NeRF2NeRF |
 | Internal 20,000-hour multi-country driving dataset | Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, Flex | Flex | — |
 | internal annotated video collection | VGGT-Ω | — | — |
+| Internal DSDrive reasoning dataset | DSDrive | — | DSDrive |
 | Internal geographically separated driving holdout | — | Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving | — |
 | Internal geographically separated holdout | — | Flex | — |
 | Internal neural-reconstruction simulator scenarios | — | Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving | — |
@@ -546,6 +547,7 @@ graph TD
 | KITTI | HUGSIM | DINOv3, DUSt3R, HUGSIM, Street Gaussians | KITTI |
 | KITTI-360 | HUGSIM | HUGSIM | — |
 | Kubric | VGGT | — | — |
+| LangAuto | — | DSDrive | LMDrive: Closed-Loop End-to-End Driving with Large Language Models |
 | LERF | LangSplatV2 | LangSplat, LangSplatV2 | LERF |
 | LERF-Mask | — | Gaussian Grouping, ObjectGS | Gaussian Grouping |
 | LIBERO | — | VGGT-Ω | — |
@@ -662,8 +664,8 @@ Only glossary-linked footnotes create `uses_term` relationships.
 | AP | End-to-End Object Detection with Transformers, YOLOv10: Real-Time End-to-End Object Detection |
 | BA | VGGT: Visual Geometry Grounded Transformer |
 | Beam search | Efficient Memory Management for Large Language Model Serving with PagedAttention |
-| BEV | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin, Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, Planning-oriented Autonomous Driving, Towards Efficient and Effective Multi-Camera Encoding for End-to-End Driving |
-| CoT | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning |
+| BEV | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, DSDrive: Distilling Large Language Model for Lightweight End-to-End Autonomous Driving with Unified Reasoning and Planning, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin, Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Implicitly Unprojecting to 3D, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, Planning-oriented Autonomous Driving, Towards Efficient and Effective Multi-Camera Encoding for End-to-End Driving |
+| CoT | DSDrive: Distilling Large Language Model for Lightweight End-to-End Autonomous Driving with Unified Reasoning and Planning, DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning |
 | DETR | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DETR3D: 3D Object Detection from Multi-view Images via 3D-to-2D Queries, Planning-oriented Autonomous Driving, YOLOv10: Real-Time End-to-End Object Detection |
 | DPT | DINOv3, DUSt3R: Geometric 3D Vision Made Easy, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
 | FFN | BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers, DINOv3, End-to-End Object Detection with Transformers, VGGT-Ω, YOLOv10: Real-Time End-to-End Object Detection |
@@ -691,6 +693,6 @@ Only glossary-linked footnotes create `uses_term` relationships.
 | Speculative decoding | Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads |
 | SSIM | Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving |
 | VLA | DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models, Efficient Multi-Camera Tokenization with Triplanes for End-to-End Driving, NoRD: A Data-Efficient Vision-Language-Action Model that Drives without Reasoning, Towards Efficient and Effective Multi-Camera Encoding for End-to-End Driving, VGGT-Ω, VGGT: Visual Geometry Grounded Transformer |
-| VLM | DINOv3, GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation, LangSplat: 3D Language Gaussian Splatting, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, VGGT-Ω, Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025), Visual Instruction Tuning |
+| VLM | DINOv3, DSDrive: Distilling Large Language Model for Lightweight End-to-End Autonomous Driving with Unified Reasoning and Planning, GaussianDWM: 3D Gaussian Driving World Model for Unified Scene Understanding and Multi-Modal Generation, LangSplat: 3D Language Gaussian Splatting, OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model, VGGT-Ω, Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023–2025), Visual Instruction Tuning |
 | VQA | OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model |
 <!-- TERM_USAGE_INDEX:END -->

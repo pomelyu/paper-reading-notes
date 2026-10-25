@@ -76,6 +76,7 @@ Dataset names are canonical identifiers used by the knowledge-graph rebuild.
 | KITTI | HUGSIM | DINOv3, DUSt3R, HUGSIM, Street Gaussians | KITTI |
 | KITTI-360 | HUGSIM | HUGSIM | — |
 | Kubric | VGGT | — | — |
+| LangAuto | — | DSDrive | LMDrive: Closed-Loop End-to-End Driving with Large Language Models |
 | LERF | LangSplatV2 | LangSplat, LangSplatV2 | LERF |
 | LERF-Mask | — | Gaussian Grouping, ObjectGS | Gaussian Grouping |
 | LIBERO | — | VGGT-Ω | — |
